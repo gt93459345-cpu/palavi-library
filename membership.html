@@ -882,7 +882,7 @@ const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbx7O5oM9ic59fuwmXim
 
 
 /* Form Submit */
-document.getElementById("membershipForm").addEventListener("submit", async function(event) {
+document.getElementById("membershipForm").addEventListener("submit", function(event) {
 
   event.preventDefault();
 
@@ -902,63 +902,54 @@ document.getElementById("membershipForm").addEventListener("submit", async funct
     membershipType: form.membershipType.value
   };
 
-  try {
+  let iframe = document.getElementById("submitFrame");
 
-    const body = new URLSearchParams();
-
-    body.append(
-      "data",
-      JSON.stringify(formData)
-    );
-
-    const response = await fetch(
-      WEB_APP_URL,
-      {
-        method: "POST",
-        body: body
-      }
-    );
-
-    const result = await response.json();
-
-    if (result.success) {
-
-      alert(
-        "अर्ज यशस्वीरीत्या सादर झाला.\n\n" +
-        "सभासद क्रमांक: " +
-        result.memberNumber
-      );
-
-      form.reset();
-
-      document.getElementById("photoPreview").style.display = "none";
-      document.getElementById("signaturePreview").style.display = "none";
-
-    } else {
-
-      alert(
-        "अर्ज सादर करताना समस्या आली:\n\n" +
-        result.error
-      );
-
-    }
-
-  } catch (error) {
-
-    alert(
-      "Server शी connection होऊ शकले नाही.\n\n" +
-      "कृपया पुन्हा प्रयत्न करा."
-    );
-
-    console.error(error);
-
+  if (!iframe) {
+    iframe = document.createElement("iframe");
+    iframe.id = "submitFrame";
+    iframe.name = "submitFrame";
+    iframe.style.display = "none";
+    document.body.appendChild(iframe);
   }
 
-  submitButton.disabled = false;
-  submitButton.textContent = "अर्ज सादर करा →";
+  const postForm = document.createElement("form");
+
+  postForm.method = "POST";
+  postForm.action = WEB_APP_URL;
+  postForm.target = "submitFrame";
+  postForm.style.display = "none";
+
+  const dataInput = document.createElement("input");
+
+  dataInput.type = "hidden";
+  dataInput.name = "data";
+  dataInput.value = JSON.stringify(formData);
+
+  postForm.appendChild(dataInput);
+  document.body.appendChild(postForm);
+
+  postForm.submit();
+
+  setTimeout(function() {
+
+    alert(
+      "अर्ज सादर झाला आहे.\n\n" +
+      "माहिती Google Sheet मध्ये पाठवली आहे."
+    );
+
+    form.reset();
+
+    document.getElementById("photoPreview").style.display = "none";
+    document.getElementById("signaturePreview").style.display = "none";
+
+    submitButton.disabled = false;
+    submitButton.textContent = "अर्ज सादर करा →";
+
+    postForm.remove();
+
+  }, 2500);
 
 });
-
   </script>
 
 </body>
