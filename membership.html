@@ -881,8 +881,30 @@
 const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbx7O5oM9ic59fuwmXimo5cCpm9YCrMYR2LccBgA71NfAZ_pqYJAX59b5CCxKZJ-pLQp/exec";
 
 
-/* Form Submit */
-document.getElementById("membershipForm").addEventListener("submit", function(event) {
+function fileToBase64(file) {
+  return new Promise(function(resolve, reject) {
+
+    if (!file) {
+      resolve("");
+      return;
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = function() {
+      resolve(reader.result);
+    };
+
+    reader.onerror = function(error) {
+      reject(error);
+    };
+
+    reader.readAsDataURL(file);
+  });
+}
+    
+    /* Form Submit */
+document.getElementById("membershipForm").addEventListener("submit", async function(event) {
 
   event.preventDefault();
 
@@ -892,15 +914,31 @@ document.getElementById("membershipForm").addEventListener("submit", function(ev
   submitButton.disabled = true;
   submitButton.textContent = "अर्ज सादर होत आहे...";
 
-  const formData = {
-    fullName: form.fullName.value,
-    dateOfBirth: form.dateOfBirth.value,
-    gender: form.gender.value,
-    mobile: form.mobile.value,
-    email: form.email.value,
-    address: form.address.value,
-    membershipType: form.membershipType.value
-  };
+const formData = {
+  fullName: form.fullName.value,
+  dateOfBirth: form.dateOfBirth.value,
+  gender: form.gender.value,
+  mobile: form.mobile.value,
+  email: form.email.value,
+  address: form.address.value,
+  membershipType: form.membershipType.value,
+
+  photo: await fileToBase64(
+    document.getElementById("photo").files[0]
+  ),
+
+  aadhaar: await fileToBase64(
+    document.getElementById("aadhaar").files[0]
+  ),
+
+  idProof: await fileToBase64(
+    document.getElementById("idProof").files[0]
+  ),
+
+  signature: await fileToBase64(
+    document.getElementById("signature").files[0]
+  )
+};
 
   let iframe = document.getElementById("submitFrame");
 
