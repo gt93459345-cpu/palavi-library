@@ -877,18 +877,87 @@
     });
 
 
-    /* Temporary submit message */
-    document.getElementById("membershipForm").addEventListener("submit", function(event) {
+/* Google Apps Script Web App URL */
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbx7O5oM9ic59fuwmXimo5cCpm9YCrMYR2LccBgA71NfAZ_pqYJAX59b5CCxKZJ-pLQp/exec";
 
-      event.preventDefault();
+
+/* Form Submit */
+document.getElementById("membershipForm").addEventListener("submit", async function(event) {
+
+  event.preventDefault();
+
+  const form = this;
+  const submitButton = form.querySelector(".submit-btn");
+
+  submitButton.disabled = true;
+  submitButton.textContent = "अर्ज सादर होत आहे...";
+
+  const formData = {
+    fullName: form.fullName.value,
+    dateOfBirth: form.dateOfBirth.value,
+    gender: form.gender.value,
+    mobile: form.mobile.value,
+    email: form.email.value,
+    address: form.address.value,
+    membershipType: form.membershipType.value
+  };
+
+  try {
+
+    const body = new URLSearchParams();
+
+    body.append(
+      "data",
+      JSON.stringify(formData)
+    );
+
+    const response = await fetch(
+      WEB_APP_URL,
+      {
+        method: "POST",
+        body: body
+      }
+    );
+
+    const result = await response.json();
+
+    if (result.success) {
 
       alert(
-        "फॉर्मचा design तयार आहे.\\n\\n" +
-        "पुढील टप्प्यात हा फॉर्म Google Sheets + Google Drive शी जोडला जाईल. " +
-        "त्यानंतर अर्जातील माहिती आणि uploaded documents प्रत्यक्ष save होतील."
+        "अर्ज यशस्वीरीत्या सादर झाला.\n\n" +
+        "सभासद क्रमांक: " +
+        result.memberNumber
       );
 
-    });
+      form.reset();
+
+      document.getElementById("photoPreview").style.display = "none";
+      document.getElementById("signaturePreview").style.display = "none";
+
+    } else {
+
+      alert(
+        "अर्ज सादर करताना समस्या आली:\n\n" +
+        result.error
+      );
+
+    }
+
+  } catch (error) {
+
+    alert(
+      "Server शी connection होऊ शकले नाही.\n\n" +
+      "कृपया पुन्हा प्रयत्न करा."
+    );
+
+    console.error(error);
+
+  }
+
+  submitButton.disabled = false;
+  submitButton.textContent = "अर्ज सादर करा →";
+
+});
 
   </script>
 
