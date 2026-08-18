@@ -7,117 +7,128 @@
 <title>सभासद नोंदणी | पालवी लायब्ररी</title>
 
 <style>
+
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+box-sizing:border-box;
+margin:0;
+padding:0;
 }
 
 body{
-  font-family:"Noto Sans Devanagari","Arial",sans-serif;
-  background:#f4f6f8;
-  color:#202124;
-  line-height:1.6;
+font-family:"Noto Sans Devanagari","Arial",sans-serif;
+background:#f4f6f8;
+color:#202124;
+line-height:1.6;
 }
 
 .top-header{
-  background:#fff;
-  border-bottom:1px solid #ddd;
-  padding:16px 20px;
+background:#fff;
+border-bottom:1px solid #e2e5e9;
+padding:16px 20px;
 }
 
 .header-inner{
-  max-width:1050px;
-  margin:auto;
-  display:flex;
-  align-items:center;
-  gap:14px;
+max-width:1050px;
+margin:auto;
+display:flex;
+align-items:center;
+gap:14px;
 }
 
 .logo{
-  width:58px;
-  height:58px;
-  border:2px solid #333;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  font-size:11px;
-  font-weight:bold;
-  line-height:1.1;
-  flex-shrink:0;
+width:58px;
+height:58px;
+border:2px solid #333;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+font-size:11px;
+font-weight:bold;
+line-height:1.1;
+flex-shrink:0;
 }
 
 .header-text h1{
-  font-size:20px;
+font-size:20px;
 }
 
 .header-text p{
-  font-size:13px;
-  color:#70757a;
+font-size:13px;
+color:#70757a;
 }
 
 .page{
-  max-width:950px;
-  margin:35px auto;
-  padding:0 15px;
+max-width:950px;
+margin:35px auto;
+padding:0 15px;
 }
 
 .page-title{
-  background:#fff;
-  border-radius:12px;
-  padding:28px;
-  margin-bottom:18px;
-  border:1px solid #e0e3e7;
-  border-top:5px solid #8b5e34;
+background:#fff;
+border-radius:12px;
+padding:28px;
+margin-bottom:18px;
+border:1px solid #e0e3e7;
+border-top:5px solid #8b5e34;
 }
 
 .page-title h2{
-  font-size:27px;
-  margin-bottom:5px;
+font-size:28px;
+margin-bottom:5px;
 }
 
 .page-title p{
-  color:#6b7280;
-  font-size:14px;
+color:#6b7280;
+font-size:14px;
 }
 
-.required{
-  color:#d93025;
+.required-note{
+margin-top:12px;
+font-size:13px;
+color:#777;
 }
 
 .form-card{
-  background:#fff;
-  border:1px solid #e0e3e7;
-  border-radius:12px;
-  margin-bottom:18px;
-  overflow:hidden;
+background:#fff;
+border:1px solid #e0e3e7;
+border-radius:12px;
+margin-bottom:18px;
+overflow:hidden;
 }
 
 .section-header{
-  background:#fafafa;
-  border-bottom:1px solid #e5e7eb;
-  padding:17px 24px;
+background:#fafafa;
+border-bottom:1px solid #e5e7eb;
+padding:17px 24px;
 }
 
 .section-header h3{
-  font-size:20px;
+font-size:20px;
 }
 
 .section-body{
-  padding:25px;
+padding:25px;
 }
 
 .field{
-  margin-bottom:22px;
+margin-bottom:24px;
+}
+
+.field:last-child{
+margin-bottom:0;
 }
 
 .field label{
-  display:block;
-  font-weight:600;
-  margin-bottom:7px;
-  font-size:15px;
+display:block;
+font-weight:600;
+margin-bottom:7px;
+font-size:15px;
+}
+
+.required{
+color:#d93025;
 }
 
 input[type="text"],
@@ -127,328 +138,440 @@ input[type="email"],
 input[type="number"],
 textarea,
 select{
-  width:100%;
-  padding:13px 14px;
-  border:1px solid #c9cdd2;
-  border-radius:7px;
-  font-size:15px;
-  font-family:inherit;
-  background:#fff;
-  outline:none;
+width:100%;
+padding:13px 14px;
+border:1px solid #c9cdd2;
+border-radius:7px;
+font-size:15px;
+font-family:inherit;
+background:#fff;
+outline:none;
 }
 
 input:focus,
 textarea:focus,
 select:focus{
-  border-color:#8b5e34;
-  box-shadow:0 0 0 2px rgba(139,94,52,.12);
-}
-
-input[readonly]{
-  background:#f3f4f6;
+border-color:#8b5e34;
+box-shadow:0 0 0 2px rgba(139,94,52,.12);
 }
 
 textarea{
-  min-height:80px;
-  resize:vertical;
+min-height:90px;
+resize:vertical;
+}
+
+input[readonly]{
+background:#f3f4f6;
+color:#555;
+}
+
+.field-help{
+margin-top:5px;
+font-size:12px;
+color:#777;
 }
 
 .grid-2{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:22px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:22px;
 }
 
 .grid-3{
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  gap:18px;
-}
-
-.address-title{
-  font-size:18px;
-  font-weight:700;
-  margin:10px 0 18px;
-  color:#333;
+display:grid;
+grid-template-columns:1fr 1fr 1fr;
+gap:18px;
 }
 
 .radio-group{
-  display:flex;
-  flex-wrap:wrap;
-  gap:12px;
+display:flex;
+flex-wrap:wrap;
+gap:15px;
 }
 
 .radio-option{
-  border:1px solid #d6d9dd;
-  padding:10px 18px;
-  border-radius:7px;
-  display:flex;
-  align-items:center;
-  gap:8px;
-  cursor:pointer;
-  background:#fff;
-}
-
-.radio-option:hover{
-  background:#faf7f3;
-  border-color:#8b5e34;
+border:1px solid #d6d9dd;
+padding:10px 18px;
+border-radius:7px;
+display:flex;
+align-items:center;
+gap:8px;
+cursor:pointer;
+background:#fff;
 }
 
 .radio-option input{
-  accent-color:#8b5e34;
-}
-
-.same-address{
-  background:#fff8e8;
-  border:1px solid #f0dca8;
-  padding:13px 15px;
-  border-radius:8px;
-  margin:5px 0 25px;
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-size:14px;
-  cursor:pointer;
-}
-
-.same-address input{
-  width:18px;
-  height:18px;
-  accent-color:#8b5e34;
+accent-color:#8b5e34;
 }
 
 .upload-box{
-  border:1px dashed #b9bec5;
-  border-radius:9px;
-  padding:18px;
-  background:#fafafa;
+border:1px dashed #b9bec5;
+border-radius:9px;
+padding:18px;
+background:#fafafa;
 }
 
 .upload-box input[type="file"]{
-  width:100%;
-  font-family:inherit;
+width:100%;
+font-family:inherit;
+font-size:14px;
 }
 
 .upload-note{
-  font-size:12px;
-  color:#777;
-  margin-top:6px;
+font-size:12px;
+color:#777;
+margin-top:6px;
 }
 
 .preview{
-  display:none;
-  margin-top:12px;
-  max-width:150px;
-  max-height:180px;
-  border-radius:7px;
-  border:1px solid #ddd;
-  object-fit:contain;
-}
-
-.declaration{
-  background:#fafafa;
-  border:1px solid #e2e5e9;
-  padding:18px;
-  border-radius:8px;
-  font-size:14px;
-  color:#444;
-}
-
-.actions{
-  display:flex;
-  justify-content:space-between;
-  gap:15px;
-  margin:25px 0 50px;
-}
-
-.btn{
-  border:none;
-  padding:13px 25px;
-  border-radius:8px;
-  font-family:inherit;
-  font-size:15px;
-  font-weight:700;
-  cursor:pointer;
-  text-decoration:none;
-}
-
-.back-btn{
-  background:#fff;
-  color:#444;
-  border:1px solid #cfd3d7;
-}
-
-.validate-btn{
-  background:#374151;
-  color:#fff;
-}
-
-.submit-btn{
-  background:#8b5e34;
-  color:#fff;
-}
-
-.submit-btn:hover{
-  background:#704923;
-}
-
-.btn:disabled{
-  opacity:.6;
-  cursor:not-allowed;
+display:none;
+margin-top:12px;
+max-width:150px;
+max-height:180px;
+border-radius:7px;
+border:1px solid #ddd;
+object-fit:contain;
 }
 
 .notice{
-  background:#fff8e8;
-  border:1px solid #f0dca8;
-  color:#654f1d;
-  border-radius:8px;
-  padding:13px 15px;
-  font-size:13px;
-  margin-top:10px;
+background:#fff8e8;
+border:1px solid #f0dca8;
+color:#654f1d;
+border-radius:8px;
+padding:13px 15px;
+font-size:13px;
+margin-top:10px;
+}
+
+.otp-box{
+margin-top:10px;
+padding:15px;
+background:#fafafa;
+border:1px solid #e1e4e8;
+border-radius:8px;
+}
+
+.otp-row{
+display:flex;
+gap:10px;
+}
+
+.otp-row input{
+flex:1;
+}
+
+.small-btn{
+border:none;
+background:#8b5e34;
+color:#fff;
+padding:12px 18px;
+border-radius:7px;
+font-family:inherit;
+font-weight:700;
+cursor:pointer;
+white-space:nowrap;
+}
+
+.small-btn:disabled{
+opacity:.6;
+cursor:not-allowed;
+}
+
+.verify-btn{
+margin-top:10px;
+}
+
+.verified{
+display:none;
+margin-top:10px;
+padding:10px 12px;
+background:#e8f5e9;
+border:1px solid #a5d6a7;
+color:#256029;
+border-radius:7px;
+font-size:14px;
+font-weight:700;
+}
+
+.otp-message{
+margin-top:8px;
+font-size:13px;
+}
+
+.same-address{
+display:flex;
+align-items:center;
+gap:9px;
+margin:5px 0 20px;
+padding:12px;
+background:#fafafa;
+border:1px solid #e2e5e9;
+border-radius:8px;
+font-size:14px;
+font-weight:600;
+}
+
+.declaration{
+background:#fafafa;
+border:1px solid #e2e5e9;
+padding:18px;
+border-radius:8px;
+font-size:14px;
+color:#444;
+}
+
+.actions{
+display:flex;
+justify-content:space-between;
+gap:15px;
+margin:25px 0 50px;
+}
+
+.btn{
+border:none;
+padding:13px 25px;
+border-radius:8px;
+font-family:inherit;
+font-size:15px;
+font-weight:700;
+cursor:pointer;
+text-decoration:none;
+display:inline-block;
+}
+
+.back-btn{
+background:#fff;
+color:#444;
+border:1px solid #cfd3d7;
+}
+
+.submit-btn{
+background:#8b5e34;
+color:#fff;
+}
+
+.submit-btn:disabled{
+opacity:.6;
+cursor:not-allowed;
 }
 
 .success-box{
-  display:none;
-  background:#ecfdf3;
-  border:1px solid #9ad8b4;
-  color:#166534;
-  border-radius:10px;
-  padding:18px;
-  margin-bottom:20px;
+display:none;
+background:#e8f5e9;
+border:1px solid #81c784;
+border-radius:12px;
+padding:25px;
+margin-bottom:25px;
 }
 
-.error-box{
-  display:none;
-  background:#fff1f2;
-  border:1px solid #f3a6ad;
-  color:#b42318;
-  border-radius:10px;
-  padding:15px;
-  margin-bottom:20px;
+.success-box h3{
+color:#256029;
+margin-bottom:15px;
+font-size:22px;
+}
+
+.login-details{
+background:#fff;
+border:1px solid #ddd;
+border-radius:8px;
+padding:15px;
+margin-top:15px;
+}
+
+.login-details div{
+padding:7px 0;
 }
 
 footer{
-  background:#111827;
-  color:#d1d5db;
-  text-align:center;
-  padding:25px 15px;
-  font-size:13px;
+background:#111827;
+color:#d1d5db;
+text-align:center;
+padding:25px 15px;
+font-size:13px;
 }
 
 footer strong{
-  color:#fff;
+color:#fff;
 }
 
 @media(max-width:700px){
 
-  .header-inner{
-    align-items:flex-start;
-  }
-
-  .header-text h1{
-    font-size:16px;
-  }
-
-  .header-text p{
-    font-size:11px;
-  }
-
-  .page{
-    margin-top:20px;
-  }
-
-  .page-title{
-    padding:22px 18px;
-  }
-
-  .page-title h2{
-    font-size:23px;
-  }
-
-  .section-body{
-    padding:20px 17px;
-  }
-
-  .grid-2,
-  .grid-3{
-    grid-template-columns:1fr;
-    gap:0;
-  }
-
-  .actions{
-    flex-direction:column;
-  }
-
-  .btn{
-    width:100%;
-    text-align:center;
-  }
-
-  .radio-option{
-    width:100%;
-  }
+.header-inner{
+align-items:flex-start;
 }
+
+.header-text h1{
+font-size:16px;
+}
+
+.header-text p{
+font-size:11px;
+}
+
+.page{
+margin-top:20px;
+}
+
+.page-title{
+padding:22px 18px;
+}
+
+.page-title h2{
+font-size:23px;
+}
+
+.section-body{
+padding:20px 17px;
+}
+
+.grid-2,
+.grid-3{
+grid-template-columns:1fr;
+gap:0;
+}
+
+.otp-row{
+flex-direction:column;
+}
+
+.small-btn{
+width:100%;
+}
+
+.actions{
+flex-direction:column-reverse;
+}
+
+.btn{
+width:100%;
+text-align:center;
+}
+
+.radio-option{
+width:100%;
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
 <header class="top-header">
-  <div class="header-inner">
 
-    <div class="logo">
-      PALAVI<br>LIBRARY
-    </div>
+<div class="header-inner">
 
-    <div class="header-text">
-      <h1>पालवी रूरल मोबाईल अँड डिजिटल लायब्ररी</h1>
-      <p>पालवी चॅरिटेबल ट्रस्ट संचलित</p>
-    </div>
+<div class="logo">
+PALAVI<br>LIBRARY
+</div>
 
-  </div>
+<div class="header-text">
+
+<h1>
+पालवी रूरल मोबाईल अँड डिजिटल लायब्ररी
+</h1>
+
+<p>
+पालवी चॅरिटेबल ट्रस्ट संचलित
+</p>
+
+</div>
+
+</div>
+
 </header>
 
 
 <main class="page">
 
+
 <div class="page-title">
 
-  <h2>ग्रंथालय सभासद नोंदणी फॉर्म</h2>
+<h2>
+ग्रंथालय सभासद नोंदणी फॉर्म
+</h2>
 
-  <p>
-    कृपया खालील माहिती काळजीपूर्वक भरा.
-  </p>
+<p>
+कृपया खालील माहिती काळजीपूर्वक भरा आणि आवश्यक कागदपत्रे अपलोड करा.
+</p>
 
-  <div style="margin-top:10px;font-size:13px;color:#777;">
-    <span class="required">*</span>
-    चिन्ह असलेली माहिती आवश्यक आहे.
-  </div>
+<div class="required-note">
+<span class="required">*</span>
+चिन्ह असलेली माहिती आवश्यक आहे.
+</div>
 
 </div>
 
 
-<div id="successBox" class="success-box"></div>
-<div id="errorBox" class="error-box"></div>
+<!-- SUCCESS -->
+
+<div
+id="successBox"
+class="success-box"
+>
+
+<h3>
+✅ अर्ज यशस्वीपणे सादर झाला!
+</h3>
+
+<p>
+आपला सभासद अर्ज Google Sheet मध्ये नोंदवला गेला आहे.
+</p>
+
+<div class="login-details">
+
+<div>
+<strong>सभासद क्रमांक:</strong>
+<span id="successMemberNumber"></span>
+</div>
+
+<div>
+<strong>Login ID:</strong>
+<span id="successLoginId"></span>
+</div>
+
+<div>
+<strong>Temporary Password:</strong>
+<span id="successPassword"></span>
+</div>
+
+</div>
+
+<div class="notice">
+⚠️ कृपया Login ID आणि Temporary Password सुरक्षित ठेवा.
+</div>
+
+</div>
 
 
 <form id="membershipForm">
 
-<!-- =====================================================
-     SECTION 1
-===================================================== -->
+
+<!-- =================================================
+SECTION 1
+================================================= -->
 
 <div class="form-card">
 
 <div class="section-header">
-  <h3>१. सभासदाची प्राथमिक माहिती</h3>
+
+<h3>
+१. सभासदाची प्राथमिक माहिती
+</h3>
+
 </div>
 
 <div class="section-body">
 
+
 <div class="grid-2">
 
 <div class="field">
-<label>सभासद क्रमांक</label>
+
+<label>
+सभासद क्रमांक
+</label>
 
 <input
 type="text"
@@ -457,12 +580,18 @@ readonly
 placeholder="System Generated"
 >
 
+<div class="field-help">
+सभासद क्रमांक प्रणालीद्वारे तयार केला जाईल.
+</div>
+
 </div>
 
 
 <div class="field">
 
-<label>नोंदणी दिनांक</label>
+<label>
+नोंदणी दिनांक
+</label>
 
 <input
 type="date"
@@ -478,7 +607,8 @@ readonly
 <div class="field">
 
 <label>
-संपूर्ण नाव <span class="required">*</span>
+संपूर्ण नाव
+<span class="required">*</span>
 </label>
 
 <input
@@ -496,7 +626,8 @@ required
 <div class="field">
 
 <label>
-जन्मतारीख <span class="required">*</span>
+जन्मतारीख
+<span class="required">*</span>
 </label>
 
 <input
@@ -511,60 +642,77 @@ required
 <div class="field">
 
 <label>
-मोबाईल क्रमांक <span class="required">*</span>
-</label>
-
-<input
-type="tel"
-name="mobile"
-placeholder="10 अंकी मोबाईल क्रमांक"
-pattern="[0-9]{10}"
-maxlength="10"
-required
->
-
-</div>
-
-</div>
-
-
-<div class="field">
-
-<label>
-लिंग <span class="required">*</span>
+लिंग
+<span class="required">*</span>
 </label>
 
 <div class="radio-group">
 
 <label class="radio-option">
+
 <input
 type="radio"
 name="gender"
 value="पुरुष"
 required
 >
+
 पुरुष
+
 </label>
 
+
 <label class="radio-option">
+
 <input
 type="radio"
 name="gender"
 value="महिला"
 >
+
 महिला
+
 </label>
 
+
 <label class="radio-option">
+
 <input
 type="radio"
 name="gender"
 value="इतर"
 >
+
 इतर
+
 </label>
 
 </div>
+
+</div>
+
+</div>
+
+
+<div class="grid-2">
+
+<div class="field">
+
+<label>
+मोबाईल क्रमांक
+<span class="required">*</span>
+</label>
+
+<input
+type="tel"
+name="mobile"
+id="mobile"
+placeholder="10 अंकी मोबाईल क्रमांक"
+pattern="[0-9]{10}"
+maxlength="10"
+inputmode="numeric"
+required
+>
 
 </div>
 
@@ -573,53 +721,115 @@ value="इतर"
 
 <label>
 ई-मेल आयडी
+<span class="required">*</span>
 </label>
 
 <input
 type="email"
 name="email"
+id="email"
 placeholder="example@gmail.com"
+required
 >
 
-<div class="upload-note">
-ई-मेल आयडी ऐच्छिक आहे.
+</div>
+
+</div>
+
+
+<!-- EMAIL OTP -->
+
+<div class="field">
+
+<label>
+ई-मेल पडताळणी
+<span class="required">*</span>
+</label>
+
+<div class="otp-box">
+
+<div class="otp-row">
+
+<input
+type="text"
+id="otp"
+placeholder="6 अंकी OTP"
+maxlength="6"
+inputmode="numeric"
+>
+
+<button
+type="button"
+class="small-btn"
+id="sendOtpBtn"
+>
+OTP पाठवा
+</button>
+
+</div>
+
+
+<button
+type="button"
+class="small-btn verify-btn"
+id="verifyOtpBtn"
+style="display:none;"
+>
+OTP Verify करा
+</button>
+
+
+<div
+id="otpMessage"
+class="otp-message"
+></div>
+
+
+<div
+id="verifiedBox"
+class="verified"
+>
+✅ ई-मेल यशस्वीपणे Verify झाला आहे.
 </div>
 
 </div>
 
 </div>
+
+
+</div>
+
 </div>
 
 
-<!-- =====================================================
-     CORRESPONDENCE ADDRESS
-===================================================== -->
+<!-- =================================================
+CORRESPONDENCE ADDRESS
+================================================= -->
 
 <div class="form-card">
 
 <div class="section-header">
-<h3>२. पत्रव्यवहाराचा पत्ता</h3>
+
+<h3>
+२. पत्रव्यवहाराचा पत्ता
+</h3>
+
 </div>
 
 <div class="section-body">
-
-<div class="address-title">
-Address for Correspondence:
-<span class="required">*</span>
-</div>
 
 
 <div class="field">
 
 <label>
-पत्ता १ <span class="required">*</span>
+Address for Correspondence: <span class="required">*</span>
 </label>
 
 <input
 type="text"
 name="correspondenceAddress1"
 maxlength="35"
-placeholder="कमाल 35 अक्षरे"
+placeholder="पत्ता १ (कमाल 35 अक्षरे)"
 required
 >
 
@@ -628,13 +838,17 @@ required
 
 <div class="field">
 
-<label>पत्ता २</label>
+<label>
+Address 2
+<span class="required">*</span>
+</label>
 
 <input
 type="text"
 name="correspondenceAddress2"
 maxlength="35"
-placeholder="कमाल 35 अक्षरे"
+placeholder="पत्ता २ (कमाल 35 अक्षरे)"
+required
 >
 
 </div>
@@ -642,13 +856,15 @@ placeholder="कमाल 35 अक्षरे"
 
 <div class="field">
 
-<label>पत्ता ३</label>
+<label>
+Address 3
+</label>
 
 <input
 type="text"
 name="correspondenceAddress3"
 maxlength="35"
-placeholder="कमाल 35 अक्षरे"
+placeholder="पत्ता ३ (कमाल 35 अक्षरे)"
 >
 
 </div>
@@ -659,13 +875,15 @@ placeholder="कमाल 35 अक्षरे"
 <div class="field">
 
 <label>
-जिल्हा <span class="required">*</span>
+District
+<span class="required">*</span>
 </label>
 
 <input
 type="text"
 name="correspondenceDistrict"
 maxlength="20"
+placeholder="जिल्हा"
 required
 >
 
@@ -675,7 +893,8 @@ required
 <div class="field">
 
 <label>
-राज्य <span class="required">*</span>
+State
+<span class="required">*</span>
 </label>
 
 <select
@@ -703,7 +922,7 @@ required
 <option>मध्य प्रदेश</option>
 <option>मणिपूर</option>
 <option>मेघालय</option>
-<option>मिझोराम</option>
+<option>मिझोरम</option>
 <option>नागालँड</option>
 <option>ओडिशा</option>
 <option>पंजाब</option>
@@ -727,7 +946,8 @@ required
 <div class="field">
 
 <label>
-पिनकोड <span class="required">*</span>
+Pincode
+<span class="required">*</span>
 </label>
 
 <input
@@ -744,18 +964,24 @@ required
 
 </div>
 
+
 </div>
+
 </div>
 
 
-<!-- =====================================================
-     PERMANENT ADDRESS
-===================================================== -->
+<!-- =================================================
+PERMANENT ADDRESS
+================================================= -->
 
 <div class="form-card">
 
 <div class="section-header">
-<h3>३. कायमचा पत्ता</h3>
+
+<h3>
+३. कायमचा पत्ता
+</h3>
+
 </div>
 
 <div class="section-body">
@@ -768,29 +994,23 @@ type="checkbox"
 id="sameAddress"
 >
 
-<span>
-☑ पत्रव्यवहाराचा पत्ता आणि कायमचा पत्ता समान आहे
-</span>
+पत्रव्यवहाराचा पत्ता आणि कायमचा पत्ता समान आहे
 
 </label>
-
-
-<div class="address-title">
-Permanent Address:
-<span class="required">*</span>
-</div>
 
 
 <div class="field">
 
 <label>
-पत्ता १ <span class="required">*</span>
+Permanent Address 1
+<span class="required">*</span>
 </label>
 
 <input
 type="text"
 name="permanentAddress1"
 maxlength="35"
+placeholder="पत्ता १ (कमाल 35 अक्षरे)"
 required
 >
 
@@ -799,12 +1019,17 @@ required
 
 <div class="field">
 
-<label>पत्ता २</label>
+<label>
+Permanent Address 2
+<span class="required">*</span>
+</label>
 
 <input
 type="text"
 name="permanentAddress2"
 maxlength="35"
+placeholder="पत्ता २ (कमाल 35 अक्षरे)"
+required
 >
 
 </div>
@@ -812,12 +1037,15 @@ maxlength="35"
 
 <div class="field">
 
-<label>पत्ता ३</label>
+<label>
+Permanent Address 3
+</label>
 
 <input
 type="text"
 name="permanentAddress3"
 maxlength="35"
+placeholder="पत्ता ३ (कमाल 35 अक्षरे)"
 >
 
 </div>
@@ -828,13 +1056,15 @@ maxlength="35"
 <div class="field">
 
 <label>
-जिल्हा <span class="required">*</span>
+District
+<span class="required">*</span>
 </label>
 
 <input
 type="text"
 name="permanentDistrict"
 maxlength="20"
+placeholder="जिल्हा"
 required
 >
 
@@ -844,7 +1074,8 @@ required
 <div class="field">
 
 <label>
-राज्य <span class="required">*</span>
+State
+<span class="required">*</span>
 </label>
 
 <select
@@ -872,7 +1103,7 @@ required
 <option>मध्य प्रदेश</option>
 <option>मणिपूर</option>
 <option>मेघालय</option>
-<option>मिझोराम</option>
+<option>मिझोरम</option>
 <option>नागालँड</option>
 <option>ओडिशा</option>
 <option>पंजाब</option>
@@ -896,7 +1127,8 @@ required
 <div class="field">
 
 <label>
-पिनकोड <span class="required">*</span>
+Pincode
+<span class="required">*</span>
 </label>
 
 <input
@@ -913,18 +1145,27 @@ required
 
 </div>
 
+
 </div>
+
 </div>
 
 
-<!-- =====================================================
-     MEMBERSHIP & FEE OPTIONAL
-===================================================== -->
+<!-- =================================================
+MEMBERSHIP
+================================================= -->
 
 <div class="form-card">
 
 <div class="section-header">
-<h3>४. सदस्यत्व व शुल्क</h3>
+
+<h3>
+४. सदस्यत्व व शुल्क
+<span style="font-size:13px;color:#777;">
+(ऐच्छिक)
+</span>
+</h3>
+
 </div>
 
 <div class="section-body">
@@ -937,7 +1178,9 @@ required
 सदस्यत्व प्रकार
 </label>
 
-<select name="membershipType">
+<select
+name="membershipType"
+>
 
 <option value="">
 -- सदस्यत्व प्रकार निवडा --
@@ -957,10 +1200,6 @@ required
 
 </select>
 
-<div class="upload-note">
-हे क्षेत्र ऐच्छिक आहे.
-</div>
-
 </div>
 
 
@@ -978,8 +1217,6 @@ min="0"
 step="0.01"
 >
 
-<div class="upload-note">
-हे क्षेत्र ऐच्छिक आहे.
 </div>
 
 </div>
@@ -987,17 +1224,20 @@ step="0.01"
 </div>
 
 </div>
-</div>
 
 
-<!-- =====================================================
-     DOCUMENTS
-===================================================== -->
+<!-- =================================================
+DOCUMENTS
+================================================= -->
 
 <div class="form-card">
 
 <div class="section-header">
-<h3>५. आवश्यक कागदपत्रे</h3>
+
+<h3>
+५. आवश्यक कागदपत्रे
+</h3>
+
 </div>
 
 <div class="section-body">
@@ -1020,7 +1260,7 @@ required
 >
 
 <div class="upload-note">
-JPG, PNG किंवा WEBP.
+JPG, PNG किंवा WEBP
 </div>
 
 <img
@@ -1051,7 +1291,7 @@ required
 >
 
 <div class="upload-note">
-PDF, JPG किंवा PNG.
+PDF, JPG किंवा PNG
 </div>
 
 </div>
@@ -1099,7 +1339,7 @@ required
 >
 
 <div class="upload-note">
-JPG किंवा PNG.
+स्पष्ट JPG किंवा PNG स्वाक्षरी.
 </div>
 
 <img
@@ -1114,35 +1354,40 @@ alt="Signature Preview"
 
 
 <div class="notice">
-⚠️ सर्व कागदपत्रे स्पष्ट आणि वाचता येतील अशा स्वरूपात अपलोड करा.
-</div>
-
-</div>
+⚠️ आपली कागदपत्रे स्पष्ट आणि वाचता येतील अशा स्वरूपात अपलोड करा.
 </div>
 
 
-<!-- =====================================================
-     DECLARATION
-===================================================== -->
+</div>
+
+</div>
+
+
+<!-- =================================================
+DECLARATION
+================================================= -->
 
 <div class="form-card">
 
 <div class="section-header">
-<h3>६. घोषणा</h3>
+
+<h3>
+६. घोषणा
+</h3>
+
 </div>
 
 <div class="section-body">
 
 <div class="declaration">
 
-मी दिलेली सर्व माहिती माझ्या माहितीनुसार खरी आहे.
-ग्रंथालयाचे नियम व अटी पाळण्यास मी सहमत आहे.
+मी दिलेली सर्व माहिती खरी असून ग्रंथालयाचे सर्व नियम व अटी पाळण्यास सहमत आहे.
 
 </div>
 
 <br>
 
-<label class="same-address">
+<label class="radio-option">
 
 <input
 type="checkbox"
@@ -1150,19 +1395,16 @@ id="declaration"
 required
 >
 
-<span>
 मी वरील घोषणेशी सहमत आहे.
-</span>
 
 </label>
 
 </div>
+
 </div>
 
 
-<!-- =====================================================
-     BUTTONS
-===================================================== -->
+<!-- BUTTONS -->
 
 <div class="actions">
 
@@ -1175,23 +1417,16 @@ class="btn back-btn"
 
 
 <button
-type="button"
-id="validateBtn"
-class="btn validate-btn"
->
-माहिती तपासा
-</button>
-
-
-<button
 type="submit"
-id="submitBtn"
 class="btn submit-btn"
+id="submitButton"
+disabled
 >
-Save & Next →
+अर्ज सादर करा →
 </button>
 
 </div>
+
 
 </form>
 
@@ -1214,7 +1449,7 @@ Save & Next →
 <script>
 
 /* =====================================================
-   GOOGLE APPS SCRIPT URL
+   WEB APP URL
 ===================================================== */
 
 const WEB_APP_URL =
@@ -1225,514 +1460,981 @@ const WEB_APP_URL =
    DATE
 ===================================================== */
 
-const today = new Date();
+const today =
+new Date();
 
-const year = today.getFullYear();
+const year =
+today.getFullYear();
 
-const month = String(
-  today.getMonth() + 1
+const month =
+String(
+today.getMonth()+1
 ).padStart(2,"0");
 
-const day = String(
-  today.getDate()
+const day =
+String(
+today.getDate()
 ).padStart(2,"0");
 
 document.getElementById(
-  "registrationDate"
+"registrationDate"
 ).value =
 `${year}-${month}-${day}`;
 
 
 /* =====================================================
-   TEMP MEMBER NUMBER
+   EMAIL VERIFICATION STATUS
 ===================================================== */
 
-document.getElementById(
-  "memberNumber"
-).value =
-"LIB-" +
-year +
-"-TEMP";
+let emailVerified =
+false;
+
+let verifiedEmail =
+"";
 
 
 /* =====================================================
-   PHOTO PREVIEW
+   SEND OTP
 ===================================================== */
 
-document.getElementById(
-  "photo"
-).addEventListener(
-  "change",
-  function(){
+document
+.getElementById("sendOtpBtn")
+.addEventListener(
+"click",
+async function(){
 
-    const file = this.files[0];
+const emailInput =
+document.getElementById("email");
 
-    if(file){
+const email =
+emailInput.value
+.trim()
+.toLowerCase();
 
-      const preview =
-      document.getElementById(
-        "photoPreview"
-      );
 
-      preview.src =
-      URL.createObjectURL(file);
+if(!email){
 
-      preview.style.display =
-      "block";
-    }
-
-  }
+alert(
+"कृपया प्रथम ई-मेल आयडी टाका."
 );
+
+emailInput.focus();
+
+return;
+
+}
+
+
+if(
+!emailInput.checkValidity()
+){
+
+alert(
+"कृपया योग्य ई-मेल आयडी टाका."
+);
+
+emailInput.focus();
+
+return;
+
+}
+
+
+const button =
+this;
+
+button.disabled =
+true;
+
+button.textContent =
+"OTP पाठवत आहे...";
+
+
+try{
+
+const response =
+await fetch(
+
+WEB_APP_URL +
+"?action=sendEmailOTP&email=" +
+encodeURIComponent(email)
+
+);
+
+
+const result =
+await response.json();
+
+
+if(result.success){
+
+document
+.getElementById("otpMessage")
+.textContent =
+"✅ " +
+result.message;
+
+document
+.getElementById("otpMessage")
+.style.color =
+"#256029";
+
+
+document
+.getElementById("verifyOtpBtn")
+.style.display =
+"block";
+
+
+document
+.getElementById("otp")
+.focus();
+
+}else{
+
+throw new Error(
+result.message ||
+"OTP पाठवता आला नाही."
+);
+
+}
+
+
+}catch(error){
+
+document
+.getElementById("otpMessage")
+.textContent =
+"❌ " +
+error.message;
+
+document
+.getElementById("otpMessage")
+.style.color =
+"#b91c1c";
+
+}finally{
+
+button.disabled =
+false;
+
+button.textContent =
+"OTP पुन्हा पाठवा";
+
+}
+
+});
 
 
 /* =====================================================
-   SIGNATURE PREVIEW
+   VERIFY OTP
 ===================================================== */
 
-document.getElementById(
-  "signature"
-).addEventListener(
-  "change",
-  function(){
+document
+.getElementById("verifyOtpBtn")
+.addEventListener(
+"click",
+async function(){
 
-    const file = this.files[0];
+const email =
+document
+.getElementById("email")
+.value
+.trim()
+.toLowerCase();
 
-    if(file){
 
-      const preview =
-      document.getElementById(
-        "signaturePreview"
-      );
+const otp =
+document
+.getElementById("otp")
+.value
+.trim();
 
-      preview.src =
-      URL.createObjectURL(file);
 
-      preview.style.display =
-      "block";
-    }
+if(!otp){
 
-  }
+alert(
+"कृपया OTP टाका."
 );
+
+return;
+
+}
+
+
+const button =
+this;
+
+button.disabled =
+true;
+
+button.textContent =
+"Verify होत आहे...";
+
+
+try{
+
+const response =
+await fetch(
+
+WEB_APP_URL +
+"?action=verifyEmailOTP&email=" +
+encodeURIComponent(email) +
+"&otp=" +
+encodeURIComponent(otp)
+
+);
+
+
+const result =
+await response.json();
+
+
+if(result.success){
+
+emailVerified =
+true;
+
+verifiedEmail =
+email;
+
+
+document
+.getElementById("verifiedBox")
+.style.display =
+"block";
+
+
+document
+.getElementById("otpMessage")
+.textContent =
+"";
+
+
+document
+.getElementById("email")
+.readOnly =
+true;
+
+
+document
+.getElementById("otp")
+.disabled =
+true;
+
+
+document
+.getElementById("sendOtpBtn")
+.style.display =
+"none";
+
+
+button.style.display =
+"none";
+
+
+document
+.getElementById("submitButton")
+.disabled =
+false;
+
+
+}else{
+
+throw new Error(
+result.message ||
+"OTP चुकीचा आहे."
+);
+
+}
+
+
+}catch(error){
+
+emailVerified =
+false;
+
+document
+.getElementById("otpMessage")
+.textContent =
+"❌ " +
+error.message;
+
+document
+.getElementById("otpMessage")
+.style.color =
+"#b91c1c";
+
+}finally{
+
+button.disabled =
+false;
+
+button.textContent =
+"OTP Verify करा";
+
+}
+
+});
+
+
+/* =====================================================
+   IF EMAIL CHANGES
+===================================================== */
+
+document
+.getElementById("email")
+.addEventListener(
+"input",
+function(){
+
+if(
+this.value
+.trim()
+.toLowerCase() !==
+verifiedEmail
+){
+
+emailVerified =
+false;
+
+document
+.getElementById("verifiedBox")
+.style.display =
+"none";
+
+document
+.getElementById("submitButton")
+.disabled =
+true;
+
+}
+
+});
 
 
 /* =====================================================
    SAME ADDRESS
 ===================================================== */
 
-document.getElementById(
-  "sameAddress"
-).addEventListener(
-  "change",
-  function(){
+document
+.getElementById("sameAddress")
+.addEventListener(
+"change",
+function(){
 
-    const form =
-    document.getElementById(
-      "membershipForm"
-    );
+const fields = [
 
-    if(this.checked){
+[
+"correspondenceAddress1",
+"permanentAddress1"
+],
 
-      form.permanentAddress1.value =
-      form.correspondenceAddress1.value;
+[
+"correspondenceAddress2",
+"permanentAddress2"
+],
 
-      form.permanentAddress2.value =
-      form.correspondenceAddress2.value;
+[
+"correspondenceAddress3",
+"permanentAddress3"
+],
 
-      form.permanentAddress3.value =
-      form.correspondenceAddress3.value;
+[
+"correspondenceDistrict",
+"permanentDistrict"
+],
 
-      form.permanentDistrict.value =
-      form.correspondenceDistrict.value;
+[
+"correspondenceState",
+"permanentState"
+],
 
-      form.permanentState.value =
-      form.correspondenceState.value;
+[
+"correspondencePincode",
+"permanentPincode"
+]
 
-      form.permanentPincode.value =
-      form.correspondencePincode.value;
+];
 
-    }
 
-  }
+fields.forEach(
+function(pair){
+
+const source =
+document.querySelector(
+'[name="'+pair[0]+'"]'
+);
+
+const target =
+document.querySelector(
+'[name="'+pair[1]+'"]'
 );
 
 
+if(
+document.getElementById(
+"sameAddress"
+).checked
+){
+
+target.value =
+source.value;
+
+target.readOnly =
+true;
+
+}else{
+
+target.readOnly =
+false;
+
+}
+
+});
+
+});
+
+
+/* Update permanent address when correspondence changes */
+
+const correspondenceFields = [
+
+"correspondenceAddress1",
+"correspondenceAddress2",
+"correspondenceAddress3",
+"correspondenceDistrict",
+"correspondenceState",
+"correspondencePincode"
+
+];
+
+
+correspondenceFields.forEach(
+function(fieldName){
+
+document
+.querySelector(
+'[name="'+fieldName+'"]'
+)
+.addEventListener(
+"input",
+function(){
+
+if(
+document.getElementById(
+"sameAddress"
+).checked
+){
+
+const permanentName =
+fieldName.replace(
+"correspondence",
+"permanent"
+);
+
+const target =
+document.querySelector(
+'[name="'+permanentName+'"]'
+);
+
+target.value =
+this.value;
+
+}
+
+});
+
+});
+
+
 /* =====================================================
-   BASE64
+   IMAGE PREVIEWS
+===================================================== */
+
+document
+.getElementById("photo")
+.addEventListener(
+"change",
+function(){
+
+const file =
+this.files[0];
+
+if(file){
+
+const preview =
+document.getElementById(
+"photoPreview"
+);
+
+preview.src =
+URL.createObjectURL(file);
+
+preview.style.display =
+"block";
+
+}
+
+});
+
+
+document
+.getElementById("signature")
+.addEventListener(
+"change",
+function(){
+
+const file =
+this.files[0];
+
+if(file){
+
+const preview =
+document.getElementById(
+"signaturePreview"
+);
+
+preview.src =
+URL.createObjectURL(file);
+
+preview.style.display =
+"block";
+
+}
+
+});
+
+
+/* =====================================================
+   FILE TO BASE64
 ===================================================== */
 
 function fileToBase64(file){
 
-  return new Promise(
-    function(resolve,reject){
+return new Promise(
+function(resolve,reject){
 
-      if(!file){
+if(!file){
 
-        resolve("");
+resolve("");
 
-        return;
-      }
+return;
 
-      const reader =
-      new FileReader();
-
-      reader.onload =
-      function(){
-
-        resolve(
-          reader.result
-        );
-
-      };
-
-      reader.onerror =
-      function(error){
-
-        reject(error);
-
-      };
-
-      reader.readAsDataURL(file);
-
-    }
-  );
 }
 
+const reader =
+new FileReader();
 
-/* =====================================================
-   VALIDATE BUTTON
-===================================================== */
+reader.onload =
+function(){
 
-document.getElementById(
-  "validateBtn"
-).addEventListener(
-  "click",
-  function(){
-
-    const form =
-    document.getElementById(
-      "membershipForm"
-    );
-
-    if(form.reportValidity()){
-
-      alert(
-        "✓ सर्व आवश्यक माहिती योग्य प्रकारे भरली आहे."
-      );
-
-    }
-
-  }
+resolve(
+reader.result
 );
+
+};
+
+reader.onerror =
+function(error){
+
+reject(error);
+
+};
+
+reader.readAsDataURL(file);
+
+});
+
+}
 
 
 /* =====================================================
    FORM SUBMIT
 ===================================================== */
 
-document.getElementById(
-  "membershipForm"
-).addEventListener(
-  "submit",
-  async function(event){
+document
+.getElementById("membershipForm")
+.addEventListener(
+"submit",
+async function(event){
 
-    event.preventDefault();
+event.preventDefault();
 
-    const form = this;
 
-    const submitButton =
-    document.getElementById(
-      "submitBtn"
-    );
+/* Email verification */
 
-    const successBox =
-    document.getElementById(
-      "successBox"
-    );
+if(!emailVerified){
 
-    const errorBox =
-    document.getElementById(
-      "errorBox"
-    );
-
-
-    successBox.style.display =
-    "none";
-
-    errorBox.style.display =
-    "none";
-
-
-    if(!form.reportValidity()){
-
-      return;
-
-    }
-
-
-    submitButton.disabled =
-    true;
-
-    submitButton.textContent =
-    "अर्ज सादर होत आहे...";
-
-
-    try{
-
-      const formData = {
-
-        fullName:
-        form.fullName.value,
-
-        dateOfBirth:
-        form.dateOfBirth.value,
-
-        gender:
-        form.gender.value,
-
-        mobile:
-        form.mobile.value,
-
-        email:
-        form.email.value,
-
-        correspondenceAddress1:
-        form.correspondenceAddress1.value,
-
-        correspondenceAddress2:
-        form.correspondenceAddress2.value,
-
-        correspondenceAddress3:
-        form.correspondenceAddress3.value,
-
-        correspondenceDistrict:
-        form.correspondenceDistrict.value,
-
-        correspondenceState:
-        form.correspondenceState.value,
-
-        correspondencePincode:
-        form.correspondencePincode.value,
-
-        permanentAddress1:
-        form.permanentAddress1.value,
-
-        permanentAddress2:
-        form.permanentAddress2.value,
-
-        permanentAddress3:
-        form.permanentAddress3.value,
-
-        permanentDistrict:
-        form.permanentDistrict.value,
-
-        permanentState:
-        form.permanentState.value,
-
-        permanentPincode:
-        form.permanentPincode.value,
-
-        membershipType:
-        form.membershipType.value,
-
-        feeAmount:
-        form.feeAmount.value,
-
-        photo:
-        await fileToBase64(
-          document.getElementById(
-            "photo"
-          ).files[0]
-        ),
-
-        aadhaar:
-        await fileToBase64(
-          document.getElementById(
-            "aadhaar"
-          ).files[0]
-        ),
-
-        idProof:
-        await fileToBase64(
-          document.getElementById(
-            "idProof"
-          ).files[0]
-        ),
-
-        signature:
-        await fileToBase64(
-          document.getElementById(
-            "signature"
-          ).files[0]
-        )
-
-      };
-
-
-      /* =================================================
-         HIDDEN POST FORM
-      ================================================= */
-
-      let iframe =
-      document.getElementById(
-        "submitFrame"
-      );
-
-
-      if(!iframe){
-
-        iframe =
-        document.createElement(
-          "iframe"
-        );
-
-        iframe.id =
-        "submitFrame";
-
-        iframe.name =
-        "submitFrame";
-
-        iframe.style.display =
-        "none";
-
-        document.body.appendChild(
-          iframe
-        );
-
-      }
-
-
-      const postForm =
-      document.createElement(
-        "form"
-      );
-
-      postForm.method =
-      "POST";
-
-      postForm.action =
-      WEB_APP_URL;
-
-      postForm.target =
-      "submitFrame";
-
-      postForm.style.display =
-      "none";
-
-
-      const dataInput =
-      document.createElement(
-        "input"
-      );
-
-      dataInput.type =
-      "hidden";
-
-      dataInput.name =
-      "data";
-
-      dataInput.value =
-      JSON.stringify(
-        formData
-      );
-
-
-      postForm.appendChild(
-        dataInput
-      );
-
-      document.body.appendChild(
-        postForm
-      );
-
-
-      postForm.submit();
-
-
-      /* =================================================
-         SUCCESS MESSAGE
-      ================================================= */
-
-      setTimeout(
-        function(){
-
-          successBox.innerHTML =
-          "<strong>✓ अर्ज यशस्वीपणे सादर झाला!</strong><br><br>" +
-          "आपली माहिती Google Sheet मध्ये पाठवली आहे.<br>" +
-          "कागदपत्रे Google Drive मध्ये सुरक्षितपणे जतन केली आहेत.";
-
-          successBox.style.display =
-          "block";
-
-
-          form.reset();
-
-
-          document.getElementById(
-            "registrationDate"
-          ).value =
-          `${year}-${month}-${day}`;
-
-
-          document.getElementById(
-            "memberNumber"
-          ).value =
-          "LIB-" +
-          year +
-          "-TEMP";
-
-
-          document.getElementById(
-            "photoPreview"
-          ).style.display =
-          "none";
-
-
-          document.getElementById(
-            "signaturePreview"
-          ).style.display =
-          "none";
-
-
-          submitButton.disabled =
-          false;
-
-          submitButton.textContent =
-          "Save & Next →";
-
-
-          postForm.remove();
-
-
-          window.scrollTo({
-            top:0,
-            behavior:"smooth"
-          });
-
-        },
-        3000
-      );
-
-
-    }catch(error){
-
-      errorBox.innerHTML =
-      "<strong>अर्ज सादर करताना त्रुटी आली.</strong><br>" +
-      error.message;
-
-      errorBox.style.display =
-      "block";
-
-
-      submitButton.disabled =
-      false;
-
-      submitButton.textContent =
-      "Save & Next →";
-
-    }
-
-  }
+alert(
+"कृपया प्रथम Email OTP Verify करा."
 );
+
+return;
+
+}
+
+
+const email =
+document
+.getElementById("email")
+.value
+.trim()
+.toLowerCase();
+
+
+if(
+email !== verifiedEmail
+){
+
+alert(
+"कृपया पुन्हा Email Verify करा."
+);
+
+return;
+
+}
+
+
+const form =
+this;
+
+const submitButton =
+document.getElementById(
+"submitButton"
+);
+
+
+submitButton.disabled =
+true;
+
+submitButton.textContent =
+"अर्ज सादर होत आहे...";
+
+
+try{
+
+
+/* Files */
+
+const photo =
+await fileToBase64(
+document
+.getElementById("photo")
+.files[0]
+);
+
+
+const aadhaar =
+await fileToBase64(
+document
+.getElementById("aadhaar")
+.files[0]
+);
+
+
+const idProof =
+await fileToBase64(
+document
+.getElementById("idProof")
+.files[0]
+);
+
+
+const signature =
+await fileToBase64(
+document
+.getElementById("signature")
+.files[0]
+);
+
+
+/* Form data */
+
+const formData = {
+
+fullName:
+form.fullName.value,
+
+dateOfBirth:
+form.dateOfBirth.value,
+
+gender:
+form.gender.value,
+
+mobile:
+form.mobile.value,
+
+email:
+email,
+
+
+correspondenceAddress1:
+form.correspondenceAddress1.value,
+
+correspondenceAddress2:
+form.correspondenceAddress2.value,
+
+correspondenceAddress3:
+form.correspondenceAddress3.value,
+
+correspondenceDistrict:
+form.correspondenceDistrict.value,
+
+correspondenceState:
+form.correspondenceState.value,
+
+correspondencePincode:
+form.correspondencePincode.value,
+
+
+permanentAddress1:
+form.permanentAddress1.value,
+
+permanentAddress2:
+form.permanentAddress2.value,
+
+permanentAddress3:
+form.permanentAddress3.value,
+
+permanentDistrict:
+form.permanentDistrict.value,
+
+permanentState:
+form.permanentState.value,
+
+permanentPincode:
+form.permanentPincode.value,
+
+
+membershipType:
+form.membershipType.value,
+
+feeAmount:
+form.feeAmount.value,
+
+
+photo:
+photo,
+
+aadhaar:
+aadhaar,
+
+idProof:
+idProof,
+
+signature:
+signature
+
+};
+
+
+/* Hidden iframe */
+
+let iframe =
+document.getElementById(
+"submitFrame"
+);
+
+
+if(!iframe){
+
+iframe =
+document.createElement(
+"iframe"
+);
+
+iframe.id =
+"submitFrame";
+
+iframe.name =
+"submitFrame";
+
+iframe.style.display =
+"none";
+
+document.body.appendChild(
+iframe
+);
+
+}
+
+
+/* POST form */
+
+const postForm =
+document.createElement(
+"form"
+);
+
+postForm.method =
+"POST";
+
+postForm.action =
+WEB_APP_URL;
+
+postForm.target =
+"submitFrame";
+
+postForm.style.display =
+"none";
+
+
+const dataInput =
+document.createElement(
+"input"
+);
+
+dataInput.type =
+"hidden";
+
+dataInput.name =
+"data";
+
+dataInput.value =
+JSON.stringify(
+formData
+);
+
+
+postForm.appendChild(
+dataInput
+);
+
+document.body.appendChild(
+postForm
+);
+
+
+/* Submit */
+
+postForm.submit();
+
+
+/*
+   Backend iframe response
+   सध्या backend response थेट
+   iframe मध्ये जातो.
+*/
+
+setTimeout(
+function(){
+
+alert(
+"अर्ज सादर झाला आहे.\n\n" +
+"माहिती Google Sheet मध्ये पाठवली आहे."
+);
+
+
+/*
+   Form reset
+*/
+
+form.reset();
+
+
+document
+.getElementById(
+"photoPreview"
+)
+.style.display =
+"none";
+
+
+document
+.getElementById(
+"signaturePreview"
+)
+.style.display =
+"none";
+
+
+document
+.getElementById(
+"verifiedBox"
+)
+.style.display =
+"none";
+
+
+emailVerified =
+false;
+
+verifiedEmail =
+"";
+
+
+document
+.getElementById(
+"email"
+)
+.readOnly =
+false;
+
+
+document
+.getElementById(
+"otp"
+)
+.disabled =
+false;
+
+
+document
+.getElementById(
+"sendOtpBtn"
+)
+.style.display =
+"block";
+
+
+document
+.getElementById(
+"sendOtpBtn"
+)
+.textContent =
+"OTP पाठवा";
+
+
+document
+.getElementById(
+"verifyOtpBtn"
+)
+.style.display =
+"none";
+
+
+submitButton.disabled =
+true;
+
+submitButton.textContent =
+"अर्ज सादर करा →";
+
+
+postForm.remove();
+
+
+},
+3000
+);
+
+
+}catch(error){
+
+alert(
+"अर्ज सादर करताना त्रुटी आली:\n\n" +
+error.message
+);
+
+submitButton.disabled =
+false;
+
+submitButton.textContent =
+"अर्ज सादर करा →";
+
+}
+
+});
 
 </script>
 
