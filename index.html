@@ -78,7 +78,7 @@
     nav {
       display: flex;
       align-items: center;
-      gap: 22px;
+      gap: 14px;
     }
 
     nav a {
@@ -97,6 +97,17 @@
       color: white !important;
       padding: 9px 17px;
       border-radius: 8px;
+    }
+
+    .login-button {
+      background: #111827;
+      color: white !important;
+      padding: 9px 17px;
+      border-radius: 8px;
+    }
+
+    .login-button:hover {
+      background: #374151;
     }
 
     /* HERO */
@@ -322,6 +333,45 @@
       font-weight: 600;
     }
 
+    /* LOGIN SECTION */
+    .login-section {
+      background: #ffffff;
+    }
+
+    .login-card {
+      max-width: 850px;
+      margin: auto;
+      background: #f8f5f1;
+      border-radius: 20px;
+      padding: 45px 25px;
+      text-align: center;
+    }
+
+    .login-card h3 {
+      font-size: 30px;
+      color: #111827;
+      margin-bottom: 10px;
+    }
+
+    .login-card p {
+      color: #6b7280;
+      margin-bottom: 25px;
+    }
+
+    .login-main-btn {
+      display: inline-block;
+      text-decoration: none;
+      background: #111827;
+      color: white;
+      padding: 13px 28px;
+      border-radius: 9px;
+      font-weight: 700;
+    }
+
+    .login-main-btn:hover {
+      background: #374151;
+    }
+
     /* CONTACT */
     .contact {
       background: white;
@@ -444,6 +494,10 @@
       .membership-card {
         padding: 28px 18px;
       }
+
+      .login-card {
+        padding: 35px 18px;
+      }
     }
   </style>
 </head>
@@ -452,28 +506,60 @@
 
   <!-- HEADER -->
   <header>
+
     <div class="navbar">
 
       <div class="brand">
+
         <div class="logo">
           PALAVI<br>LIBRARY
         </div>
 
         <div class="brand-text">
-          <h1>पालवी रूरल मोबाईल अँड डिजिटल लायब्ररी</h1>
-          <p>पालवी चॅरिटेबल ट्रस्ट संचलित</p>
+
+          <h1>
+            पालवी रूरल मोबाईल अँड डिजिटल लायब्ररी
+          </h1>
+
+          <p>
+            पालवी चॅरिटेबल ट्रस्ट संचलित
+          </p>
+
         </div>
+
       </div>
 
+
       <nav>
-        <a href="#home">मुख्यपृष्ठ</a>
-        <a href="#about">लायब्ररीबद्दल</a>
-        <a href="#membership">सभासदत्व</a>
-        <a href="#contact">संपर्क</a>
-        <a href="membership.html" class="nav-button">सभासद बना</a>
+
+        <a href="#home">
+          मुख्यपृष्ठ
+        </a>
+
+        <a href="#about">
+          लायब्ररीबद्दल
+        </a>
+
+        <a href="#membership">
+          सभासदत्व
+        </a>
+
+        <a href="#contact">
+          संपर्क
+        </a>
+
+        <a href="membership.html" class="nav-button">
+          सभासद बना
+        </a>
+
+        <a href="login.html" class="login-button">
+          सभासद Login
+        </a>
+
       </nav>
 
     </div>
+
   </header>
 
 
@@ -484,7 +570,9 @@
 
       <div class="hero-content">
 
-        <span>📚 ज्ञान • वाचन • विकास</span>
+        <span>
+          📚 ज्ञान • वाचन • विकास
+        </span>
 
         <h2>
           वाचनाची आवड जपा,<br>
@@ -497,13 +585,28 @@
         </p>
 
         <div class="hero-buttons">
-          <a href="membership.html" class="primary-btn">
+
+          <a
+            href="membership.html"
+            class="primary-btn"
+          >
             सभासद नोंदणी करा →
           </a>
 
-          <a href="#about" class="secondary-btn">
+          <a
+            href="login.html"
+            class="secondary-btn"
+          >
+            सभासद Login
+          </a>
+
+          <a
+            href="#about"
+            class="secondary-btn"
+          >
             अधिक माहिती
           </a>
+
         </div>
 
       </div>
@@ -511,9 +614,13 @@
 
       <div class="hero-card">
 
-        <div class="hero-card-icon">📖</div>
+        <div class="hero-card-icon">
+          📖
+        </div>
 
-        <h3>ग्रंथालय सभासदत्व</h3>
+        <h3>
+          ग्रंथालय सभासदत्व
+        </h3>
 
         <p>
           विद्यार्थी, सर्वसाधारण आणि ज्येष्ठ नागरिक
@@ -528,16 +635,27 @@
 
 
   <!-- ABOUT -->
-  <section class="about" id="about">
+  <section
+    class="about"
+    id="about"
+  >
 
     <div class="container">
 
       <div class="section-title">
-        <span>आमच्याबद्दल</span>
-        <h2>पालवी रूरल मोबाईल अँड डिजिटल लायब्ररी</h2>
+
+        <span>
+          आमच्याबद्दल
+        </span>
+
+        <h2>
+          पालवी रूरल मोबाईल अँड डिजिटल लायब्ररी
+        </h2>
+
         <p>
           वाचन आणि ज्ञानाच्या माध्यमातून समाजाशी जोडण्याचा एक प्रयत्न.
         </p>
+
       </div>
 
 
@@ -545,7 +663,9 @@
 
         <div class="about-box">
 
-          <h3>📚 ग्रंथालयाची माहिती</h3>
+          <h3>
+            📚 ग्रंथालयाची माहिती
+          </h3>
 
           <p>
             पालवी रूरल मोबाईल अँड डिजिटल लायब्ररी
@@ -566,13 +686,21 @@
 
           <ul class="info-list">
 
-            <li>📖 वाचनासाठी सभासदत्व</li>
+            <li>
+              📖 वाचनासाठी सभासदत्व
+            </li>
 
-            <li>💻 डिजिटल लायब्ररीशी जोडणी</li>
+            <li>
+              💻 डिजिटल लायब्ररीशी जोडणी
+            </li>
 
-            <li>📱 ऑनलाइन सभासद नोंदणी</li>
+            <li>
+              📱 ऑनलाइन सभासद नोंदणी
+            </li>
 
-            <li>📝 ऑनलाइन अर्ज व कागदपत्रे अपलोड</li>
+            <li>
+              📝 ऑनलाइन अर्ज व कागदपत्रे अपलोड
+            </li>
 
           </ul>
 
@@ -586,15 +714,22 @@
 
 
   <!-- MEMBERSHIP -->
-  <section class="membership" id="membership">
+  <section
+    class="membership"
+    id="membership"
+  >
 
     <div class="container">
 
       <div class="section-title">
 
-        <span>Membership</span>
+        <span>
+          Membership
+        </span>
 
-        <h2>सभासदत्वासाठी नोंदणी करा</h2>
+        <h2>
+          सभासदत्वासाठी नोंदणी करा
+        </h2>
 
         <p>
           ऑनलाइन फॉर्म भरून आपली सभासद नोंदणी प्रक्रिया सुरू करा.
@@ -605,7 +740,9 @@
 
       <div class="membership-card">
 
-        <h3>📚 ग्रंथालय सभासद नोंदणी</h3>
+        <h3>
+          📚 ग्रंथालय सभासद नोंदणी
+        </h3>
 
         <p>
           आपली वैयक्तिक माहिती भरा आणि आवश्यक कागदपत्रे
@@ -615,16 +752,25 @@
 
         <div class="membership-types">
 
-          <div class="type">विद्यार्थी</div>
+          <div class="type">
+            विद्यार्थी
+          </div>
 
-          <div class="type">सर्वसाधारण</div>
+          <div class="type">
+            सर्वसाधारण
+          </div>
 
-          <div class="type">ज्येष्ठ नागरिक</div>
+          <div class="type">
+            ज्येष्ठ नागरिक
+          </div>
 
         </div>
 
 
-        <a href="membership.html" class="primary-btn">
+        <a
+          href="membership.html"
+          class="primary-btn"
+        >
           Membership Form उघडा →
         </a>
 
@@ -635,28 +781,71 @@
   </section>
 
 
+  <!-- LOGIN -->
+  <section class="login-section">
+
+    <div class="container">
+
+      <div class="login-card">
+
+        <h3>
+          🔐 सभासद Login
+        </h3>
+
+        <p>
+          आपल्या सभासद खात्यात Login करून
+          अर्जाची स्थिती, सभासद माहिती आणि पुढील सुविधा पाहा.
+        </p>
+
+        <a
+          href="login.html"
+          class="login-main-btn"
+        >
+          सभासद Login करा →
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
   <!-- CONTACT -->
-  <section class="contact" id="contact">
+  <section
+    class="contact"
+    id="contact"
+  >
 
     <div class="container">
 
       <div class="section-title">
 
-        <span>Contact</span>
+        <span>
+          Contact
+        </span>
 
-        <h2>संपर्क</h2>
+        <h2>
+          संपर्क
+        </h2>
 
       </div>
 
 
       <div class="contact-card">
 
-        <h3>पालवी रूरल मोबाईल अँड डिजिटल लायब्ररी</h3>
+        <h3>
+          पालवी रूरल मोबाईल अँड डिजिटल लायब्ररी
+        </h3>
 
         <p class="address">
+
           पालवी चॅरिटेबल ट्रस्ट संचलित<br>
+
           बार्शी–तुळजापूर रोड, नागोबाचौक,<br>
+
           बार्शी, जि. सोलापूर
+
         </p>
 
       </div>
@@ -669,14 +858,19 @@
   <!-- FOOTER -->
   <footer>
 
-    <h3>पालवी रूरल मोबाईल अँड डिजिटल लायब्ररी</h3>
+    <h3>
+      पालवी रूरल मोबाईल अँड डिजिटल लायब्ररी
+    </h3>
 
     <p>
       पालवी चॅरिटेबल ट्रस्ट संचलित
     </p>
 
     <div class="copyright">
-      © 2026 Palavi Rural Mobile & Digital Library. All Rights Reserved.
+
+      © 2026 Palavi Rural Mobile & Digital Library.
+      All Rights Reserved.
+
     </div>
 
   </footer>
