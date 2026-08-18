@@ -1,413 +1,394 @@
-# पालवी लायब्ररी — नवीन सभासद नोंदणी फॉर्म
-
-```html
 <!DOCTYPE html>
 <html lang="mr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>सभासद नोंदणी | पालवी लायब्ररी</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: "Noto Sans Devanagari", Arial, sans-serif;
-      background: #f4f6f8;
-      color: #202124;
-      line-height: 1.6;
-    }
-
-    .top-header {
-      background: #fff;
-      border-bottom: 1px solid #e2e5e9;
-      padding: 16px 20px;
-    }
-
-    .header-inner {
-      max-width: 1050px;
-      margin: auto;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .logo {
-      width: 58px;
-      height: 58px;
-      border: 2px solid #333;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      font-size: 11px;
-      font-weight: bold;
-      line-height: 1.1;
-      flex-shrink: 0;
-    }
-
-    .header-text h1 {
-      font-size: 20px;
-    }
-
-    .header-text p {
-      font-size: 13px;
-      color: #70757a;
-    }
-
-    .page {
-      max-width: 950px;
-      margin: 30px auto;
-      padding: 0 15px;
-    }
-
-    .page-title,
-    .form-card {
-      background: #fff;
-      border: 1px solid #e0e3e7;
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-    .page-title {
-      padding: 28px;
-      margin-bottom: 18px;
-      border-top: 5px solid #8b5e34;
-    }
-
-    .page-title h2 {
-      font-size: 27px;
-      margin-bottom: 5px;
-    }
-
-    .page-title p {
-      color: #6b7280;
-      font-size: 14px;
-    }
-
-    .required-note {
-      margin-top: 12px;
-      font-size: 13px;
-      color: #777;
-    }
-
-    .required {
-      color: #d93025;
-    }
-
-    .form-card {
-      margin-bottom: 18px;
-    }
-
-    .section-header {
-      background: #fafafa;
-      border-bottom: 1px solid #e5e7eb;
-      padding: 17px 24px;
-    }
-
-    .section-header h3 {
-      font-size: 19px;
-    }
-
-    .section-body {
-      padding: 25px;
-    }
-
-    .field {
-      margin-bottom: 22px;
-    }
-
-    .field:last-child {
-      margin-bottom: 0;
-    }
-
-    .field label {
-      display: block;
-      font-weight: 600;
-      margin-bottom: 7px;
-      font-size: 14px;
-    }
-
-    input[type="text"],
-    input[type="date"],
-    input[type="tel"],
-    input[type="email"],
-    input[type="number"],
-    textarea,
-    select {
-      width: 100%;
-      padding: 12px 14px;
-      border: 1px solid #c9cdd2;
-      border-radius: 7px;
-      font-size: 15px;
-      font-family: inherit;
-      background: #fff;
-      outline: none;
-    }
-
-    input:focus,
-    textarea:focus,
-    select:focus {
-      border-color: #8b5e34;
-      box-shadow: 0 0 0 2px rgba(139, 94, 52, 0.12);
-    }
-
-    input[readonly] {
-      background: #f3f4f6;
-    }
-
-    textarea {
-      min-height: 85px;
-      resize: vertical;
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 18px;
-    }
-
-    .field-help {
-      margin-top: 5px;
-      font-size: 12px;
-      color: #777;
-    }
-
-    .same-address {
-      background: #f8fafc;
-      border: 1px solid #dfe3e8;
-      border-radius: 8px;
-      padding: 13px 15px;
-      margin: 5px 0 23px;
-    }
-
-    .same-address label {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      cursor: pointer;
-      font-weight: 600;
-      margin: 0;
-    }
-
-    .same-address input {
-      width: 18px;
-      height: 18px;
-      accent-color: #8b5e34;
-    }
-
-    .optional {
-      color: #777;
-      font-size: 12px;
-      font-weight: normal;
-    }
-
-    .upload-box {
-      border: 1px dashed #b9bec5;
-      border-radius: 9px;
-      padding: 17px;
-      background: #fafafa;
-    }
-
-    .upload-box input[type="file"] {
-      width: 100%;
-      font-family: inherit;
-    }
-
-    .upload-note {
-      font-size: 12px;
-      color: #777;
-      margin-top: 6px;
-    }
-
-    .preview {
-      display: none;
-      margin-top: 12px;
-      max-width: 150px;
-      max-height: 180px;
-      border-radius: 7px;
-      border: 1px solid #ddd;
-      object-fit: contain;
-    }
-
-    .fee-box {
-      background: #faf7f3;
-      border: 1px solid #eadbc9;
-      border-radius: 9px;
-      padding: 18px;
-    }
-
-    .fee-amount {
-      font-size: 24px;
-      font-weight: 700;
-      color: #8b5e34;
-    }
-
-    .declaration {
-      background: #fafafa;
-      border: 1px solid #e2e5e9;
-      padding: 18px;
-      border-radius: 8px;
-      font-size: 14px;
-      color: #444;
-      margin-bottom: 15px;
-    }
-
-    .check-label {
-      display: flex !important;
-      align-items: flex-start;
-      gap: 9px;
-      cursor: pointer;
-      font-weight: 500 !important;
-    }
-
-    .check-label input {
-      width: 18px;
-      height: 18px;
-      margin-top: 4px;
-      accent-color: #8b5e34;
-      flex-shrink: 0;
-    }
-
-    .actions {
-      display: flex;
-      justify-content: space-between;
-      gap: 15px;
-      margin: 25px 0 50px;
-    }
-
-    .btn {
-      border: none;
-      padding: 13px 24px;
-      border-radius: 8px;
-      font-family: inherit;
-      font-size: 15px;
-      font-weight: 700;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    .back-btn {
-      background: #fff;
-      color: #444;
-      border: 1px solid #cfd3d7;
-    }
-
-    .validate-btn {
-      background: #374151;
-      color: #fff;
-    }
-
-    .submit-btn {
-      background: #8b5e34;
-      color: #fff;
-    }
-
-    .submit-btn:hover {
-      background: #704923;
-    }
-
-    .submit-btn:disabled {
-      opacity: .6;
-      cursor: not-allowed;
-    }
-
-    .notice {
-      background: #fff8e8;
-      border: 1px solid #f0dca8;
-      color: #654f1d;
-      border-radius: 8px;
-      padding: 13px 15px;
-      font-size: 13px;
-      margin-top: 12px;
-    }
-
-    #successMessage {
-      display: none;
-      background: #ecfdf3;
-      border: 1px solid #a7f3d0;
-      color: #065f46;
-      border-radius: 10px;
-      padding: 20px;
-      margin-bottom: 18px;
-      text-align: center;
-    }
-
-    #successMessage h3 {
-      margin-bottom: 5px;
-    }
-
-    footer {
-      background: #111827;
-      color: #d1d5db;
-      text-align: center;
-      padding: 25px 15px;
-      font-size: 13px;
-    }
-
-    footer strong {
-      color: #fff;
-    }
-
-    @media (max-width: 700px) {
-
-      .header-inner {
-        align-items: flex-start;
-      }
-
-      .header-text h1 {
-        font-size: 16px;
-      }
-
-      .header-text p {
-        font-size: 11px;
-      }
-
-      .page {
-        margin-top: 20px;
-      }
-
-      .page-title {
-        padding: 22px 18px;
-      }
-
-      .page-title h2 {
-        font-size: 22px;
-      }
-
-      .section-body {
-        padding: 20px 17px;
-      }
-
-      .grid-2,
-      .grid-3 {
-        grid-template-columns: 1fr;
-        gap: 0;
-      }
-
-      .actions {
-        flex-direction: column;
-      }
-
-      .btn {
-        width: 100%;
-        text-align: center;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>सभासद नोंदणी | पालवी लायब्ररी</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:"Noto Sans Devanagari","Arial",sans-serif;
+  background:#f4f6f8;
+  color:#202124;
+  line-height:1.6;
+}
+
+.top-header{
+  background:#fff;
+  border-bottom:1px solid #ddd;
+  padding:16px 20px;
+}
+
+.header-inner{
+  max-width:1050px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+.logo{
+  width:58px;
+  height:58px;
+  border:2px solid #333;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  font-size:11px;
+  font-weight:bold;
+  line-height:1.1;
+  flex-shrink:0;
+}
+
+.header-text h1{
+  font-size:20px;
+}
+
+.header-text p{
+  font-size:13px;
+  color:#70757a;
+}
+
+.page{
+  max-width:950px;
+  margin:35px auto;
+  padding:0 15px;
+}
+
+.page-title{
+  background:#fff;
+  border-radius:12px;
+  padding:28px;
+  margin-bottom:18px;
+  border:1px solid #e0e3e7;
+  border-top:5px solid #8b5e34;
+}
+
+.page-title h2{
+  font-size:27px;
+  margin-bottom:5px;
+}
+
+.page-title p{
+  color:#6b7280;
+  font-size:14px;
+}
+
+.required{
+  color:#d93025;
+}
+
+.form-card{
+  background:#fff;
+  border:1px solid #e0e3e7;
+  border-radius:12px;
+  margin-bottom:18px;
+  overflow:hidden;
+}
+
+.section-header{
+  background:#fafafa;
+  border-bottom:1px solid #e5e7eb;
+  padding:17px 24px;
+}
+
+.section-header h3{
+  font-size:20px;
+}
+
+.section-body{
+  padding:25px;
+}
+
+.field{
+  margin-bottom:22px;
+}
+
+.field label{
+  display:block;
+  font-weight:600;
+  margin-bottom:7px;
+  font-size:15px;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="tel"],
+input[type="email"],
+input[type="number"],
+textarea,
+select{
+  width:100%;
+  padding:13px 14px;
+  border:1px solid #c9cdd2;
+  border-radius:7px;
+  font-size:15px;
+  font-family:inherit;
+  background:#fff;
+  outline:none;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+  border-color:#8b5e34;
+  box-shadow:0 0 0 2px rgba(139,94,52,.12);
+}
+
+input[readonly]{
+  background:#f3f4f6;
+}
+
+textarea{
+  min-height:80px;
+  resize:vertical;
+}
+
+.grid-2{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:22px;
+}
+
+.grid-3{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:18px;
+}
+
+.address-title{
+  font-size:18px;
+  font-weight:700;
+  margin:10px 0 18px;
+  color:#333;
+}
+
+.radio-group{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.radio-option{
+  border:1px solid #d6d9dd;
+  padding:10px 18px;
+  border-radius:7px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  cursor:pointer;
+  background:#fff;
+}
+
+.radio-option:hover{
+  background:#faf7f3;
+  border-color:#8b5e34;
+}
+
+.radio-option input{
+  accent-color:#8b5e34;
+}
+
+.same-address{
+  background:#fff8e8;
+  border:1px solid #f0dca8;
+  padding:13px 15px;
+  border-radius:8px;
+  margin:5px 0 25px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:14px;
+  cursor:pointer;
+}
+
+.same-address input{
+  width:18px;
+  height:18px;
+  accent-color:#8b5e34;
+}
+
+.upload-box{
+  border:1px dashed #b9bec5;
+  border-radius:9px;
+  padding:18px;
+  background:#fafafa;
+}
+
+.upload-box input[type="file"]{
+  width:100%;
+  font-family:inherit;
+}
+
+.upload-note{
+  font-size:12px;
+  color:#777;
+  margin-top:6px;
+}
+
+.preview{
+  display:none;
+  margin-top:12px;
+  max-width:150px;
+  max-height:180px;
+  border-radius:7px;
+  border:1px solid #ddd;
+  object-fit:contain;
+}
+
+.declaration{
+  background:#fafafa;
+  border:1px solid #e2e5e9;
+  padding:18px;
+  border-radius:8px;
+  font-size:14px;
+  color:#444;
+}
+
+.actions{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  margin:25px 0 50px;
+}
+
+.btn{
+  border:none;
+  padding:13px 25px;
+  border-radius:8px;
+  font-family:inherit;
+  font-size:15px;
+  font-weight:700;
+  cursor:pointer;
+  text-decoration:none;
+}
+
+.back-btn{
+  background:#fff;
+  color:#444;
+  border:1px solid #cfd3d7;
+}
+
+.validate-btn{
+  background:#374151;
+  color:#fff;
+}
+
+.submit-btn{
+  background:#8b5e34;
+  color:#fff;
+}
+
+.submit-btn:hover{
+  background:#704923;
+}
+
+.btn:disabled{
+  opacity:.6;
+  cursor:not-allowed;
+}
+
+.notice{
+  background:#fff8e8;
+  border:1px solid #f0dca8;
+  color:#654f1d;
+  border-radius:8px;
+  padding:13px 15px;
+  font-size:13px;
+  margin-top:10px;
+}
+
+.success-box{
+  display:none;
+  background:#ecfdf3;
+  border:1px solid #9ad8b4;
+  color:#166534;
+  border-radius:10px;
+  padding:18px;
+  margin-bottom:20px;
+}
+
+.error-box{
+  display:none;
+  background:#fff1f2;
+  border:1px solid #f3a6ad;
+  color:#b42318;
+  border-radius:10px;
+  padding:15px;
+  margin-bottom:20px;
+}
+
+footer{
+  background:#111827;
+  color:#d1d5db;
+  text-align:center;
+  padding:25px 15px;
+  font-size:13px;
+}
+
+footer strong{
+  color:#fff;
+}
+
+@media(max-width:700px){
+
+  .header-inner{
+    align-items:flex-start;
+  }
+
+  .header-text h1{
+    font-size:16px;
+  }
+
+  .header-text p{
+    font-size:11px;
+  }
+
+  .page{
+    margin-top:20px;
+  }
+
+  .page-title{
+    padding:22px 18px;
+  }
+
+  .page-title h2{
+    font-size:23px;
+  }
+
+  .section-body{
+    padding:20px 17px;
+  }
+
+  .grid-2,
+  .grid-3{
+    grid-template-columns:1fr;
+    gap:0;
+  }
+
+  .actions{
+    flex-direction:column;
+  }
+
+  .btn{
+    width:100%;
+    text-align:center;
+  }
+
+  .radio-option{
+    width:100%;
+  }
+}
+</style>
 </head>
 
 <body>
@@ -430,1259 +411,1330 @@
 
 <main class="page">
 
-  <div class="page-title">
+<div class="page-title">
 
-    <h2>ग्रंथालय सभासद नोंदणी फॉर्म</h2>
+  <h2>ग्रंथालय सभासद नोंदणी फॉर्म</h2>
 
-    <p>
-      कृपया आपली माहिती काळजीपूर्वक भरा आणि आवश्यक कागदपत्रे अपलोड करा.
-    </p>
+  <p>
+    कृपया खालील माहिती काळजीपूर्वक भरा.
+  </p>
 
-    <div class="required-note">
-      <span class="required">*</span> चिन्ह असलेली माहिती आवश्यक आहे.
-    </div>
-
+  <div style="margin-top:10px;font-size:13px;color:#777;">
+    <span class="required">*</span>
+    चिन्ह असलेली माहिती आवश्यक आहे.
   </div>
 
+</div>
 
-  <div id="successMessage">
-    <h3>✅ अर्ज यशस्वीरित्या सादर झाला!</h3>
-    <p>आपली माहिती Google Sheet मध्ये जतन करण्यात आली आहे.</p>
-  </div>
 
+<div id="successBox" class="success-box"></div>
+<div id="errorBox" class="error-box"></div>
 
-  <form id="membershipForm">
 
+<form id="membershipForm">
 
-    <!-- १. प्राथमिक माहिती -->
+<!-- =====================================================
+     SECTION 1
+===================================================== -->
 
-    <div class="form-card">
+<div class="form-card">
 
-      <div class="section-header">
-        <h3>१. सभासदाची प्राथमिक माहिती</h3>
-      </div>
+<div class="section-header">
+  <h3>१. सभासदाची प्राथमिक माहिती</h3>
+</div>
 
-      <div class="section-body">
+<div class="section-body">
 
-        <div class="grid-2">
+<div class="grid-2">
 
-          <div class="field">
-            <label>सभासद क्रमांक</label>
+<div class="field">
+<label>सभासद क्रमांक</label>
 
-            <input
-              type="text"
-              id="memberNumber"
-              name="memberNumber"
-              readonly
-            >
+<input
+type="text"
+id="memberNumber"
+readonly
+placeholder="System Generated"
+>
 
-            <div class="field-help">
-              सभासद क्रमांक प्रणालीद्वारे तयार केला जाईल.
-            </div>
-          </div>
+</div>
 
 
-          <div class="field">
-            <label>नोंदणी दिनांक</label>
+<div class="field">
 
-            <input
-              type="date"
-              id="registrationDate"
-              name="registrationDate"
-              readonly
-            >
-          </div>
+<label>नोंदणी दिनांक</label>
 
-        </div>
+<input
+type="date"
+id="registrationDate"
+readonly
+>
 
+</div>
 
-        <div class="field">
+</div>
 
-          <label>
-            संपूर्ण नाव <span class="required">*</span>
-          </label>
 
-          <input
-            type="text"
-            name="fullName"
-            placeholder="आपले संपूर्ण नाव लिहा"
-            required
-          >
+<div class="field">
 
-        </div>
+<label>
+संपूर्ण नाव <span class="required">*</span>
+</label>
 
+<input
+type="text"
+name="fullName"
+placeholder="आपले संपूर्ण नाव लिहा"
+required
+>
 
-        <div class="grid-2">
+</div>
 
-          <div class="field">
 
-            <label>
-              जन्मतारीख <span class="required">*</span>
-            </label>
+<div class="grid-2">
 
-            <input
-              type="date"
-              name="dateOfBirth"
-              required
-            >
+<div class="field">
 
-          </div>
+<label>
+जन्मतारीख <span class="required">*</span>
+</label>
 
+<input
+type="date"
+name="dateOfBirth"
+required
+>
 
-          <div class="field">
+</div>
 
-            <label>
-              मोबाईल क्रमांक <span class="required">*</span>
-            </label>
 
-            <input
-              type="tel"
-              name="mobile"
-              placeholder="10 अंकी मोबाईल क्रमांक"
-              pattern="[0-9]{10}"
-              maxlength="10"
-              required
-            >
+<div class="field">
 
-          </div>
+<label>
+मोबाईल क्रमांक <span class="required">*</span>
+</label>
 
-        </div>
+<input
+type="tel"
+name="mobile"
+placeholder="10 अंकी मोबाईल क्रमांक"
+pattern="[0-9]{10}"
+maxlength="10"
+required
+>
 
+</div>
 
-        <div class="field">
+</div>
 
-          <label>
-            लिंग <span class="required">*</span>
-          </label>
 
-          <div class="grid-3">
+<div class="field">
 
-            <label>
-              <input type="radio" name="gender" value="पुरुष" required>
-              पुरुष
-            </label>
+<label>
+लिंग <span class="required">*</span>
+</label>
 
-            <label>
-              <input type="radio" name="gender" value="महिला">
-              महिला
-            </label>
+<div class="radio-group">
 
-            <label>
-              <input type="radio" name="gender" value="इतर">
-              इतर
-            </label>
+<label class="radio-option">
+<input
+type="radio"
+name="gender"
+value="पुरुष"
+required
+>
+पुरुष
+</label>
 
-          </div>
+<label class="radio-option">
+<input
+type="radio"
+name="gender"
+value="महिला"
+>
+महिला
+</label>
 
-        </div>
+<label class="radio-option">
+<input
+type="radio"
+name="gender"
+value="इतर"
+>
+इतर
+</label>
 
+</div>
 
-        <div class="field">
+</div>
 
-          <label>
-            ई-मेल आयडी <span class="required">*</span>
-          </label>
 
-          <input
-            type="email"
-            name="email"
-            placeholder="example@gmail.com"
-            required
-          >
+<div class="field">
 
-        </div>
+<label>
+ई-मेल आयडी
+</label>
 
-      </div>
+<input
+type="email"
+name="email"
+placeholder="example@gmail.com"
+>
 
-    </div>
+<div class="upload-note">
+ई-मेल आयडी ऐच्छिक आहे.
+</div>
 
+</div>
 
-    <!-- २. पत्रव्यवहाराचा पत्ता -->
+</div>
+</div>
 
-    <div class="form-card">
 
-      <div class="section-header">
-        <h3>२. पत्रव्यवहाराचा पत्ता</h3>
-      </div>
+<!-- =====================================================
+     CORRESPONDENCE ADDRESS
+===================================================== -->
 
-      <div class="section-body">
+<div class="form-card">
 
-        <div class="field">
+<div class="section-header">
+<h3>२. पत्रव्यवहाराचा पत्ता</h3>
+</div>
 
-          <label>
-            पत्ता १ <span class="required">*</span>
-          </label>
+<div class="section-body">
 
-          <input
-            type="text"
-            name="correspondenceAddress1"
-            maxlength="35"
-            placeholder="पत्ता १"
-            required
-          >
+<div class="address-title">
+Address for Correspondence:
+<span class="required">*</span>
+</div>
 
-          <div class="field-help">कमाल 35 अक्षरे</div>
 
-        </div>
+<div class="field">
 
+<label>
+पत्ता १ <span class="required">*</span>
+</label>
 
-        <div class="field">
+<input
+type="text"
+name="correspondenceAddress1"
+maxlength="35"
+placeholder="कमाल 35 अक्षरे"
+required
+>
 
-          <label>पत्ता २</label>
+</div>
 
-          <input
-            type="text"
-            name="correspondenceAddress2"
-            maxlength="35"
-            placeholder="पत्ता २"
-          >
 
-          <div class="field-help">कमाल 35 अक्षरे</div>
+<div class="field">
 
-        </div>
+<label>पत्ता २</label>
 
+<input
+type="text"
+name="correspondenceAddress2"
+maxlength="35"
+placeholder="कमाल 35 अक्षरे"
+>
 
-        <div class="field">
+</div>
 
-          <label>पत्ता ३</label>
 
-          <input
-            type="text"
-            name="correspondenceAddress3"
-            maxlength="35"
-            placeholder="पत्ता ३"
-          >
+<div class="field">
 
-          <div class="field-help">कमाल 35 अक्षरे</div>
+<label>पत्ता ३</label>
 
-        </div>
+<input
+type="text"
+name="correspondenceAddress3"
+maxlength="35"
+placeholder="कमाल 35 अक्षरे"
+>
 
+</div>
 
-        <div class="grid-3">
 
-          <div class="field">
+<div class="grid-3">
 
-            <label>
-              जिल्हा <span class="required">*</span>
-            </label>
+<div class="field">
 
-            <input
-              type="text"
-              name="correspondenceDistrict"
-              maxlength="20"
-              required
-            >
+<label>
+जिल्हा <span class="required">*</span>
+</label>
 
-          </div>
+<input
+type="text"
+name="correspondenceDistrict"
+maxlength="20"
+required
+>
 
+</div>
 
-          <div class="field">
 
-            <label>
-              राज्य <span class="required">*</span>
-            </label>
+<div class="field">
 
-            <select
-              name="correspondenceState"
-              required
-            >
+<label>
+राज्य <span class="required">*</span>
+</label>
 
-              <option value="">-- राज्य निवडा --</option>
+<select
+name="correspondenceState"
+required
+>
 
-              <option>महाराष्ट्र</option>
-              <option>तेलंगणा</option>
-              <option>आंध्र प्रदेश</option>
-              <option>कर्नाटक</option>
-              <option>मध्य प्रदेश</option>
-              <option>छत्तीसगड</option>
-              <option>गुजरात</option>
-              <option>गोवा</option>
-              <option>उत्तर प्रदेश</option>
-              <option>बिहार</option>
-              <option>झारखंड</option>
-              <option>ओडिशा</option>
-              <option>पश्चिम बंगाल</option>
-              <option>राजस्थान</option>
-              <option>हरियाणा</option>
-              <option>पंजाब</option>
-              <option>दिल्ली</option>
-              <option>उत्तराखंड</option>
-              <option>हिमाचल प्रदेश</option>
-              <option>जम्मू आणि काश्मीर</option>
-              <option>आसाम</option>
-              <option>केरळ</option>
-              <option>तमिळनाडू</option>
-              <option>सिक्कीम</option>
-              <option>मेघालय</option>
-              <option>मणिपूर</option>
-              <option>मिझोराम</option>
-              <option>नागालँड</option>
-              <option>त्रिपुरा</option>
-              <option>अरुणाचल प्रदेश</option>
+<option value="">
+-- राज्य निवडा --
+</option>
 
-            </select>
+<option>महाराष्ट्र</option>
+<option>आंध्र प्रदेश</option>
+<option>अरुणाचल प्रदेश</option>
+<option>आसाम</option>
+<option>बिहार</option>
+<option>छत्तीसगड</option>
+<option>गोवा</option>
+<option>गुजरात</option>
+<option>हरियाणा</option>
+<option>हिमाचल प्रदेश</option>
+<option>झारखंड</option>
+<option>कर्नाटक</option>
+<option>केरळ</option>
+<option>मध्य प्रदेश</option>
+<option>मणिपूर</option>
+<option>मेघालय</option>
+<option>मिझोराम</option>
+<option>नागालँड</option>
+<option>ओडिशा</option>
+<option>पंजाब</option>
+<option>राजस्थान</option>
+<option>सिक्कीम</option>
+<option>तमिळनाडू</option>
+<option>तेलंगणा</option>
+<option>त्रिपुरा</option>
+<option>उत्तर प्रदेश</option>
+<option>उत्तराखंड</option>
+<option>पश्चिम बंगाल</option>
+<option>दिल्ली</option>
+<option>जम्मू आणि काश्मीर</option>
+<option>लडाख</option>
 
-          </div>
+</select>
 
+</div>
 
-          <div class="field">
 
-            <label>
-              पिनकोड <span class="required">*</span>
-            </label>
+<div class="field">
 
-            <input
-              type="text"
-              name="correspondencePincode"
-              maxlength="6"
-              pattern="[0-9]{6}"
-              inputmode="numeric"
-              placeholder="6 अंकी पिनकोड"
-              required
-            >
+<label>
+पिनकोड <span class="required">*</span>
+</label>
 
-          </div>
+<input
+type="text"
+name="correspondencePincode"
+maxlength="6"
+pattern="[0-9]{6}"
+inputmode="numeric"
+placeholder="6 अंकी पिनकोड"
+required
+>
 
-        </div>
+</div>
 
-      </div>
+</div>
 
-    </div>
+</div>
+</div>
 
 
-    <!-- ३. कायमचा पत्ता -->
+<!-- =====================================================
+     PERMANENT ADDRESS
+===================================================== -->
 
-    <div class="form-card">
+<div class="form-card">
 
-      <div class="section-header">
-        <h3>३. कायमचा पत्ता</h3>
-      </div>
+<div class="section-header">
+<h3>३. कायमचा पत्ता</h3>
+</div>
 
-      <div class="section-body">
+<div class="section-body">
 
-        <div class="same-address">
 
-          <label>
+<label class="same-address">
 
-            <input
-              type="checkbox"
-              id="sameAddress"
-            >
+<input
+type="checkbox"
+id="sameAddress"
+>
 
-            पत्रव्यवहाराचा पत्ता आणि कायमचा पत्ता समान असल्यास येथे क्लिक करा.
+<span>
+☑ पत्रव्यवहाराचा पत्ता आणि कायमचा पत्ता समान आहे
+</span>
 
-          </label>
+</label>
 
-        </div>
 
+<div class="address-title">
+Permanent Address:
+<span class="required">*</span>
+</div>
 
-        <div class="field">
 
-          <label>
-            पत्ता १ <span class="required">*</span>
-          </label>
+<div class="field">
 
-          <input
-            type="text"
-            name="permanentAddress1"
-            maxlength="35"
-            required
-          >
+<label>
+पत्ता १ <span class="required">*</span>
+</label>
 
-          <div class="field-help">कमाल 35 अक्षरे</div>
+<input
+type="text"
+name="permanentAddress1"
+maxlength="35"
+required
+>
 
-        </div>
+</div>
 
 
-        <div class="field">
+<div class="field">
 
-          <label>पत्ता २</label>
+<label>पत्ता २</label>
 
-          <input
-            type="text"
-            name="permanentAddress2"
-            maxlength="35"
-          >
+<input
+type="text"
+name="permanentAddress2"
+maxlength="35"
+>
 
-          <div class="field-help">कमाल 35 अक्षरे</div>
+</div>
 
-        </div>
 
+<div class="field">
 
-        <div class="field">
+<label>पत्ता ३</label>
 
-          <label>पत्ता ३</label>
+<input
+type="text"
+name="permanentAddress3"
+maxlength="35"
+>
 
-          <input
-            type="text"
-            name="permanentAddress3"
-            maxlength="35"
-          >
+</div>
 
-          <div class="field-help">कमाल 35 अक्षरे</div>
 
-        </div>
+<div class="grid-3">
 
+<div class="field">
 
-        <div class="grid-3">
+<label>
+जिल्हा <span class="required">*</span>
+</label>
 
-          <div class="field">
+<input
+type="text"
+name="permanentDistrict"
+maxlength="20"
+required
+>
 
-            <label>
-              जिल्हा <span class="required">*</span>
-            </label>
+</div>
 
-            <input
-              type="text"
-              name="permanentDistrict"
-              maxlength="20"
-              required
-            >
 
-          </div>
+<div class="field">
 
+<label>
+राज्य <span class="required">*</span>
+</label>
 
-          <div class="field">
+<select
+name="permanentState"
+required
+>
 
-            <label>
-              राज्य <span class="required">*</span>
-            </label>
+<option value="">
+-- राज्य निवडा --
+</option>
 
-            <select
-              name="permanentState"
-              required
-            >
+<option>महाराष्ट्र</option>
+<option>आंध्र प्रदेश</option>
+<option>अरुणाचल प्रदेश</option>
+<option>आसाम</option>
+<option>बिहार</option>
+<option>छत्तीसगड</option>
+<option>गोवा</option>
+<option>गुजरात</option>
+<option>हरियाणा</option>
+<option>हिमाचल प्रदेश</option>
+<option>झारखंड</option>
+<option>कर्नाटक</option>
+<option>केरळ</option>
+<option>मध्य प्रदेश</option>
+<option>मणिपूर</option>
+<option>मेघालय</option>
+<option>मिझोराम</option>
+<option>नागालँड</option>
+<option>ओडिशा</option>
+<option>पंजाब</option>
+<option>राजस्थान</option>
+<option>सिक्कीम</option>
+<option>तमिळनाडू</option>
+<option>तेलंगणा</option>
+<option>त्रिपुरा</option>
+<option>उत्तर प्रदेश</option>
+<option>उत्तराखंड</option>
+<option>पश्चिम बंगाल</option>
+<option>दिल्ली</option>
+<option>जम्मू आणि काश्मीर</option>
+<option>लडाख</option>
 
-              <option value="">-- राज्य निवडा --</option>
+</select>
 
-              <option>महाराष्ट्र</option>
-              <option>तेलंगणा</option>
-              <option>आंध्र प्रदेश</option>
-              <option>कर्नाटक</option>
-              <option>मध्य प्रदेश</option>
-              <option>छत्तीसगड</option>
-              <option>गुजरात</option>
-              <option>गोवा</option>
-              <option>उत्तर प्रदेश</option>
-              <option>बिहार</option>
-              <option>झारखंड</option>
-              <option>ओडिशा</option>
-              <option>पश्चिम बंगाल</option>
-              <option>राजस्थान</option>
-              <option>हरियाणा</option>
-              <option>पंजाब</option>
-              <option>दिल्ली</option>
-              <option>उत्तराखंड</option>
-              <option>हिमाचल प्रदेश</option>
-              <option>जम्मू आणि काश्मीर</option>
-              <option>आसाम</option>
-              <option>केरळ</option>
-              <option>तमिळनाडू</option>
-              <option>सिक्कीम</option>
-              <option>मेघालय</option>
-              <option>मणिपूर</option>
-              <option>मिझोराम</option>
-              <option>नागालँड</option>
-              <option>त्रिपुरा</option>
-              <option>अरुणाचल प्रदेश</option>
+</div>
 
-            </select>
 
-          </div>
+<div class="field">
 
+<label>
+पिनकोड <span class="required">*</span>
+</label>
 
-          <div class="field">
+<input
+type="text"
+name="permanentPincode"
+maxlength="6"
+pattern="[0-9]{6}"
+inputmode="numeric"
+placeholder="6 अंकी पिनकोड"
+required
+>
 
-            <label>
-              पिनकोड <span class="required">*</span>
-            </label>
+</div>
 
-            <input
-              type="text"
-              name="permanentPincode"
-              maxlength="6"
-              pattern="[0-9]{6}"
-              inputmode="numeric"
-              placeholder="6 अंकी पिनकोड"
-              required
-            >
+</div>
 
-          </div>
+</div>
+</div>
 
-        </div>
 
-      </div>
+<!-- =====================================================
+     MEMBERSHIP & FEE OPTIONAL
+===================================================== -->
 
-    </div>
+<div class="form-card">
 
+<div class="section-header">
+<h3>४. सदस्यत्व व शुल्क</h3>
+</div>
 
-    <!-- ४. सदस्यत्व व शुल्क OPTIONAL -->
+<div class="section-body">
 
-    <div class="form-card">
+<div class="grid-2">
 
-      <div class="section-header">
-        <h3>४. सदस्यत्व व शुल्क <span class="optional">(ऐच्छिक)</span></h3>
-      </div>
+<div class="field">
 
-      <div class="section-body">
+<label>
+सदस्यत्व प्रकार
+</label>
 
-        <div class="grid-2">
+<select name="membershipType">
 
-          <div class="field">
+<option value="">
+-- सदस्यत्व प्रकार निवडा --
+</option>
 
-            <label>
-              सदस्यत्व प्रकार
-              <span class="optional">(ऐच्छिक)</span>
-            </label>
+<option value="विद्यार्थी">
+विद्यार्थी
+</option>
 
-            <select name="membershipType">
+<option value="सर्वसाधारण">
+सर्वसाधारण
+</option>
 
-              <option value="">
-                -- सदस्यत्व प्रकार निवडा --
-              </option>
+<option value="ज्येष्ठ नागरिक">
+ज्येष्ठ नागरिक
+</option>
 
-              <option value="विद्यार्थी">
-                विद्यार्थी
-              </option>
+</select>
 
-              <option value="सर्वसाधारण">
-                सर्वसाधारण
-              </option>
+<div class="upload-note">
+हे क्षेत्र ऐच्छिक आहे.
+</div>
 
-              <option value="ज्येष्ठ नागरिक">
-                ज्येष्ठ नागरिक
-              </option>
+</div>
 
-            </select>
 
-          </div>
+<div class="field">
 
+<label>
+अर्ज शुल्क
+</label>
 
-          <div class="field">
+<input
+type="number"
+name="feeAmount"
+placeholder="उदा. 100"
+min="0"
+step="0.01"
+>
 
-            <label>
-              अर्ज शुल्क / सूचना शुल्क
-              <span class="optional">(ऐच्छिक)</span>
-            </label>
+<div class="upload-note">
+हे क्षेत्र ऐच्छिक आहे.
+</div>
 
-            <div class="fee-box">
+</div>
 
-              <div>
-                रक्कम
-              </div>
+</div>
 
-              <div class="fee-amount">
-                ₹100.00
-              </div>
+</div>
+</div>
 
-            </div>
 
-          </div>
+<!-- =====================================================
+     DOCUMENTS
+===================================================== -->
 
-        </div>
+<div class="form-card">
 
-      </div>
+<div class="section-header">
+<h3>५. आवश्यक कागदपत्रे</h3>
+</div>
 
-    </div>
+<div class="section-body">
 
 
-    <!-- ५. कागदपत्रे -->
+<div class="field">
 
-    <div class="form-card">
+<label>
+पासपोर्ट आकाराचा फोटो
+<span class="required">*</span>
+</label>
 
-      <div class="section-header">
-        <h3>५. आवश्यक कागदपत्रे</h3>
-      </div>
+<div class="upload-box">
 
-      <div class="section-body">
+<input
+type="file"
+id="photo"
+accept="image/jpeg,image/png,image/webp"
+required
+>
 
+<div class="upload-note">
+JPG, PNG किंवा WEBP.
+</div>
 
-        <div class="field">
+<img
+id="photoPreview"
+class="preview"
+alt="Photo Preview"
+>
 
-          <label>
-            पासपोर्ट आकाराचा फोटो
-            <span class="required">*</span>
-          </label>
+</div>
 
-          <div class="upload-box">
+</div>
 
-            <input
-              type="file"
-              id="photo"
-              name="photo"
-              accept="image/jpeg,image/png,image/webp"
-              required
-            >
 
-            <div class="upload-note">
-              JPG, PNG किंवा WEBP
-            </div>
+<div class="field">
 
-            <img
-              id="photoPreview"
-              class="preview"
-              alt="Photo Preview"
-            >
+<label>
+आधार कार्ड
+<span class="required">*</span>
+</label>
 
-          </div>
+<div class="upload-box">
 
-        </div>
+<input
+type="file"
+id="aadhaar"
+accept="image/jpeg,image/png,application/pdf"
+required
+>
 
+<div class="upload-note">
+PDF, JPG किंवा PNG.
+</div>
 
-        <div class="field">
+</div>
 
-          <label>
-            आधार कार्ड
-            <span class="required">*</span>
-          </label>
+</div>
 
-          <div class="upload-box">
 
-            <input
-              type="file"
-              id="aadhaar"
-              name="aadhaar"
-              accept="image/jpeg,image/png,application/pdf"
-              required
-            >
+<div class="field">
 
-            <div class="upload-note">
-              PDF, JPG किंवा PNG
-            </div>
+<label>
+विद्यार्थी ओळखपत्र / इतर ओळखपत्र
+</label>
 
-          </div>
+<div class="upload-box">
 
-        </div>
+<input
+type="file"
+id="idProof"
+accept="image/jpeg,image/png,application/pdf"
+>
 
+<div class="upload-note">
+हे कागदपत्र ऐच्छिक आहे.
+</div>
 
-        <div class="field">
+</div>
 
-          <label>
-            विद्यार्थी ओळखपत्र / इतर ओळखपत्र
-            <span class="optional">(ऐच्छिक)</span>
-          </label>
+</div>
 
-          <div class="upload-box">
 
-            <input
-              type="file"
-              id="idProof"
-              name="idProof"
-              accept="image/jpeg,image/png,application/pdf"
-            >
+<div class="field">
 
-            <div class="upload-note">
-              हे कागदपत्र ऐच्छिक आहे.
-            </div>
+<label>
+सभासदाची स्वाक्षरी
+<span class="required">*</span>
+</label>
 
-          </div>
+<div class="upload-box">
 
-        </div>
+<input
+type="file"
+id="signature"
+accept="image/jpeg,image/png"
+required
+>
 
+<div class="upload-note">
+JPG किंवा PNG.
+</div>
 
-        <div class="field">
+<img
+id="signaturePreview"
+class="preview"
+alt="Signature Preview"
+>
 
-          <label>
-            सभासदाची स्वाक्षरी
-            <span class="required">*</span>
-          </label>
+</div>
 
-          <div class="upload-box">
+</div>
 
-            <input
-              type="file"
-              id="signature"
-              name="signature"
-              accept="image/jpeg,image/png"
-              required
-            >
 
-            <div class="upload-note">
-              स्पष्ट JPG किंवा PNG स्वाक्षरी अपलोड करा.
-            </div>
+<div class="notice">
+⚠️ सर्व कागदपत्रे स्पष्ट आणि वाचता येतील अशा स्वरूपात अपलोड करा.
+</div>
 
-            <img
-              id="signaturePreview"
-              class="preview"
-              alt="Signature Preview"
-            >
+</div>
+</div>
 
-          </div>
 
-        </div>
+<!-- =====================================================
+     DECLARATION
+===================================================== -->
 
+<div class="form-card">
 
-        <div class="notice">
-          ⚠️ कृपया सर्व कागदपत्रे स्पष्ट आणि वाचता येतील अशा स्वरूपात अपलोड करा.
-        </div>
+<div class="section-header">
+<h3>६. घोषणा</h3>
+</div>
 
-      </div>
+<div class="section-body">
 
-    </div>
+<div class="declaration">
 
+मी दिलेली सर्व माहिती माझ्या माहितीनुसार खरी आहे.
+ग्रंथालयाचे नियम व अटी पाळण्यास मी सहमत आहे.
 
-    <!-- ६. घोषणा -->
+</div>
 
-    <div class="form-card">
+<br>
 
-      <div class="section-header">
-        <h3>६. घोषणा</h3>
-      </div>
+<label class="same-address">
 
-      <div class="section-body">
+<input
+type="checkbox"
+id="declaration"
+required
+>
 
-        <div class="declaration">
+<span>
+मी वरील घोषणेशी सहमत आहे.
+</span>
 
-          मी दिलेली सर्व माहिती माझ्या माहितीनुसार खरी व अचूक आहे.
-          ग्रंथालयाचे नियम व अटी पाळण्यास मी सहमत आहे.
+</label>
 
-        </div>
+</div>
+</div>
 
 
-        <label class="check-label">
+<!-- =====================================================
+     BUTTONS
+===================================================== -->
 
-          <input
-            type="checkbox"
-            id="declaration"
-            required
-          >
+<div class="actions">
 
-          मी वरील घोषणेशी सहमत आहे.
+<a
+href="index.html"
+class="btn back-btn"
+>
+← मागे जा
+</a>
 
-        </label>
 
-      </div>
+<button
+type="button"
+id="validateBtn"
+class="btn validate-btn"
+>
+माहिती तपासा
+</button>
 
-    </div>
 
+<button
+type="submit"
+id="submitBtn"
+class="btn submit-btn"
+>
+Save & Next →
+</button>
 
-    <!-- BUTTONS -->
+</div>
 
-    <div class="actions">
-
-      <a
-        href="index.html"
-        class="btn back-btn"
-      >
-        ← मागे जा
-      </a>
-
-
-      <button
-        type="button"
-        class="btn validate-btn"
-        id="validateBtn"
-      >
-        तपशील पडताळा
-      </button>
-
-
-      <button
-        type="submit"
-        class="btn submit-btn"
-      >
-        जतन करा आणि पुढे जा →
-      </button>
-
-    </div>
-
-  </form>
+</form>
 
 </main>
 
 
 <footer>
 
-  <strong>
-    पालवी रूरल मोबाईल अँड डिजिटल लायब्ररी
-  </strong>
+<strong>
+पालवी रूरल मोबाईल अँड डिजिटल लायब्ररी
+</strong>
 
-  <br>
+<br>
 
-  पालवी चॅरिटेबल ट्रस्ट संचलित
+पालवी चॅरिटेबल ट्रस्ट संचलित
 
 </footer>
 
 
 <script>
 
-  /* ================================
-     GOOGLE APPS SCRIPT BACKEND
-  ================================= */
+/* =====================================================
+   GOOGLE APPS SCRIPT URL
+===================================================== */
 
-  const WEB_APP_URL =
-    "https://script.google.com/macros/s/AKfycbx7O5oM9ic59fuwmXimo5cCpm9YCrMYR2LccBgA71NfAZ_pqYJAX59b5CCxKZJ-pLQp/exec";
-
-
-  /* ================================
-     DATE + MEMBER NUMBER
-  ================================= */
-
-  const today = new Date();
-
-  const year = today.getFullYear();
-  const month = String(today.getMonth() + 1).padStart(2, "0");
-  const day = String(today.getDate()).padStart(2, "0");
-
-  document.getElementById("registrationDate").value =
-    `${year}-${month}-${day}`;
+const WEB_APP_URL =
+"https://script.google.com/macros/s/AKfycbx7O5oM9ic59fuwmXimo5cCpm9YCrMYR2LccBgA71NfAZ_pqYJAX59b5CCxKZJ-pLQp/exec";
 
 
-  const randomNumber =
-    Math.floor(10000 + Math.random() * 90000);
+/* =====================================================
+   DATE
+===================================================== */
 
-  document.getElementById("memberNumber").value =
-    "LIB-" + year + "-" + randomNumber;
+const today = new Date();
+
+const year = today.getFullYear();
+
+const month = String(
+  today.getMonth() + 1
+).padStart(2,"0");
+
+const day = String(
+  today.getDate()
+).padStart(2,"0");
+
+document.getElementById(
+  "registrationDate"
+).value =
+`${year}-${month}-${day}`;
 
 
-  /* ================================
-     IMAGE PREVIEW
-  ================================= */
+/* =====================================================
+   TEMP MEMBER NUMBER
+===================================================== */
 
-  document.getElementById("photo").addEventListener("change", function () {
+document.getElementById(
+  "memberNumber"
+).value =
+"LIB-" +
+year +
+"-TEMP";
+
+
+/* =====================================================
+   PHOTO PREVIEW
+===================================================== */
+
+document.getElementById(
+  "photo"
+).addEventListener(
+  "change",
+  function(){
 
     const file = this.files[0];
 
-    if (file) {
+    if(file){
 
       const preview =
-        document.getElementById("photoPreview");
+      document.getElementById(
+        "photoPreview"
+      );
 
-      preview.src = URL.createObjectURL(file);
-      preview.style.display = "block";
+      preview.src =
+      URL.createObjectURL(file);
 
+      preview.style.display =
+      "block";
     }
-
-  });
-
-
-  document.getElementById("signature").addEventListener("change", function () {
-
-    const file = this.files[0];
-
-    if (file) {
-
-      const preview =
-        document.getElementById("signaturePreview");
-
-      preview.src = URL.createObjectURL(file);
-      preview.style.display = "block";
-
-    }
-
-  });
-
-
-  /* ================================
-     SAME ADDRESS
-  ================================= */
-
-  document.getElementById("sameAddress").addEventListener(
-    "change",
-    function () {
-
-      const same = this.checked;
-
-      const pairs = [
-
-        ["correspondenceAddress1", "permanentAddress1"],
-        ["correspondenceAddress2", "permanentAddress2"],
-        ["correspondenceAddress3", "permanentAddress3"],
-        ["correspondenceDistrict", "permanentDistrict"],
-        ["correspondenceState", "permanentState"],
-        ["correspondencePincode", "permanentPincode"]
-
-      ];
-
-      pairs.forEach(function(pair) {
-
-        const source =
-          document.querySelector('[name="' + pair[0] + '"]');
-
-        const target =
-          document.querySelector('[name="' + pair[1] + '"]');
-
-        if (same) {
-
-          target.value = source.value;
-          target.readOnly = true;
-
-        } else {
-
-          target.readOnly = false;
-
-        }
-
-      });
-
-    }
-  );
-
-
-  /* Update permanent address when same address is selected */
-
-  const correspondenceFields = [
-
-    "correspondenceAddress1",
-    "correspondenceAddress2",
-    "correspondenceAddress3",
-    "correspondenceDistrict",
-    "correspondenceState",
-    "correspondencePincode"
-
-  ];
-
-  correspondenceFields.forEach(function(name) {
-
-    const field =
-      document.querySelector('[name="' + name + '"]');
-
-    field.addEventListener("input", copyAddressIfChecked);
-    field.addEventListener("change", copyAddressIfChecked);
-
-  });
-
-
-  function copyAddressIfChecked() {
-
-    if (!document.getElementById("sameAddress").checked) {
-      return;
-    }
-
-    const pairs = [
-
-      ["correspondenceAddress1", "permanentAddress1"],
-      ["correspondenceAddress2", "permanentAddress2"],
-      ["correspondenceAddress3", "permanentAddress3"],
-      ["correspondenceDistrict", "permanentDistrict"],
-      ["correspondenceState", "permanentState"],
-      ["correspondencePincode", "permanentPincode"]
-
-    ];
-
-    pairs.forEach(function(pair) {
-
-      document.querySelector(
-        '[name="' + pair[1] + '"]'
-      ).value =
-        document.querySelector(
-          '[name="' + pair[0] + '"]'
-        ).value;
-
-    });
 
   }
+);
 
 
-  /* ================================
-     FILE TO BASE64
-  ================================= */
+/* =====================================================
+   SIGNATURE PREVIEW
+===================================================== */
 
-  function fileToBase64(file) {
+document.getElementById(
+  "signature"
+).addEventListener(
+  "change",
+  function(){
 
-    return new Promise(function(resolve, reject) {
+    const file = this.files[0];
 
-      if (!file) {
+    if(file){
+
+      const preview =
+      document.getElementById(
+        "signaturePreview"
+      );
+
+      preview.src =
+      URL.createObjectURL(file);
+
+      preview.style.display =
+      "block";
+    }
+
+  }
+);
+
+
+/* =====================================================
+   SAME ADDRESS
+===================================================== */
+
+document.getElementById(
+  "sameAddress"
+).addEventListener(
+  "change",
+  function(){
+
+    const form =
+    document.getElementById(
+      "membershipForm"
+    );
+
+    if(this.checked){
+
+      form.permanentAddress1.value =
+      form.correspondenceAddress1.value;
+
+      form.permanentAddress2.value =
+      form.correspondenceAddress2.value;
+
+      form.permanentAddress3.value =
+      form.correspondenceAddress3.value;
+
+      form.permanentDistrict.value =
+      form.correspondenceDistrict.value;
+
+      form.permanentState.value =
+      form.correspondenceState.value;
+
+      form.permanentPincode.value =
+      form.correspondencePincode.value;
+
+    }
+
+  }
+);
+
+
+/* =====================================================
+   BASE64
+===================================================== */
+
+function fileToBase64(file){
+
+  return new Promise(
+    function(resolve,reject){
+
+      if(!file){
+
         resolve("");
+
         return;
       }
 
-      const reader = new FileReader();
+      const reader =
+      new FileReader();
 
-      reader.onload = function() {
-        resolve(reader.result);
+      reader.onload =
+      function(){
+
+        resolve(
+          reader.result
+        );
+
       };
 
-      reader.onerror = function(error) {
+      reader.onerror =
+      function(error){
+
         reject(error);
+
       };
 
       reader.readAsDataURL(file);
 
-    });
+    }
+  );
+}
+
+
+/* =====================================================
+   VALIDATE BUTTON
+===================================================== */
+
+document.getElementById(
+  "validateBtn"
+).addEventListener(
+  "click",
+  function(){
+
+    const form =
+    document.getElementById(
+      "membershipForm"
+    );
+
+    if(form.reportValidity()){
+
+      alert(
+        "✓ सर्व आवश्यक माहिती योग्य प्रकारे भरली आहे."
+      );
+
+    }
 
   }
+);
 
 
-  /* ================================
-     VALIDATE BUTTON
-  ================================= */
+/* =====================================================
+   FORM SUBMIT
+===================================================== */
 
-  document.getElementById("validateBtn").addEventListener(
-    "click",
-    function() {
+document.getElementById(
+  "membershipForm"
+).addEventListener(
+  "submit",
+  async function(event){
 
-      const form =
-        document.getElementById("membershipForm");
+    event.preventDefault();
 
-      if (form.checkValidity()) {
+    const form = this;
 
-        alert(
-          "✅ सर्व आवश्यक माहिती योग्य प्रकारे भरलेली आहे.\n\n" +
-          "आता 'जतन करा आणि पुढे जा' वर क्लिक करा."
+    const submitButton =
+    document.getElementById(
+      "submitBtn"
+    );
+
+    const successBox =
+    document.getElementById(
+      "successBox"
+    );
+
+    const errorBox =
+    document.getElementById(
+      "errorBox"
+    );
+
+
+    successBox.style.display =
+    "none";
+
+    errorBox.style.display =
+    "none";
+
+
+    if(!form.reportValidity()){
+
+      return;
+
+    }
+
+
+    submitButton.disabled =
+    true;
+
+    submitButton.textContent =
+    "अर्ज सादर होत आहे...";
+
+
+    try{
+
+      const formData = {
+
+        fullName:
+        form.fullName.value,
+
+        dateOfBirth:
+        form.dateOfBirth.value,
+
+        gender:
+        form.gender.value,
+
+        mobile:
+        form.mobile.value,
+
+        email:
+        form.email.value,
+
+        correspondenceAddress1:
+        form.correspondenceAddress1.value,
+
+        correspondenceAddress2:
+        form.correspondenceAddress2.value,
+
+        correspondenceAddress3:
+        form.correspondenceAddress3.value,
+
+        correspondenceDistrict:
+        form.correspondenceDistrict.value,
+
+        correspondenceState:
+        form.correspondenceState.value,
+
+        correspondencePincode:
+        form.correspondencePincode.value,
+
+        permanentAddress1:
+        form.permanentAddress1.value,
+
+        permanentAddress2:
+        form.permanentAddress2.value,
+
+        permanentAddress3:
+        form.permanentAddress3.value,
+
+        permanentDistrict:
+        form.permanentDistrict.value,
+
+        permanentState:
+        form.permanentState.value,
+
+        permanentPincode:
+        form.permanentPincode.value,
+
+        membershipType:
+        form.membershipType.value,
+
+        feeAmount:
+        form.feeAmount.value,
+
+        photo:
+        await fileToBase64(
+          document.getElementById(
+            "photo"
+          ).files[0]
+        ),
+
+        aadhaar:
+        await fileToBase64(
+          document.getElementById(
+            "aadhaar"
+          ).files[0]
+        ),
+
+        idProof:
+        await fileToBase64(
+          document.getElementById(
+            "idProof"
+          ).files[0]
+        ),
+
+        signature:
+        await fileToBase64(
+          document.getElementById(
+            "signature"
+          ).files[0]
+        )
+
+      };
+
+
+      /* =================================================
+         HIDDEN POST FORM
+      ================================================= */
+
+      let iframe =
+      document.getElementById(
+        "submitFrame"
+      );
+
+
+      if(!iframe){
+
+        iframe =
+        document.createElement(
+          "iframe"
         );
 
-      } else {
+        iframe.id =
+        "submitFrame";
 
-        form.reportValidity();
+        iframe.name =
+        "submitFrame";
+
+        iframe.style.display =
+        "none";
+
+        document.body.appendChild(
+          iframe
+        );
 
       }
 
-    }
-  );
 
+      const postForm =
+      document.createElement(
+        "form"
+      );
 
-  /* ================================
-     FORM SUBMIT
-  ================================= */
+      postForm.method =
+      "POST";
 
-  document.getElementById("membershipForm").addEventListener(
-    "submit",
-    async function(event) {
+      postForm.action =
+      WEB_APP_URL;
 
-      event.preventDefault();
+      postForm.target =
+      "submitFrame";
 
-      const form = this;
+      postForm.style.display =
+      "none";
 
-      const submitButton =
-        form.querySelector(".submit-btn");
 
-      submitButton.disabled = true;
-      submitButton.textContent =
-        "माहिती जतन होत आहे...";
+      const dataInput =
+      document.createElement(
+        "input"
+      );
 
+      dataInput.type =
+      "hidden";
 
-      try {
+      dataInput.name =
+      "data";
 
-        const formData = {
+      dataInput.value =
+      JSON.stringify(
+        formData
+      );
 
-          /* PRIMARY INFORMATION */
 
-          memberNumber:
-            form.memberNumber.value,
+      postForm.appendChild(
+        dataInput
+      );
 
-          registrationDate:
-            form.registrationDate.value,
+      document.body.appendChild(
+        postForm
+      );
 
-          fullName:
-            form.fullName.value,
 
-          dateOfBirth:
-            form.dateOfBirth.value,
+      postForm.submit();
 
-          gender:
-            form.gender.value,
 
-          mobile:
-            form.mobile.value,
+      /* =================================================
+         SUCCESS MESSAGE
+      ================================================= */
 
-          email:
-            form.email.value,
+      setTimeout(
+        function(){
 
+          successBox.innerHTML =
+          "<strong>✓ अर्ज यशस्वीपणे सादर झाला!</strong><br><br>" +
+          "आपली माहिती Google Sheet मध्ये पाठवली आहे.<br>" +
+          "कागदपत्रे Google Drive मध्ये सुरक्षितपणे जतन केली आहेत.";
 
-          /* CORRESPONDENCE ADDRESS */
-
-          correspondenceAddress1:
-            form.correspondenceAddress1.value,
-
-          correspondenceAddress2:
-            form.correspondenceAddress2.value,
-
-          correspondenceAddress3:
-            form.correspondenceAddress3.value,
-
-          correspondenceDistrict:
-            form.correspondenceDistrict.value,
-
-          correspondenceState:
-            form.correspondenceState.value,
-
-          correspondencePincode:
-            form.correspondencePincode.value,
-
-
-          /* PERMANENT ADDRESS */
-
-          permanentAddress1:
-            form.permanentAddress1.value,
-
-          permanentAddress2:
-            form.permanentAddress2.value,
-
-          permanentAddress3:
-            form.permanentAddress3.value,
-
-          permanentDistrict:
-            form.permanentDistrict.value,
-
-          permanentState:
-            form.permanentState.value,
-
-          permanentPincode:
-            form.permanentPincode.value,
-
-
-          /* OPTIONAL MEMBERSHIP */
-
-          membershipType:
-            form.membershipType.value,
-
-          feeAmount:
-            "100.00",
-
-
-          /* FILES */
-
-          photo:
-            await fileToBase64(
-              document.getElementById("photo").files[0]
-            ),
-
-          aadhaar:
-            await fileToBase64(
-              document.getElementById("aadhaar").files[0]
-            ),
-
-          idProof:
-            await fileToBase64(
-              document.getElementById("idProof").files[0]
-            ),
-
-          signature:
-            await fileToBase64(
-              document.getElementById("signature").files[0]
-            )
-
-        };
-
-
-        /* Hidden iframe */
-
-        let iframe =
-          document.getElementById("submitFrame");
-
-
-        if (!iframe) {
-
-          iframe =
-            document.createElement("iframe");
-
-          iframe.id = "submitFrame";
-          iframe.name = "submitFrame";
-
-          iframe.style.display = "none";
-
-          document.body.appendChild(iframe);
-
-        }
-
-
-        /* POST FORM */
-
-        const postForm =
-          document.createElement("form");
-
-        postForm.method = "POST";
-        postForm.action = WEB_APP_URL;
-        postForm.target = "submitFrame";
-        postForm.style.display = "none";
-
-
-        const dataInput =
-          document.createElement("input");
-
-        dataInput.type = "hidden";
-        dataInput.name = "data";
-
-        dataInput.value =
-          JSON.stringify(formData);
-
-
-        postForm.appendChild(dataInput);
-
-        document.body.appendChild(postForm);
-
-        postForm.submit();
-
-
-        setTimeout(function() {
-
-          document.getElementById(
-            "successMessage"
-          ).style.display = "block";
-
-
-          alert(
-            "अर्ज यशस्वीरित्या सादर झाला आहे.\n\n" +
-            "सभासद क्रमांक: " +
-            form.memberNumber.value +
-            "\n\n" +
-            "माहिती Google Sheet मध्ये पाठवली आहे."
-          );
+          successBox.style.display =
+          "block";
 
 
           form.reset();
 
 
           document.getElementById(
-            "photoPreview"
-          ).style.display = "none";
+            "registrationDate"
+          ).value =
+          `${year}-${month}-${day}`;
 
-
-          document.getElementById(
-            "signaturePreview"
-          ).style.display = "none";
-
-
-          /* Generate new number */
-
-          const newNumber =
-            Math.floor(10000 + Math.random() * 90000);
 
           document.getElementById(
             "memberNumber"
           ).value =
-            "LIB-" + year + "-" + newNumber;
+          "LIB-" +
+          year +
+          "-TEMP";
 
 
           document.getElementById(
-            "registrationDate"
-          ).value =
-            `${year}-${month}-${day}`;
+            "photoPreview"
+          ).style.display =
+          "none";
 
 
-          submitButton.disabled = false;
+          document.getElementById(
+            "signaturePreview"
+          ).style.display =
+          "none";
+
+
+          submitButton.disabled =
+          false;
 
           submitButton.textContent =
-            "जतन करा आणि पुढे जा →";
+          "Save & Next →";
 
 
           postForm.remove();
 
-        }, 2500);
+
+          window.scrollTo({
+            top:0,
+            behavior:"smooth"
+          });
+
+        },
+        3000
+      );
 
 
-      } catch (error) {
+    }catch(error){
 
-        console.error(error);
+      errorBox.innerHTML =
+      "<strong>अर्ज सादर करताना त्रुटी आली.</strong><br>" +
+      error.message;
 
-        alert(
-          "❌ अर्ज सादर करताना समस्या आली.\n\n" +
-          "कृपया पुन्हा प्रयत्न करा."
-        );
+      errorBox.style.display =
+      "block";
 
-        submitButton.disabled = false;
 
-        submitButton.textContent =
-          "जतन करा आणि पुढे जा →";
+      submitButton.disabled =
+      false;
 
-      }
+      submitButton.textContent =
+      "Save & Next →";
 
     }
-  );
+
+  }
+);
 
 </script>
 
 </body>
 </html>
-```
