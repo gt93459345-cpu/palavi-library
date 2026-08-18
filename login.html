@@ -1,210 +1,570 @@
 <!DOCTYPE html>
 <html lang="mr">
+
 <head>
 
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>सभासद Login - पालवी लायब्ररी</title>
+<title>पालवी लायब्ररी | सभासद Login</title>
 
 <style>
 
 *{
   box-sizing:border-box;
-  margin:0;
-  padding:0;
 }
 
 body{
-  font-family:"Noto Sans Devanagari",Arial,sans-serif;
+  margin:0;
+  font-family:Arial,"Noto Sans Devanagari",sans-serif;
+  background:linear-gradient(135deg,#f4f7fb,#eef2ff);
   min-height:100vh;
-
   display:flex;
   align-items:center;
   justify-content:center;
-
-  background:
-  linear-gradient(
-    135deg,
-    #f8f3ed,
-    #ffffff,
-    #f1f5f9
-  );
-
   padding:20px;
 }
 
 .login-box{
   width:100%;
   max-width:430px;
-
-  background:#ffffff;
-
+  background:white;
   padding:35px;
-
   border-radius:20px;
-
-  box-shadow:
-  0 15px 45px rgba(0,0,0,.10);
-
-  border:1px solid #e5e7eb;
+  box-shadow:0 15px 45px rgba(0,0,0,.12);
 }
 
 .logo{
   text-align:center;
-  font-size:50px;
-  margin-bottom:10px;
+  font-size:48px;
+  margin-bottom:5px;
 }
 
 h1{
   text-align:center;
-  font-size:27px;
+  margin:5px 0;
+  font-size:26px;
   color:#111827;
-  margin-bottom:6px;
 }
 
 .subtitle{
   text-align:center;
   color:#6b7280;
-  font-size:14px;
-  margin-bottom:30px;
+  margin-bottom:28px;
 }
 
 label{
   display:block;
-
-  margin-bottom:7px;
-
-  font-weight:600;
-
+  margin:15px 0 7px;
+  font-weight:bold;
   color:#374151;
 }
 
 input{
   width:100%;
-
-  padding:13px;
-
-  border:
-  1px solid #d1d5db;
-
-  border-radius:9px;
-
-  margin-bottom:18px;
-
+  padding:14px;
+  border:1px solid #d7dce2;
+  border-radius:10px;
   font-size:15px;
+  outline:none;
 }
 
 input:focus{
-  outline:none;
-
-  border-color:#8b5e34;
+  border-color:#2563eb;
+  box-shadow:0 0 0 3px rgba(37,99,235,.10);
 }
 
-button{
+.login-btn{
   width:100%;
-
-  padding:13px;
-
+  margin-top:24px;
+  padding:14px;
   border:0;
-
-  border-radius:9px;
-
-  background:#8b5e34;
-
+  border-radius:10px;
+  background:#2563eb;
   color:white;
-
   font-size:16px;
-
-  font-weight:700;
-
+  font-weight:bold;
   cursor:pointer;
 }
 
-button:hover{
-  background:#704923;
+.login-btn:hover{
+  background:#1d4ed8;
 }
 
-.back{
+.login-btn:disabled{
+  opacity:.6;
+  cursor:not-allowed;
+}
+
+.message{
+  margin-top:18px;
+  padding:12px;
+  border-radius:8px;
+  display:none;
   text-align:center;
-
-  margin-top:20px;
+  font-size:14px;
 }
 
-.back a{
-  color:#8b5e34;
+.error{
+  background:#fee2e2;
+  color:#991b1b;
+}
 
+.success{
+  background:#dcfce7;
+  color:#166534;
+}
+
+.dashboard{
+  display:none;
+}
+
+.info{
+  background:#f8fafc;
+  padding:15px;
+  border-radius:10px;
+  margin-top:15px;
+  border:1px solid #e5e7eb;
+}
+
+.info b{
+  display:block;
+  color:#374151;
+  margin-bottom:5px;
+}
+
+.logout{
+  width:100%;
+  margin-top:20px;
+  padding:12px;
+  border:0;
+  border-radius:9px;
+  background:#444;
+  color:white;
+  cursor:pointer;
+  font-size:15px;
+}
+
+.logout:hover{
+  background:#222;
+}
+
+.back-btn{
+  display:block;
+  text-align:center;
+  margin-top:18px;
+  color:#2563eb;
   text-decoration:none;
-
-  font-weight:600;
+  font-size:14px;
 }
 
 </style>
 
 </head>
 
-
 <body>
+
 
 <div class="login-box">
 
-  <div class="logo">
-    📚
-  </div>
 
-  <h1>
+<!-- =========================
+     LOGIN SECTION
+========================= -->
+
+<div id="loginSection">
+
+  <div class="logo">📚</div>
+
+  <h1>पालवी लायब्ररी</h1>
+
+  <div class="subtitle">
     सभासद Login
-  </h1>
-
-  <p class="subtitle">
-    पालवी रूरल मोबाईल अँड डिजिटल लायब्ररी
-  </p>
-
-
-  <form id="loginForm">
-
-    <label>
-      Login ID
-    </label>
-
-    <input
-      type="text"
-      id="loginId"
-      placeholder="उदा. LIB-2026-00001"
-      required
-    >
-
-
-    <label>
-      Password
-    </label>
-
-    <input
-      type="password"
-      id="password"
-      placeholder="आपला Password"
-      required
-    >
-
-
-    <button type="submit">
-      Login करा
-    </button>
-
-  </form>
-
-
-  <div class="back">
-
-    <a href="index.html">
-      ← मुख्यपृष्ठावर जा
-    </a>
-
   </div>
+
+
+  <label>
+    Member ID
+  </label>
+
+  <input
+    type="text"
+    id="loginId"
+    placeholder="उदा. LIB-2026-00001"
+    autocomplete="username"
+  >
+
+
+  <label>
+    Password
+  </label>
+
+  <input
+    type="password"
+    id="password"
+    placeholder="तुमचा Password"
+    autocomplete="current-password"
+  >
+
+
+  <button
+    class="login-btn"
+    id="loginButton"
+    onclick="loginMember()"
+  >
+    Login
+  </button>
+
+
+  <div
+    id="message"
+    class="message"
+  ></div>
+
+
+  <a
+    href="index.html"
+    class="back-btn"
+  >
+    ← मुख्यपृष्ठावर जा
+  </a>
 
 </div>
+
+
+
+<!-- =========================
+     MEMBER DASHBOARD
+========================= -->
+
+<div
+  id="dashboard"
+  class="dashboard"
+>
+
+  <div class="logo">📚</div>
+
+  <h1>
+    स्वागत आहे!
+  </h1>
+
+  <div
+    id="memberName"
+    class="subtitle"
+  ></div>
+
+
+  <div class="info">
+
+    <b>सभासद क्रमांक</b>
+
+    <div id="memberId"></div>
+
+  </div>
+
+
+  <div class="info">
+
+    <b>मोबाईल क्रमांक</b>
+
+    <div id="mobile"></div>
+
+  </div>
+
+
+  <div class="info">
+
+    <b>ई-मेल</b>
+
+    <div id="email"></div>
+
+  </div>
+
+
+  <div class="info">
+
+    <b>अर्जाची स्थिती</b>
+
+    <div id="applicationStatus"></div>
+
+  </div>
+
+
+  <div class="info">
+
+    <b>Account Status</b>
+
+    <div id="accountStatus"></div>
+
+  </div>
+
+
+  <button
+    class="logout"
+    onclick="logout()"
+  >
+    Logout
+  </button>
+
+</div>
+
+</div>
+
+
+
+<script>
+
+
+/* =========================
+   GOOGLE APPS SCRIPT URL
+========================= */
+
+const WEB_APP_URL =
+"https://script.google.com/macros/s/AKfycbx7O5oM9ic59fuwmXimo5cCpm9YCrMYR2LccBgA71NfAZ_pqYJAX59b5CCxKZJ-pLQp/exec";
+
+
+
+/* =========================
+   MEMBER LOGIN
+========================= */
+
+function loginMember(){
+
+  const loginId =
+    document
+      .getElementById("loginId")
+      .value
+      .trim();
+
+
+  const password =
+    document
+      .getElementById("password")
+      .value;
+
+
+  const message =
+    document.getElementById("message");
+
+
+  const button =
+    document.getElementById("loginButton");
+
+
+  message.style.display = "none";
+
+
+  /* Check empty fields */
+
+  if(!loginId || !password){
+
+    showMessage(
+      "Member ID आणि Password भरा.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  /* Disable button */
+
+  button.disabled = true;
+
+  button.innerText = "Checking...";
+
+
+  /* =========================
+     SEND LOGIN REQUEST
+  ========================= */
+
+  fetch(
+    WEB_APP_URL,
+    {
+
+      method:"POST",
+
+      body:new URLSearchParams({
+
+        action:"login",
+
+        loginId:loginId,
+
+        password:password
+
+      })
+
+    }
+  )
+
+  .then(function(response){
+
+    return response.json();
+
+  })
+
+
+  .then(function(result){
+
+    button.disabled = false;
+
+    button.innerText = "Login";
+
+
+    if(result.success){
+
+      showDashboard(result);
+
+    }
+
+    else{
+
+      showMessage(
+        result.message ||
+        "Login failed.",
+        "error"
+      );
+
+    }
+
+  })
+
+
+  .catch(function(error){
+
+    button.disabled = false;
+
+    button.innerText = "Login";
+
+
+    showMessage(
+      "Server connection error. कृपया पुन्हा प्रयत्न करा.",
+      "error"
+    );
+
+
+    console.error(error);
+
+  });
+
+}
+
+
+
+/* =========================
+   SHOW DASHBOARD
+========================= */
+
+function showDashboard(data){
+
+
+  document
+    .getElementById("loginSection")
+    .style.display = "none";
+
+
+  document
+    .getElementById("dashboard")
+    .style.display = "block";
+
+
+  document
+    .getElementById("memberName")
+    .innerText =
+    data.name || "";
+
+
+  document
+    .getElementById("memberId")
+    .innerText =
+    data.memberId || "";
+
+
+  document
+    .getElementById("mobile")
+    .innerText =
+    data.mobile || "";
+
+
+  document
+    .getElementById("email")
+    .innerText =
+    data.email || "";
+
+
+  document
+    .getElementById("applicationStatus")
+    .innerText =
+    data.applicationStatus || "";
+
+
+  document
+    .getElementById("accountStatus")
+    .innerText =
+    data.accountStatus || "";
+
+}
+
+
+
+/* =========================
+   SHOW MESSAGE
+========================= */
+
+function showMessage(text,type){
+
+  const message =
+    document.getElementById("message");
+
+
+  message.innerText = text;
+
+
+  message.className =
+    "message " + type;
+
+
+  message.style.display =
+    "block";
+
+}
+
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+function logout(){
+
+  document
+    .getElementById("dashboard")
+    .style.display =
+    "none";
+
+
+  document
+    .getElementById("loginSection")
+    .style.display =
+    "block";
+
+
+  document
+    .getElementById("password")
+    .value =
+    "";
+
+
+  document
+    .getElementById("message")
+    .style.display =
+    "none";
+
+}
+
+</script>
+
 
 </body>
 
