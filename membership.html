@@ -1,1 +1,1277 @@
-<script> document.addEventListener("DOMContentLoaded", function () { /* ===================================================== GOOGLE APPS SCRIPT WEB APP URL ===================================================== */ const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbx7O5oM9ic59fuwmXimo5cCpm9YCrMYR2LccBgA71NfAZ_pqYJAX59b5CCxKZJ-pLQp/exec"; /* ===================================================== ELEMENTS ===================================================== */ const form = document.getElementById("membershipForm"); if (!form) { console.error("membershipForm सापडला नाही."); return; } const memberNumber = document.getElementById("memberNumber"); const registrationDate = document.getElementById("registrationDate"); const photo = document.getElementById("photo"); const aadhaar = document.getElementById("aadhaar"); const idProof = document.getElementById("idProof"); const signature = document.getElementById("signature"); const sameAddress = document.getElementById("sameAddress"); const photoPreview = document.getElementById("photoPreview"); const signaturePreview = document.getElementById("signaturePreview"); /* ===================================================== REGISTRATION DATE ===================================================== */ function setRegistrationDate() { const today = new Date(); const year = today.getFullYear(); const month = String(today.getMonth() + 1).padStart(2, "0"); const day = String(today.getDate()).padStart(2, "0"); if (registrationDate) { registrationDate.value = `${year}-${month}-${day}`; } } /* ===================================================== TEMPORARY MEMBER NUMBER Actual number Google Sheet मध्ये Backend देईल ===================================================== */ function generateMemberNumber() { const year = new Date().getFullYear(); const randomNumber = Math.floor(10000 + Math.random() * 90000); if (memberNumber) { memberNumber.value = "TEMP-" + year + "-" + randomNumber; } } setRegistrationDate(); generateMemberNumber(); /* ===================================================== PHOTO PREVIEW ===================================================== */ if (photo) { photo.addEventListener("change", function () { const file = this.files[0]; if (file && photoPreview) { photoPreview.src = URL.createObjectURL(file); photoPreview.style.display = "block"; } }); } /* ===================================================== SIGNATURE PREVIEW ===================================================== */ if (signature) { signature.addEventListener("change", function () { const file = this.files[0]; if (file && signaturePreview) { signaturePreview.src = URL.createObjectURL(file); signaturePreview.style.display = "block"; } }); } /* ===================================================== SAME ADDRESS ===================================================== */ if (sameAddress) { sameAddress.addEventListener("change", function () { const fields = [ ["correspondenceAddress1", "permanentAddress1"], ["correspondenceAddress2", "permanentAddress2"], ["correspondenceAddress3", "permanentAddress3"], ["correspondenceDistrict", "permanentDistrict"], ["correspondenceState", "permanentState"], ["correspondencePincode", "permanentPincode"] ]; fields.forEach(function (pair) { const source = document.getElementsByName(pair[0])[0]; const target = document.getElementById(pair[1]); if (!source || !target) return; if (sameAddress.checked) { target.value = source.value; } else { target.value = ""; } }); }); } /* ===================================================== FILE → BASE64 ===================================================== */ function fileToBase64(file) { return new Promise(function (resolve, reject) { if (!file) { resolve(""); return; } const reader = new FileReader(); reader.onload = function () { resolve(reader.result); }; reader.onerror = function () { reject(reader.error); }; reader.readAsDataURL(file); }); } /* ===================================================== FORM SUBMIT ===================================================== */ form.addEventListener("submit", async function (event) { event.preventDefault(); const submitButton = form.querySelector(".submit-btn"); if (submitButton) { submitButton.disabled = true; submitButton.textContent = "अर्ज सादर होत आहे..."; } try { /* ================================================= FILES ================================================= */ const photoBase64 = await fileToBase64( photo ? photo.files[0] : null ); const aadhaarBase64 = await fileToBase64( aadhaar ? aadhaar.files[0] : null ); const idProofBase64 = await fileToBase64( idProof ? idProof.files[0] : null ); const signatureBase64 = await fileToBase64( signature ? signature.files[0] : null ); /* ================================================= FORM DATA ================================================= */ const formData = { memberNumber: memberNumber ? memberNumber.value : "", registrationDate: registrationDate ? registrationDate.value : "", fullName: form.fullName ? form.fullName.value : "", dateOfBirth: form.dateOfBirth ? form.dateOfBirth.value : "", gender: form.gender ? form.gender.value : "", mobile: form.mobile ? form.mobile.value : "", email: form.email ? form.email.value : "", correspondenceAddress1: form.correspondenceAddress1 ? form.correspondenceAddress1.value : "", correspondenceAddress2: form.correspondenceAddress2 ? form.correspondenceAddress2.value : "", correspondenceAddress3: form.correspondenceAddress3 ? form.correspondenceAddress3.value : "", correspondenceDistrict: form.correspondenceDistrict ? form.correspondenceDistrict.value : "", correspondenceState: form.correspondenceState ? form.correspondenceState.value : "", correspondencePincode: form.correspondencePincode ? form.correspondencePincode.value : "", permanentAddress1: form.permanentAddress1 ? form.permanentAddress1.value : "", permanentAddress2: form.permanentAddress2 ? form.permanentAddress2.value : "", permanentAddress3: form.permanentAddress3 ? form.permanentAddress3.value : "", permanentDistrict: form.permanentDistrict ? form.permanentDistrict.value : "", permanentState: form.permanentState ? form.permanentState.value : "", permanentPincode: form.permanentPincode ? form.permanentPincode.value : "", membershipType: form.membershipType ? form.membershipType.value : "", feeAmount: form.feeAmount ? form.feeAmount.value : "", photo: photoBase64, aadhaar: aadhaarBase64, idProof: idProofBase64, signature: signatureBase64 }; /* ================================================= HIDDEN IFRAME ================================================= */ let iframe = document.getElementById("submitFrame"); if (!iframe) { iframe = document.createElement("iframe"); iframe.id = "submitFrame"; iframe.name = "submitFrame"; iframe.style.display = "none"; document.body.appendChild(iframe); } /* ================================================= POST FORM ================================================= */ const postForm = document.createElement("form"); postForm.method = "POST"; postForm.action = WEB_APP_URL; postForm.target = "submitFrame"; postForm.style.display = "none"; const dataInput = document.createElement("input"); dataInput.type = "hidden"; dataInput.name = "data"; dataInput.value = JSON.stringify(formData); postForm.appendChild(dataInput); document.body.appendChild(postForm); /* ================================================= SEND ================================================= */ postForm.submit(); /* ================================================= WAIT FOR BACKEND ================================================= */ setTimeout(function () { alert( "अर्ज यशस्वीपणे सादर झाला!\n\n" + "आपली माहिती Google Sheet मध्ये पाठवली आहे.\n" + "कागदपत्रे Google Drive मध्ये जतन केली आहेत." ); form.reset(); setRegistrationDate(); generateMemberNumber(); if (photoPreview) { photoPreview.style.display = "none"; } if (signaturePreview) { signaturePreview.style.display = "none"; } if (submitButton) { submitButton.disabled = false; submitButton.textContent = "अर्ज सादर करा →"; } postForm.remove(); }, 6000); } catch (error) { console.error(error); alert( "अर्ज सादर करताना समस्या आली.\n\n" + error.message ); if (submitButton) { submitButton.disabled = false; submitButton.textContent = "अर्ज सादर करा →"; } } }); }); </script>
+```html
+<!DOCTYPE html>
+<html lang="mr">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+पालवी रूरल मोबाईल अँड डिजिटल लायब्ररी - सभासद नोंदणी
+</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
+body{
+font-family:"Noto Sans Devanagari",Arial,sans-serif;
+background:#f5f7fa;
+color:#222;
+line-height:1.6;
+}
+
+.container{
+max-width:900px;
+margin:30px auto;
+padding:20px;
+}
+
+.header{
+background:#111827;
+color:white;
+padding:25px;
+border-radius:15px 15px 0 0;
+text-align:center;
+}
+
+.header h1{
+font-size:25px;
+margin-bottom:5px;
+}
+
+.header p{
+font-size:14px;
+color:#e5e7eb;
+}
+
+.form-box{
+background:white;
+padding:30px;
+border-radius:0 0 15px 15px;
+box-shadow:0 8px 30px rgba(0,0,0,.08);
+}
+
+.section{
+margin-top:25px;
+padding-bottom:20px;
+border-bottom:1px solid #e5e7eb;
+}
+
+.section:first-child{
+margin-top:0;
+}
+
+.section-title{
+font-size:20px;
+font-weight:700;
+color:#8b5e34;
+margin-bottom:18px;
+}
+
+.row{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+}
+
+.field{
+margin-bottom:16px;
+}
+
+.field.full{
+grid-column:1/-1;
+}
+
+label{
+display:block;
+font-weight:600;
+margin-bottom:6px;
+}
+
+.required{
+color:red;
+}
+
+input,
+select,
+textarea{
+width:100%;
+padding:11px 12px;
+border:1px solid #d1d5db;
+border-radius:8px;
+font-size:15px;
+font-family:inherit;
+background:white;
+}
+
+textarea{
+min-height:80px;
+resize:vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+outline:none;
+border-color:#8b5e34;
+box-shadow:0 0 0 2px rgba(139,94,52,.1);
+}
+
+input[readonly]{
+background:#f3f4f6;
+}
+
+.same-address{
+background:#f8f5f1;
+padding:12px;
+border-radius:8px;
+margin-bottom:18px;
+}
+
+.same-address label{
+display:flex;
+align-items:center;
+gap:8px;
+margin:0;
+}
+
+.same-address input{
+width:auto;
+}
+
+.preview{
+display:none;
+max-width:150px;
+max-height:150px;
+margin-top:10px;
+border-radius:8px;
+border:1px solid #ddd;
+}
+
+.note{
+font-size:13px;
+color:#6b7280;
+margin-top:5px;
+}
+
+.submit-area{
+text-align:center;
+padding-top:30px;
+}
+
+.submit-btn{
+background:#8b5e34;
+color:white;
+border:0;
+padding:14px 35px;
+border-radius:9px;
+font-size:17px;
+font-weight:700;
+cursor:pointer;
+}
+
+.submit-btn:hover{
+background:#704923;
+}
+
+.submit-btn:disabled{
+opacity:.6;
+cursor:not-allowed;
+}
+
+.back-link{
+display:block;
+text-align:center;
+margin-top:18px;
+color:#374151;
+text-decoration:none;
+}
+
+@media(max-width:650px){
+
+.container{
+margin:10px auto;
+padding:10px;
+}
+
+.form-box{
+padding:20px 15px;
+}
+
+.row{
+grid-template-columns:1fr;
+gap:0;
+}
+
+.header h1{
+font-size:20px;
+}
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<div class="header">
+
+<h1>
+पालवी रूरल मोबाईल अँड डिजिटल लायब्ररी
+</h1>
+
+<p>
+पालवी चॅरिटेबल ट्रस्ट संचलित
+</p>
+
+<p>
+सभासद नोंदणी अर्ज
+</p>
+
+</div>
+
+
+<div class="form-box">
+
+
+<form id="membershipForm">
+
+
+<!-- MEMBER INFORMATION -->
+
+<div class="section">
+
+<div class="section-title">
+1. सभासदाची माहिती
+</div>
+
+
+<div class="row">
+
+
+<div class="field">
+
+<label>
+सभासद क्रमांक
+</label>
+
+<input
+type="text"
+id="memberNumber"
+readonly
+>
+
+</div>
+
+
+<div class="field">
+
+<label>
+नोंदणी दिनांक
+</label>
+
+<input
+type="date"
+id="registrationDate"
+readonly
+>
+
+</div>
+
+
+<div class="field">
+
+<label>
+संपूर्ण नाव <span class="required">*</span>
+</label>
+
+<input
+type="text"
+name="fullName"
+required
+placeholder="आपले संपूर्ण नाव"
+>
+
+</div>
+
+
+<div class="field">
+
+<label>
+जन्मतारीख <span class="required">*</span>
+</label>
+
+<input
+type="date"
+name="dateOfBirth"
+required
+>
+
+</div>
+
+
+<div class="field">
+
+<label>
+लिंग <span class="required">*</span>
+</label>
+
+<select name="gender" required>
+
+<option value="">
+-- निवडा --
+</option>
+
+<option value="पुरुष">
+पुरुष
+</option>
+
+<option value="महिला">
+महिला
+</option>
+
+<option value="इतर">
+इतर
+</option>
+
+</select>
+
+</div>
+
+
+<div class="field">
+
+<label>
+मोबाईल क्रमांक <span class="required">*</span>
+</label>
+
+<input
+type="tel"
+name="mobile"
+required
+maxlength="10"
+pattern="[0-9]{10}"
+placeholder="10 अंकी मोबाइल क्रमांक"
+>
+
+</div>
+
+
+<div class="field full">
+
+<label>
+ई-मेल आयडी
+</label>
+
+<input
+type="email"
+name="email"
+placeholder="example@gmail.com"
+>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- CORRESPONDENCE ADDRESS -->
+
+<div class="section">
+
+<div class="section-title">
+2. पत्रव्यवहाराचा पत्ता
+</div>
+
+
+<div class="field">
+
+<label>
+पत्ता
+</label>
+
+<textarea
+name="correspondenceAddress1"
+placeholder="घर क्रमांक / रस्ता / गाव"
+></textarea>
+
+</div>
+
+
+<div class="row">
+
+<div class="field">
+
+<label>
+पत्ता 2</label>
+
+<input
+type="text"
+name="correspondenceAddress2"
+>
+
+</div>
+
+
+<div class="field">
+
+<label>
+पत्ता 3</label>
+
+<input
+type="text"
+name="correspondenceAddress3"
+>
+
+</div>
+
+
+<div class="field">
+
+<label>
+जिल्हा
+</label>
+
+<input
+type="text"
+name="correspondenceDistrict"
+>
+
+</div>
+
+
+<div class="field">
+
+<label>
+राज्य
+</label>
+
+<input
+type="text"
+name="correspondenceState"
+value="महाराष्ट्र"
+>
+
+</div>
+
+
+<div class="field">
+
+<label>
+पिनकोड
+</label>
+
+<input
+type="text"
+name="correspondencePincode"
+maxlength="6"
+>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- PERMANENT ADDRESS -->
+
+<div class="section">
+
+<div class="section-title">
+3. कायमचा पत्ता
+</div>
+
+
+<div class="same-address">
+
+<label>
+
+<input
+type="checkbox"
+id="sameAddress"
+>
+
+पत्रव्यवहाराचा पत्ता आणि कायमचा पत्ता समान आहे
+
+</label>
+
+</div>
+
+
+<div class="field">
+
+<label>
+पत्ता
+</label>
+
+<textarea
+id="permanentAddress1"
+name="permanentAddress1"
+></textarea>
+
+</div>
+
+
+<div class="row">
+
+<div class="field">
+
+<label>
+पत्ता 2
+</label>
+
+<input
+type="text"
+id="permanentAddress2"
+name="permanentAddress2"
+>
+
+</div>
+
+
+<div class="field">
+
+<label>
+पत्ता 3
+</label>
+
+<input
+type="text"
+id="permanentAddress3"
+name="permanentAddress3"
+>
+
+</div>
+
+
+<div class="field">
+
+<label>
+जिल्हा
+</label>
+
+<input
+type="text"
+id="permanentDistrict"
+name="permanentDistrict"
+>
+
+</div>
+
+
+<div class="field">
+
+<label>
+राज्य
+</label>
+
+<input
+type="text"
+id="permanentState"
+name="permanentState"
+value="महाराष्ट्र"
+>
+
+</div>
+
+
+<div class="field">
+
+<label>
+पिनकोड
+</label>
+
+<input
+type="text"
+id="permanentPincode"
+name="permanentPincode"
+maxlength="6"
+>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- MEMBERSHIP -->
+
+<div class="section">
+
+<div class="section-title">
+4. सदस्यत्व प्रकार
+</div>
+
+
+<div class="row">
+
+
+<div class="field">
+
+<label>
+सदस्यत्व प्रकार <span class="required">*</span>
+</label>
+
+<select
+name="membershipType"
+required
+>
+
+<option value="">
+-- निवडा --
+</option>
+
+<option value="विद्यार्थी">
+विद्यार्थी
+</option>
+
+<option value="सर्वसाधारण">
+सर्वसाधारण
+</option>
+
+<option value="ज्येष्ठ नागरिक">
+ज्येष्ठ नागरिक
+</option>
+
+</select>
+
+</div>
+
+
+<div class="field">
+
+<label>
+अर्ज शुल्क
+</label>
+
+<input
+type="text"
+name="feeAmount"
+placeholder="₹"
+>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- DOCUMENTS -->
+
+<div class="section">
+
+<div class="section-title">
+5. आवश्यक कागदपत्रे
+</div>
+
+
+<div class="field">
+
+<label>
+Passport Size Photo <span class="required">*</span>
+</label>
+
+<input
+type="file"
+id="photo"
+accept="image/*"
+required
+>
+
+<img
+id="photoPreview"
+class="preview"
+>
+
+</div>
+
+
+<div class="field">
+
+<label>
+Aadhaar Card <span class="required">*</span>
+</label>
+
+<input
+type="file"
+id="aadhaar"
+accept="image/*,.pdf"
+required
+>
+
+</div>
+
+
+<div class="field">
+
+<label>
+Student ID / Other ID Proof <span class="required">*</span>
+</label>
+
+<input
+type="file"
+id="idProof"
+accept="image/*,.pdf"
+required
+>
+
+</div>
+
+
+<div class="field">
+
+<label>
+Signature <span class="required">*</span>
+</label>
+
+<input
+type="file"
+id="signature"
+accept="image/*,.png,.jpg,.jpeg"
+required
+>
+
+<img
+id="signaturePreview"
+class="preview"
+>
+
+</div>
+
+
+<p class="note">
+कृपया स्पष्ट आणि वाचता येतील अशी कागदपत्रे अपलोड करा.
+</p>
+
+</div>
+
+
+<!-- SUBMIT -->
+
+<div class="submit-area">
+
+<button
+type="submit"
+class="submit-btn"
+>
+अर्ज सादर करा →
+</button>
+
+<a
+href="index.html"
+class="back-link"
+>
+← मुख्यपृष्ठावर परत जा
+</a>
+
+</div>
+
+
+</form>
+
+</div>
+
+</div>
+
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function(){
+
+
+/* =====================================================
+   GOOGLE APPS SCRIPT
+===================================================== */
+
+const WEB_APP_URL =
+"https://script.google.com/macros/s/AKfycbx7O5oM9ic59fuwmXimo5cCpm9YCrMYR2LccBgA71NfAZ_pqYJAX59b5CCxKZJ-pLQp/exec";
+
+
+const form =
+document.getElementById("membershipForm");
+
+
+const memberNumber =
+document.getElementById("memberNumber");
+
+
+const registrationDate =
+document.getElementById("registrationDate");
+
+
+const photo =
+document.getElementById("photo");
+
+
+const aadhaar =
+document.getElementById("aadhaar");
+
+
+const idProof =
+document.getElementById("idProof");
+
+
+const signature =
+document.getElementById("signature");
+
+
+const sameAddress =
+document.getElementById("sameAddress");
+
+
+const photoPreview =
+document.getElementById("photoPreview");
+
+
+const signaturePreview =
+document.getElementById("signaturePreview");
+
+
+/* DATE */
+
+function setRegistrationDate(){
+
+const d = new Date();
+
+registrationDate.value =
+d.getFullYear() +
+"-" +
+String(d.getMonth()+1).padStart(2,"0") +
+"-" +
+String(d.getDate()).padStart(2,"0");
+
+}
+
+
+/* TEMP MEMBER NUMBER */
+
+function generateMemberNumber(){
+
+const year =
+new Date().getFullYear();
+
+const random =
+Math.floor(
+10000 + Math.random()*90000
+);
+
+memberNumber.value =
+"TEMP-" + year + "-" + random;
+
+}
+
+
+setRegistrationDate();
+
+generateMemberNumber();
+
+
+/* PHOTO */
+
+photo.addEventListener(
+"change",
+function(){
+
+if(this.files[0]){
+
+photoPreview.src =
+URL.createObjectURL(this.files[0]);
+
+photoPreview.style.display =
+"block";
+
+}
+
+});
+
+
+/* SIGNATURE */
+
+signature.addEventListener(
+"change",
+function(){
+
+if(this.files[0]){
+
+signaturePreview.src =
+URL.createObjectURL(this.files[0]);
+
+signaturePreview.style.display =
+"block";
+
+}
+
+});
+
+
+/* SAME ADDRESS */
+
+sameAddress.addEventListener(
+"change",
+function(){
+
+const pairs = [
+
+[
+"correspondenceAddress1",
+"permanentAddress1"
+],
+
+[
+"correspondenceAddress2",
+"permanentAddress2"
+],
+
+[
+"correspondenceAddress3",
+"permanentAddress3"
+],
+
+[
+"correspondenceDistrict",
+"permanentDistrict"
+],
+
+[
+"correspondenceState",
+"permanentState"
+],
+
+[
+"correspondencePincode",
+"permanentPincode"
+]
+
+];
+
+
+pairs.forEach(function(pair){
+
+const source =
+document.getElementsByName(pair[0])[0];
+
+const target =
+document.getElementById(pair[1]);
+
+
+if(this.checked){
+
+target.value =
+source.value;
+
+}else{
+
+target.value =
+"";
+
+}
+
+},this);
+
+});
+
+
+
+/* FILE BASE64 */
+
+function fileToBase64(file){
+
+return new Promise(function(resolve,reject){
+
+if(!file){
+
+resolve("");
+
+return;
+
+}
+
+const reader =
+new FileReader();
+
+reader.onload =
+function(){
+
+resolve(reader.result);
+
+};
+
+reader.onerror =
+function(){
+
+reject(reader.error);
+
+};
+
+reader.readAsDataURL(file);
+
+});
+
+}
+
+
+/* SUBMIT */
+
+form.addEventListener(
+"submit",
+async function(e){
+
+e.preventDefault();
+
+
+const button =
+form.querySelector(".submit-btn");
+
+
+button.disabled =
+true;
+
+button.textContent =
+"अर्ज सादर होत आहे...";
+
+
+try{
+
+
+const photoData =
+await fileToBase64(photo.files[0]);
+
+
+const aadhaarData =
+await fileToBase64(aadhaar.files[0]);
+
+
+const idProofData =
+await fileToBase64(idProof.files[0]);
+
+
+const signatureData =
+await fileToBase64(signature.files[0]);
+
+
+const formData = {
+
+memberNumber:
+memberNumber.value,
+
+registrationDate:
+registrationDate.value,
+
+fullName:
+form.fullName.value,
+
+dateOfBirth:
+form.dateOfBirth.value,
+
+gender:
+form.gender.value,
+
+mobile:
+form.mobile.value,
+
+email:
+form.email.value,
+
+correspondenceAddress1:
+form.correspondenceAddress1.value,
+
+correspondenceAddress2:
+form.correspondenceAddress2.value,
+
+correspondenceAddress3:
+form.correspondenceAddress3.value,
+
+correspondenceDistrict:
+form.correspondenceDistrict.value,
+
+correspondenceState:
+form.correspondenceState.value,
+
+correspondencePincode:
+form.correspondencePincode.value,
+
+permanentAddress1:
+form.permanentAddress1.value,
+
+permanentAddress2:
+form.permanentAddress2.value,
+
+permanentAddress3:
+form.permanentAddress3.value,
+
+permanentDistrict:
+form.permanentDistrict.value,
+
+permanentState:
+form.permanentState.value,
+
+permanentPincode:
+form.permanentPincode.value,
+
+membershipType:
+form.membershipType.value,
+
+feeAmount:
+form.feeAmount.value,
+
+photo:
+photoData,
+
+aadhaar:
+aadhaarData,
+
+idProof:
+idProofData,
+
+signature:
+signatureData
+
+};
+
+
+/* HIDDEN IFRAME */
+
+let iframe =
+document.getElementById("submitFrame");
+
+
+if(!iframe){
+
+iframe =
+document.createElement("iframe");
+
+iframe.id =
+"submitFrame";
+
+iframe.name =
+"submitFrame";
+
+iframe.style.display =
+"none";
+
+document.body.appendChild(iframe);
+
+}
+
+
+/* POST FORM */
+
+const postForm =
+document.createElement("form");
+
+postForm.method =
+"POST";
+
+postForm.action =
+WEB_APP_URL;
+
+postForm.target =
+"submitFrame";
+
+postForm.style.display =
+"none";
+
+
+const input =
+document.createElement("input");
+
+input.type =
+"hidden";
+
+input.name =
+"data";
+
+input.value =
+JSON.stringify(formData);
+
+
+postForm.appendChild(input);
+
+document.body.appendChild(postForm);
+
+
+postForm.submit();
+
+
+/* SUCCESS */
+
+setTimeout(function(){
+
+alert(
+"अर्ज यशस्वीपणे सादर झाला!\n\n"+
+"आपली माहिती Google Sheet मध्ये पाठवली आहे.\n"+
+"कागदपत्रे Google Drive मध्ये जतन केली आहेत."
+);
+
+
+form.reset();
+
+setRegistrationDate();
+
+generateMemberNumber();
+
+photoPreview.style.display =
+"none";
+
+signaturePreview.style.display =
+"none";
+
+button.disabled =
+false;
+
+button.textContent =
+"अर्ज सादर करा →";
+
+postForm.remove();
+
+},7000);
+
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"अर्ज सादर करताना समस्या आली.\n\n"+
+error.message
+);
+
+button.disabled =
+false;
+
+button.textContent =
+"अर्ज सादर करा →";
+
+}
+
+});
+
+});
+
+</script>
+
+
+</body>
+
+</html>
+```
