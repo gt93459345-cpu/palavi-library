@@ -19,17 +19,16 @@ body{
   font-family:Arial,"Noto Sans Devanagari",sans-serif;
   background:linear-gradient(135deg,#f4f7fb,#eef2ff);
   min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
   padding:20px;
+  color:#111827;
 }
 
 .login-box{
   width:100%;
-  max-width:430px;
+  max-width:850px;
+  margin:40px auto;
   background:white;
-  padding:35px;
+  padding:30px;
   border-radius:20px;
   box-shadow:0 15px 45px rgba(0,0,0,.12);
 }
@@ -37,20 +36,23 @@ body{
 .logo{
   text-align:center;
   font-size:48px;
-  margin-bottom:5px;
 }
 
 h1{
   text-align:center;
   margin:5px 0;
-  font-size:26px;
-  color:#111827;
+  font-size:27px;
 }
 
 .subtitle{
   text-align:center;
   color:#6b7280;
-  margin-bottom:28px;
+  margin-bottom:25px;
+}
+
+.login-form{
+  max-width:430px;
+  margin:auto;
 }
 
 label{
@@ -60,24 +62,35 @@ label{
   color:#374151;
 }
 
-input{
+input,
+select,
+textarea{
   width:100%;
-  padding:14px;
+  padding:13px;
   border:1px solid #d7dce2;
   border-radius:10px;
   font-size:15px;
+  font-family:inherit;
   outline:none;
 }
 
-input:focus{
+textarea{
+  min-height:90px;
+  resize:vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
   border-color:#2563eb;
   box-shadow:0 0 0 3px rgba(37,99,235,.10);
 }
 
-.login-btn{
+.login-btn,
+.action-btn{
   width:100%;
-  margin-top:24px;
-  padding:14px;
+  margin-top:20px;
+  padding:13px;
   border:0;
   border-radius:10px;
   background:#2563eb;
@@ -87,7 +100,8 @@ input:focus{
   cursor:pointer;
 }
 
-.login-btn:hover{
+.login-btn:hover,
+.action-btn:hover{
   background:#1d4ed8;
 }
 
@@ -119,24 +133,122 @@ input:focus{
   display:none;
 }
 
+.profile-header{
+  text-align:center;
+  padding-bottom:25px;
+  border-bottom:1px solid #e5e7eb;
+}
+
+.profile-photo{
+  width:110px;
+  height:110px;
+  border-radius:50%;
+  object-fit:cover;
+  border:4px solid #e5e7eb;
+  display:none;
+  margin:0 auto 12px;
+}
+
+.profile-placeholder{
+  width:110px;
+  height:110px;
+  border-radius:50%;
+  background:#eef2ff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:48px;
+  margin:0 auto 12px;
+}
+
+.member-id{
+  display:inline-block;
+  background:#eef2ff;
+  color:#1d4ed8;
+  padding:7px 14px;
+  border-radius:20px;
+  font-weight:bold;
+  margin-top:8px;
+}
+
+.profile-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+  margin-top:25px;
+}
+
 .info{
   background:#f8fafc;
   padding:15px;
   border-radius:10px;
-  margin-top:15px;
   border:1px solid #e5e7eb;
+}
+
+.info.full{
+  grid-column:1/-1;
 }
 
 .info b{
   display:block;
   color:#374151;
   margin-bottom:5px;
+  font-size:13px;
+}
+
+.info-value{
+  word-break:break-word;
+}
+
+.status{
+  display:inline-block;
+  padding:5px 10px;
+  border-radius:15px;
+  background:#dcfce7;
+  color:#166534;
+  font-weight:bold;
+}
+
+.actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-top:25px;
+}
+
+.action{
+  padding:13px;
+  border:0;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:bold;
+  font-size:14px;
+  background:#111827;
+  color:white;
+  text-decoration:none;
+  text-align:center;
+}
+
+.action.edit{
+  background:#2563eb;
+}
+
+.action.password{
+  background:#7c3aed;
+}
+
+.action.pdf{
+  background:#059669;
+}
+
+.action.card{
+  background:#d97706;
 }
 
 .logout{
   width:100%;
   margin-top:20px;
-  padding:12px;
+  padding:13px;
   border:0;
   border-radius:9px;
   background:#444;
@@ -158,6 +270,73 @@ input:focus{
   font-size:14px;
 }
 
+.modal{
+  display:none;
+  position:fixed;
+  z-index:2000;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,.55);
+  padding:20px;
+  overflow:auto;
+}
+
+.modal-box{
+  max-width:650px;
+  margin:40px auto;
+  background:white;
+  padding:25px;
+  border-radius:18px;
+}
+
+.modal-box h2{
+  margin-top:0;
+}
+
+.close-btn{
+  float:right;
+  border:0;
+  background:#eee;
+  width:35px;
+  height:35px;
+  border-radius:50%;
+  cursor:pointer;
+  font-size:18px;
+}
+
+.cancel-btn{
+  width:100%;
+  margin-top:10px;
+  padding:12px;
+  border:1px solid #d1d5db;
+  background:white;
+  border-radius:9px;
+  cursor:pointer;
+}
+
+@media(max-width:650px){
+
+  .login-box{
+    margin:10px auto;
+    padding:20px;
+  }
+
+  .profile-grid{
+    grid-template-columns:1fr;
+  }
+
+  .info.full{
+    grid-column:auto;
+  }
+
+  .actions{
+    grid-template-columns:1fr;
+  }
+
+}
+
 </style>
 
 </head>
@@ -168,9 +347,9 @@ input:focus{
 <div class="login-box">
 
 
-<!-- =========================
-     LOGIN SECTION
-========================= -->
+<!-- =====================================================
+     LOGIN
+===================================================== -->
 
 <div id="loginSection">
 
@@ -182,119 +361,252 @@ input:focus{
     सभासद Login
   </div>
 
+  <div class="login-form">
 
-  <label>
-    Member ID
-  </label>
+    <label>
+      Member ID
+    </label>
 
-  <input
-    type="text"
-    id="loginId"
-    placeholder="उदा. LIB-2026-00001"
-    autocomplete="username"
-  >
+    <input
+      type="text"
+      id="loginId"
+      placeholder="उदा. LIB-2026-00001"
+      autocomplete="username"
+    >
 
+    <label>
+      Password
+    </label>
 
-  <label>
-    Password
-  </label>
+    <input
+      type="password"
+      id="password"
+      placeholder="तुमचा Password"
+      autocomplete="current-password"
+    >
 
-  <input
-    type="password"
-    id="password"
-    placeholder="तुमचा Password"
-    autocomplete="current-password"
-  >
+    <button
+      class="login-btn"
+      id="loginButton"
+      onclick="loginMember()"
+    >
+      Login
+    </button>
 
+    <div
+      id="message"
+      class="message"
+    ></div>
 
-  <button
-    class="login-btn"
-    id="loginButton"
-    onclick="loginMember()"
-  >
-    Login
-  </button>
+    <a
+      href="index.html"
+      class="back-btn"
+    >
+      ← मुख्यपृष्ठावर जा
+    </a>
 
-
-  <div
-    id="message"
-    class="message"
-  ></div>
-
-
-  <a
-    href="index.html"
-    class="back-btn"
-  >
-    ← मुख्यपृष्ठावर जा
-  </a>
+  </div>
 
 </div>
 
 
 
-<!-- =========================
-     MEMBER DASHBOARD
-========================= -->
+<!-- =====================================================
+     DASHBOARD
+===================================================== -->
 
 <div
   id="dashboard"
   class="dashboard"
 >
 
-  <div class="logo">📚</div>
+  <div class="profile-header">
 
-  <h1>
-    स्वागत आहे!
-  </h1>
+    <div
+      id="profilePlaceholder"
+      class="profile-placeholder"
+    >
+      👤
+    </div>
 
-  <div
-    id="memberName"
-    class="subtitle"
-  ></div>
+    <img
+      id="profilePhoto"
+      class="profile-photo"
+      alt="Member Photo"
+    >
 
+    <h1 id="memberName">
+      स्वागत आहे!
+    </h1>
 
-  <div class="info">
-
-    <b>सभासद क्रमांक</b>
-
-    <div id="memberId"></div>
-
-  </div>
-
-
-  <div class="info">
-
-    <b>मोबाईल क्रमांक</b>
-
-    <div id="mobile"></div>
+    <div
+      id="memberId"
+      class="member-id"
+    ></div>
 
   </div>
 
 
-  <div class="info">
+  <div class="profile-grid">
 
-    <b>ई-मेल</b>
 
-    <div id="email"></div>
+    <div class="info">
+
+      <b>नोंदणी दिनांक</b>
+
+      <div
+        id="registrationDate"
+        class="info-value"
+      ></div>
+
+    </div>
+
+
+    <div class="info">
+
+      <b>जन्मतारीख</b>
+
+      <div
+        id="dateOfBirth"
+        class="info-value"
+      ></div>
+
+    </div>
+
+
+    <div class="info">
+
+      <b>लिंग</b>
+
+      <div
+        id="gender"
+        class="info-value"
+      ></div>
+
+    </div>
+
+
+    <div class="info">
+
+      <b>मोबाईल क्रमांक</b>
+
+      <div
+        id="mobile"
+        class="info-value"
+      ></div>
+
+    </div>
+
+
+    <div class="info">
+
+      <b>ई-मेल</b>
+
+      <div
+        id="email"
+        class="info-value"
+      ></div>
+
+    </div>
+
+
+    <div class="info">
+
+      <b>सदस्यत्व प्रकार</b>
+
+      <div
+        id="membershipType"
+        class="info-value"
+      ></div>
+
+    </div>
+
+
+    <div class="info full">
+
+      <b>पत्रव्यवहाराचा पत्ता</b>
+
+      <div
+        id="correspondenceAddress"
+        class="info-value"
+      ></div>
+
+    </div>
+
+
+    <div class="info full">
+
+      <b>कायमचा पत्ता</b>
+
+      <div
+        id="permanentAddress"
+        class="info-value"
+      ></div>
+
+    </div>
+
+
+    <div class="info">
+
+      <b>Membership Status</b>
+
+      <div
+        id="membershipStatus"
+        class="status"
+      ></div>
+
+    </div>
+
+
+    <div class="info">
+
+      <b>Account Status</b>
+
+      <div
+        id="accountStatus"
+        class="status"
+      ></div>
+
+    </div>
+
 
   </div>
 
 
-  <div class="info">
+  <!-- ACTION BUTTONS -->
 
-    <b>अर्जाची स्थिती</b>
+  <div class="actions">
 
-    <div id="applicationStatus"></div>
+    <button
+      class="action edit"
+      onclick="openEditProfile()"
+    >
+      ✏️ Edit Profile
+    </button>
 
-  </div>
+
+    <button
+      class="action password"
+      onclick="openChangePassword()"
+    >
+      🔑 Change Password
+    </button>
 
 
-  <div class="info">
+    <button
+      class="action pdf"
+      onclick="downloadMembershipPDF()"
+    >
+      📄 Membership PDF
+    </button>
 
-    <b>Account Status</b>
 
-    <div id="accountStatus"></div>
+    <button
+      class="action card"
+      onclick="downloadLibraryCard()"
+    >
+      🪪 Library Card
+    </button>
 
   </div>
 
@@ -303,7 +615,7 @@ input:focus{
     class="logout"
     onclick="logout()"
   >
-    Logout
+    🚪 Logout
   </button>
 
 </div>
@@ -312,21 +624,229 @@ input:focus{
 
 
 
+<!-- =====================================================
+     EDIT PROFILE MODAL
+===================================================== -->
+
+<div
+  id="editModal"
+  class="modal"
+>
+
+  <div class="modal-box">
+
+    <button
+      class="close-btn"
+      onclick="closeModal('editModal')"
+    >
+      ×
+    </button>
+
+    <h2>
+      ✏️ Profile Edit करा
+    </h2>
+
+    <label>संपूर्ण नाव</label>
+
+    <input
+      id="editName"
+      type="text"
+    >
+
+
+    <label>जन्मतारीख</label>
+
+    <input
+      id="editDob"
+      type="date"
+    >
+
+
+    <label>लिंग</label>
+
+    <select id="editGender">
+
+      <option value="पुरुष">पुरुष</option>
+      <option value="महिला">महिला</option>
+      <option value="इतर">इतर</option>
+
+    </select>
+
+
+    <label>मोबाईल क्रमांक</label>
+
+    <input
+      id="editMobile"
+      type="tel"
+      maxlength="10"
+    >
+
+
+    <label>ई-मेल</label>
+
+    <input
+      id="editEmail"
+      type="email"
+    >
+
+
+    <label>पत्रव्यवहाराचा पत्ता</label>
+
+    <textarea
+      id="editCorrespondence"
+    ></textarea>
+
+
+    <label>कायमचा पत्ता</label>
+
+    <textarea
+      id="editPermanent"
+    ></textarea>
+
+
+    <label>सदस्यत्व प्रकार</label>
+
+    <select id="editMembership">
+
+      <option value="विद्यार्थी">
+        विद्यार्थी
+      </option>
+
+      <option value="सर्वसाधारण">
+        सर्वसाधारण
+      </option>
+
+      <option value="ज्येष्ठ नागरिक">
+        ज्येष्ठ नागरिक
+      </option>
+
+    </select>
+
+
+    <button
+      class="action-btn"
+      onclick="saveProfile()"
+    >
+      Save Profile
+    </button>
+
+    <button
+      class="cancel-btn"
+      onclick="closeModal('editModal')"
+    >
+      Cancel
+    </button>
+
+    <div
+      id="editMessage"
+      class="message"
+    ></div>
+
+  </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     CHANGE PASSWORD MODAL
+===================================================== -->
+
+<div
+  id="passwordModal"
+  class="modal"
+>
+
+  <div class="modal-box">
+
+    <button
+      class="close-btn"
+      onclick="closeModal('passwordModal')"
+    >
+      ×
+    </button>
+
+    <h2>
+      🔑 Password बदला
+    </h2>
+
+
+    <label>
+      जुना Password
+    </label>
+
+    <input
+      id="oldPassword"
+      type="password"
+    >
+
+
+    <label>
+      नवीन Password
+    </label>
+
+    <input
+      id="newPassword"
+      type="password"
+    >
+
+
+    <label>
+      नवीन Password पुन्हा टाका
+    </label>
+
+    <input
+      id="confirmPassword"
+      type="password"
+    >
+
+
+    <button
+      class="action-btn"
+      onclick="changePassword()"
+    >
+      Password Change करा
+    </button>
+
+
+    <button
+      class="cancel-btn"
+      onclick="closeModal('passwordModal')"
+    >
+      Cancel
+    </button>
+
+
+    <div
+      id="passwordMessage"
+      class="message"
+    ></div>
+
+  </div>
+
+</div>
+
+
+
 <script>
 
 
-/* =========================
+/* =====================================================
    GOOGLE APPS SCRIPT URL
-========================= */
+===================================================== */
 
 const WEB_APP_URL =
 "https://script.google.com/macros/s/AKfycbx7O5oM9ic59fuwmXimo5cCpm9YCrMYR2LccBgA71NfAZ_pqYJAX59b5CCxKZJ-pLQp/exec";
 
 
+let currentMemberId = "";
 
-/* =========================
-   MEMBER LOGIN
-========================= */
+let currentProfile = null;
+
+
+/* =====================================================
+   LOGIN
+===================================================== */
 
 function loginMember(){
 
@@ -351,10 +871,9 @@ function loginMember(){
     document.getElementById("loginButton");
 
 
-  message.style.display = "none";
+  message.style.display =
+    "none";
 
-
-  /* Check empty fields */
 
   if(!loginId || !password){
 
@@ -368,16 +887,11 @@ function loginMember(){
   }
 
 
-  /* Disable button */
-
   button.disabled = true;
 
-  button.innerText = "Checking...";
+  button.innerText =
+    "Checking...";
 
-
-  /* =========================
-     SEND LOGIN REQUEST
-  ========================= */
 
   fetch(
     WEB_APP_URL,
@@ -404,17 +918,20 @@ function loginMember(){
 
   })
 
-
   .then(function(result){
 
     button.disabled = false;
 
-    button.innerText = "Login";
+    button.innerText =
+      "Login";
 
 
     if(result.success){
 
-      showDashboard(result);
+      currentMemberId =
+        result.memberId;
+
+      loadProfile();
 
     }
 
@@ -430,12 +947,12 @@ function loginMember(){
 
   })
 
-
   .catch(function(error){
 
     button.disabled = false;
 
-    button.innerText = "Login";
+    button.innerText =
+      "Login";
 
 
     showMessage(
@@ -451,74 +968,651 @@ function loginMember(){
 }
 
 
+/* =====================================================
+   LOAD PROFILE
+===================================================== */
 
-/* =========================
-   SHOW DASHBOARD
-========================= */
+function loadProfile(){
 
-function showDashboard(data){
+  fetch(
+    WEB_APP_URL,
+    {
 
+      method:"POST",
 
-  document
-    .getElementById("loginSection")
-    .style.display = "none";
+      body:new URLSearchParams({
 
+        action:"getProfile",
 
-  document
-    .getElementById("dashboard")
-    .style.display = "block";
+        memberId:
+          currentMemberId
 
+      })
 
-  document
-    .getElementById("memberName")
-    .innerText =
-    data.name || "";
+    }
+  )
 
+  .then(function(response){
 
-  document
-    .getElementById("memberId")
-    .innerText =
-    data.memberId || "";
+    return response.json();
 
+  })
 
-  document
-    .getElementById("mobile")
-    .innerText =
-    data.mobile || "";
+  .then(function(result){
 
+    if(!result.success){
 
-  document
-    .getElementById("email")
-    .innerText =
-    data.email || "";
+      showMessage(
+        result.message ||
+        "Profile मिळाली नाही.",
+        "error"
+      );
 
+      return;
 
-  document
-    .getElementById("applicationStatus")
-    .innerText =
-    data.applicationStatus || "";
+    }
 
 
-  document
-    .getElementById("accountStatus")
-    .innerText =
-    data.accountStatus || "";
+    currentProfile =
+      result.profile;
+
+
+    showDashboard(
+      currentProfile
+    );
+
+  })
+
+  .catch(function(error){
+
+    showMessage(
+      "Profile load करताना समस्या आली.",
+      "error"
+    );
+
+    console.error(error);
+
+  });
 
 }
 
 
+/* =====================================================
+   SHOW DASHBOARD
+===================================================== */
 
-/* =========================
-   SHOW MESSAGE
-========================= */
+function showDashboard(data){
+
+  document
+    .getElementById("loginSection")
+    .style.display =
+    "none";
+
+
+  document
+    .getElementById("dashboard")
+    .style.display =
+    "block";
+
+
+  setText(
+    "memberName",
+    data.name
+  );
+
+
+  setText(
+    "memberId",
+    data.memberId
+  );
+
+
+  setText(
+    "registrationDate",
+    data.registrationDate
+  );
+
+
+  setText(
+    "dateOfBirth",
+    data.dateOfBirth
+  );
+
+
+  setText(
+    "gender",
+    data.gender
+  );
+
+
+  setText(
+    "mobile",
+    data.mobile
+  );
+
+
+  setText(
+    "email",
+    data.email
+  );
+
+
+  setText(
+    "membershipType",
+    data.membershipType
+  );
+
+
+  setText(
+    "correspondenceAddress",
+    data.correspondenceAddress
+  );
+
+
+  setText(
+    "permanentAddress",
+    data.permanentAddress
+  );
+
+
+  setText(
+    "membershipStatus",
+    data.membershipStatus ||
+    "Pending"
+  );
+
+
+  setText(
+    "accountStatus",
+    data.accountStatus ||
+    "Active"
+  );
+
+
+  const photo =
+    document.getElementById(
+      "profilePhoto"
+    );
+
+
+  const placeholder =
+    document.getElementById(
+      "profilePlaceholder"
+    );
+
+
+  if(data.photo){
+
+    photo.src =
+      data.photo;
+
+    photo.style.display =
+      "block";
+
+    placeholder.style.display =
+      "none";
+
+  }
+
+}
+
+
+/* =====================================================
+   EDIT PROFILE
+===================================================== */
+
+function openEditProfile(){
+
+  if(!currentProfile){
+    return;
+  }
+
+
+  document.getElementById(
+    "editName"
+  ).value =
+    currentProfile.name || "";
+
+
+  document.getElementById(
+    "editDob"
+  ).value =
+    currentProfile.dateOfBirth || "";
+
+
+  document.getElementById(
+    "editGender"
+  ).value =
+    currentProfile.gender || "";
+
+
+  document.getElementById(
+    "editMobile"
+  ).value =
+    currentProfile.mobile || "";
+
+
+  document.getElementById(
+    "editEmail"
+  ).value =
+    currentProfile.email || "";
+
+
+  document.getElementById(
+    "editCorrespondence"
+  ).value =
+    currentProfile.correspondenceAddress || "";
+
+
+  document.getElementById(
+    "editPermanent"
+  ).value =
+    currentProfile.permanentAddress || "";
+
+
+  document.getElementById(
+    "editMembership"
+  ).value =
+    currentProfile.membershipType || "";
+
+
+  document.getElementById(
+    "editModal"
+  ).style.display =
+    "block";
+
+}
+
+
+/* =====================================================
+   SAVE PROFILE
+===================================================== */
+
+function saveProfile(){
+
+  const data = {
+
+    action:"updateProfile",
+
+    memberId:
+      currentMemberId,
+
+    fullName:
+      document.getElementById(
+        "editName"
+      ).value,
+
+    dateOfBirth:
+      document.getElementById(
+        "editDob"
+      ).value,
+
+    gender:
+      document.getElementById(
+        "editGender"
+      ).value,
+
+    mobile:
+      document.getElementById(
+        "editMobile"
+      ).value,
+
+    email:
+      document.getElementById(
+        "editEmail"
+      ).value,
+
+    correspondenceAddress:
+      document.getElementById(
+        "editCorrespondence"
+      ).value,
+
+    permanentAddress:
+      document.getElementById(
+        "editPermanent"
+      ).value,
+
+    membershipType:
+      document.getElementById(
+        "editMembership"
+      ).value
+
+  };
+
+
+  fetch(
+    WEB_APP_URL,
+    {
+
+      method:"POST",
+
+      body:new URLSearchParams(data)
+
+    }
+
+  )
+
+  .then(function(response){
+
+    return response.json();
+
+  })
+
+  .then(function(result){
+
+    const box =
+      document.getElementById(
+        "editMessage"
+      );
+
+
+    if(result.success){
+
+      box.innerText =
+        result.message;
+
+      box.className =
+        "message success";
+
+      box.style.display =
+        "block";
+
+
+      setTimeout(function(){
+
+        closeModal(
+          "editModal"
+        );
+
+        loadProfile();
+
+      },1000);
+
+    }
+
+    else{
+
+      box.innerText =
+        result.message;
+
+      box.className =
+        "message error";
+
+      box.style.display =
+        "block";
+
+    }
+
+  })
+
+  .catch(function(error){
+
+    console.error(error);
+
+  });
+
+}
+
+
+/* =====================================================
+   CHANGE PASSWORD
+===================================================== */
+
+function openChangePassword(){
+
+  document.getElementById(
+    "oldPassword"
+  ).value = "";
+
+
+  document.getElementById(
+    "newPassword"
+  ).value = "";
+
+
+  document.getElementById(
+    "confirmPassword"
+  ).value = "";
+
+
+  document.getElementById(
+    "passwordMessage"
+  ).style.display =
+    "none";
+
+
+  document.getElementById(
+    "passwordModal"
+  ).style.display =
+    "block";
+
+}
+
+
+function changePassword(){
+
+  const oldPassword =
+    document.getElementById(
+      "oldPassword"
+    ).value;
+
+
+  const newPassword =
+    document.getElementById(
+      "newPassword"
+    ).value;
+
+
+  const confirmPassword =
+    document.getElementById(
+      "confirmPassword"
+    ).value;
+
+
+  const message =
+    document.getElementById(
+      "passwordMessage"
+    );
+
+
+  if(!oldPassword ||
+     !newPassword ||
+     !confirmPassword){
+
+    showModalMessage(
+      message,
+      "सर्व Password fields भरा.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  if(newPassword.length < 6){
+
+    showModalMessage(
+      message,
+      "नवीन Password किमान 6 characters असावा.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  if(newPassword !== confirmPassword){
+
+    showModalMessage(
+      message,
+      "दोन्ही नवीन Password समान नाहीत.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  fetch(
+    WEB_APP_URL,
+    {
+
+      method:"POST",
+
+      body:new URLSearchParams({
+
+        action:"changePassword",
+
+        memberId:
+          currentMemberId,
+
+        oldPassword:
+          oldPassword,
+
+        newPassword:
+          newPassword
+
+      })
+
+    }
+  )
+
+  .then(function(response){
+
+    return response.json();
+
+  })
+
+  .then(function(result){
+
+    if(result.success){
+
+      showModalMessage(
+        message,
+        result.message,
+        "success"
+      );
+
+
+      setTimeout(function(){
+
+        closeModal(
+          "passwordModal"
+        );
+
+      },1200);
+
+    }
+
+    else{
+
+      showModalMessage(
+        message,
+        result.message,
+        "error"
+      );
+
+    }
+
+  })
+
+  .catch(function(error){
+
+    console.error(error);
+
+    showModalMessage(
+      message,
+      "Server connection error.",
+      "error"
+    );
+
+  });
+
+}
+
+
+/* =====================================================
+   PDF
+===================================================== */
+
+function downloadMembershipPDF(){
+
+  if(
+    currentProfile &&
+    currentProfile.membershipPdf
+  ){
+
+    window.open(
+      currentProfile.membershipPdf,
+      "_blank"
+    );
+
+    return;
+
+  }
+
+
+  alert(
+    "Membership PDF अजून तयार केलेली नाही.\n\nपुढील setup मध्ये PDF तयार होईल."
+  );
+
+}
+
+
+/* =====================================================
+   LIBRARY CARD
+===================================================== */
+
+function downloadLibraryCard(){
+
+  if(
+    currentProfile &&
+    currentProfile.libraryCard
+  ){
+
+    window.open(
+      currentProfile.libraryCard,
+      "_blank"
+    );
+
+    return;
+
+  }
+
+
+  alert(
+    "Library Card अजून तयार केलेले नाही.\n\nपुढील setup मध्ये Library Card तयार होईल."
+  );
+
+}
+
+
+/* =====================================================
+   HELPERS
+===================================================== */
+
+function setText(id,value){
+
+  document.getElementById(id)
+    .innerText =
+    value || "-";
+
+}
+
 
 function showMessage(text,type){
 
   const message =
-    document.getElementById("message");
+    document.getElementById(
+      "message"
+    );
 
 
-  message.innerText = text;
+  message.innerText =
+    text;
 
 
   message.className =
@@ -531,41 +1625,76 @@ function showMessage(text,type){
 }
 
 
+function showModalMessage(
+  element,
+  text,
+  type
+){
 
-/* =========================
-   LOGOUT
-========================= */
+  element.innerText =
+    text;
 
-function logout(){
+  element.className =
+    "message " + type;
 
-  document
-    .getElementById("dashboard")
-    .style.display =
-    "none";
-
-
-  document
-    .getElementById("loginSection")
-    .style.display =
+  element.style.display =
     "block";
 
-
-  document
-    .getElementById("password")
-    .value =
-    "";
+}
 
 
-  document
-    .getElementById("message")
+function closeModal(id){
+
+  document.getElementById(id)
     .style.display =
     "none";
 
 }
 
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+function logout(){
+
+  currentMemberId = "";
+
+  currentProfile = null;
+
+
+  document.getElementById(
+    "dashboard"
+  ).style.display =
+    "none";
+
+
+  document.getElementById(
+    "loginSection"
+  ).style.display =
+    "block";
+
+
+  document.getElementById(
+    "password"
+  ).value =
+    "";
+
+
+  document.getElementById(
+    "message"
+  ).style.display =
+    "none";
+
+
+  document.getElementById(
+    "loginId"
+  ).value =
+    "";
+
+}
+
 </script>
 
-
 </body>
-
 </html>
