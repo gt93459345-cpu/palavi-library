@@ -343,7 +343,6 @@ textarea:focus{
 
 <body>
 
-
 <div class="login-box">
 
 
@@ -363,9 +362,7 @@ textarea:focus{
 
   <div class="login-form">
 
-    <label>
-      Member ID
-    </label>
+    <label>Member ID</label>
 
     <input
       type="text"
@@ -374,9 +371,7 @@ textarea:focus{
       autocomplete="username"
     >
 
-    <label>
-      Password
-    </label>
+    <label>Password</label>
 
     <input
       type="password"
@@ -410,15 +405,11 @@ textarea:focus{
 </div>
 
 
-
 <!-- =====================================================
      DASHBOARD
 ===================================================== -->
 
-<div
-  id="dashboard"
-  class="dashboard"
->
+<div id="dashboard" class="dashboard">
 
   <div class="profile-header">
 
@@ -449,131 +440,58 @@ textarea:focus{
 
   <div class="profile-grid">
 
-
     <div class="info">
-
       <b>नोंदणी दिनांक</b>
-
-      <div
-        id="registrationDate"
-        class="info-value"
-      ></div>
-
+      <div id="registrationDate" class="info-value"></div>
     </div>
 
-
     <div class="info">
-
       <b>जन्मतारीख</b>
-
-      <div
-        id="dateOfBirth"
-        class="info-value"
-      ></div>
-
+      <div id="dateOfBirth" class="info-value"></div>
     </div>
 
-
     <div class="info">
-
       <b>लिंग</b>
-
-      <div
-        id="gender"
-        class="info-value"
-      ></div>
-
+      <div id="gender" class="info-value"></div>
     </div>
 
-
     <div class="info">
-
       <b>मोबाईल क्रमांक</b>
-
-      <div
-        id="mobile"
-        class="info-value"
-      ></div>
-
+      <div id="mobile" class="info-value"></div>
     </div>
 
-
     <div class="info">
-
       <b>ई-मेल</b>
-
-      <div
-        id="email"
-        class="info-value"
-      ></div>
-
+      <div id="email" class="info-value"></div>
     </div>
 
-
     <div class="info">
-
       <b>सदस्यत्व प्रकार</b>
-
-      <div
-        id="membershipType"
-        class="info-value"
-      ></div>
-
+      <div id="membershipType" class="info-value"></div>
     </div>
 
-
     <div class="info full">
-
       <b>पत्रव्यवहाराचा पत्ता</b>
-
-      <div
-        id="correspondenceAddress"
-        class="info-value"
-      ></div>
-
+      <div id="correspondenceAddress" class="info-value"></div>
     </div>
-
 
     <div class="info full">
-
       <b>कायमचा पत्ता</b>
-
-      <div
-        id="permanentAddress"
-        class="info-value"
-      ></div>
-
+      <div id="permanentAddress" class="info-value"></div>
     </div>
 
-
     <div class="info">
-
-      <b>Membership Status</b>
-
-      <div
-        id="membershipStatus"
-        class="status"
-      ></div>
-
+      <b>Application Status</b>
+      <div id="membershipStatus" class="status"></div>
     </div>
 
-
     <div class="info">
-
       <b>Account Status</b>
-
-      <div
-        id="accountStatus"
-        class="status"
-      ></div>
-
+      <div id="accountStatus" class="status"></div>
     </div>
-
 
   </div>
 
-
-  <!-- ACTION BUTTONS -->
 
   <div class="actions">
 
@@ -584,7 +502,6 @@ textarea:focus{
       ✏️ Edit Profile
     </button>
 
-
     <button
       class="action password"
       onclick="openChangePassword()"
@@ -592,14 +509,12 @@ textarea:focus{
       🔑 Change Password
     </button>
 
-
     <button
       class="action pdf"
       onclick="downloadMembershipPDF()"
     >
       📄 Membership PDF
     </button>
-
 
     <button
       class="action card"
@@ -623,15 +538,11 @@ textarea:focus{
 </div>
 
 
-
 <!-- =====================================================
-     EDIT PROFILE MODAL
+     EDIT PROFILE
 ===================================================== -->
 
-<div
-  id="editModal"
-  class="modal"
->
+<div id="editModal" class="modal">
 
   <div class="modal-box">
 
@@ -642,9 +553,7 @@ textarea:focus{
       ×
     </button>
 
-    <h2>
-      ✏️ Profile Edit करा
-    </h2>
+    <h2>✏️ Profile Edit करा</h2>
 
     <label>संपूर्ण नाव</label>
 
@@ -653,7 +562,6 @@ textarea:focus{
       type="text"
     >
 
-
     <label>जन्मतारीख</label>
 
     <input
@@ -661,17 +569,13 @@ textarea:focus{
       type="date"
     >
 
-
     <label>लिंग</label>
 
     <select id="editGender">
-
       <option value="पुरुष">पुरुष</option>
       <option value="महिला">महिला</option>
       <option value="इतर">इतर</option>
-
     </select>
-
 
     <label>मोबाईल क्रमांक</label>
 
@@ -681,7 +585,6 @@ textarea:focus{
       maxlength="10"
     >
 
-
     <label>ई-मेल</label>
 
     <input
@@ -689,20 +592,13 @@ textarea:focus{
       type="email"
     >
 
-
     <label>पत्रव्यवहाराचा पत्ता</label>
 
-    <textarea
-      id="editCorrespondence"
-    ></textarea>
-
+    <textarea id="editCorrespondence"></textarea>
 
     <label>कायमचा पत्ता</label>
 
-    <textarea
-      id="editPermanent"
-    ></textarea>
-
+    <textarea id="editPermanent"></textarea>
 
     <label>सदस्यत्व प्रकार</label>
 
@@ -721,7 +617,6 @@ textarea:focus{
       </option>
 
     </select>
-
 
     <button
       class="action-btn"
@@ -747,15 +642,11 @@ textarea:focus{
 </div>
 
 
-
 <!-- =====================================================
-     CHANGE PASSWORD MODAL
+     CHANGE PASSWORD
 ===================================================== -->
 
-<div
-  id="passwordModal"
-  class="modal"
->
+<div id="passwordModal" class="modal">
 
   <div class="modal-box">
 
@@ -766,40 +657,28 @@ textarea:focus{
       ×
     </button>
 
-    <h2>
-      🔑 Password बदला
-    </h2>
+    <h2>🔑 Password बदला</h2>
 
-
-    <label>
-      जुना Password
-    </label>
+    <label>जुना Password</label>
 
     <input
       id="oldPassword"
       type="password"
     >
 
-
-    <label>
-      नवीन Password
-    </label>
+    <label>नवीन Password</label>
 
     <input
       id="newPassword"
       type="password"
     >
 
-
-    <label>
-      नवीन Password पुन्हा टाका
-    </label>
+    <label>नवीन Password पुन्हा टाका</label>
 
     <input
       id="confirmPassword"
       type="password"
     >
-
 
     <button
       class="action-btn"
@@ -808,14 +687,12 @@ textarea:focus{
       Password Change करा
     </button>
 
-
     <button
       class="cancel-btn"
       onclick="closeModal('passwordModal')"
     >
       Cancel
     </button>
-
 
     <div
       id="passwordMessage"
@@ -827,9 +704,7 @@ textarea:focus{
 </div>
 
 
-
 <script>
-
 
 /* =====================================================
    GOOGLE APPS SCRIPT URL
@@ -840,7 +715,6 @@ const WEB_APP_URL =
 
 
 let currentMemberId = "";
-
 let currentProfile = null;
 
 
@@ -851,28 +725,19 @@ let currentProfile = null;
 function loginMember(){
 
   const loginId =
-    document
-      .getElementById("loginId")
-      .value
-      .trim();
-
+    document.getElementById("loginId").value.trim();
 
   const password =
-    document
-      .getElementById("password")
-      .value;
-
+    document.getElementById("password").value;
 
   const message =
     document.getElementById("message");
-
 
   const button =
     document.getElementById("loginButton");
 
 
-  message.style.display =
-    "none";
+  message.style.display = "none";
 
 
   if(!loginId || !password){
@@ -883,20 +748,16 @@ function loginMember(){
     );
 
     return;
-
   }
 
 
   button.disabled = true;
-
-  button.innerText =
-    "Checking...";
+  button.innerText = "Checking...";
 
 
   fetch(
     WEB_APP_URL,
     {
-
       method:"POST",
 
       body:new URLSearchParams({
@@ -908,11 +769,16 @@ function loginMember(){
         password:password
 
       })
-
     }
   )
 
   .then(function(response){
+
+    if(!response.ok){
+      throw new Error(
+        "HTTP Error " + response.status
+      );
+    }
 
     return response.json();
 
@@ -921,9 +787,7 @@ function loginMember(){
   .then(function(result){
 
     button.disabled = false;
-
-    button.innerText =
-      "Login";
+    button.innerText = "Login";
 
 
     if(result.success){
@@ -931,10 +795,17 @@ function loginMember(){
       currentMemberId =
         result.memberId;
 
-      loadProfile();
+      /*
+       * LOGIN response मधूनच profile मिळतो.
+       * त्यामुळे दुसरा getProfile call करण्याची
+       * गरज नाही.
+       */
+
+      currentProfile = result;
+
+      showDashboard(result);
 
     }
-
     else{
 
       showMessage(
@@ -950,83 +821,10 @@ function loginMember(){
   .catch(function(error){
 
     button.disabled = false;
-
-    button.innerText =
-      "Login";
-
+    button.innerText = "Login";
 
     showMessage(
       "Server connection error. कृपया पुन्हा प्रयत्न करा.",
-      "error"
-    );
-
-
-    console.error(error);
-
-  });
-
-}
-
-
-/* =====================================================
-   LOAD PROFILE
-===================================================== */
-
-function loadProfile(){
-
-  fetch(
-    WEB_APP_URL,
-    {
-
-      method:"POST",
-
-      body:new URLSearchParams({
-
-        action:"getProfile",
-
-        memberId:
-          currentMemberId
-
-      })
-
-    }
-  )
-
-  .then(function(response){
-
-    return response.json();
-
-  })
-
-  .then(function(result){
-
-    if(!result.success){
-
-      showMessage(
-        result.message ||
-        "Profile मिळाली नाही.",
-        "error"
-      );
-
-      return;
-
-    }
-
-
-    currentProfile =
-      result.profile;
-
-
-    showDashboard(
-      currentProfile
-    );
-
-  })
-
-  .catch(function(error){
-
-    showMessage(
-      "Profile load करताना समस्या आली.",
       "error"
     );
 
@@ -1043,16 +841,14 @@ function loadProfile(){
 
 function showDashboard(data){
 
-  document
-    .getElementById("loginSection")
-    .style.display =
-    "none";
+  document.getElementById(
+    "loginSection"
+  ).style.display = "none";
 
 
-  document
-    .getElementById("dashboard")
-    .style.display =
-    "block";
+  document.getElementById(
+    "dashboard"
+  ).style.display = "block";
 
 
   setText(
@@ -1075,7 +871,7 @@ function showDashboard(data){
 
   setText(
     "dateOfBirth",
-    data.dateOfBirth
+    data.dob
   );
 
 
@@ -1117,15 +913,13 @@ function showDashboard(data){
 
   setText(
     "membershipStatus",
-    data.membershipStatus ||
-    "Pending"
+    data.applicationStatus || "Pending"
   );
 
 
   setText(
     "accountStatus",
-    data.accountStatus ||
-    "Active"
+    data.accountStatus || "Active"
   );
 
 
@@ -1133,7 +927,6 @@ function showDashboard(data){
     document.getElementById(
       "profilePhoto"
     );
-
 
   const placeholder =
     document.getElementById(
@@ -1143,14 +936,18 @@ function showDashboard(data){
 
   if(data.photo){
 
-    photo.src =
-      data.photo;
+    photo.src = data.photo;
 
-    photo.style.display =
-      "block";
+    photo.style.display = "block";
 
-    placeholder.style.display =
-      "none";
+    placeholder.style.display = "none";
+
+  }
+  else{
+
+    photo.style.display = "none";
+
+    placeholder.style.display = "flex";
 
   }
 
@@ -1174,10 +971,17 @@ function openEditProfile(){
     currentProfile.name || "";
 
 
+  /*
+   * Google Sheet date object असल्यास
+   * YYYY-MM-DD मध्ये convert करतो.
+   */
+
   document.getElementById(
     "editDob"
   ).value =
-    currentProfile.dateOfBirth || "";
+    formatDateForInput(
+      currentProfile.dob
+    );
 
 
   document.getElementById(
@@ -1218,8 +1022,7 @@ function openEditProfile(){
 
   document.getElementById(
     "editModal"
-  ).style.display =
-    "block";
+  ).style.display = "block";
 
 }
 
@@ -1232,7 +1035,7 @@ function saveProfile(){
 
   const data = {
 
-    action:"updateProfile",
+    action:"editProfile",
 
     memberId:
       currentMemberId,
@@ -1240,7 +1043,7 @@ function saveProfile(){
     fullName:
       document.getElementById(
         "editName"
-      ).value,
+      ).value.trim(),
 
     dateOfBirth:
       document.getElementById(
@@ -1255,22 +1058,22 @@ function saveProfile(){
     mobile:
       document.getElementById(
         "editMobile"
-      ).value,
+      ).value.trim(),
 
     email:
       document.getElementById(
         "editEmail"
-      ).value,
+      ).value.trim(),
 
     correspondenceAddress:
       document.getElementById(
         "editCorrespondence"
-      ).value,
+      ).value.trim(),
 
     permanentAddress:
       document.getElementById(
         "editPermanent"
-      ).value,
+      ).value.trim(),
 
     membershipType:
       document.getElementById(
@@ -1289,7 +1092,6 @@ function saveProfile(){
       body:new URLSearchParams(data)
 
     }
-
   )
 
   .then(function(response){
@@ -1324,12 +1126,16 @@ function saveProfile(){
           "editModal"
         );
 
-        loadProfile();
+        /*
+         * पुन्हा login करण्याची गरज नाही.
+         * login API मधून नवीन profile घेऊ.
+         */
+
+        refreshProfile();
 
       },1000);
 
     }
-
     else{
 
       box.innerText =
@@ -1340,6 +1146,59 @@ function saveProfile(){
 
       box.style.display =
         "block";
+
+    }
+
+  })
+
+  .catch(function(error){
+
+    console.error(error);
+
+    showModalMessage(
+      document.getElementById(
+        "editMessage"
+      ),
+      "Server connection error.",
+      "error"
+    );
+
+  });
+
+}
+
+
+/* =====================================================
+   REFRESH PROFILE
+===================================================== */
+
+function refreshProfile(){
+
+  /*
+   * GET member endpoint वापरतो.
+   */
+
+  fetch(
+    WEB_APP_URL +
+    "?action=member&memberId=" +
+    encodeURIComponent(
+      currentMemberId
+    )
+  )
+
+  .then(function(response){
+
+    return response.json();
+
+  })
+
+  .then(function(result){
+
+    if(result.success){
+
+      currentProfile = result;
+
+      showDashboard(result);
 
     }
 
@@ -1364,27 +1223,21 @@ function openChangePassword(){
     "oldPassword"
   ).value = "";
 
-
   document.getElementById(
     "newPassword"
   ).value = "";
-
 
   document.getElementById(
     "confirmPassword"
   ).value = "";
 
-
   document.getElementById(
     "passwordMessage"
-  ).style.display =
-    "none";
-
+  ).style.display = "none";
 
   document.getElementById(
     "passwordModal"
-  ).style.display =
-    "block";
+  ).style.display = "block";
 
 }
 
@@ -1396,18 +1249,15 @@ function changePassword(){
       "oldPassword"
     ).value;
 
-
   const newPassword =
     document.getElementById(
       "newPassword"
     ).value;
 
-
   const confirmPassword =
     document.getElementById(
       "confirmPassword"
     ).value;
-
 
   const message =
     document.getElementById(
@@ -1415,9 +1265,11 @@ function changePassword(){
     );
 
 
-  if(!oldPassword ||
-     !newPassword ||
-     !confirmPassword){
+  if(
+    !oldPassword ||
+    !newPassword ||
+    !confirmPassword
+  ){
 
     showModalMessage(
       message,
@@ -1430,11 +1282,11 @@ function changePassword(){
   }
 
 
-  if(newPassword.length < 6){
+  if(newPassword.length < 4){
 
     showModalMessage(
       message,
-      "नवीन Password किमान 6 characters असावा.",
+      "नवीन Password किमान 4 characters असावा.",
       "error"
     );
 
@@ -1506,7 +1358,6 @@ function changePassword(){
       },1200);
 
     }
-
     else{
 
       showModalMessage(
@@ -1535,7 +1386,7 @@ function changePassword(){
 
 
 /* =====================================================
-   PDF
+   MEMBERSHIP PDF
 ===================================================== */
 
 function downloadMembershipPDF(){
@@ -1556,7 +1407,7 @@ function downloadMembershipPDF(){
 
 
   alert(
-    "Membership PDF अजून तयार केलेली नाही.\n\nपुढील setup मध्ये PDF तयार होईल."
+    "Membership PDF अजून तयार केलेली नाही."
   );
 
 }
@@ -1584,7 +1435,7 @@ function downloadLibraryCard(){
 
 
   alert(
-    "Library Card अजून तयार केलेले नाही.\n\nपुढील setup मध्ये Library Card तयार होईल."
+    "Library Card अजून तयार केलेले नाही."
   );
 
 }
@@ -1610,14 +1461,11 @@ function showMessage(text,type){
       "message"
     );
 
-
   message.innerText =
     text;
 
-
   message.className =
     "message " + type;
-
 
   message.style.display =
     "block";
@@ -1648,6 +1496,63 @@ function closeModal(id){
   document.getElementById(id)
     .style.display =
     "none";
+
+}
+
+
+/* =====================================================
+   DATE FORMAT
+===================================================== */
+
+function formatDateForInput(value){
+
+  if(!value){
+    return "";
+  }
+
+
+  if(
+    typeof value === "string" &&
+    /^\d{4}-\d{2}-\d{2}$/.test(value)
+  ){
+
+    return value;
+
+  }
+
+
+  const date =
+    new Date(value);
+
+
+  if(isNaN(date.getTime())){
+
+    return "";
+
+  }
+
+
+  const year =
+    date.getFullYear();
+
+  const month =
+    String(
+      date.getMonth() + 1
+    ).padStart(2,"0");
+
+  const day =
+    String(
+      date.getDate()
+    ).padStart(2,"0");
+
+
+  return (
+    year +
+    "-" +
+    month +
+    "-" +
+    day
+  );
 
 }
 
@@ -1697,4 +1602,5 @@ function logout(){
 </script>
 
 </body>
+
 </html>
