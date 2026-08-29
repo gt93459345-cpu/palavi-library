@@ -1,880 +1,829 @@
 <!DOCTYPE html>
 <html lang="mr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>पालवी रूरल मोबाईल अँड डिजिटल लायब्ररी</title>
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: "Noto Sans Devanagari", "Arial", sans-serif;
-      background: #f7f8fa;
-      color: #222;
-      line-height: 1.7;
-    }
-
-    /* HEADER */
-    header {
-      background: #ffffff;
-      border-bottom: 1px solid #e5e7eb;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .navbar {
-      max-width: 1200px;
-      margin: auto;
-      padding: 14px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .logo {
-      width: 55px;
-      height: 55px;
-      border-radius: 50%;
-      background: #f1f5f9;
-      border: 2px solid #1f2937;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      font-size: 13px;
-      text-align: center;
-      line-height: 1.1;
-    }
-
-    .brand-text h1 {
-      font-size: 19px;
-      line-height: 1.3;
-      color: #111827;
-    }
-
-    .brand-text p {
-      font-size: 12px;
-      color: #6b7280;
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #374151;
-      font-size: 15px;
-      font-weight: 600;
-    }
-
-    nav a:hover {
-      color: #8b5e34;
-    }
-
-    .nav-button {
-      background: #8b5e34;
-      color: white !important;
-      padding: 9px 17px;
-      border-radius: 8px;
-    }
-
-    .login-button {
-      background: #111827;
-      color: white !important;
-      padding: 9px 17px;
-      border-radius: 8px;
-    }
-
-    .login-button:hover {
-      background: #374151;
-    }
-
-    /* HERO */
-    .hero {
-      min-height: 560px;
-      display: flex;
-      align-items: center;
-      background:
-        linear-gradient(135deg, #f8f3ed 0%, #ffffff 55%, #f1f5f9 100%);
-    }
-
-    .hero-container {
-      width: 100%;
-      max-width: 1200px;
-      margin: auto;
-      padding: 70px 20px;
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 50px;
-      align-items: center;
-    }
-
-    .hero-content span {
-      display: inline-block;
-      background: #eee5da;
-      color: #76502f;
-      padding: 6px 14px;
-      border-radius: 30px;
-      font-size: 14px;
-      font-weight: 600;
-      margin-bottom: 18px;
-    }
-
-    .hero-content h2 {
-      font-size: 48px;
-      line-height: 1.25;
-      color: #111827;
-      margin-bottom: 20px;
-    }
-
-    .hero-content h2 strong {
-      color: #8b5e34;
-    }
-
-    .hero-content p {
-      max-width: 650px;
-      color: #596273;
-      font-size: 18px;
-      margin-bottom: 30px;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .primary-btn,
-    .secondary-btn {
-      display: inline-block;
-      text-decoration: none;
-      padding: 13px 24px;
-      border-radius: 9px;
-      font-weight: 700;
-      transition: 0.2s;
-    }
-
-    .primary-btn {
-      background: #8b5e34;
-      color: white;
-    }
-
-    .primary-btn:hover {
-      background: #704923;
-      transform: translateY(-2px);
-    }
-
-    .secondary-btn {
-      background: white;
-      color: #374151;
-      border: 1px solid #d1d5db;
-    }
-
-    .secondary-btn:hover {
-      background: #f3f4f6;
-    }
-
-    .hero-card {
-      background: white;
-      border-radius: 20px;
-      padding: 35px;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.08);
-      border: 1px solid #e5e7eb;
-      text-align: center;
-    }
-
-    .hero-card-icon {
-      font-size: 70px;
-      margin-bottom: 15px;
-    }
-
-    .hero-card h3 {
-      font-size: 25px;
-      color: #111827;
-      margin-bottom: 10px;
-    }
-
-    .hero-card p {
-      color: #6b7280;
-    }
-
-    /* SECTION */
-    section {
-      padding: 75px 20px;
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: auto;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 45px;
-    }
-
-    .section-title span {
-      color: #8b5e34;
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .section-title h2 {
-      font-size: 34px;
-      color: #111827;
-      margin-top: 5px;
-    }
-
-    .section-title p {
-      max-width: 650px;
-      margin: 10px auto 0;
-      color: #6b7280;
-    }
-
-    /* ABOUT */
-    .about {
-      background: white;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 45px;
-      align-items: center;
-    }
-
-    .about-box {
-      background: #f8f5f1;
-      padding: 35px;
-      border-radius: 18px;
-    }
-
-    .about-box h3 {
-      font-size: 25px;
-      margin-bottom: 15px;
-      color: #111827;
-    }
-
-    .about-box p {
-      color: #596273;
-    }
-
-    .info-list {
-      list-style: none;
-    }
-
-    .info-list li {
-      background: #ffffff;
-      margin-bottom: 12px;
-      padding: 14px 17px;
-      border-radius: 10px;
-      border: 1px solid #e5e7eb;
-    }
-
-    /* MEMBERSHIP */
-    .membership {
-      background: #f7f8fa;
-    }
-
-    .membership-card {
-      background: white;
-      border-radius: 20px;
-      padding: 45px;
-      text-align: center;
-      box-shadow: 0 10px 35px rgba(0,0,0,0.06);
-      border: 1px solid #e5e7eb;
-    }
-
-    .membership-card h3 {
-      font-size: 30px;
-      margin-bottom: 12px;
-    }
-
-    .membership-card p {
-      color: #6b7280;
-      max-width: 700px;
-      margin: 0 auto 25px;
-    }
-
-    .membership-types {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 30px;
-    }
-
-    .type {
-      background: #f3eee8;
-      color: #76502f;
-      padding: 9px 18px;
-      border-radius: 25px;
-      font-weight: 600;
-    }
-
-    /* LOGIN SECTION */
-    .login-section {
-      background: #ffffff;
-    }
-
-    .login-card {
-      max-width: 850px;
-      margin: auto;
-      background: #f8f5f1;
-      border-radius: 20px;
-      padding: 45px 25px;
-      text-align: center;
-    }
-
-    .login-card h3 {
-      font-size: 30px;
-      color: #111827;
-      margin-bottom: 10px;
-    }
-
-    .login-card p {
-      color: #6b7280;
-      margin-bottom: 25px;
-    }
-
-    .login-main-btn {
-      display: inline-block;
-      text-decoration: none;
-      background: #111827;
-      color: white;
-      padding: 13px 28px;
-      border-radius: 9px;
-      font-weight: 700;
-    }
-
-    .login-main-btn:hover {
-      background: #374151;
-    }
-
-    /* CONTACT */
-    .contact {
-      background: white;
-    }
-
-    .contact-card {
-      max-width: 750px;
-      margin: auto;
-      text-align: center;
-      background: #f8f5f1;
-      border-radius: 18px;
-      padding: 40px;
-    }
-
-    .contact-card h3 {
-      font-size: 27px;
-      margin-bottom: 15px;
-    }
-
-    .address {
-      color: #596273;
-      font-size: 17px;
-    }
-
-    /* FOOTER */
-    footer {
-      background: #111827;
-      color: #d1d5db;
-      padding: 35px 20px;
-      text-align: center;
-    }
-
-    footer h3 {
-      color: white;
-      margin-bottom: 7px;
-    }
-
-    footer p {
-      font-size: 14px;
-    }
-
-    .copyright {
-      margin-top: 18px;
-      padding-top: 18px;
-      border-top: 1px solid #374151;
-      font-size: 13px;
-      color: #9ca3af;
-    }
-
-    /* MOBILE */
-    @media (max-width: 850px) {
-
-      nav {
-        display: none;
-      }
-
-      .hero-container {
-        grid-template-columns: 1fr;
-        padding-top: 50px;
-      }
-
-      .hero-content {
-        text-align: center;
-      }
-
-      .hero-content p {
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .hero-buttons {
-        justify-content: center;
-      }
-
-      .hero-content h2 {
-        font-size: 37px;
-      }
-
-      .about-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 500px) {
-
-      .navbar {
-        padding: 10px 14px;
-      }
-
-      .logo {
-        width: 45px;
-        height: 45px;
-        font-size: 11px;
-      }
-
-      .brand-text h1 {
-        font-size: 15px;
-      }
-
-      .brand-text p {
-        font-size: 10px;
-      }
-
-      .hero-content h2 {
-        font-size: 31px;
-      }
-
-      .hero-content p {
-        font-size: 16px;
-      }
-
-      section {
-        padding: 55px 15px;
-      }
-
-      .section-title h2 {
-        font-size: 28px;
-      }
-
-      .membership-card {
-        padding: 28px 18px;
-      }
-
-      .login-card {
-        padding: 35px 18px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Palavi Mobile Library — Membership Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;1,500&family=Work+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+  :root{
+    --maroon:#6E1423;
+    --maroon-dark:#4E0E19;
+    --parchment:#EFE3C8;
+    --parchment-2:#E7D8B6;
+    --navy:#16233A;
+    --gold:#B8892B;
+    --gold-light:#D9B25C;
+    --green:#2F5233;
+    --card-cream:#FAF6EA;
+    --danger:#9C3B32;
+    --radius:14px;
+    --shadow: 0 8px 24px rgba(22,35,58,0.18);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Work Sans','Noto Sans Devanagari',sans-serif;
+    background:
+      radial-gradient(circle at 15% 10%, rgba(184,137,43,0.10), transparent 40%),
+      radial-gradient(circle at 85% 90%, rgba(110,20,35,0.08), transparent 45%),
+      var(--parchment);
+    background-attachment: fixed;
+    color:var(--navy);
+    min-height:100vh;
+  }
+  .mr{ font-family:'Noto Sans Devanagari','Work Sans',sans-serif; }
+  .display{ font-family:'Fraunces', serif; }
+  .mono{ font-family:'IBM Plex Mono', monospace; }
+
+  /* subtle paper grain */
+  .grain{
+    position:fixed; inset:0; pointer-events:none; opacity:0.05; z-index:0;
+    background-image: repeating-linear-gradient(0deg, #000 0px, transparent 1px, transparent 2px);
+  }
+
+  #app{ position:relative; z-index:1; min-height:100vh; }
+
+  /* ---------- Top bar ---------- */
+  .topbar{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 28px;
+    background: linear-gradient(180deg, var(--maroon), var(--maroon-dark));
+    color:var(--parchment);
+    box-shadow: var(--shadow);
+  }
+  .brand{ display:flex; align-items:center; gap:12px; }
+  .brand-badge{
+    width:42px; height:42px; border-radius:50%;
+    background: radial-gradient(circle at 35% 30%, var(--gold-light), var(--gold) 60%, #8a6a1e 100%);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces',serif; font-weight:700; color:var(--maroon-dark); font-size:13px;
+    border:2px solid rgba(255,255,255,0.55);
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.25);
+  }
+  .brand-text .name{ font-family:'Fraunces',serif; font-weight:700; font-size:18px; line-height:1.1;}
+  .brand-text .sub{ font-size:11px; opacity:0.85; letter-spacing:0.03em;}
+  .topbar-actions button{
+    background:transparent; border:1.5px solid rgba(239,227,200,0.6); color:var(--parchment);
+    padding:8px 16px; border-radius:999px; cursor:pointer; font-size:13.5px; font-weight:600;
+    font-family:'Work Sans',sans-serif; transition: all .15s ease;
+  }
+  .topbar-actions button:hover{ background:rgba(239,227,200,0.14); border-color:var(--parchment); }
+
+  /* ---------- Centered card wrapper (login/register) ---------- */
+  .center-wrap{
+    min-height: calc(100vh - 78px);
+    display:flex; align-items:flex-start; justify-content:center;
+    padding: 46px 16px;
+  }
+  .index-card{
+    width:100%; max-width:480px;
+    background: var(--card-cream);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    position:relative;
+    padding: 34px 32px 30px;
+    border:1px solid rgba(22,35,58,0.08);
+  }
+  .index-card.wide{ max-width: 720px; }
+  .index-card::before{ /* deckled top edge */
+    content:""; position:absolute; top:-1px; left:0; right:0; height:10px;
+    background: repeating-linear-gradient(90deg, var(--card-cream) 0 8px, transparent 8px 9px);
+    border-top-left-radius: var(--radius); border-top-right-radius: var(--radius);
+  }
+  .punch{
+    position:absolute; top:16px; left:16px; width:14px; height:14px; border-radius:50%;
+    background: radial-gradient(circle at 35% 30%, #d8cca4, #b9a878 70%);
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.35);
+  }
+  .card-title{ text-align:center; margin: 6px 0 2px; }
+  .card-title .display{ font-size:24px; font-weight:700; color:var(--maroon); }
+  .card-title .tagline{ font-size:12.5px; color:#6b5a3a; margin-top:2px; }
+
+  form .field{ margin-bottom:16px; }
+  form .row2{ display:grid; grid-template-columns: 1fr 1fr; gap:14px; }
+  label{ display:block; font-size:12.5px; font-weight:600; color:var(--navy); margin-bottom:5px; letter-spacing:0.01em; }
+  label .req{ color:var(--maroon); }
+  input[type=text], input[type=password], input[type=email], input[type=tel], input[type=date], select, textarea{
+    width:100%; padding:10px 12px; border-radius:9px; border:1.4px solid #cdbd94; background:#fffdf7;
+    font-size:14px; font-family:'Work Sans','Noto Sans Devanagari',sans-serif; color:var(--navy);
+    transition: border-color .15s ease, box-shadow .15s ease;
+  }
+  textarea{ min-height:64px; resize:vertical; }
+  input:focus, select:focus, textarea:focus{
+    outline:none; border-color: var(--maroon); box-shadow: 0 0 0 3px rgba(110,20,35,0.12);
+  }
+  .radio-group{ display:flex; flex-wrap:wrap; gap:10px 18px; margin-top:2px; }
+  .radio-opt{ display:flex; align-items:center; gap:6px; font-size:13.5px; cursor:pointer; }
+  .radio-opt input{ width:auto; accent-color: var(--maroon); }
+
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    padding:11px 20px; border-radius:999px; border:none; cursor:pointer;
+    font-weight:700; font-size:14.5px; font-family:'Work Sans',sans-serif;
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+  .btn:active{ transform: scale(0.97); }
+  .btn-primary{ background: linear-gradient(180deg, var(--maroon), var(--maroon-dark)); color:var(--parchment); box-shadow:0 4px 12px rgba(110,20,35,0.35);}
+  .btn-primary:hover{ box-shadow:0 6px 16px rgba(110,20,35,0.45); }
+  .btn-block{ width:100%; }
+  .btn-ghost{ background:transparent; border:1.4px solid var(--maroon); color:var(--maroon); }
+  .btn-gold{ background: linear-gradient(180deg, var(--gold-light), var(--gold)); color:var(--maroon-dark); }
+  .btn-sm{ padding:7px 14px; font-size:13px; }
+
+  .switch-line{ text-align:center; margin-top:18px; font-size:13.5px; color:#5a4c30; }
+  .switch-line a{ color:var(--maroon); font-weight:700; cursor:pointer; text-decoration:none; }
+  .switch-line a:hover{ text-decoration:underline; }
+
+  .error-msg{ background:#fbe4e1; border:1px solid var(--danger); color:var(--danger); font-size:13px; padding:9px 12px; border-radius:8px; margin-bottom:14px;}
+  .success-msg{ background:#e4ecdf; border:1px solid var(--green); color:var(--green); font-size:13px; padding:9px 12px; border-radius:8px; margin-bottom:14px;}
+
+  .section-divider{ display:flex; align-items:center; gap:10px; margin: 22px 0 14px; }
+  .section-divider .line{ flex:1; height:1px; background: #cdbd94; }
+  .section-divider span{ font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:#8a7a52; font-weight:700; }
+
+  /* ---------- Dashboard layout ---------- */
+  .dash-wrap{ display:flex; min-height: calc(100vh - 78px); }
+  .sidebar{
+    width:230px; background: linear-gradient(180deg, #f4ead0, #ecdcb2);
+    border-right: 2px dashed #c9b787;
+    padding: 26px 0;
+    position:relative;
+  }
+  .sidebar .holes{ position:absolute; left:10px; top:0; bottom:0; width:8px; display:flex; flex-direction:column; justify-content:space-evenly; }
+  .sidebar .holes span{ width:8px; height:8px; border-radius:50%; background:#d8cca4; box-shadow: inset 0 1px 3px rgba(0,0,0,0.3); }
+  .sidebar-tab{
+    display:flex; align-items:center; gap:10px; padding:13px 22px 13px 34px; cursor:pointer;
+    font-size:14.5px; font-weight:600; color:var(--navy); border-left:4px solid transparent;
+    transition: all .15s ease;
+  }
+  .sidebar-tab:hover{ background: rgba(110,20,35,0.06); }
+  .sidebar-tab.active{ background: var(--card-cream); border-left-color: var(--maroon); color:var(--maroon); }
+  .dash-content{ flex:1; padding: 32px 40px; max-width: 900px; }
+  .panel{ background:var(--card-cream); border-radius:var(--radius); box-shadow:var(--shadow); padding:28px 32px; border:1px solid rgba(22,35,58,0.06); }
+  .panel h2{ font-family:'Fraunces',serif; color:var(--maroon); margin:0 0 6px; font-size:22px; }
+  .panel .desc{ font-size:13.5px; color:#6b5a3a; margin-bottom:20px; }
+
+  .profile-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:16px 28px; }
+  .profile-item .k{ font-size:11.5px; text-transform:uppercase; letter-spacing:0.06em; color:#8a7a52; font-weight:700; }
+  .profile-item .v{ font-size:15px; margin-top:3px; color:var(--navy); }
+  .badge{ display:inline-block; padding:3px 11px; border-radius:999px; font-size:12px; font-weight:700; }
+  .badge-green{ background:#e4ecdf; color:var(--green); }
+
+  /* ---------- Library card ---------- */
+  .card-stage{ display:flex; flex-direction:column; align-items:center; gap:22px; }
+  .lib-card{
+    width:400px; max-width:100%; aspect-ratio: 1.6/1; border-radius:16px; position:relative;
+    background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 55%, #3a0d16 100%);
+    box-shadow: var(--shadow), inset 0 0 0 1px rgba(255,255,255,0.08);
+    color: var(--parchment); padding:20px 22px; overflow:hidden;
+  }
+  .lib-card::after{ /* watermark ring */
+    content:""; position:absolute; right:-40px; bottom:-40px; width:180px; height:180px; border-radius:50%;
+    border: 18px solid rgba(184,137,43,0.18);
+  }
+  .lib-card .punch2{
+    position:absolute; top:14px; left:14px; width:12px; height:12px; border-radius:50%;
+    background: rgba(0,0,0,0.35); box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);
+  }
+  .lib-card .top-row{ display:flex; justify-content:space-between; align-items:flex-start; margin-left:24px;}
+  .lib-card .lib-name{ font-family:'Fraunces',serif; font-weight:700; font-size:14.5px; line-height:1.2; }
+  .lib-card .lib-sub{ font-size:9.5px; opacity:0.75; margin-top:2px; }
+  .lib-card .stamp{
+    font-family:'Fraunces',serif; font-weight:700; font-size:11px; letter-spacing:0.12em;
+    border:1.6px solid var(--gold-light); color:var(--gold-light); padding:3px 9px; border-radius:5px;
+    transform: rotate(-6deg); opacity:0.9;
+  }
+  .lib-card .member-name{ font-size:19px; font-weight:700; margin-top:20px; margin-left:24px;}
+  .lib-card .member-type{ font-size:11.5px; color:var(--gold-light); margin-left:24px; margin-top:2px;}
+  .lib-card .bottom-row{ display:flex; justify-content:space-between; align-items:flex-end; margin-top:18px; margin-left:24px;}
+  .lib-card .memno{ font-family:'IBM Plex Mono',monospace; font-size:14px; letter-spacing:0.06em; }
+  .lib-card .since{ font-size:9.5px; opacity:0.75; margin-top:2px;}
+  .barcode{ display:flex; align-items:flex-end; gap:1.4px; height:26px; }
+  .barcode span{ width:2px; background: var(--parchment); opacity:0.85; }
+
+  .card-actions{ display:flex; gap:12px; flex-wrap:wrap; justify-content:center; }
+
+  /* photo upload */
+  .photo-drop{
+    width:96px; height:96px; border-radius:12px; border:1.6px dashed #a8956a; background:#fffdf7;
+    display:flex; align-items:center; justify-content:center; cursor:pointer; overflow:hidden; flex-shrink:0;
+    font-size:11px; color:#8a7a52; text-align:center; padding:6px;
+  }
+  .photo-drop img{ width:100%; height:100%; object-fit:cover; }
+
+  .field-hint{ font-size:11.5px; color:#8a7a52; margin-top:4px; }
+  .disclaimer{
+    margin-top:26px; font-size:11.5px; color:#8a7a52; background:rgba(184,137,43,0.08);
+    border:1px dashed #c9b787; border-radius:9px; padding:10px 14px; line-height:1.5;
+  }
+
+  @media (max-width: 760px){
+    .dash-wrap{ flex-direction:column; }
+    .sidebar{ width:100%; display:flex; overflow-x:auto; padding:10px 0; border-right:none; border-bottom:2px dashed #c9b787;}
+    .sidebar .holes{ display:none; }
+    .sidebar-tab{ padding:10px 16px; border-left:none; border-bottom:4px solid transparent; white-space:nowrap; }
+    .sidebar-tab.active{ border-left:none; border-bottom-color:var(--maroon); }
+    .dash-content{ padding:20px 16px; }
+    .profile-grid{ grid-template-columns:1fr; }
+    .row2{ grid-template-columns:1fr !important; }
+    .index-card{ padding:26px 18px; }
+  }
+  #toast{
+    position:fixed; bottom:22px; left:50%; transform:translateX(-50%);
+    background:var(--navy); color:var(--parchment); padding:11px 20px; border-radius:999px;
+    font-size:13.5px; box-shadow:var(--shadow); z-index:999; opacity:0; pointer-events:none;
+    transition: opacity .25s ease, transform .25s ease;
+  }
+  #toast.show{ opacity:1; transform:translateX(-50%) translateY(-6px); }
+</style>
 </head>
-
 <body>
+<div class="grain"></div>
+<div id="app"></div>
+<div id="toast"></div>
 
-  <!-- HEADER -->
-  <header>
+<script>
+/* ============================================================
+   Palavi Mobile Library — Membership Portal (demo prototype)
+   Single-file app using window.storage for persistence.
+   ============================================================ */
 
-    <div class="navbar">
+const LIB_NAME = "पालवी रुरल मोबाईल ऑण्ड डिजीटल लायब्ररी";
+const LIB_ADDR = "बार्शी-तुळजापूर रोड, नागोबाचौक, रुई, ता. बार्शी, जि. सोलापूर";
 
-      <div class="brand">
+let state = {
+  view: "login",        // login | register | dashboard
+  dashTab: "profile",   // profile | edit | password | pdf | card
+  session: null,        // username of logged in user
+  error: "",
+  success: "",
+  photoDataUrl: null,   // temp holder while filling register/edit form
+};
 
-        <div class="logo">
-          PALAVI<br>LIBRARY
-        </div>
+function toast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(()=> t.classList.remove('show'), 2600);
+}
 
-        <div class="brand-text">
+function todayStr(){
+  const d = new Date();
+  return String(d.getDate()).padStart(2,'0')+"/"+String(d.getMonth()+1).padStart(2,'0')+"/"+d.getFullYear();
+}
 
-          <h1>
-            पालवी रूरल मोबाईल अँड डिजिटल लायब्ररी
-          </h1>
+function simpleHash(str){
+  // NOT cryptographic — demo only.
+  return btoa(unescape(encodeURIComponent(str))).split('').reverse().join('');
+}
 
-          <p>
-            पालवी चॅरिटेबल ट्रस्ट संचलित
-          </p>
+async function getUser(username){
+  try{
+    const r = await window.storage.get('users:'+username, true);
+    return r ? JSON.parse(r.value) : null;
+  }catch(e){ return null; }
+}
+async function setUser(username, data){
+  await window.storage.set('users:'+username, JSON.stringify(data), true);
+}
+async function nextMemberNo(){
+  let n = 1;
+  try{
+    const r = await window.storage.get('meta:counter', true);
+    if(r) n = JSON.parse(r.value).next;
+  }catch(e){}
+  try{
+    await window.storage.set('meta:counter', JSON.stringify({next: n+1}), true);
+  }catch(e){}
+  return "PML-" + String(n).padStart(4,'0');
+}
 
-        </div>
+function resizeImageFile(file, maxDim=220){
+  return new Promise((resolve,reject)=>{
+    const reader = new FileReader();
+    reader.onload = (e)=>{
+      const img = new Image();
+      img.onload = ()=>{
+        const canvas = document.createElement('canvas');
+        let w = img.width, h = img.height;
+        if(w > h){ if(w > maxDim){ h = Math.round(h*maxDim/w); w = maxDim; } }
+        else{ if(h > maxDim){ w = Math.round(w*maxDim/h); h = maxDim; } }
+        canvas.width = w; canvas.height = h;
+        canvas.getContext('2d').drawImage(img,0,0,w,h);
+        resolve(canvas.toDataURL('image/jpeg', 0.82));
+      };
+      img.onerror = reject;
+      img.src = e.target.result;
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
 
+/* ---------------- Rendering ---------------- */
+
+function render(){
+  const app = document.getElementById('app');
+  if(state.view === 'login'){ app.innerHTML = topbar(false) + renderLogin(); }
+  else if(state.view === 'register'){ app.innerHTML = topbar(false) + renderRegister(); }
+  else if(state.view === 'dashboard'){ app.innerHTML = topbar(true) + renderDashboard(); }
+  bindEvents();
+}
+
+function topbar(loggedIn){
+  return `
+  <div class="topbar">
+    <div class="brand">
+      <div class="brand-badge">PML</div>
+      <div class="brand-text">
+        <div class="name display">Palavi Mobile Library</div>
+        <div class="sub mr">ग्रंथालय सभासद पोर्टल</div>
       </div>
-
-
-      <nav>
-
-        <a href="#home">
-          मुख्यपृष्ठ
-        </a>
-
-        <a href="#about">
-          लायब्ररीबद्दल
-        </a>
-
-        <a href="#membership">
-          सभासदत्व
-        </a>
-
-        <a href="#contact">
-          संपर्क
-        </a>
-
-        <a href="membership.html" class="nav-button">
-          सभासद बना
-        </a>
-
-        <a href="login.html" class="login-button">
-          सभासद Login
-        </a>
-
-      </nav>
-
     </div>
-
-  </header>
-
-
-  <!-- HERO -->
-  <section class="hero" id="home">
-
-    <div class="hero-container">
-
-      <div class="hero-content">
-
-        <span>
-          📚 ज्ञान • वाचन • विकास
-        </span>
-
-        <h2>
-          वाचनाची आवड जपा,<br>
-          <strong>ज्ञानाशी नाते जोडा.</strong>
-        </h2>
-
-        <p>
-          पालवी रूरल मोबाईल अँड डिजिटल लायब्ररीमध्ये
-          सभासद म्हणून नोंदणी करून वाचनाच्या विश्वाशी जोडा.
-        </p>
-
-        <div class="hero-buttons">
-
-          <a
-            href="membership.html"
-            class="primary-btn"
-          >
-            सभासद नोंदणी करा →
-          </a>
-
-          <a
-            href="login.html"
-            class="secondary-btn"
-          >
-            सभासद Login
-          </a>
-
-          <a
-            href="#about"
-            class="secondary-btn"
-          >
-            अधिक माहिती
-          </a>
-
-        </div>
-
-      </div>
-
-
-      <div class="hero-card">
-
-        <div class="hero-card-icon">
-          📖
-        </div>
-
-        <h3>
-          ग्रंथालय सभासदत्व
-        </h3>
-
-        <p>
-          विद्यार्थी, सर्वसाधारण आणि ज्येष्ठ नागरिक
-          यांच्यासाठी सभासद नोंदणी सुविधा.
-        </p>
-
-      </div>
-
+    <div class="topbar-actions">
+      ${loggedIn ? `<button data-action="logout">Log out</button>` : ``}
     </div>
+  </div>`;
+}
 
-  </section>
-
-
-  <!-- ABOUT -->
-  <section
-    class="about"
-    id="about"
-  >
-
-    <div class="container">
-
-      <div class="section-title">
-
-        <span>
-          आमच्याबद्दल
-        </span>
-
-        <h2>
-          पालवी रूरल मोबाईल अँड डिजिटल लायब्ररी
-        </h2>
-
-        <p>
-          वाचन आणि ज्ञानाच्या माध्यमातून समाजाशी जोडण्याचा एक प्रयत्न.
-        </p>
-
+function renderLogin(){
+  return `
+  <div class="center-wrap">
+    <div class="index-card">
+      <div class="punch"></div>
+      <div class="card-title">
+        <div class="display">Welcome back</div>
+        <div class="tagline mr">आपल्या सभासद खात्यात लॉगिन करा</div>
       </div>
-
-
-      <div class="about-grid">
-
-        <div class="about-box">
-
-          <h3>
-            📚 ग्रंथालयाची माहिती
-          </h3>
-
-          <p>
-            पालवी रूरल मोबाईल अँड डिजिटल लायब्ररी
-            ही पालवी चॅरिटेबल ट्रस्ट संचलित लायब्ररी आहे.
-          </p>
-
-          <br>
-
-          <p>
-            ग्रंथालयाच्या सभासदत्वासाठी ऑनलाइन नोंदणीची
-            सुविधा या वेबसाइटद्वारे उपलब्ध करून देण्यात येत आहे.
-          </p>
-
+      ${state.error ? `<div class="error-msg">${state.error}</div>` : ``}
+      ${state.success ? `<div class="success-msg">${state.success}</div>` : ``}
+      <form id="loginForm">
+        <div class="field">
+          <label>Username</label>
+          <input type="text" name="username" autocomplete="username" required>
         </div>
-
-
-        <div>
-
-          <ul class="info-list">
-
-            <li>
-              📖 वाचनासाठी सभासदत्व
-            </li>
-
-            <li>
-              💻 डिजिटल लायब्ररीशी जोडणी
-            </li>
-
-            <li>
-              📱 ऑनलाइन सभासद नोंदणी
-            </li>
-
-            <li>
-              📝 ऑनलाइन अर्ज व कागदपत्रे अपलोड
-            </li>
-
-          </ul>
-
+        <div class="field">
+          <label>Password</label>
+          <input type="password" name="password" autocomplete="current-password" required>
         </div>
-
+        <button class="btn btn-primary btn-block" type="submit">Log in</button>
+      </form>
+      <div class="switch-line">New member? <a data-action="goto-register">Register here</a></div>
+      <div class="disclaimer mr">
+        टीप: हे एक डेमो/प्रोटोटाइप पोर्टल आहे — डेटा या डिव्हाइस/artifact च्या storage मध्ये ठेवला जातो,
+        खरी production website साठी सुरक्षित backend व database आवश्यक आहे (विशेषतः आधार क्रमांकासारखी माहिती).
       </div>
-
     </div>
+  </div>`;
+}
 
-  </section>
+const membershipOptions = ["विद्यार्थी","सर्वसाधारण","ज्येष्ठ नागरिक","वार्षिक","आजीवन"];
+const genderOptions = ["पुरुष","महिला","इतर"];
 
+function radioGroup(name, options, selected){
+  return `<div class="radio-group">` + options.map(o=>`
+    <label class="radio-opt"><input type="radio" name="${name}" value="${o}" ${selected===o?'checked':''} required> <span class="mr">${o}</span></label>
+  `).join('') + `</div>`;
+}
 
-  <!-- MEMBERSHIP -->
-  <section
-    class="membership"
-    id="membership"
-  >
-
-    <div class="container">
-
-      <div class="section-title">
-
-        <span>
-          Membership
-        </span>
-
-        <h2>
-          सभासदत्वासाठी नोंदणी करा
-        </h2>
-
-        <p>
-          ऑनलाइन फॉर्म भरून आपली सभासद नोंदणी प्रक्रिया सुरू करा.
-        </p>
-
+function renderRegister(){
+  return `
+  <div class="center-wrap">
+    <div class="index-card wide">
+      <div class="punch"></div>
+      <div class="card-title">
+        <div class="display mr">ग्रंथालय सभासद नोंदणी फॉर्म</div>
+        <div class="tagline">Create your library membership account</div>
       </div>
+      ${state.error ? `<div class="error-msg">${state.error}</div>` : ``}
+      <form id="registerForm">
+        <div class="section-divider"><div class="line"></div><span>Login details</span><div class="line"></div></div>
+        <div class="row2">
+          <div class="field"><label>Username <span class="req">*</span></label><input type="text" name="username" required></div>
+          <div class="field"><label>Password <span class="req">*</span></label><input type="password" name="password" required minlength="4"></div>
+        </div>
 
-
-      <div class="membership-card">
-
-        <h3>
-          📚 ग्रंथालय सभासद नोंदणी
-        </h3>
-
-        <p>
-          आपली वैयक्तिक माहिती भरा आणि आवश्यक कागदपत्रे
-          ऑनलाइन अपलोड करून अर्ज सादर करा.
-        </p>
-
-
-        <div class="membership-types">
-
-          <div class="type">
-            विद्यार्थी
+        <div class="section-divider"><span class="mr">वैयक्तिक माहिती</span></div>
+        <div style="display:flex; gap:20px; align-items:flex-start; margin-bottom:6px;">
+          <div class="photo-drop" id="photoDrop" data-action="pick-photo">
+            <span class="mr" id="photoPlaceholder">फोटो निवडा</span>
           </div>
-
-          <div class="type">
-            सर्वसाधारण
+          <input type="file" id="photoInput" accept="image/*" style="display:none;">
+          <div style="flex:1;">
+            <div class="field"><label class="mr">संपूर्ण नांव <span class="req">*</span></label><input type="text" name="fullName" required></div>
           </div>
-
-          <div class="type">
-            ज्येष्ठ नागरिक
-          </div>
-
+        </div>
+        <div class="row2">
+          <div class="field"><label class="mr">जन्मतारीख</label><input type="date" name="dob"></div>
+          <div class="field"><label class="mr">लिंग</label>${radioGroup('gender', genderOptions)}</div>
+        </div>
+        <div class="row2">
+          <div class="field"><label class="mr">व्यवसाय</label><input type="text" name="occupation"></div>
+          <div class="field"><label class="mr">शैक्षणिक पात्रता</label><input type="text" name="education"></div>
+        </div>
+        <div class="row2">
+          <div class="field"><label class="mr">मोबाईल क्रमांक <span class="req">*</span></label><input type="tel" name="mobile" required pattern="[0-9]{10}" title="10 digit mobile number"></div>
+          <div class="field"><label>ई-मेल</label><input type="email" name="email"></div>
+        </div>
+        <div class="field"><label class="mr">कायमचा पत्ता</label><textarea name="address"></textarea></div>
+        <div class="field"><label class="mr">आधार क्रमांक</label><input type="text" name="aadhar" pattern="[0-9]{12}" title="12 digit Aadhar number">
+          <div class="field-hint mr">फक्त डेमोसाठी — खरी वेबसाईटवर हे field encrypted backend वर ठेवावे लागेल.</div>
         </div>
 
+        <div class="section-divider"><span class="mr">सदस्यत्व प्रकार</span></div>
+        <div class="field">${radioGroup('membershipType', membershipOptions)}</div>
 
-        <a
-          href="membership.html"
-          class="primary-btn"
-        >
-          Membership Form उघडा →
-        </a>
-
-      </div>
-
+        <button class="btn btn-primary btn-block" type="submit" style="margin-top:8px;">सभासद नोंदणी करा — Register</button>
+      </form>
+      <div class="switch-line">Already a member? <a data-action="goto-login">Log in</a></div>
     </div>
+  </div>`;
+}
 
-  </section>
+function sidebarTabs(){
+  const tabs = [
+    {id:'profile', icon:'👤', label:'Profile'},
+    {id:'edit', icon:'✏️', label:'Edit Profile'},
+    {id:'password', icon:'🔑', label:'Change Password'},
+    {id:'pdf', icon:'📄', label:'Membership PDF'},
+    {id:'card', icon:'🪪', label:'Library Card'},
+  ];
+  return `
+  <div class="sidebar">
+    <div class="holes">${Array(7).fill('<span></span>').join('')}</div>
+    ${tabs.map(t=>`
+      <div class="sidebar-tab ${state.dashTab===t.id?'active':''}" data-action="dash-tab" data-tab="${t.id}">
+        <span>${t.icon}</span><span>${t.label}</span>
+      </div>`).join('')}
+  </div>`;
+}
 
-
-  <!-- LOGIN -->
-  <section class="login-section">
-
-    <div class="container">
-
-      <div class="login-card">
-
-        <h3>
-          🔐 सभासद Login
-        </h3>
-
-        <p>
-          आपल्या सभासद खात्यात Login करून
-          अर्जाची स्थिती, सभासद माहिती आणि पुढील सुविधा पाहा.
-        </p>
-
-        <a
-          href="login.html"
-          class="login-main-btn"
-        >
-          सभासद Login करा →
-        </a>
-
-      </div>
-
+function renderDashboard(){
+  return `
+  <div class="dash-wrap">
+    ${sidebarTabs()}
+    <div class="dash-content" id="dashContentTarget">
+      <div class="panel">Loading…</div>
     </div>
+  </div>`;
+}
 
-  </section>
+async function fillDashboardContent(){
+  const target = document.getElementById('dashContentTarget');
+  if(!target) return;
+  const user = await getUser(state.session);
+  if(!user){ target.innerHTML = `<div class="panel">Could not load profile.</div>`; return; }
 
+  if(state.dashTab === 'profile'){
+    target.innerHTML = profilePanel(user);
+  } else if(state.dashTab === 'edit'){
+    target.innerHTML = editPanel(user);
+  } else if(state.dashTab === 'password'){
+    target.innerHTML = passwordPanel();
+  } else if(state.dashTab === 'pdf'){
+    target.innerHTML = pdfPanel(user);
+  } else if(state.dashTab === 'card'){
+    target.innerHTML = cardPanel(user);
+  }
+  bindDashEvents();
+}
 
-  <!-- CONTACT -->
-  <section
-    class="contact"
-    id="contact"
-  >
-
-    <div class="container">
-
-      <div class="section-title">
-
-        <span>
-          Contact
-        </span>
-
-        <h2>
-          संपर्क
-        </h2>
-
+function profilePanel(u){
+  const rows = [
+    ['सभासद क्रमांक', u.memberNo, true],
+    ['नोंदणी दिनांक', u.regDate],
+    ['संपूर्ण नांव', u.fullName],
+    ['जन्मतारीख', u.dob || '—'],
+    ['लिंग', u.gender || '—'],
+    ['व्यवसाय', u.occupation || '—'],
+    ['शैक्षणिक पात्रता', u.education || '—'],
+    ['मोबाईल क्रमांक', u.mobile],
+    ['ई-मेल', u.email || '—'],
+    ['कायमचा पत्ता', u.address || '—'],
+    ['आधार क्रमांक', u.aadhar ? '••••••••'+u.aadhar.slice(-4) : '—'],
+    ['सदस्यत्व प्रकार', u.membershipType || '—'],
+  ];
+  return `
+  <div class="panel">
+    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:20px; flex-wrap:wrap;">
+      <div>
+        <h2 class="mr">माझी प्रोफाईल</h2>
+        <div class="desc">Your membership details on record.</div>
       </div>
+      ${u.photo ? `<img src="${u.photo}" style="width:74px;height:74px;border-radius:12px;object-fit:cover;border:1.5px solid #cdbd94;">` : ``}
+    </div>
+    <div class="profile-grid">
+      ${rows.map(r=>`
+        <div class="profile-item">
+          <div class="k mr">${r[0]}</div>
+          <div class="v ${r[2]?'mono':''} mr">${r[2] ? `<span class="badge badge-green">${r[1]}</span>` : (r[1] || '—')}</div>
+        </div>`).join('')}
+    </div>
+  </div>`;
+}
 
-
-      <div class="contact-card">
-
-        <h3>
-          पालवी रूरल मोबाईल अँड डिजिटल लायब्ररी
-        </h3>
-
-        <p class="address">
-
-          पालवी चॅरिटेबल ट्रस्ट संचलित<br>
-
-          बार्शी–तुळजापूर रोड, नागोबाचौक,<br>
-
-          बार्शी, जि. सोलापूर
-
-        </p>
-
+function editPanel(u){
+  return `
+  <div class="panel">
+    <h2 class="mr">प्रोफाईल संपादित करा</h2>
+    <div class="desc">Update your membership details.</div>
+    ${state.error ? `<div class="error-msg">${state.error}</div>` : ``}
+    ${state.success ? `<div class="success-msg">${state.success}</div>` : ``}
+    <form id="editForm">
+      <div style="display:flex; gap:20px; align-items:flex-start; margin-bottom:6px;">
+        <div class="photo-drop" id="photoDrop" data-action="pick-photo">
+          ${u.photo ? `<img src="${u.photo}">` : `<span class="mr" id="photoPlaceholder">फोटो निवडा</span>`}
+        </div>
+        <input type="file" id="photoInput" accept="image/*" style="display:none;">
+        <div style="flex:1;">
+          <div class="field"><label class="mr">संपूर्ण नांव</label><input type="text" name="fullName" value="${u.fullName||''}" required></div>
+        </div>
       </div>
+      <div class="row2">
+        <div class="field"><label class="mr">जन्मतारीख</label><input type="date" name="dob" value="${u.dob||''}"></div>
+        <div class="field"><label class="mr">लिंग</label>${radioGroup('gender', genderOptions, u.gender)}</div>
+      </div>
+      <div class="row2">
+        <div class="field"><label class="mr">व्यवसाय</label><input type="text" name="occupation" value="${u.occupation||''}"></div>
+        <div class="field"><label class="mr">शैक्षणिक पात्रता</label><input type="text" name="education" value="${u.education||''}"></div>
+      </div>
+      <div class="row2">
+        <div class="field"><label class="mr">मोबाईल क्रमांक</label><input type="tel" name="mobile" value="${u.mobile||''}" required></div>
+        <div class="field"><label>ई-मेल</label><input type="email" name="email" value="${u.email||''}"></div>
+      </div>
+      <div class="field"><label class="mr">कायमचा पत्ता</label><textarea name="address">${u.address||''}</textarea></div>
+      <div class="field"><label class="mr">आधार क्रमांक</label><input type="text" name="aadhar" value="${u.aadhar||''}"></div>
+      <div class="section-divider"><span class="mr">सदस्यत्व प्रकार</span></div>
+      <div class="field">${radioGroup('membershipType', membershipOptions, u.membershipType)}</div>
+      <button class="btn btn-primary" type="submit">Save changes</button>
+    </form>
+  </div>`;
+}
 
+function passwordPanel(){
+  return `
+  <div class="panel">
+    <h2>Change Password</h2>
+    <div class="desc">Choose a new password for your account.</div>
+    ${state.error ? `<div class="error-msg">${state.error}</div>` : ``}
+    ${state.success ? `<div class="success-msg">${state.success}</div>` : ``}
+    <form id="passwordForm" style="max-width:360px;">
+      <div class="field"><label>Current password</label><input type="password" name="current" required></div>
+      <div class="field"><label>New password</label><input type="password" name="newpass" required minlength="4"></div>
+      <div class="field"><label>Confirm new password</label><input type="password" name="confirm" required minlength="4"></div>
+      <button class="btn btn-primary" type="submit">Update password</button>
+    </form>
+  </div>`;
+}
+
+function pdfPanel(u){
+  return `
+  <div class="panel">
+    <h2 class="mr">सभासद प्रमाणपत्र (Membership PDF)</h2>
+    <div class="desc">Download a certificate PDF with your membership details.</div>
+    <div id="pdfPreview" style="border:1.5px solid #cdbd94; border-radius:10px; padding:26px; background:#fffdf7; max-width:560px;">
+      ${certificateInnerHtml(u)}
     </div>
-
-  </section>
-
-
-  <!-- FOOTER -->
-  <footer>
-
-    <h3>
-      पालवी रूरल मोबाईल अँड डिजिटल लायब्ररी
-    </h3>
-
-    <p>
-      पालवी चॅरिटेबल ट्रस्ट संचलित
-    </p>
-
-    <div class="copyright">
-
-      © 2026 Palavi Rural Mobile & Digital Library.
-      All Rights Reserved.
-
+    <div style="margin-top:18px;">
+      <button class="btn btn-gold" id="downloadPdfBtn">⬇ Download PDF</button>
     </div>
+  </div>`;
+}
 
-  </footer>
+function certificateInnerHtml(u){
+  return `
+    <div style="text-align:center; margin-bottom:14px;">
+      <div class="display mr" style="color:var(--maroon); font-size:19px; font-weight:700;">${LIB_NAME}</div>
+      <div class="mr" style="font-size:11px; color:#6b5a3a; margin-top:2px;">${LIB_ADDR}</div>
+      <div style="height:1.5px; background:var(--maroon); margin:12px 0;"></div>
+      <div class="display mr" style="font-size:16px; font-weight:700; color:var(--maroon);">सभासद प्रमाणपत्र</div>
+    </div>
+    <table style="width:100%; font-size:13px; border-collapse:collapse;">
+      <tr><td class="mr" style="padding:5px 0; color:#6b5a3a; width:45%;">सभासद क्रमांक</td><td class="mono" style="padding:5px 0; font-weight:700;">${u.memberNo}</td></tr>
+      <tr><td class="mr" style="padding:5px 0; color:#6b5a3a;">संपूर्ण नांव</td><td class="mr" style="padding:5px 0; font-weight:700;">${u.fullName}</td></tr>
+      <tr><td class="mr" style="padding:5px 0; color:#6b5a3a;">सदस्यत्व प्रकार</td><td class="mr" style="padding:5px 0;">${u.membershipType||'—'}</td></tr>
+      <tr><td class="mr" style="padding:5px 0; color:#6b5a3a;">मोबाईल क्रमांक</td><td style="padding:5px 0;">${u.mobile||'—'}</td></tr>
+      <tr><td class="mr" style="padding:5px 0; color:#6b5a3a;">नोंदणी दिनांक</td><td style="padding:5px 0;">${u.regDate}</td></tr>
+    </table>
+    <div style="margin-top:18px; font-size:11px; color:#8a7a52; text-align:center;" class="mr">
+      हे प्रमाणपत्र पालवी रुरल मोबाईल ऑण्ड डिजीटल लायब्ररीच्या नोंदी नुसार जारी करण्यात आले आहे.
+    </div>
+  `;
+}
 
+function cardPanel(u){
+  const bars = Array.from({length:34}, (_,i)=> {
+    const h = 8 + ((i*37 + u.memberNo.length*13) % 18);
+    return `<span style="height:${h}px;"></span>`;
+  }).join('');
+  return `
+  <div class="panel">
+    <h2>Library Card</h2>
+    <div class="desc mr">तुमचे डिजिटल सभासद कार्ड</div>
+    <div class="card-stage">
+      <div class="lib-card" id="libCard">
+        <div class="punch2"></div>
+        <div class="top-row">
+          <div>
+            <div class="lib-name mr">पालवी मोबाईल लायब्ररी</div>
+            <div class="lib-sub">Rural Mobile &amp; Digital Library</div>
+          </div>
+          <div class="stamp">MEMBER</div>
+        </div>
+        <div class="member-name">${u.fullName}</div>
+        <div class="member-type mr">${u.membershipType || 'सर्वसाधारण'}</div>
+        <div class="bottom-row">
+          <div>
+            <div class="memno">${u.memberNo}</div>
+            <div class="since">Since ${u.regDate}</div>
+          </div>
+          <div class="barcode">${bars}</div>
+        </div>
+      </div>
+      <div class="card-actions">
+        <button class="btn btn-gold" id="downloadCardBtn">⬇ Download card (PDF)</button>
+      </div>
+    </div>
+  </div>`;
+}
 
+/* ---------------- Event binding ---------------- */
+
+function bindEvents(){
+  document.querySelectorAll('[data-action="goto-register"]').forEach(el=>el.addEventListener('click', ()=>{
+    state.view='register'; state.error=''; state.success=''; render();
+  }));
+  document.querySelectorAll('[data-action="goto-login"]').forEach(el=>el.addEventListener('click', ()=>{
+    state.view='login'; state.error=''; state.success=''; render();
+  }));
+  document.querySelectorAll('[data-action="logout"]').forEach(el=>el.addEventListener('click', ()=>{
+    state.session=null; state.view='login'; state.error=''; state.success=''; render();
+  }));
+
+  const loginForm = document.getElementById('loginForm');
+  if(loginForm){
+    loginForm.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const fd = new FormData(loginForm);
+      const username = fd.get('username').trim();
+      const password = fd.get('password');
+      const user = await getUser(username);
+      if(!user || user.passwordHash !== simpleHash(password)){
+        state.error = "Username किंवा password चुकीचे आहे.";
+        render(); return;
+      }
+      state.session = username; state.error=''; state.success='';
+      state.view = 'dashboard'; state.dashTab='profile';
+      render();
+    });
+  }
+
+  const registerForm = document.getElementById('registerForm');
+  if(registerForm){
+    bindPhotoPicker();
+    registerForm.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const fd = new FormData(registerForm);
+      const username = fd.get('username').trim();
+      if(!username){ state.error='Username आवश्यक आहे.'; render(); return; }
+      const existing = await getUser(username);
+      if(existing){ state.error='हे username आधीच वापरले आहे. दुसरे निवडा.'; render(); return; }
+      const memberNo = await nextMemberNo();
+      const user = {
+        username,
+        passwordHash: simpleHash(fd.get('password')),
+        fullName: fd.get('fullName'),
+        dob: fd.get('dob'),
+        gender: fd.get('gender'),
+        occupation: fd.get('occupation'),
+        education: fd.get('education'),
+        mobile: fd.get('mobile'),
+        email: fd.get('email'),
+        address: fd.get('address'),
+        aadhar: fd.get('aadhar'),
+        membershipType: fd.get('membershipType'),
+        memberNo,
+        regDate: todayStr(),
+        photo: state.photoDataUrl || null,
+      };
+      await setUser(username, user);
+      state.photoDataUrl = null;
+      state.session = username;
+      state.view = 'dashboard'; state.dashTab = 'profile';
+      state.success = '';
+      render();
+      toast('नोंदणी यशस्वी! Member No: ' + memberNo);
+    });
+  }
+
+  if(state.view === 'dashboard'){
+    document.querySelectorAll('[data-action="dash-tab"]').forEach(el=>{
+      el.addEventListener('click', ()=>{
+        state.dashTab = el.dataset.tab; state.error=''; state.success='';
+        render();
+      });
+    });
+    fillDashboardContent();
+  }
+}
+
+function bindPhotoPicker(){
+  const drop = document.getElementById('photoDrop');
+  const input = document.getElementById('photoInput');
+  if(!drop || !input) return;
+  drop.addEventListener('click', ()=> input.click());
+  input.addEventListener('change', async ()=>{
+    if(input.files && input.files[0]){
+      const dataUrl = await resizeImageFile(input.files[0]);
+      state.photoDataUrl = dataUrl;
+      drop.innerHTML = `<img src="${dataUrl}">`;
+    }
+  });
+}
+
+function bindDashEvents(){
+  bindPhotoPicker();
+
+  const editForm = document.getElementById('editForm');
+  if(editForm){
+    editForm.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const fd = new FormData(editForm);
+      const user = await getUser(state.session);
+      user.fullName = fd.get('fullName');
+      user.dob = fd.get('dob');
+      user.gender = fd.get('gender');
+      user.occupation = fd.get('occupation');
+      user.education = fd.get('education');
+      user.mobile = fd.get('mobile');
+      user.email = fd.get('email');
+      user.address = fd.get('address');
+      user.aadhar = fd.get('aadhar');
+      user.membershipType = fd.get('membershipType');
+      if(state.photoDataUrl) user.photo = state.photoDataUrl;
+      await setUser(state.session, user);
+      state.photoDataUrl = null;
+      state.success = 'प्रोफाईल यशस्वीरित्या अपडेट झाली.';
+      state.error='';
+      fillDashboardContent();
+      toast('Profile updated');
+    });
+  }
+
+  const pwForm = document.getElementById('passwordForm');
+  if(pwForm){
+    pwForm.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const fd = new FormData(pwForm);
+      const user = await getUser(state.session);
+      if(user.passwordHash !== simpleHash(fd.get('current'))){
+        state.error = 'सध्याचा password चुकीचा आहे.'; state.success='';
+        fillDashboardContent(); return;
+      }
+      if(fd.get('newpass') !== fd.get('confirm')){
+        state.error = 'नवीन passwords जुळत नाहीत.'; state.success='';
+        fillDashboardContent(); return;
+      }
+      user.passwordHash = simpleHash(fd.get('newpass'));
+      await setUser(state.session, user);
+      state.error=''; state.success='Password यशस्वीरित्या बदलला.';
+      fillDashboardContent();
+      toast('Password updated');
+    });
+  }
+
+  const dlPdfBtn = document.getElementById('downloadPdfBtn');
+  if(dlPdfBtn){
+    dlPdfBtn.addEventListener('click', ()=> downloadNodeAsPdf('pdfPreview', 'Membership_Certificate.pdf'));
+  }
+  const dlCardBtn = document.getElementById('downloadCardBtn');
+  if(dlCardBtn){
+    dlCardBtn.addEventListener('click', ()=> downloadNodeAsPdf('libCard', 'Library_Card.pdf', true));
+  }
+}
+
+async function downloadNodeAsPdf(elementId, filename, isCard=false){
+  const node = document.getElementById(elementId);
+  toast('Preparing PDF…');
+  const canvas = await html2canvas(node, {scale:3, backgroundColor: isCard ? null : '#fffdf7'});
+  const imgData = canvas.toDataURL('image/png');
+  const { jsPDF } = window.jspdf;
+  const pdf = new jsPDF({ orientation: isCard ? 'landscape' : 'portrait', unit:'pt', format: isCard ? [340,215] : 'a4' });
+  const pageW = pdf.internal.pageSize.getWidth();
+  const pageH = pdf.internal.pageSize.getHeight();
+  const imgW = isCard ? pageW - 20 : pageW - 80;
+  const imgH = imgW * (canvas.height/canvas.width);
+  const x = (pageW - imgW)/2;
+  const y = isCard ? (pageH-imgH)/2 : 50;
+  pdf.addImage(imgData, 'PNG', x, y, imgW, imgH);
+  pdf.save(filename);
+}
+
+render();
+</script>
 </body>
 </html>
