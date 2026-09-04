@@ -1,521 +1,840 @@
 <!DOCTYPE html>
 <html lang="mr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>ग्रंथालय सभासद नोंदणी</title>
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    ग्रंथालय सभासद नोंदणी
+  </title>
+
 
   <style>
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
+
     body {
-      font-family: "Noto Sans Devanagari", "Segoe UI", Arial, sans-serif;
+
+      font-family:
+        "Noto Sans Devanagari",
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
       background: #f4f6f8;
+
       color: #1f2937;
+
       min-height: 100vh;
     }
 
-    /* =========================
-       HEADER
-    ========================= */
 
     .header {
+
       background: #17233c;
+
       color: white;
+
       padding: 30px 20px;
+
       text-align: center;
     }
 
+
     .header h1 {
+
       font-size: 29px;
+
       font-weight: 700;
+
       margin-bottom: 8px;
     }
 
+
     .header p {
+
       font-size: 15px;
+
       opacity: 0.88;
     }
 
-    /* =========================
-       MAIN CONTAINER
-    ========================= */
 
     .container {
+
       width: 100%;
+
       max-width: 950px;
+
       margin: 30px auto 50px;
+
       padding: 0 18px;
     }
 
-    /* =========================
-       PROGRESS
-    ========================= */
 
     .progress-card {
+
       background: white;
+
       border: 1px solid #e2e5e9;
+
       border-radius: 14px;
+
       padding: 20px;
+
       margin-bottom: 22px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+
+      box-shadow:
+        0 5px 20px rgba(0,0,0,0.05);
     }
+
 
     .progress {
+
       display: flex;
+
       align-items: center;
+
       justify-content: center;
-      gap: 0;
     }
 
+
     .step {
+
       display: flex;
+
       align-items: center;
+
       color: #9ca3af;
+
       font-size: 14px;
+
       font-weight: 600;
     }
 
+
     .step-number {
+
       width: 38px;
+
       height: 38px;
+
       border-radius: 50%;
+
       border: 2px solid #d1d5db;
+
       display: flex;
+
       align-items: center;
+
       justify-content: center;
+
       margin-right: 9px;
+
       background: white;
+
       font-weight: 700;
     }
 
+
     .step.active {
+
       color: #8b5e34;
     }
 
+
     .step.active .step-number {
+
       background: #8b5e34;
+
       border-color: #8b5e34;
+
       color: white;
     }
 
+
     .step-line {
+
       width: 110px;
+
       height: 2px;
+
       background: #d9dde2;
+
       margin: 0 18px;
     }
 
+
     .step-line.active {
+
       background: #8b5e34;
     }
 
-    /* =========================
-       PAGE
-    ========================= */
 
     .page {
+
       display: none;
     }
 
+
     .page.active {
+
       display: block;
     }
 
-    /* =========================
-       FORM CARD
-    ========================= */
 
     .form-card {
+
       background: white;
+
       border-radius: 16px;
+
       border: 1px solid #e2e5e9;
-      box-shadow: 0 8px 28px rgba(0,0,0,0.06);
+
+      box-shadow:
+        0 8px 28px rgba(0,0,0,0.06);
+
       overflow: hidden;
+
       margin-bottom: 22px;
     }
 
+
     .card-header {
+
       background: #fafafa;
+
       border-bottom: 1px solid #e5e7eb;
+
       padding: 20px 24px;
     }
 
+
     .card-header h2 {
+
       font-size: 19px;
+
       color: #17233c;
+
       margin-bottom: 4px;
     }
 
+
     .card-header p {
+
       color: #6b7280;
+
       font-size: 13px;
     }
 
+
     .card-body {
+
       padding: 24px;
     }
 
-    /* =========================
-       SECTION
-    ========================= */
-
-    .section-title {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 17px;
-      font-weight: 700;
-      color: #17233c;
-      margin-bottom: 18px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid #edf0f2;
-    }
-
-    .section-icon {
-      width: 34px;
-      height: 34px;
-      border-radius: 9px;
-      background: #f1e8df;
-      color: #8b5e34;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 17px;
-    }
 
     .section {
+
       margin-bottom: 30px;
     }
 
+
     .section:last-child {
+
       margin-bottom: 0;
     }
 
-    /* =========================
-       GRID
-    ========================= */
+
+    .section-title {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      font-size: 17px;
+
+      font-weight: 700;
+
+      color: #17233c;
+
+      margin-bottom: 18px;
+
+      padding-bottom: 10px;
+
+      border-bottom:
+        1px solid #edf0f2;
+    }
+
+
+    .section-icon {
+
+      width: 34px;
+
+      height: 34px;
+
+      border-radius: 9px;
+
+      background: #f1e8df;
+
+      color: #8b5e34;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      font-size: 17px;
+    }
+
 
     .grid {
+
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
       gap: 18px;
     }
 
+
     .full {
+
       grid-column: 1 / -1;
     }
 
-    /* =========================
-       FORM ELEMENTS
-    ========================= */
 
     .form-group {
+
       display: flex;
+
       flex-direction: column;
     }
 
+
     .form-group label {
+
       font-size: 14px;
+
       font-weight: 600;
+
       margin-bottom: 7px;
+
       color: #374151;
     }
 
+
     .required {
+
       color: #c62828;
     }
+
 
     input,
     select,
     textarea {
+
       width: 100%;
-      border: 1px solid #d1d5db;
+
+      border:
+        1px solid #d1d5db;
+
       border-radius: 9px;
+
       padding: 12px 13px;
+
       font-size: 14px;
+
       background: white;
+
       color: #1f2937;
+
       outline: none;
+
       transition: 0.2s;
+
       font-family: inherit;
     }
+
 
     input:focus,
     select:focus,
     textarea:focus {
+
       border-color: #8b5e34;
-      box-shadow: 0 0 0 3px rgba(139,94,52,0.10);
+
+      box-shadow:
+        0 0 0 3px
+        rgba(139,94,52,0.10);
     }
 
+
     textarea {
+
       min-height: 90px;
+
       resize: vertical;
     }
 
+
     .hint {
+
       margin-top: 5px;
+
       font-size: 12px;
+
       color: #6b7280;
     }
 
-    /* =========================
-       MEMBERSHIP OPTIONS
-    ========================= */
 
-    .membership-options {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 10px;
-    }
+    .username-info {
 
-    .membership-option {
-      position: relative;
-    }
+      background: #f5f1eb;
 
-    .membership-option input {
-      position: absolute;
-      opacity: 0;
-      pointer-events: none;
-    }
+      border:
+        1px solid #dfd0c0;
 
-    .membership-option label {
-      display: block;
-      border: 1px solid #d5d9df;
-      border-radius: 9px;
-      padding: 12px 8px;
-      text-align: center;
-      cursor: pointer;
-      font-size: 13px;
-      background: white;
-      transition: 0.2s;
-    }
-
-    .membership-option input:checked + label {
-      border-color: #8b5e34;
-      background: #faf5ef;
-      color: #8b5e34;
-      font-weight: 700;
-    }
-
-    /* =========================
-       BUTTONS
-    ========================= */
-
-    .button-area {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      padding: 20px 24px;
-      background: #fafafa;
-      border-top: 1px solid #e5e7eb;
-    }
-
-    button {
-      border: none;
-      border-radius: 9px;
-      padding: 13px 24px;
-      font-size: 14px;
-      font-weight: 700;
-      cursor: pointer;
-      font-family: inherit;
-      transition: 0.2s;
-    }
-
-    .btn-primary {
-      background: #8b5e34;
-      color: white;
-    }
-
-    .btn-primary:hover {
-      background: #704925;
-      transform: translateY(-1px);
-    }
-
-    .btn-secondary {
-      background: #e5e7eb;
-      color: #374151;
-    }
-
-    .btn-secondary:hover {
-      background: #d1d5db;
-    }
-
-    /* =========================
-       LOGIN LINK
-    ========================= */
-
-    .login-box {
-      display: none;
-      text-align: center;
-      background: #f8fafc;
-      border: 1px solid #e5e7eb;
       border-radius: 10px;
-      padding: 14px;
-      margin-top: 18px;
-      font-size: 14px;
-    }
 
-    .login-box a {
-      color: #8b5e34;
-      font-weight: 700;
-      text-decoration: none;
-    }
-
-    /* =========================
-       UPLOAD CARDS
-    ========================= */
-
-    .upload-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-    }
-
-    .upload-card {
-      border: 1px solid #dfe3e8;
-      border-radius: 13px;
-      padding: 20px;
-      background: #fff;
-      transition: 0.2s;
-    }
-
-    .upload-card:hover {
-      border-color: #b8a18b;
-      box-shadow: 0 5px 18px rgba(0,0,0,0.05);
-    }
-
-    .upload-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
-      background: #f3ece5;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      margin-bottom: 13px;
-    }
-
-    .upload-card h3 {
-      font-size: 16px;
-      color: #17233c;
-      margin-bottom: 5px;
-    }
-
-    .upload-card p {
-      font-size: 12px;
-      color: #6b7280;
-      margin-bottom: 13px;
-      line-height: 1.5;
-    }
-
-    .file-input {
-      width: 100%;
-      border: 1px dashed #bfc5cc;
-      padding: 10px;
-      border-radius: 8px;
-      background: #fafafa;
-      cursor: pointer;
-      font-size: 12px;
-    }
-
-    .file-name {
-      margin-top: 8px;
-      font-size: 12px;
-      color: #555;
-      word-break: break-word;
-    }
-
-    .preview {
-      display: none;
-      margin-top: 12px;
-      max-width: 150px;
-      max-height: 120px;
-      border-radius: 8px;
-      border: 1px solid #ddd;
-      object-fit: contain;
-    }
-
-    .size-rule {
-      margin-top: 18px;
       padding: 13px 15px;
-      border-radius: 9px;
-      background: #fff8e8;
-      border: 1px solid #f1dfb0;
-      color: #73591c;
+
+      color: #6d4b2c;
+
       font-size: 13px;
-      line-height: 1.5;
-    }
 
-    /* =========================
-       MESSAGE
-    ========================= */
-
-    .message {
-      display: none;
-      padding: 13px 15px;
-      border-radius: 9px;
-      margin-top: 15px;
-      font-size: 13px;
-      line-height: 1.5;
-    }
-
-    .message.error {
-      display: block;
-      background: #fff1f2;
-      border: 1px solid #fecdd3;
-      color: #9f1239;
-    }
-
-    .message.success {
-      display: block;
-      background: #f0fdf4;
-      border: 1px solid #bbf7d0;
-      color: #166534;
-    }
-
-    /* =========================
-       SUCCESS SCREEN
-    ========================= */
-
-    .success-screen {
-      display: none;
-      text-align: center;
-      padding: 55px 25px;
-    }
-
-    .success-icon {
-      width: 75px;
-      height: 75px;
-      margin: 0 auto 20px;
-      border-radius: 50%;
-      background: #e9f8ee;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 40px;
-    }
-
-    .success-screen h2 {
-      color: #17233c;
-      margin-bottom: 10px;
-    }
-
-    .success-screen p {
-      color: #6b7280;
       line-height: 1.6;
     }
 
-    /* =========================
-       MOBILE
-    ========================= */
+
+    .membership-options {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(5, 1fr);
+
+      gap: 10px;
+    }
+
+
+    .membership-option {
+
+      position: relative;
+    }
+
+
+    .membership-option input {
+
+      position: absolute;
+
+      opacity: 0;
+
+      pointer-events: none;
+    }
+
+
+    .membership-option label {
+
+      display: block;
+
+      border:
+        1px solid #d5d9df;
+
+      border-radius: 9px;
+
+      padding: 12px 8px;
+
+      text-align: center;
+
+      cursor: pointer;
+
+      font-size: 13px;
+
+      background: white;
+
+      transition: 0.2s;
+    }
+
+
+    .membership-option input:checked + label {
+
+      border-color: #8b5e34;
+
+      background: #faf5ef;
+
+      color: #8b5e34;
+
+      font-weight: 700;
+    }
+
+
+    .button-area {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      gap: 12px;
+
+      padding: 20px 24px;
+
+      background: #fafafa;
+
+      border-top:
+        1px solid #e5e7eb;
+    }
+
+
+    button {
+
+      border: none;
+
+      border-radius: 9px;
+
+      padding: 13px 24px;
+
+      font-size: 14px;
+
+      font-weight: 700;
+
+      cursor: pointer;
+
+      font-family: inherit;
+
+      transition: 0.2s;
+    }
+
+
+    button:disabled {
+
+      opacity: 0.6;
+
+      cursor: not-allowed;
+    }
+
+
+    .btn-primary {
+
+      background: #8b5e34;
+
+      color: white;
+    }
+
+
+    .btn-primary:hover {
+
+      background: #704925;
+
+      transform: translateY(-1px);
+    }
+
+
+    .btn-secondary {
+
+      background: #e5e7eb;
+
+      color: #374151;
+    }
+
+
+    .upload-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
+      gap: 18px;
+    }
+
+
+    .upload-card {
+
+      border:
+        1px solid #dfe3e8;
+
+      border-radius: 13px;
+
+      padding: 20px;
+
+      background: #fff;
+    }
+
+
+    .upload-icon {
+
+      width: 48px;
+
+      height: 48px;
+
+      border-radius: 12px;
+
+      background: #f3ece5;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      font-size: 24px;
+
+      margin-bottom: 13px;
+    }
+
+
+    .upload-card h3 {
+
+      font-size: 16px;
+
+      color: #17233c;
+
+      margin-bottom: 5px;
+    }
+
+
+    .upload-card p {
+
+      font-size: 12px;
+
+      color: #6b7280;
+
+      margin-bottom: 13px;
+
+      line-height: 1.5;
+    }
+
+
+    .file-input {
+
+      width: 100%;
+
+      border:
+        1px dashed #bfc5cc;
+
+      padding: 10px;
+
+      border-radius: 8px;
+
+      background: #fafafa;
+
+      cursor: pointer;
+
+      font-size: 12px;
+    }
+
+
+    .file-name {
+
+      margin-top: 8px;
+
+      font-size: 12px;
+
+      color: #555;
+
+      word-break: break-word;
+    }
+
+
+    .preview {
+
+      display: none;
+
+      margin-top: 12px;
+
+      max-width: 150px;
+
+      max-height: 120px;
+
+      border-radius: 8px;
+
+      border:
+        1px solid #ddd;
+
+      object-fit: contain;
+    }
+
+
+    .size-rule {
+
+      margin-top: 18px;
+
+      padding: 13px 15px;
+
+      border-radius: 9px;
+
+      background: #fff8e8;
+
+      border:
+        1px solid #f1dfb0;
+
+      color: #73591c;
+
+      font-size: 13px;
+
+      line-height: 1.5;
+    }
+
+
+    .message {
+
+      display: none;
+
+      padding: 13px 15px;
+
+      border-radius: 9px;
+
+      margin-top: 15px;
+
+      font-size: 13px;
+
+      line-height: 1.5;
+    }
+
+
+    .message.error {
+
+      display: block;
+
+      background: #fff1f2;
+
+      border:
+        1px solid #fecdd3;
+
+      color: #9f1239;
+    }
+
+
+    .message.success {
+
+      display: block;
+
+      background: #f0fdf4;
+
+      border:
+        1px solid #bbf7d0;
+
+      color: #166534;
+    }
+
+
+    .success-screen {
+
+      display: none;
+
+      text-align: center;
+
+      padding: 45px 25px;
+    }
+
+
+    .success-icon {
+
+      width: 75px;
+
+      height: 75px;
+
+      margin: 0 auto 20px;
+
+      border-radius: 50%;
+
+      background: #e9f8ee;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      font-size: 40px;
+    }
+
+
+    .success-screen h2 {
+
+      color: #17233c;
+
+      margin-bottom: 10px;
+    }
+
+
+    .success-screen p {
+
+      color: #6b7280;
+
+      line-height: 1.6;
+    }
+
+
+    .credentials-box {
+
+      max-width: 500px;
+
+      margin: 25px auto 0;
+
+      padding: 20px;
+
+      background: #f8fafc;
+
+      border:
+        1px solid #dbe2e8;
+
+      border-radius: 12px;
+
+      text-align: left;
+    }
+
+
+    .credential-row {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      gap: 15px;
+
+      padding: 10px 0;
+
+      border-bottom:
+        1px solid #e5e7eb;
+    }
+
+
+    .credential-row:last-child {
+
+      border-bottom: none;
+    }
+
+
+    .credential-label {
+
+      font-weight: 700;
+    }
+
+
+    .credential-value {
+
+      font-weight: 700;
+
+      word-break: break-word;
+    }
+
 
     @media (max-width: 700px) {
 
@@ -523,1199 +842,1937 @@
         padding: 23px 15px;
       }
 
+
       .header h1 {
         font-size: 22px;
       }
 
-      .header p {
-        font-size: 13px;
-      }
 
       .container {
         margin-top: 18px;
         padding: 0 10px;
       }
 
-      .progress-card {
-        padding: 15px 10px;
-      }
-
-      .step {
-        font-size: 11px;
-      }
-
-      .step-number {
-        width: 32px;
-        height: 32px;
-        margin-right: 5px;
-      }
-
-      .step-line {
-        width: 45px;
-        margin: 0 7px;
-      }
-
-      .card-header,
-      .card-body {
-        padding: 18px;
-      }
 
       .grid {
         grid-template-columns: 1fr;
       }
 
+
       .full {
         grid-column: auto;
       }
 
+
       .membership-options {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+          repeat(2, 1fr);
       }
+
 
       .upload-grid {
         grid-template-columns: 1fr;
       }
 
-      .button-area {
-        padding: 16px 18px;
+
+      .step {
+        font-size: 11px;
       }
 
-      button {
-        padding: 12px 17px;
-        font-size: 13px;
+
+      .step-number {
+        width: 32px;
+        height: 32px;
+      }
+
+
+      .step-line {
+        width: 45px;
+        margin: 0 7px;
       }
     }
+
   </style>
+
 </head>
+
 
 <body>
 
-  <!-- =========================
-       HEADER
-  ========================= -->
 
-  <header class="header">
-    <h1>ग्रंथालय सभासद नोंदणी फॉर्म</h1>
-    <p>Create your library membership account</p>
-  </header>
+<header class="header">
+
+  <h1>
+    ग्रंथालय सभासद नोंदणी फॉर्म
+  </h1>
+
+  <p>
+    Create your library membership account
+  </p>
+
+</header>
 
 
-  <main class="container">
+<main class="container">
 
-    <!-- =========================
-         PROGRESS
-    ========================= -->
 
-    <div class="progress-card">
+  <!-- PROGRESS -->
 
-      <div class="progress">
+  <div class="progress-card">
 
-        <div class="step active" id="step1Indicator">
-          <div class="step-number">1</div>
-          <span>Registration Details</span>
+    <div class="progress">
+
+      <div
+        class="step active"
+        id="step1Indicator"
+      >
+
+        <div class="step-number">
+          1
         </div>
 
-        <div class="step-line" id="progressLine"></div>
+        <span>
+          Registration Details
+        </span>
 
-        <div class="step" id="step2Indicator">
-          <div class="step-number">2</div>
-          <span>Documents</span>
+      </div>
+
+
+      <div
+        class="step-line"
+        id="progressLine"
+      ></div>
+
+
+      <div
+        class="step"
+        id="step2Indicator"
+      >
+
+        <div class="step-number">
+          2
         </div>
+
+        <span>
+          Documents
+        </span>
 
       </div>
 
     </div>
 
+  </div>
 
-    <!-- =====================================================
-         PAGE 1
-    ====================================================== -->
 
-    <section class="page active" id="page1">
+  <!-- PAGE 1 -->
 
-      <div class="form-card">
+  <section
+    class="page active"
+    id="page1"
+  >
 
-        <div class="card-header">
-          <h2>सभासद खाते तयार करा</h2>
-          <p>कृपया आपली अचूक माहिती भरा.</p>
+    <div class="form-card">
+
+
+      <div class="card-header">
+
+        <h2>
+          सभासद खाते तयार करा
+        </h2>
+
+        <p>
+          कृपया आपली अचूक माहिती भरा.
+        </p>
+
+      </div>
+
+
+      <div class="card-body">
+
+
+        <!-- LOGIN -->
+
+        <div class="section">
+
+          <div class="section-title">
+
+            <div class="section-icon">
+              🔐
+            </div>
+
+            Login Details
+
+          </div>
+
+
+          <div class="username-info">
+
+            <strong>
+              Username कसा मिळेल?
+            </strong>
+
+            <br>
+
+            Registration पूर्ण झाल्यावर
+            system तुमच्यासाठी
+            <strong>
+              Member ID
+            </strong>
+            automatically तयार करेल.
+
+            <br>
+
+            तोच तुमचा
+            <strong>
+              Username
+            </strong>
+            असेल.
+
+            <br>
+
+            उदाहरण:
+            <strong>
+              LIB-2026-00001
+            </strong>
+
+          </div>
+
+
+          <br>
+
+
+          <div class="grid">
+
+            <div class="form-group full">
+
+              <label>
+                Password
+                <span class="required">*</span>
+              </label>
+
+              <input
+                type="password"
+                id="password"
+                placeholder="Create password"
+                autocomplete="new-password"
+              >
+
+              <div class="hint">
+                Password किमान 6 characters असावा.
+              </div>
+
+            </div>
+
+          </div>
+
         </div>
 
-        <div class="card-body">
 
-          <!-- LOGIN DETAILS -->
+        <!-- PERSONAL -->
 
-          <div class="section">
+        <div class="section">
 
-            <div class="section-title">
-              <div class="section-icon">🔐</div>
-              Login Details
+          <div class="section-title">
+
+            <div class="section-icon">
+              👤
             </div>
 
-            <div class="grid">
+            वैयक्तिक माहिती
 
-              <div class="form-group">
-                <label>
-                  Username <span class="required">*</span>
-                </label>
-
-                <input
-                  type="text"
-                  id="username"
-                  placeholder="Enter username"
-                  autocomplete="username"
-                >
-              </div>
+          </div>
 
 
-              <div class="form-group">
-                <label>
-                  Password <span class="required">*</span>
-                </label>
+          <div class="grid">
 
-                <input
-                  type="password"
-                  id="password"
-                  placeholder="Create password"
-                  autocomplete="new-password"
-                >
+
+            <div class="form-group full">
+
+              <label>
+
+                संपूर्ण नांव
+
+                <span class="required">
+                  *
+                </span>
+
+              </label>
+
+
+              <input
+                type="text"
+                id="fullName"
+                placeholder="आपले संपूर्ण नाव"
+              >
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label>
+                जन्मतारीख
+              </label>
+
+              <input
+                type="date"
+                id="dob"
+              >
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label>
+                लिंग
+              </label>
+
+              <select id="gender">
+
+                <option value="">
+                  -- निवडा --
+                </option>
+
+                <option value="पुरुष">
+                  पुरुष
+                </option>
+
+                <option value="महिला">
+                  महिला
+                </option>
+
+                <option value="इतर">
+                  इतर
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label>
+                व्यवसाय
+              </label>
+
+              <input
+                type="text"
+                id="business"
+                placeholder="उदा. विद्यार्थी, शिक्षक, व्यवसाय"
+              >
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label>
+                मोबाईल क्रमांक
+                <span class="required">
+                  *
+                </span>
+              </label>
+
+              <input
+                type="tel"
+                id="mobile"
+                placeholder="10 अंकी मोबाईल क्रमांक"
+                maxlength="10"
+                inputmode="numeric"
+              >
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label>
+                ई-मेल
+              </label>
+
+              <input
+                type="email"
+                id="email"
+                placeholder="example@gmail.com"
+              >
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- ADDRESS -->
+
+        <div class="section">
+
+          <div class="section-title">
+
+            <div class="section-icon">
+              🏠
+            </div>
+
+            पत्ता
+
+          </div>
+
+
+          <div class="grid">
+
+            <div class="form-group full">
+
+              <label>
+                कायमचा पत्ता
+              </label>
+
+              <textarea
+                id="address"
+                placeholder="आपला संपूर्ण पत्ता"
+              ></textarea>
+
+              <div class="hint">
+                हा पत्ता पत्रव्यवहाराचा आणि कायमचा
+                पत्ता म्हणून नोंदवला जाईल.
               </div>
 
             </div>
 
           </div>
 
+        </div>
 
-          <!-- PERSONAL INFORMATION -->
 
-          <div class="section">
+        <!-- AADHAAR -->
 
-            <div class="section-title">
-              <div class="section-icon">👤</div>
-              वैयक्तिक माहिती
+        <div class="section">
+
+          <div class="section-title">
+
+            <div class="section-icon">
+              🪪
             </div>
 
-            <div class="grid">
+            ओळख माहिती
 
-              <div class="form-group full">
-                <label>
-                  संपूर्ण नांव <span class="required">*</span>
-                </label>
-
-                <input
-                  type="text"
-                  id="fullName"
-                  placeholder="आपले संपूर्ण नाव"
-                >
-              </div>
+          </div>
 
 
-              <div class="form-group">
-                <label>जन्मतारीख</label>
+          <div class="grid">
 
-                <input
-                  type="date"
-                  id="dob"
-                >
-              </div>
+            <div class="form-group full">
 
+              <label>
+                आधार क्रमांक
+              </label>
 
-              <div class="form-group">
+              <input
+                type="text"
+                id="aadhaar"
+                placeholder="12 अंकी आधार क्रमांक"
+                maxlength="12"
+                inputmode="numeric"
+              >
 
-                <label>लिंग</label>
-
-                <select id="gender">
-                  <option value="">-- निवडा --</option>
-                  <option value="पुरुष">पुरुष</option>
-                  <option value="महिला">महिला</option>
-                  <option value="इतर">इतर</option>
-                </select>
-
-              </div>
-
-
-              <div class="form-group">
-
-                <label>व्यवसाय</label>
-
-                <input
-                  type="text"
-                  id="occupation"
-                  placeholder="उदा. विद्यार्थी, शिक्षक, व्यवसाय"
-                >
-
-              </div>
-
-
-              <div class="form-group">
-
-                <label>शैक्षणिक पात्रता</label>
-
-                <input
-                  type="text"
-                  id="education"
-                  placeholder="उदा. 12वी, BA, MA"
-                >
-
-              </div>
-
-
-              <div class="form-group">
-
-                <label>
-                  मोबाईल क्रमांक <span class="required">*</span>
-                </label>
-
-                <input
-                  type="tel"
-                  id="mobile"
-                  placeholder="10 अंकी मोबाईल क्रमांक"
-                  maxlength="10"
-                >
-
-              </div>
-
-
-              <div class="form-group">
-
-                <label>ई-मेल</label>
-
-                <input
-                  type="email"
-                  id="email"
-                  placeholder="example@gmail.com"
-                >
-
+              <div class="hint">
+                तुमची माहिती सुरक्षित पद्धतीने वापरली जाईल.
               </div>
 
             </div>
 
           </div>
 
+        </div>
 
-          <!-- ADDRESS -->
 
-          <div class="section">
+        <!-- MEMBERSHIP -->
 
-            <div class="section-title">
-              <div class="section-icon">🏠</div>
-              कायमचा पत्ता
+        <div class="section">
+
+          <div class="section-title">
+
+            <div class="section-icon">
+              📚
             </div>
 
-            <div class="grid">
+            सदस्यत्व प्रकार
 
-              <div class="form-group full">
+          </div>
 
-                <label>कायमचा पत्ता</label>
 
-                <textarea
-                  id="address"
-                  placeholder="आपला संपूर्ण कायमचा पत्ता"
-                ></textarea>
+          <div class="membership-options">
 
-              </div>
+
+            <div class="membership-option">
+
+              <input
+                type="radio"
+                name="membership"
+                id="student"
+                value="विद्यार्थी"
+              >
+
+              <label for="student">
+                विद्यार्थी
+              </label>
 
             </div>
+
+
+            <div class="membership-option">
+
+              <input
+                type="radio"
+                name="membership"
+                id="general"
+                value="सर्वसाधारण"
+              >
+
+              <label for="general">
+                सर्वसाधारण
+              </label>
+
+            </div>
+
+
+            <div class="membership-option">
+
+              <input
+                type="radio"
+                name="membership"
+                id="senior"
+                value="ज्येष्ठ नागरिक"
+              >
+
+              <label for="senior">
+                ज्येष्ठ नागरिक
+              </label>
+
+            </div>
+
+
+            <div class="membership-option">
+
+              <input
+                type="radio"
+                name="membership"
+                id="annual"
+                value="वार्षिक"
+              >
+
+              <label for="annual">
+                वार्षिक
+              </label>
+
+            </div>
+
+
+            <div class="membership-option">
+
+              <input
+                type="radio"
+                name="membership"
+                id="lifetime"
+                value="आजीवन"
+              >
+
+              <label for="lifetime">
+                आजीवन
+              </label>
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+
+        <div
+          id="page1Message"
+          class="message"
+        ></div>
+
+
+      </div>
+
+
+      <div class="button-area">
+
+        <div></div>
+
+        <button
+          type="button"
+          class="btn-primary"
+          onclick="goToPage2()"
+        >
+
+          Save & Next →
+
+        </button>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+  <!-- PAGE 2 -->
+
+  <section
+    class="page"
+    id="page2"
+  >
+
+
+    <div
+      class="form-card"
+      id="documentFormCard"
+    >
+
+
+      <div class="card-header">
+
+        <h2>
+          Document Verification
+        </h2>
+
+        <p>
+          आवश्यक कागदपत्रे upload करा.
+        </p>
+
+      </div>
+
+
+      <div class="card-body">
+
+
+        <div class="size-rule">
+
+          <strong>
+            📌 Upload नियम:
+          </strong>
+
+          <br>
+
+          📷 Photo,
+          ✍️ Signature आणि
+          🪪 Aadhaar हे
+          <strong>
+            Mandatory
+          </strong>
+          आहेत.
+
+          <br>
+
+          प्रत्येक uploaded file चा आकार
+          <strong>
+            किमान 1 MB
+          </strong>
+          असणे आवश्यक आहे.
+
+          <br>
+
+          Maximum size limit नाही.
+
+        </div>
+
+
+        <br>
+
+
+        <div class="upload-grid">
+
+
+          <!-- PHOTO -->
+
+          <div class="upload-card">
+
+            <div class="upload-icon">
+              📷
+            </div>
+
+            <h3>
+
+              Photo Upload
+
+              <span class="required">
+                *
+              </span>
+
+            </h3>
+
+            <p>
+              सभासदाचा passport-size / clear photo upload करा.
+            </p>
+
+
+            <input
+              type="file"
+              id="photo"
+              class="file-input"
+              accept="image/*"
+              onchange="
+                handleFile(
+                  this,
+                  'photoName',
+                  'photoPreview',
+                  true
+                )
+              "
+            >
+
+
+            <div
+              class="file-name"
+              id="photoName"
+            ></div>
+
+
+            <img
+              id="photoPreview"
+              class="preview"
+              alt="Photo Preview"
+            >
+
+          </div>
+
+
+          <!-- SIGNATURE -->
+
+          <div class="upload-card">
+
+            <div class="upload-icon">
+              ✍️
+            </div>
+
+            <h3>
+
+              Signature Upload
+
+              <span class="required">
+                *
+              </span>
+
+            </h3>
+
+            <p>
+              स्पष्ट signature image upload करा.
+            </p>
+
+
+            <input
+              type="file"
+              id="signature"
+              class="file-input"
+              accept="image/*"
+              onchange="
+                handleFile(
+                  this,
+                  'signatureName',
+                  'signaturePreview',
+                  true
+                )
+              "
+            >
+
+
+            <div
+              class="file-name"
+              id="signatureName"
+            ></div>
+
+
+            <img
+              id="signaturePreview"
+              class="preview"
+              alt="Signature Preview"
+            >
 
           </div>
 
 
           <!-- AADHAAR -->
 
-          <div class="section">
+          <div class="upload-card">
 
-            <div class="section-title">
-              <div class="section-icon">🪪</div>
-              ओळख माहिती
+            <div class="upload-icon">
+              🪪
             </div>
 
-            <div class="grid">
+            <h3>
 
-              <div class="form-group full">
+              Aadhaar Upload
 
-                <label>आधार क्रमांक</label>
+              <span class="required">
+                *
+              </span>
 
-                <input
-                  type="text"
-                  id="aadhaar"
-                  placeholder="12 अंकी आधार क्रमांक"
-                  maxlength="12"
-                  inputmode="numeric"
-                >
+            </h3>
 
-                <div class="hint">
-                  तुमची माहिती सुरक्षित पद्धतीने वापरली जाईल.
-                </div>
+            <p>
+              Aadhaar Card ची स्पष्ट image/PDF upload करा.
+            </p>
 
-              </div>
 
-            </div>
+            <input
+              type="file"
+              id="aadhaarFile"
+              class="file-input"
+              accept="image/*,.pdf"
+              onchange="
+                handleFile(
+                  this,
+                  'aadhaarName',
+                  null,
+                  false
+                )
+              "
+            >
+
+
+            <div
+              class="file-name"
+              id="aadhaarName"
+            ></div>
 
           </div>
 
 
-          <!-- MEMBERSHIP -->
+          <!-- ID PROOF -->
 
-          <div class="section">
+          <div class="upload-card">
 
-            <div class="section-title">
-              <div class="section-icon">📚</div>
-              सदस्यत्व प्रकार
+            <div class="upload-icon">
+              🆔
             </div>
 
-            <div class="membership-options">
+            <h3>
+              Student ID / Other ID Proof
+            </h3>
 
-              <div class="membership-option">
-                <input
-                  type="radio"
-                  name="membership"
-                  id="student"
-                  value="विद्यार्थी"
-                >
-                <label for="student">विद्यार्थी</label>
-              </div>
+            <p>
+              Student ID किंवा इतर ओळखपत्र.
+              हे optional आहे.
+            </p>
 
 
-              <div class="membership-option">
-                <input
-                  type="radio"
-                  name="membership"
-                  id="general"
-                  value="सर्वसाधारण"
-                >
-                <label for="general">सर्वसाधारण</label>
-              </div>
+            <input
+              type="file"
+              id="idProof"
+              class="file-input"
+              accept="image/*,.pdf"
+              onchange="
+                handleFile(
+                  this,
+                  'idProofName',
+                  null,
+                  false
+                )
+              "
+            >
 
 
-              <div class="membership-option">
-                <input
-                  type="radio"
-                  name="membership"
-                  id="senior"
-                  value="ज्येष्ठ नागरिक"
-                >
-                <label for="senior">ज्येष्ठ नागरिक</label>
-              </div>
-
-
-              <div class="membership-option">
-                <input
-                  type="radio"
-                  name="membership"
-                  id="annual"
-                  value="वार्षिक"
-                >
-                <label for="annual">वार्षिक</label>
-              </div>
-
-
-              <div class="membership-option">
-                <input
-                  type="radio"
-                  name="membership"
-                  id="lifetime"
-                  value="आजीवन"
-                >
-                <label for="lifetime">आजीवन</label>
-              </div>
-
-            </div>
+            <div
+              class="file-name"
+              id="idProofName"
+            ></div>
 
           </div>
 
 
-          <!-- ERROR MESSAGE -->
-
-          <div
-            id="page1Message"
-            class="message"
-          ></div>
-
-
-          <!-- ALREADY MEMBER -->
-
-          <div
-            id="alreadyMember"
-            class="login-box"
-          >
-            आधीच सभासद आहात?
-            <a href="login.html">Log in</a>
-          </div>
-
         </div>
 
 
-        <div class="button-area">
+        <div
+          id="page2Message"
+          class="message"
+        ></div>
 
-          <div></div>
-
-          <button
-            type="button"
-            class="btn-primary"
-            onclick="goToPage2()"
-          >
-            Save & Next →
-          </button>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         PAGE 2
-    ====================================================== -->
-
-    <section class="page" id="page2">
-
-      <div class="form-card">
-
-        <div class="card-header">
-
-          <h2>Document Verification</h2>
-
-          <p>
-            आवश्यक कागदपत्रे upload करा.
-          </p>
-
-        </div>
-
-
-        <div class="card-body">
-
-          <div class="size-rule">
-            <strong>📌 Upload नियम:</strong><br>
-            📷 Photo, ✍️ Signature आणि 🪪 Aadhaar ही 3 documents
-            <strong>Mandatory</strong> आहेत.<br>
-            प्रत्येक uploaded file चा आकार <strong>किमान 1 MB</strong>
-            असणे आवश्यक आहे. Maximum size limit नाही.
-          </div>
-
-
-          <br>
-
-
-          <div class="upload-grid">
-
-
-            <!-- PHOTO -->
-
-            <div class="upload-card">
-
-              <div class="upload-icon">📷</div>
-
-              <h3>
-                Photo Upload
-                <span class="required">*</span>
-              </h3>
-
-              <p>
-                सभासदाचा passport-size / clear photo upload करा.
-              </p>
-
-              <input
-                type="file"
-                id="photo"
-                class="file-input"
-                accept="image/*"
-                onchange="handleFile(this, 'photoName', 'photoPreview', true)"
-              >
-
-              <div
-                class="file-name"
-                id="photoName"
-              ></div>
-
-              <img
-                id="photoPreview"
-                class="preview"
-                alt="Photo Preview"
-              >
-
-            </div>
-
-
-            <!-- SIGNATURE -->
-
-            <div class="upload-card">
-
-              <div class="upload-icon">✍️</div>
-
-              <h3>
-                Signature Upload
-                <span class="required">*</span>
-              </h3>
-
-              <p>
-                स्पष्ट signature image upload करा.
-              </p>
-
-              <input
-                type="file"
-                id="signature"
-                class="file-input"
-                accept="image/*"
-                onchange="handleFile(this, 'signatureName', 'signaturePreview', true)"
-              >
-
-              <div
-                class="file-name"
-                id="signatureName"
-              ></div>
-
-              <img
-                id="signaturePreview"
-                class="preview"
-                alt="Signature Preview"
-              >
-
-            </div>
-
-
-            <!-- AADHAAR -->
-
-            <div class="upload-card">
-
-              <div class="upload-icon">🪪</div>
-
-              <h3>
-                Aadhaar Upload
-                <span class="required">*</span>
-              </h3>
-
-              <p>
-                Aadhaar Card ची स्पष्ट image/PDF upload करा.
-              </p>
-
-              <input
-                type="file"
-                id="aadhaarFile"
-                class="file-input"
-                accept="image/*,.pdf"
-                onchange="handleFile(this, 'aadhaarName', null, false)"
-              >
-
-              <div
-                class="file-name"
-                id="aadhaarName"
-              ></div>
-
-            </div>
-
-
-            <!-- ID PROOF -->
-
-            <div class="upload-card">
-
-              <div class="upload-icon">🆔</div>
-
-              <h3>
-                Student ID / Other ID Proof
-              </h3>
-
-              <p>
-                Student ID किंवा इतर ओळखपत्र. हे optional आहे.
-              </p>
-
-              <input
-                type="file"
-                id="idProof"
-                class="file-input"
-                accept="image/*,.pdf"
-                onchange="handleFile(this, 'idProofName', null, false)"
-              >
-
-              <div
-                class="file-name"
-                id="idProofName"
-              ></div>
-
-            </div>
-
-          </div>
-
-
-          <!-- ERROR -->
-
-          <div
-            id="page2Message"
-            class="message"
-          ></div>
-
-        </div>
-
-
-        <!-- BUTTONS -->
-
-        <div class="button-area">
-
-          <button
-            type="button"
-            class="btn-secondary"
-            onclick="goToPage1()"
-          >
-            ← Back
-          </button>
-
-          <button
-            type="button"
-            class="btn-primary"
-            onclick="submitRegistration()"
-          >
-            Submit Registration →
-          </button>
-
-        </div>
 
       </div>
 
 
-      <!-- SUCCESS -->
+      <div class="button-area">
 
-      <div
-        class="form-card success-screen"
-        id="successScreen"
-      >
 
-        <div class="success-icon">
-          ✓
-        </div>
+        <button
+          type="button"
+          class="btn-secondary"
+          onclick="goToPage1()"
+        >
 
-        <h2>Registration Submitted!</h2>
+          ← Back
 
-        <p>
-          तुमचा registration form successfully तयार झाला आहे.
-          <br>
-          Backend connection जोडल्यावर तुमची माहिती Google Sheet
-          आणि Google Drive मध्ये save केली जाईल.
-        </p>
+        </button>
+
+
+        <button
+          type="button"
+          class="btn-primary"
+          id="submitButton"
+          onclick="submitRegistration()"
+        >
+
+          Submit Registration →
+
+        </button>
+
 
       </div>
 
-    </section>
 
-  </main>
+    </div>
 
 
-  <script>
+    <!-- SUCCESS -->
 
-    /* =====================================================
-       GLOBAL DATA
-    ===================================================== */
+    <div
+      class="form-card success-screen"
+      id="successScreen"
+    >
 
-    let registrationData = {};
 
+      <div class="success-icon">
+        ✓
+      </div>
 
-    /* =====================================================
-       SHOW MESSAGE
-    ===================================================== */
 
-    function showMessage(elementId, message, type = "error") {
+      <h2>
+        Registration Submitted!
+      </h2>
 
-      const element = document.getElementById(elementId);
 
-      element.className = "message " + type;
-      element.innerHTML = message;
+      <p>
+        तुमची सभासद नोंदणी यशस्वी झाली आहे.
+      </p>
 
-      element.scrollIntoView({
-        behavior: "smooth",
-        block: "center"
-      });
-    }
 
+      <div class="credentials-box">
 
-    function clearMessage(elementId) {
 
-      const element = document.getElementById(elementId);
+        <div class="credential-row">
 
-      element.className = "message";
-      element.innerHTML = "";
+          <span class="credential-label">
+            Username
+          </span>
 
-    }
+          <span
+            class="credential-value"
+            id="successUsername"
+          ></span>
 
+        </div>
 
-    /* =====================================================
-       PAGE 1 VALIDATION
-    ===================================================== */
 
-    function goToPage2() {
+        <div class="credential-row">
 
-      clearMessage("page1Message");
+          <span class="credential-label">
+            Password
+          </span>
 
-      const username =
-        document.getElementById("username").value.trim();
+          <span
+            class="credential-value"
+            id="successPassword"
+          ></span>
 
-      const password =
-        document.getElementById("password").value;
+        </div>
 
-      const fullName =
-        document.getElementById("fullName").value.trim();
 
-      const mobile =
-        document.getElementById("mobile").value.trim();
+        <div class="credential-row">
 
-      const aadhaar =
-        document.getElementById("aadhaar").value.trim();
+          <span class="credential-label">
+            Member ID
+          </span>
 
+          <span
+            class="credential-value"
+            id="successMemberId"
+          ></span>
 
-      /* USERNAME */
+        </div>
 
-      if (!username) {
 
-        showMessage(
-          "page1Message",
-          "⚠️ कृपया Username भरा."
-        );
+        <div class="credential-row">
 
-        document.getElementById("username").focus();
+          <span class="credential-label">
+            Status
+          </span>
 
-        return;
-      }
+          <span
+            class="credential-value"
+            id="successStatus"
+          ></span>
 
+        </div>
 
-      /* PASSWORD */
 
-      if (!password) {
+      </div>
 
-        showMessage(
-          "page1Message",
-          "⚠️ कृपया Password तयार करा."
-        );
 
-        document.getElementById("password").focus();
+      <br>
 
-        return;
-      }
 
+      <p>
+        कृपया Username आणि Password सुरक्षित ठेवा.
+        पुढील Login साठी
+        <strong>
+          Member ID हाच Username
+        </strong>
+        असेल.
+      </p>
 
-      if (password.length < 6) {
 
-        showMessage(
-          "page1Message",
-          "⚠️ Password किमान 6 characters असावा."
-        );
+    </div>
 
-        document.getElementById("password").focus();
 
-        return;
-      }
+  </section>
 
 
-      /* NAME */
+</main>
 
-      if (!fullName) {
 
-        showMessage(
-          "page1Message",
-          "⚠️ कृपया संपूर्ण नांव भरा."
-        );
+<script>
 
-        document.getElementById("fullName").focus();
 
-        return;
-      }
+/* =====================================================
+   APPS SCRIPT WEB APP URL
+   ===================================================== */
 
+const SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbzFKUObvTEjulQK_MuZecjgWyyWtzZ2z8PV_uN6_blDYyDNjaMlVf9Btss7CyFmHrJ2/exec";
 
-      /* MOBILE */
 
-      if (!mobile) {
+/* =====================================================
+   GLOBAL DATA
+   ===================================================== */
 
-        showMessage(
-          "page1Message",
-          "⚠️ कृपया मोबाईल क्रमांक भरा."
-        );
+let registrationData = {};
 
-        document.getElementById("mobile").focus();
 
-        return;
-      }
+/* =====================================================
+   MESSAGE
+   ===================================================== */
 
+function showMessage(
+  elementId,
+  message,
+  type = "error"
+) {
 
-      if (!/^[0-9]{10}$/.test(mobile)) {
+  const element =
+    document.getElementById(
+      elementId
+    );
 
-        showMessage(
-          "page1Message",
-          "⚠️ मोबाईल क्रमांक 10 अंकी असावा."
-        );
 
-        document.getElementById("mobile").focus();
+  element.className =
+    "message " + type;
 
-        return;
-      }
 
+  element.innerHTML =
+    message;
 
-      /* AADHAAR */
 
-      if (aadhaar && !/^[0-9]{12}$/.test(aadhaar)) {
+  element.scrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  });
+}
 
-        showMessage(
-          "page1Message",
-          "⚠️ आधार क्रमांक 12 अंकी असावा."
-        );
 
-        document.getElementById("aadhaar").focus();
+function clearMessage(
+  elementId
+) {
 
-        return;
-      }
+  const element =
+    document.getElementById(
+      elementId
+    );
 
 
-      /* MEMBERSHIP */
+  element.className =
+    "message";
 
-      const membership =
-        document.querySelector(
-          'input[name="membership"]:checked'
-        );
 
+  element.innerHTML =
+    "";
+}
 
-      if (!membership) {
 
-        showMessage(
-          "page1Message",
-          "⚠️ कृपया सदस्यत्व प्रकार निवडा."
-        );
+/* =====================================================
+   PAGE 1
+   ===================================================== */
 
-        return;
-      }
+function goToPage2() {
 
 
-      /* SAVE TEMP DATA */
+  clearMessage(
+    "page1Message"
+  );
 
-      registrationData = {
 
-        username: username,
+  const password =
+    document
+      .getElementById(
+        "password"
+      )
+      .value;
 
-        password: password,
 
-        fullName: fullName,
+  const fullName =
+    document
+      .getElementById(
+        "fullName"
+      )
+      .value
+      .trim();
 
-        dob:
-          document.getElementById("dob").value,
 
-        gender:
-          document.getElementById("gender").value,
+  const mobile =
+    document
+      .getElementById(
+        "mobile"
+      )
+      .value
+      .trim();
 
-        occupation:
-          document.getElementById("occupation").value.trim(),
 
-        education:
-          document.getElementById("education").value.trim(),
+  const aadhaar =
+    document
+      .getElementById(
+        "aadhaar"
+      )
+      .value
+      .trim();
 
-        mobile: mobile,
 
-        email:
-          document.getElementById("email").value.trim(),
+  const membership =
+    document.querySelector(
+      'input[name="membership"]:checked'
+    );
 
-        address:
-          document.getElementById("address").value.trim(),
 
-        aadhaar: aadhaar,
+  /* PASSWORD */
 
-        membership:
-          membership.value
+  if (!password) {
 
-      };
+    showMessage(
+      "page1Message",
+      "⚠️ कृपया Password तयार करा."
+    );
 
+    document
+      .getElementById(
+        "password"
+      )
+      .focus();
 
-      /* SHOW PAGE 2 */
+    return;
+  }
 
-      document.getElementById("page1")
-        .classList.remove("active");
 
-      document.getElementById("page2")
-        .classList.add("active");
+  if (
+    password.length < 6
+  ) {
 
+    showMessage(
+      "page1Message",
+      "⚠️ Password किमान 6 characters असावा."
+    );
 
-      /* UPDATE PROGRESS */
+    return;
+  }
 
-      document.getElementById("step2Indicator")
-        .classList.add("active");
 
-      document.getElementById("progressLine")
-        .classList.add("active");
+  /* NAME */
 
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
+  if (!fullName) {
 
-    }
+    showMessage(
+      "page1Message",
+      "⚠️ कृपया संपूर्ण नांव भरा."
+    );
 
+    document
+      .getElementById(
+        "fullName"
+      )
+      .focus();
 
-    /* =====================================================
-       BACK TO PAGE 1
-    ===================================================== */
+    return;
+  }
 
-    function goToPage1() {
 
-      document.getElementById("page2")
-        .classList.remove("active");
+  /* MOBILE */
 
-      document.getElementById("page1")
-        .classList.add("active");
+  if (!mobile) {
 
-      document.getElementById("step2Indicator")
-        .classList.remove("active");
+    showMessage(
+      "page1Message",
+      "⚠️ कृपया मोबाईल क्रमांक भरा."
+    );
 
-      document.getElementById("progressLine")
-        .classList.remove("active");
+    return;
+  }
 
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
 
-    }
+  if (
+    !/^[0-9]{10}$/.test(
+      mobile
+    )
+  ) {
 
+    showMessage(
+      "page1Message",
+      "⚠️ मोबाईल क्रमांक 10 अंकी असावा."
+    );
 
-    /* =====================================================
-       FILE HANDLER
-    ===================================================== */
+    return;
+  }
 
-    function handleFile(
-      input,
-      nameElementId,
-      previewElementId,
-      imagePreview
+
+  /* AADHAAR */
+
+  if (
+    aadhaar &&
+    !/^[0-9]{12}$/.test(
+      aadhaar
+    )
+  ) {
+
+    showMessage(
+      "page1Message",
+      "⚠️ आधार क्रमांक 12 अंकी असावा."
+    );
+
+    return;
+  }
+
+
+  /* MEMBERSHIP */
+
+  if (!membership) {
+
+    showMessage(
+      "page1Message",
+      "⚠️ कृपया सदस्यत्व प्रकार निवडा."
+    );
+
+    return;
+  }
+
+
+  /* SAVE */
+
+  registrationData = {
+
+    password:
+      password,
+
+    fullName:
+      fullName,
+
+    dob:
+      document
+        .getElementById(
+          "dob"
+        )
+        .value,
+
+    gender:
+      document
+        .getElementById(
+          "gender"
+        )
+        .value,
+
+    business:
+      document
+        .getElementById(
+          "business"
+        )
+        .value
+        .trim(),
+
+    mobile:
+      mobile,
+
+    email:
+      document
+        .getElementById(
+          "email"
+        )
+        .value
+        .trim(),
+
+    address:
+      document
+        .getElementById(
+          "address"
+        )
+        .value
+        .trim(),
+
+    aadhaar:
+      aadhaar,
+
+    membership:
+      membership.value
+  };
+
+
+  /* PAGE 2 */
+
+  document
+    .getElementById(
+      "page1"
+    )
+    .classList
+    .remove("active");
+
+
+  document
+    .getElementById(
+      "page2"
+    )
+    .classList
+    .add("active");
+
+
+  document
+    .getElementById(
+      "step2Indicator"
+    )
+    .classList
+    .add("active");
+
+
+  document
+    .getElementById(
+      "progressLine"
+    )
+    .classList
+    .add("active");
+
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+
+/* =====================================================
+   BACK
+   ===================================================== */
+
+function goToPage1() {
+
+  document
+    .getElementById(
+      "page2"
+    )
+    .classList
+    .remove("active");
+
+
+  document
+    .getElementById(
+      "page1"
+    )
+    .classList
+    .add("active");
+
+
+  document
+    .getElementById(
+      "step2Indicator"
+    )
+    .classList
+    .remove("active");
+
+
+  document
+    .getElementById(
+      "progressLine"
+    )
+    .classList
+    .remove("active");
+
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+
+/* =====================================================
+   FILE HANDLER
+   ===================================================== */
+
+function handleFile(
+  input,
+  nameElementId,
+  previewElementId,
+  imagePreview
+) {
+
+
+  const file =
+    input.files[0];
+
+
+  const nameElement =
+    document.getElementById(
+      nameElementId
+    );
+
+
+  if (!file) {
+
+    nameElement.innerHTML =
+      "";
+
+    return;
+  }
+
+
+  const minimumSize =
+    1024 * 1024;
+
+
+  if (
+    file.size < minimumSize
+  ) {
+
+    input.value =
+      "";
+
+
+    nameElement.innerHTML =
+      "";
+
+
+    showMessage(
+      "page2Message",
+
+      "❌ <strong>" +
+      file.name +
+      "</strong> ही file 1 MB पेक्षा कमी आहे.<br>" +
+      "कृपया किमान <strong>1 MB</strong> आकाराची file upload करा."
+    );
+
+
+    return;
+  }
+
+
+  clearMessage(
+    "page2Message"
+  );
+
+
+  const sizeMB =
+    (
+      file.size /
+      (1024 * 1024)
+    ).toFixed(2);
+
+
+  nameElement.innerHTML =
+    "✅ " +
+    file.name +
+    " (" +
+    sizeMB +
+    " MB)";
+
+
+  if (
+    imagePreview &&
+    file.type.startsWith(
+      "image/"
+    )
+  ) {
+
+    const preview =
+      document.getElementById(
+        previewElementId
+      );
+
+
+    preview.src =
+      URL.createObjectURL(
+        file
+      );
+
+
+    preview.style.display =
+      "block";
+  }
+}
+
+
+/* =====================================================
+   FILE TO BASE64
+   ===================================================== */
+
+function fileToBase64(
+  file
+) {
+
+  return new Promise(
+    function(
+      resolve,
+      reject
     ) {
 
-      const file = input.files[0];
-
-      const nameElement =
-        document.getElementById(nameElementId);
+      const reader =
+        new FileReader();
 
 
-      if (!file) {
+      reader.onload =
+        function() {
 
-        nameElement.innerHTML = "";
-
-        return;
-      }
-
-
-      /* ==========================================
-         MINIMUM 1 MB
-         1 MB = 1024 * 1024 bytes
-      ========================================== */
-
-      const minimumSize =
-        1024 * 1024;
+          const result =
+            reader.result;
 
 
-      if (file.size < minimumSize) {
+          const base64 =
+            result.split(",")[1];
 
-        input.value = "";
 
-        nameElement.innerHTML = "";
+          resolve({
 
-        showMessage(
-          "page2Message",
-          "❌ <strong>" +
-          file.name +
-          "</strong> ही file 1 MB पेक्षा कमी आहे.<br>" +
-          "कृपया किमान <strong>1 MB</strong> आकाराची file upload करा."
+            name:
+              file.name,
+
+            mimeType:
+              file.type ||
+              "application/octet-stream",
+
+            base64:
+              base64
+          });
+        };
+
+
+      reader.onerror =
+        function() {
+
+          reject(
+            new Error(
+              "File read failed: " +
+              file.name
+            )
+          );
+        };
+
+
+      reader.readAsDataURL(
+        file
+      );
+    }
+  );
+}
+
+
+/* =====================================================
+   SUBMIT REGISTRATION
+   ===================================================== */
+
+async function submitRegistration() {
+
+
+  clearMessage(
+    "page2Message"
+  );
+
+
+  const photo =
+    document
+      .getElementById(
+        "photo"
+      )
+      .files[0];
+
+
+  const signature =
+    document
+      .getElementById(
+        "signature"
+      )
+      .files[0];
+
+
+  const aadhaarFile =
+    document
+      .getElementById(
+        "aadhaarFile"
+      )
+      .files[0];
+
+
+  const idProof =
+    document
+      .getElementById(
+        "idProof"
+      )
+      .files[0];
+
+
+  const minimumSize =
+    1024 * 1024;
+
+
+  /* PHOTO */
+
+  if (!photo) {
+
+    showMessage(
+      "page2Message",
+      "⚠️ कृपया Photo Upload करा."
+    );
+
+    return;
+  }
+
+
+  if (
+    photo.size < minimumSize
+  ) {
+
+    showMessage(
+      "page2Message",
+      "❌ Photo file किमान 1 MB असणे आवश्यक आहे."
+    );
+
+    return;
+  }
+
+
+  /* SIGNATURE */
+
+  if (!signature) {
+
+    showMessage(
+      "page2Message",
+      "⚠️ कृपया Signature Upload करा."
+    );
+
+    return;
+  }
+
+
+  if (
+    signature.size < minimumSize
+  ) {
+
+    showMessage(
+      "page2Message",
+      "❌ Signature file किमान 1 MB असणे आवश्यक आहे."
+    );
+
+    return;
+  }
+
+
+  /* AADHAAR */
+
+  if (!aadhaarFile) {
+
+    showMessage(
+      "page2Message",
+      "⚠️ कृपया Aadhaar Upload करा."
+    );
+
+    return;
+  }
+
+
+  if (
+    aadhaarFile.size < minimumSize
+  ) {
+
+    showMessage(
+      "page2Message",
+      "❌ Aadhaar file किमान 1 MB असणे आवश्यक आहे."
+    );
+
+    return;
+  }
+
+
+  /* ID PROOF */
+
+  if (
+    idProof &&
+    idProof.size < minimumSize
+  ) {
+
+    showMessage(
+      "page2Message",
+      "❌ ID Proof upload केल्यास त्याची file किमान 1 MB असणे आवश्यक आहे."
+    );
+
+    return;
+  }
+
+
+  const submitButton =
+    document.getElementById(
+      "submitButton"
+    );
+
+
+  submitButton.disabled =
+    true;
+
+
+  submitButton.innerHTML =
+    "Uploading & Submitting...";
+
+
+  try {
+
+
+    /* -----------------------------------------
+       CONVERT FILES
+    ----------------------------------------- */
+
+    const photoData =
+      await fileToBase64(
+        photo
+      );
+
+
+    const signatureData =
+      await fileToBase64(
+        signature
+      );
+
+
+    const aadhaarData =
+      await fileToBase64(
+        aadhaarFile
+      );
+
+
+    let idProofData =
+      null;
+
+
+    if (idProof) {
+
+      idProofData =
+        await fileToBase64(
+          idProof
         );
-
-        return;
-      }
-
-
-      clearMessage("page2Message");
-
-
-      /* SHOW FILE NAME */
-
-      const sizeMB =
-        (file.size / (1024 * 1024)).toFixed(2);
-
-      nameElement.innerHTML =
-        "✅ " +
-        file.name +
-        " (" +
-        sizeMB +
-        " MB)";
-
-
-      /* IMAGE PREVIEW */
-
-      if (
-        imagePreview &&
-        file.type.startsWith("image/")
-      ) {
-
-        const preview =
-          document.getElementById(previewElementId);
-
-        preview.src =
-          URL.createObjectURL(file);
-
-        preview.style.display = "block";
-
-      }
-
     }
 
 
-    /* =====================================================
-       SUBMIT REGISTRATION
-    ===================================================== */
+    /* -----------------------------------------
+       FINAL PAYLOAD
+    ----------------------------------------- */
 
-    function submitRegistration() {
+    const payload = {
 
-      clearMessage("page2Message");
+      action:
+        "register",
 
+      password:
+        registrationData.password,
 
-      const photo =
-        document.getElementById("photo").files[0];
+      fullName:
+        registrationData.fullName,
 
-      const signature =
-        document.getElementById("signature").files[0];
+      dob:
+        registrationData.dob,
 
-      const aadhaarFile =
-        document.getElementById("aadhaarFile").files[0];
+      gender:
+        registrationData.gender,
 
-      const idProof =
-        document.getElementById("idProof").files[0];
+      business:
+        registrationData.business,
 
+      mobile:
+        registrationData.mobile,
 
-      const minimumSize =
-        1024 * 1024;
+      email:
+        registrationData.email,
 
+      address:
+        registrationData.address,
 
-      /* ==========================================
-         PHOTO
-      ========================================== */
+      aadhaar:
+        registrationData.aadhaar,
 
-      if (!photo) {
+      membership:
+        registrationData.membership,
 
-        showMessage(
-          "page2Message",
-          "⚠️ कृपया Photo Upload करा."
-        );
+      photo:
+        photoData,
 
-        return;
-      }
+      signature:
+        signatureData,
 
+      aadhaarFile:
+        aadhaarData,
 
-      if (photo.size < minimumSize) {
-
-        showMessage(
-          "page2Message",
-          "❌ Photo file किमान 1 MB असणे आवश्यक आहे."
-        );
-
-        return;
-      }
-
-
-      /* ==========================================
-         SIGNATURE
-      ========================================== */
-
-      if (!signature) {
-
-        showMessage(
-          "page2Message",
-          "⚠️ कृपया Signature Upload करा."
-        );
-
-        return;
-      }
+      idProof:
+        idProofData
+    };
 
 
-      if (signature.size < minimumSize) {
+    /* -----------------------------------------
+       SEND TO APPS SCRIPT
+    ----------------------------------------- */
 
-        showMessage(
-          "page2Message",
-          "❌ Signature file किमान 1 MB असणे आवश्यक आहे."
-        );
+    const response =
+      await fetch(
+        SCRIPT_URL,
+        {
 
-        return;
-      }
+          method:
+            "POST",
 
+          headers: {
 
-      /* ==========================================
-         AADHAAR
-      ========================================== */
+            "Content-Type":
+              "text/plain;charset=utf-8"
+          },
 
-      if (!aadhaarFile) {
-
-        showMessage(
-          "page2Message",
-          "⚠️ कृपया Aadhaar Upload करा."
-        );
-
-        return;
-      }
-
-
-      if (aadhaarFile.size < minimumSize) {
-
-        showMessage(
-          "page2Message",
-          "❌ Aadhaar file किमान 1 MB असणे आवश्यक आहे."
-        );
-
-        return;
-      }
+          body:
+            JSON.stringify(
+              payload
+            )
+        }
+      );
 
 
-      /* ==========================================
-         OPTIONAL ID PROOF
-      ========================================== */
-
-      if (
-        idProof &&
-        idProof.size < minimumSize
-      ) {
-
-        showMessage(
-          "page2Message",
-          "❌ ID Proof upload केल्यास त्याची file किमान 1 MB असणे आवश्यक आहे."
-        );
-
-        return;
-      }
+    const result =
+      await response.json();
 
 
-      /* ==========================================
-         DEMO SUBMISSION
-         CODE.GS WILL BE CONNECTED LATER
-      ========================================== */
+    /* -----------------------------------------
+       SERVER ERROR
+    ----------------------------------------- */
 
-      const submitButton =
-        document.querySelector(
-          '#page2 .btn-primary'
-        );
+    if (
+      !result.success
+    ) {
 
-      submitButton.disabled = true;
-
-      submitButton.innerHTML =
-        "Submitting...";
-
-
-      setTimeout(function() {
-
-        document.querySelector(
-          "#page2 .form-card"
-        ).style.display = "none";
-
-
-        document.getElementById(
-          "successScreen"
-        ).style.display = "block";
-
-
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth"
-        });
-
-      }, 1200);
-
+      throw new Error(
+        result.message ||
+        "Registration failed."
+      );
     }
 
-  </script>
+
+    /* -----------------------------------------
+       SUCCESS
+    ----------------------------------------- */
+
+    document
+      .getElementById(
+        "documentFormCard"
+      )
+      .style.display =
+      "none";
+
+
+    document
+      .getElementById(
+        "successScreen"
+      )
+      .style.display =
+      "block";
+
+
+    document
+      .getElementById(
+        "successUsername"
+      )
+      .textContent =
+      result.username ||
+      result.memberId;
+
+
+    document
+      .getElementById(
+        "successPassword"
+      )
+      .textContent =
+      result.password;
+
+
+    document
+      .getElementById(
+        "successMemberId"
+      )
+      .textContent =
+      result.memberId;
+
+
+    document
+      .getElementById(
+        "successStatus"
+      )
+      .textContent =
+      result.applicationStatus ||
+      "Pending";
+
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
+
+  } catch (error) {
+
+
+    console.error(
+      "Registration Error:",
+      error
+    );
+
+
+    showMessage(
+
+      "page2Message",
+
+      "❌ Registration failed.<br><br>" +
+
+      (
+        error.message ||
+        "कृपया पुन्हा प्रयत्न करा."
+      )
+    );
+
+
+    submitButton.disabled =
+      false;
+
+
+    submitButton.innerHTML =
+      "Submit Registration →";
+  }
+}
+
+
+/* =====================================================
+   END
+   ===================================================== */
+
+</script>
+
 
 </body>
+
 </html>
