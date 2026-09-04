@@ -1008,7 +1008,7 @@
           <div class="username-info">
 
             <strong>
-              Username कसा मिळेल?
+              Member ID / Username कसा मिळेल?
             </strong>
 
             <br>
@@ -1758,7 +1758,7 @@
         <div class="credential-row">
 
           <span class="credential-label">
-            Username
+            Member ID / Username
           </span>
 
           <span
@@ -1818,7 +1818,7 @@
 
 
       <p>
-        कृपया Username आणि Password सुरक्षित ठेवा.
+        कृपया Member ID आणि Password सुरक्षित ठेवा.
         पुढील Login साठी
         <strong>
           Member ID हाच Username
@@ -2699,8 +2699,8 @@ async function submitRegistration() {
         "successUsername"
       )
       .textContent =
-      result.username ||
-      result.memberId;
+      result.memberId ||
+      result.username;
 
 
     document
