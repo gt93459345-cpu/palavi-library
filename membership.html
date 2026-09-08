@@ -689,7 +689,10 @@ placeholder="आपले संपूर्ण नाव"
 
 <div class="form-group">
 
-<label>जन्मतारीख</label>
+<label>
+जन्मतारीख
+<span class="required">*</span>
+</label>
 
 <input
 type="date"
@@ -700,7 +703,10 @@ id="dob"
 
 <div class="form-group">
 
-<label>लिंग</label>
+<label>
+लिंग
+<span class="required">*</span>
+</label>
 
 <select id="gender">
 
@@ -718,7 +724,10 @@ id="dob"
 
 <div class="form-group">
 
-<label>व्यवसाय</label>
+<label>
+व्यवसाय
+<span class="required">*</span>
+</label>
 
 <input
 type="text"
@@ -747,7 +756,10 @@ inputmode="numeric"
 
 <div class="form-group">
 
-<label>ई-मेल</label>
+<label>
+ई-मेल
+<span class="required">*</span>
+</label>
 
 <input
 type="email"
@@ -776,16 +788,29 @@ placeholder="example@gmail.com"
 
 <div class="form-group full">
 
-<label>कायमचा पत्ता</label>
+<label>
+पत्रव्यवहाराचा पत्ता
+<span class="required">*</span>
+</label>
 
 <textarea
-id="address"
-placeholder="आपला संपूर्ण पत्ता"
+id="correspondenceAddress"
+placeholder="पत्रव्यवहाराचा संपूर्ण पत्ता"
 ></textarea>
 
-<div class="hint">
-हा पत्ता पत्रव्यवहाराचा आणि कायमचा पत्ता म्हणून नोंदवला जाईल.
 </div>
+
+<div class="form-group full">
+
+<label>
+कायमचा पत्ता
+<span class="required">*</span>
+</label>
+
+<textarea
+id="permanentAddress"
+placeholder="कायमचा संपूर्ण पत्ता"
+></textarea>
 
 </div>
 
@@ -965,14 +990,15 @@ Save & Next →
 
 <br>
 
-<strong>प्रत्येक file ची maximum size 500 KB आहे.</strong>
+Photo आणि Signature → JPG, PNG किंवा WebP
 
 <br>
 
-Photo → 500 KB max |
-Signature → 500 KB max |
-Aadhaar → 500 KB max |
-ID Proof → 500 KB max
+Aadhaar आणि ID Proof → JPG, PNG, WebP किंवा PDF
+
+<br>
+
+<strong>File size वर कोणतीही custom 500 KB मर्यादा नाही.</strong>
 
 <br>
 
@@ -998,7 +1024,6 @@ Photo Upload
 
 <p>
 सभासदाचा passport-size / clear photo upload करा.
-Maximum 500 KB.
 </p>
 
 <input
@@ -1033,7 +1058,6 @@ Signature Upload
 
 <p>
 स्पष्ट signature image upload करा.
-Maximum 500 KB.
 </p>
 
 <input
@@ -1068,7 +1092,6 @@ Aadhaar Upload
 
 <p>
 Aadhaar Card ची स्पष्ट image/PDF upload करा.
-Maximum 500 KB.
 </p>
 
 <input
@@ -1094,7 +1117,7 @@ onchange="handleFile(this,'aadhaarName',null,false)"
 
 <p>
 Student ID किंवा इतर ओळखपत्र.
-Optional. Maximum 500 KB.
+Optional.
 </p>
 
 <input
@@ -1229,15 +1252,6 @@ const SCRIPT_URL =
 
 
 /* =====================================================
-   MAX FILE SIZE
-   500 KB = 512000 BYTES
-   ===================================================== */
-
-const MAX_FILE_SIZE =
-500 * 1024;
-
-
-/* =====================================================
    GLOBAL DATA
    ===================================================== */
 
@@ -1297,8 +1311,32 @@ function goToPage2() {
   const fullName =
     document.getElementById("fullName").value.trim();
 
+  const dob =
+    document.getElementById("dob").value;
+
+  const gender =
+    document.getElementById("gender").value;
+
+  const business =
+    document.getElementById("business").value.trim();
+
   const mobile =
     document.getElementById("mobile").value.trim();
+
+  const email =
+    document.getElementById("email").value.trim();
+
+  const correspondenceAddress =
+    document
+      .getElementById("correspondenceAddress")
+      .value
+      .trim();
+
+  const permanentAddress =
+    document
+      .getElementById("permanentAddress")
+      .value
+      .trim();
 
   const aadhaar =
     document.getElementById("aadhaar").value.trim();
@@ -1308,6 +1346,8 @@ function goToPage2() {
       'input[name="membership"]:checked'
     );
 
+
+  /* PASSWORD */
 
   if (!password) {
 
@@ -1331,6 +1371,8 @@ function goToPage2() {
   }
 
 
+  /* NAME */
+
   if (!fullName) {
 
     showMessage(
@@ -1341,6 +1383,58 @@ function goToPage2() {
     return;
   }
 
+
+  if (fullName.length < 2) {
+
+    showMessage(
+      "page1Message",
+      "⚠️ कृपया योग्य संपूर्ण नांव भरा."
+    );
+
+    return;
+  }
+
+
+  /* DOB */
+
+  if (!dob) {
+
+    showMessage(
+      "page1Message",
+      "⚠️ कृपया जन्मतारीख भरा."
+    );
+
+    return;
+  }
+
+
+  /* GENDER */
+
+  if (!gender) {
+
+    showMessage(
+      "page1Message",
+      "⚠️ कृपया लिंग निवडा."
+    );
+
+    return;
+  }
+
+
+  /* BUSINESS */
+
+  if (!business) {
+
+    showMessage(
+      "page1Message",
+      "⚠️ कृपया व्यवसाय भरा."
+    );
+
+    return;
+  }
+
+
+  /* MOBILE */
 
   if (!mobile) {
 
@@ -1353,16 +1447,70 @@ function goToPage2() {
   }
 
 
-  if (!/^[0-9]{10}$/.test(mobile)) {
+  if (!/^[6-9][0-9]{9}$/.test(mobile)) {
 
     showMessage(
       "page1Message",
-      "⚠️ मोबाईल क्रमांक 10 अंकी असावा."
+      "⚠️ मोबाईल क्रमांक 10 अंकी व 6-9 ने सुरू होणारा असावा."
     );
 
     return;
   }
 
+
+  /* EMAIL */
+
+  if (!email) {
+
+    showMessage(
+      "page1Message",
+      "⚠️ कृपया ई-मेल आयडी भरा."
+    );
+
+    return;
+  }
+
+
+  if (
+    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+  ) {
+
+    showMessage(
+      "page1Message",
+      "⚠️ कृपया योग्य ई-मेल आयडी भरा."
+    );
+
+    return;
+  }
+
+
+  /* CORRESPONDENCE ADDRESS */
+
+  if (!correspondenceAddress) {
+
+    showMessage(
+      "page1Message",
+      "⚠️ कृपया पत्रव्यवहाराचा पत्ता भरा."
+    );
+
+    return;
+  }
+
+
+  /* PERMANENT ADDRESS */
+
+  if (!permanentAddress) {
+
+    showMessage(
+      "page1Message",
+      "⚠️ कृपया कायमचा पत्ता भरा."
+    );
+
+    return;
+  }
+
+
+  /* AADHAAR NUMBER */
 
   if (
     aadhaar &&
@@ -1378,6 +1526,8 @@ function goToPage2() {
   }
 
 
+  /* MEMBERSHIP */
+
   if (!membership) {
 
     showMessage(
@@ -1389,6 +1539,8 @@ function goToPage2() {
   }
 
 
+  /* SAVE DATA */
+
   registrationData = {
 
     password:
@@ -1398,22 +1550,25 @@ function goToPage2() {
       fullName,
 
     dob:
-      document.getElementById("dob").value,
+      dob,
 
     gender:
-      document.getElementById("gender").value,
+      gender,
 
     business:
-      document.getElementById("business").value.trim(),
+      business,
 
     mobile:
       mobile,
 
     email:
-      document.getElementById("email").value.trim(),
+      email,
 
-    address:
-      document.getElementById("address").value.trim(),
+    correspondenceAddress:
+      correspondenceAddress,
+
+    permanentAddress:
+      permanentAddress,
 
     aadhaar:
       aadhaar,
@@ -1493,6 +1648,7 @@ function goToPage1() {
 
 /* =====================================================
    FILE HANDLER
+   NO CUSTOM FILE SIZE LIMIT
    ===================================================== */
 
 function handleFile(
@@ -1513,18 +1669,6 @@ function handleFile(
 
     nameElement.innerHTML = "";
 
-    return;
-  }
-
-
-  /* SIZE */
-
-  if (file.size > MAX_FILE_SIZE) {
-
-    input.value = "";
-
-    nameElement.innerHTML = "";
-
     if (previewElementId) {
 
       const preview =
@@ -1536,19 +1680,11 @@ function handleFile(
       preview.style.display = "none";
     }
 
-    showMessage(
-      "page2Message",
-      "❌ <strong>" +
-      file.name +
-      "</strong> ही file 500 KB पेक्षा मोठी आहे.<br>" +
-      "कृपया 500 KB किंवा त्यापेक्षा कमी file upload करा."
-    );
-
     return;
   }
 
 
-  /* TYPE */
+  /* FILE TYPE */
 
   let allowedTypes;
 
@@ -1576,6 +1712,17 @@ function handleFile(
     input.value = "";
 
     nameElement.innerHTML = "";
+
+    if (previewElementId) {
+
+      const preview =
+        document.getElementById(
+          previewElementId
+        );
+
+      preview.src = "";
+      preview.style.display = "none";
+    }
 
     showMessage(
       "page2Message",
@@ -1677,6 +1824,7 @@ function fileToBase64(file) {
 
 /* =====================================================
    SUBMIT REGISTRATION
+   NO CUSTOM FILE SIZE LIMIT
    ===================================================== */
 
 async function submitRegistration() {
@@ -1704,17 +1852,6 @@ async function submitRegistration() {
     showMessage(
       "page2Message",
       "⚠️ कृपया Photo Upload करा."
-    );
-
-    return;
-  }
-
-
-  if (photo.size > MAX_FILE_SIZE) {
-
-    showMessage(
-      "page2Message",
-      "❌ Photo 500 KB पेक्षा मोठा आहे."
     );
 
     return;
@@ -1751,17 +1888,6 @@ async function submitRegistration() {
   }
 
 
-  if (signature.size > MAX_FILE_SIZE) {
-
-    showMessage(
-      "page2Message",
-      "❌ Signature 500 KB पेक्षा मोठी आहे."
-    );
-
-    return;
-  }
-
-
   if (
     ![
       "image/jpeg",
@@ -1792,17 +1918,6 @@ async function submitRegistration() {
   }
 
 
-  if (aadhaarFile.size > MAX_FILE_SIZE) {
-
-    showMessage(
-      "page2Message",
-      "❌ Aadhaar file 500 KB पेक्षा मोठी आहे."
-    );
-
-    return;
-  }
-
-
   if (
     ![
       "image/jpeg",
@@ -1824,17 +1939,6 @@ async function submitRegistration() {
   /* ID PROOF */
 
   if (idProof) {
-
-    if (idProof.size > MAX_FILE_SIZE) {
-
-      showMessage(
-        "page2Message",
-        "❌ ID Proof 500 KB पेक्षा मोठा आहे."
-      );
-
-      return;
-    }
-
 
     if (
       ![
@@ -1870,6 +1974,10 @@ async function submitRegistration() {
 
   try {
 
+    /* =================================================
+       CONVERT FILES
+       ================================================= */
+
     const photoData =
       await fileToBase64(photo);
 
@@ -1893,6 +2001,11 @@ async function submitRegistration() {
     }
 
 
+    /* =================================================
+       PAYLOAD
+       Compatible with Code.gs A-V structure
+       ================================================= */
+
     const payload = {
 
       action:
@@ -1910,6 +2023,9 @@ async function submitRegistration() {
       gender:
         registrationData.gender,
 
+      profession:
+        registrationData.business,
+
       business:
         registrationData.business,
 
@@ -1919,14 +2035,31 @@ async function submitRegistration() {
       email:
         registrationData.email,
 
+      correspondenceAddress:
+        registrationData.correspondenceAddress,
+
+      permanentAddress:
+        registrationData.permanentAddress,
+
       address:
-        registrationData.address,
+        registrationData.correspondenceAddress,
 
       aadhaar:
         registrationData.aadhaar,
 
+      membershipType:
+        registrationData.membership,
+
       membership:
         registrationData.membership,
+
+      /*
+         Fee is kept blank because the current
+         membership.html does not collect fee.
+      */
+
+      fee:
+        "",
 
       photo:
         photoData,
@@ -1941,6 +2074,10 @@ async function submitRegistration() {
         idProofData
     };
 
+
+    /* =================================================
+       SEND TO APPS SCRIPT
+       ================================================= */
 
     const response =
       await fetch(
@@ -1961,6 +2098,12 @@ async function submitRegistration() {
 
     const responseText =
       await response.text();
+
+
+    console.log(
+      "Apps Script response:",
+      responseText
+    );
 
 
     let result;
@@ -1984,6 +2127,10 @@ async function submitRegistration() {
     }
 
 
+    /* =================================================
+       SERVER ERROR
+       ================================================= */
+
     if (!result.success) {
 
       throw new Error(
@@ -1992,6 +2139,10 @@ async function submitRegistration() {
       );
     }
 
+
+    /* =================================================
+       MEMBER ID
+       ================================================= */
 
     const finalMemberId =
       result.memberId ||
@@ -2006,6 +2157,10 @@ async function submitRegistration() {
       );
     }
 
+
+    /* =================================================
+       SUCCESS SCREEN
+       ================================================= */
 
     document
       .getElementById("documentFormCard")
