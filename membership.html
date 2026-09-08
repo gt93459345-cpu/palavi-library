@@ -613,17 +613,17 @@ Login Details
 <div class="username-info">
 
 <strong>
-Member ID / Username कसा मिळेल?
+सभासद क्रमांक / Member ID / Username
 </strong>
 
 <br>
 
 Registration पूर्ण झाल्यावर system तुमच्यासाठी
-<strong>Member ID</strong> automatically तयार करेल.
+<strong>सभासद क्रमांक</strong> automatically तयार करेल.
 
 <br>
 
-तोच तुमचा <strong>Username</strong> असेल.
+<strong>सभासद क्रमांक = Member ID = Username</strong>
 
 <br>
 
@@ -1159,12 +1159,12 @@ id="successScreen"
 <div class="credential-row">
 
 <span class="credential-label">
-Member ID / Username
+सभासद क्रमांक / Member ID / Username
 </span>
 
 <span
 class="credential-value"
-id="successUsername"
+id="successMemberId"
 ></span>
 
 </div>
@@ -1178,19 +1178,6 @@ Password
 <span
 class="credential-value"
 id="successPassword"
-></span>
-
-</div>
-
-<div class="credential-row">
-
-<span class="credential-label">
-Member ID
-</span>
-
-<span
-class="credential-value"
-id="successMemberId"
 ></span>
 
 </div>
@@ -1213,9 +1200,14 @@ id="successStatus"
 <br>
 
 <p>
-कृपया Member ID आणि Password सुरक्षित ठेवा.
+कृपया तुमचा
+<strong>सभासद क्रमांक / Member ID / Username</strong>
+आणि Password सुरक्षित ठेवा.
+</p>
+
+<p>
 पुढील Login साठी
-<strong>Member ID हाच Username</strong>
+<strong>सभासद क्रमांक हाच Username</strong>
 असेल.
 </p>
 
@@ -1238,7 +1230,7 @@ const SCRIPT_URL =
 
 /* =====================================================
    MAX FILE SIZE
-   500 KB
+   500 KB = 512000 BYTES
    ===================================================== */
 
 const MAX_FILE_SIZE =
@@ -1436,20 +1428,24 @@ function goToPage2() {
     .classList
     .remove("active");
 
+
   document
     .getElementById("page2")
     .classList
     .add("active");
+
 
   document
     .getElementById("step2Indicator")
     .classList
     .add("active");
 
+
   document
     .getElementById("progressLine")
     .classList
     .add("active");
+
 
   window.scrollTo({
     top: 0,
@@ -1469,20 +1465,24 @@ function goToPage1() {
     .classList
     .remove("active");
 
+
   document
     .getElementById("page1")
     .classList
     .add("active");
+
 
   document
     .getElementById("step2Indicator")
     .classList
     .remove("active");
 
+
   document
     .getElementById("progressLine")
     .classList
     .remove("active");
+
 
   window.scrollTo({
     top: 0,
@@ -1525,6 +1525,17 @@ function handleFile(
 
     nameElement.innerHTML = "";
 
+    if (previewElementId) {
+
+      const preview =
+        document.getElementById(
+          previewElementId
+        );
+
+      preview.src = "";
+      preview.style.display = "none";
+    }
+
     showMessage(
       "page2Message",
       "❌ <strong>" +
@@ -1539,14 +1550,25 @@ function handleFile(
 
   /* TYPE */
 
-  const allowedTypes = [
+  let allowedTypes;
 
-    "image/jpeg",
-    "image/png",
-    "image/webp",
-    "application/pdf"
+  if (imagePreview) {
 
-  ];
+    allowedTypes = [
+      "image/jpeg",
+      "image/png",
+      "image/webp"
+    ];
+
+  } else {
+
+    allowedTypes = [
+      "image/jpeg",
+      "image/png",
+      "image/webp",
+      "application/pdf"
+    ];
+  }
 
 
   if (!allowedTypes.includes(file.type)) {
@@ -1610,6 +1632,7 @@ function fileToBase64(file) {
       const reader =
         new FileReader();
 
+
       reader.onload =
         function() {
 
@@ -1633,6 +1656,7 @@ function fileToBase64(file) {
           });
         };
 
+
       reader.onerror =
         function() {
 
@@ -1643,6 +1667,7 @@ function fileToBase64(file) {
             )
           );
         };
+
 
       reader.readAsDataURL(file);
     }
@@ -1696,6 +1721,23 @@ async function submitRegistration() {
   }
 
 
+  if (
+    ![
+      "image/jpeg",
+      "image/png",
+      "image/webp"
+    ].includes(photo.type)
+  ) {
+
+    showMessage(
+      "page2Message",
+      "❌ Photo फक्त JPG, PNG किंवा WebP असावा."
+    );
+
+    return;
+  }
+
+
   /* SIGNATURE */
 
   if (!signature) {
@@ -1714,6 +1756,23 @@ async function submitRegistration() {
     showMessage(
       "page2Message",
       "❌ Signature 500 KB पेक्षा मोठी आहे."
+    );
+
+    return;
+  }
+
+
+  if (
+    ![
+      "image/jpeg",
+      "image/png",
+      "image/webp"
+    ].includes(signature.type)
+  ) {
+
+    showMessage(
+      "page2Message",
+      "❌ Signature फक्त JPG, PNG किंवा WebP असावी."
     );
 
     return;
@@ -1744,19 +1803,55 @@ async function submitRegistration() {
   }
 
 
-  /* ID PROOF */
-
   if (
-    idProof &&
-    idProof.size > MAX_FILE_SIZE
+    ![
+      "image/jpeg",
+      "image/png",
+      "image/webp",
+      "application/pdf"
+    ].includes(aadhaarFile.type)
   ) {
 
     showMessage(
       "page2Message",
-      "❌ ID Proof 500 KB पेक्षा मोठा आहे."
+      "❌ Aadhaar फक्त JPG, PNG, WebP किंवा PDF असावा."
     );
 
     return;
+  }
+
+
+  /* ID PROOF */
+
+  if (idProof) {
+
+    if (idProof.size > MAX_FILE_SIZE) {
+
+      showMessage(
+        "page2Message",
+        "❌ ID Proof 500 KB पेक्षा मोठा आहे."
+      );
+
+      return;
+    }
+
+
+    if (
+      ![
+        "image/jpeg",
+        "image/png",
+        "image/webp",
+        "application/pdf"
+      ].includes(idProof.type)
+    ) {
+
+      showMessage(
+        "page2Message",
+        "❌ ID Proof फक्त JPG, PNG, WebP किंवा PDF असावा."
+      );
+
+      return;
+    }
   }
 
 
@@ -1778,8 +1873,10 @@ async function submitRegistration() {
     const photoData =
       await fileToBase64(photo);
 
+
     const signatureData =
       await fileToBase64(signature);
+
 
     const aadhaarData =
       await fileToBase64(aadhaarFile);
@@ -1896,6 +1993,20 @@ async function submitRegistration() {
     }
 
 
+    const finalMemberId =
+      result.memberId ||
+      result.username ||
+      "";
+
+
+    if (!finalMemberId) {
+
+      throw new Error(
+        "Server कडून सभासद क्रमांक मिळाला नाही."
+      );
+    }
+
+
     document
       .getElementById("documentFormCard")
       .style.display =
@@ -1909,11 +2020,9 @@ async function submitRegistration() {
 
 
     document
-      .getElementById("successUsername")
+      .getElementById("successMemberId")
       .textContent =
-      result.memberId ||
-      result.username ||
-      "";
+      finalMemberId;
 
 
     document
@@ -1921,13 +2030,6 @@ async function submitRegistration() {
       .textContent =
       result.password ||
       registrationData.password;
-
-
-    document
-      .getElementById("successMemberId")
-      .textContent =
-      result.memberId ||
-      "";
 
 
     document
