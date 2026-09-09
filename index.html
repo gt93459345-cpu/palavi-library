@@ -2431,7 +2431,9 @@ a{
         class="pending"
         id="successPendingStatus"
       >
-        आपला अर्ज सध्या Pending आहे.
+        आपली नोंदणी यशस्वी झाली आहे.
+        Membership PDF आणि Library Card तयार होत आहेत.
+        कृपया थोडा वेळ प्रतीक्षा करा.
       </div>
 
 
@@ -2567,6 +2569,15 @@ const state = {
   }
 
 };
+
+
+/* =====================================================
+   DOCUMENT STATUS POLLING STATE
+   ===================================================== */
+
+let documentPollingTimer = null;
+
+let documentPollingAttempts = 0;
 
 
 /* =====================================================
@@ -3467,7 +3478,9 @@ async function submitRegistration(){
     );
 
 
-    /* PREPARE FILES */
+    /* =================================================
+       PREPARE FILES
+       ================================================= */
 
     const files =
       await prepareFiles();
@@ -3480,9 +3493,9 @@ async function submitRegistration(){
     );
 
 
-    /* ================================================
+    /* =================================================
        FINAL PAYLOAD
-       ================================================ */
+       ================================================= */
 
     const payload = {
 
@@ -3577,9 +3590,9 @@ async function submitRegistration(){
     };
 
 
-    /* ================================================
+    /* =================================================
        SEND TO APPS SCRIPT
-       ================================================ */
+       ================================================= */
 
     const response =
       await fetch(
@@ -3626,16 +3639,12 @@ async function submitRegistration(){
     }
 
 
-    /* ================================================
-       SUCCESS
-       ================================================ */
-
-    setLoading(
-      true,
-      "Registration successful!",
-      "Membership PDF आणि Library Card तयार करत आहोत..."
-    );
-
+    /* =================================================
+       REGISTRATION SUCCESS
+       IMPORTANT:
+       PDF/CARD background process आहे.
+       येथे त्यांची वाट पाहायची नाही.
+       ================================================= */
 
     showSuccess(result);
 
@@ -3671,6 +3680,12 @@ async function submitRegistration(){
     submitBtn.disabled =
       false;
 
+
+    /*
+      Registration response मिळाल्यावर
+      loading बंद.
+      PDF/Card background मध्ये तयार होतील.
+    */
 
     setLoading(false);
 
@@ -3727,10 +3742,325 @@ function friendlyError(error){
 
 
 /* =====================================================
+   DOCUMENT STATUS POLLING
+   ===================================================== */
+
+function startDocumentStatusPolling(memberId){
+
+  if(!memberId){
+
+    return;
+
+  }
+
+
+  /*
+    आधीचा polling timer असल्यास बंद करा.
+  */
+
+  if(documentPollingTimer){
+
+    clearInterval(
+      documentPollingTimer
+    );
+
+    documentPollingTimer =
+      null;
+
+  }
+
+
+  documentPollingAttempts = 0;
+
+
+  /*
+    प्रत्येक 5 सेकंदांनी backend कडून
+    PDF आणि Library Card status तपासला जाईल.
+  */
+
+  documentPollingTimer =
+    setInterval(
+      async function(){
+
+        documentPollingAttempts++;
+
+
+        /*
+          36 attempts × 5 seconds
+          = 180 seconds
+          = 3 minutes
+        */
+
+        if(
+          documentPollingAttempts >
+          36
+        ){
+
+          clearInterval(
+            documentPollingTimer
+          );
+
+          documentPollingTimer =
+            null;
+
+
+          const pending =
+            document.getElementById(
+              "successPendingStatus"
+            );
+
+
+          if(pending){
+
+            pending.textContent =
+              "Registration यशस्वी झाली आहे. " +
+              "Documents तयार होण्यास अपेक्षेपेक्षा जास्त वेळ लागत आहे. " +
+              "कृपया थोड्या वेळाने पुन्हा Login/Status तपासा.";
+
+          }
+
+
+          return;
+
+        }
+
+
+        try{
+
+          const response =
+            await fetch(
+              SCRIPT_URL +
+              "?action=getMemberStatus&memberId=" +
+              encodeURIComponent(
+                memberId
+              ) +
+              "&t=" +
+              Date.now(),
+              {
+
+                method:"GET",
+
+                cache:"no-store"
+
+              }
+            );
+
+
+          if(!response.ok){
+
+            return;
+
+          }
+
+
+          const result =
+            await response.json();
+
+
+          if(
+            !result ||
+            !result.success
+          ){
+
+            return;
+
+          }
+
+
+          const pdfUrl =
+            result.membershipPdf ||
+            "";
+
+
+          const cardUrl =
+            result.libraryCard ||
+            "";
+
+
+          const pdfBtn =
+            document.getElementById(
+              "successPdf"
+            );
+
+
+          const cardBtn =
+            document.getElementById(
+              "successCard"
+            );
+
+
+          const pending =
+            document.getElementById(
+              "successPendingStatus"
+            );
+
+
+          const statusEl =
+            document.getElementById(
+              "successStatus"
+            );
+
+
+          /*
+            PDF तयार झाला
+          */
+
+          if(
+            pdfUrl &&
+            pdfBtn
+          ){
+
+            pdfBtn.href =
+              pdfUrl;
+
+            pdfBtn.style.display =
+              "inline-flex";
+
+          }
+
+
+          /*
+            Library Card तयार झाला
+          */
+
+          if(
+            cardUrl &&
+            cardBtn
+          ){
+
+            cardBtn.href =
+              cardUrl;
+
+            cardBtn.style.display =
+              "inline-flex";
+
+          }
+
+
+          /*
+            Application status update
+          */
+
+          if(statusEl){
+
+            statusEl.textContent =
+              result.applicationStatus ||
+              "Pending";
+
+          }
+
+
+          /*
+            दोन्ही documents तयार
+          */
+
+          if(
+            pdfUrl &&
+            cardUrl
+          ){
+
+            if(pending){
+
+              pending.textContent =
+                "✅ Membership PDF आणि Library Card तयार झाले आहेत.";
+
+              pending.style.display =
+                "block";
+
+            }
+
+
+            /*
+              दोन्ही तयार झाल्यावर polling पूर्ण बंद.
+            */
+
+            clearInterval(
+              documentPollingTimer
+            );
+
+            documentPollingTimer =
+              null;
+
+
+            return;
+
+          }
+
+
+          /*
+            अजून documents तयार होत असतील
+          */
+
+          if(pending){
+
+            pending.textContent =
+              "आपली नोंदणी यशस्वी झाली आहे. " +
+              "Membership PDF आणि Library Card तयार होत आहेत. " +
+              "कृपया थोडा वेळ प्रतीक्षा करा.";
+
+            pending.style.display =
+              "block";
+
+          }
+
+        }
+        catch(error){
+
+          /*
+            Temporary status-check error असल्यास
+            user ला error दाखवायचा नाही.
+            पुढच्या 5 सेकंदांनी पुन्हा check होईल.
+          */
+
+          console.log(
+            "Document status check:",
+            error
+          );
+
+        }
+
+      },
+      5000
+    );
+
+}
+
+
+/* =====================================================
+   STOP DOCUMENT STATUS POLLING
+   ===================================================== */
+
+function stopDocumentStatusPolling(){
+
+  if(documentPollingTimer){
+
+    clearInterval(
+      documentPollingTimer
+    );
+
+    documentPollingTimer =
+      null;
+
+  }
+
+  documentPollingAttempts = 0;
+
+}
+
+
+/* =====================================================
    SUCCESS
    ===================================================== */
 
 function showSuccess(result){
+
+  /*
+    जुन्या polling timer ला बंद करून
+    नवीन registration साठी fresh polling सुरू करू.
+  */
+
+  stopDocumentStatusPolling();
+
 
   document
     .getElementById("formArea")
@@ -3750,7 +4080,9 @@ function showSuccess(result){
     .display = "block";
 
 
-  /* MEMBER ID = USERNAME */
+  /* =================================================
+     MEMBER ID = USERNAME
+     ================================================= */
 
   const memberId =
     result.memberId ||
@@ -3770,7 +4102,9 @@ function showSuccess(result){
       memberId;
 
 
-  /* PASSWORD */
+  /* =================================================
+     PASSWORD
+     ================================================= */
 
   document
     .getElementById("successPassword")
@@ -3779,7 +4113,9 @@ function showSuccess(result){
       state.formData.password;
 
 
-  /* REGISTRATION DATE */
+  /* =================================================
+     REGISTRATION DATE
+     ================================================= */
 
   document
     .getElementById(
@@ -3790,7 +4126,9 @@ function showSuccess(result){
       "";
 
 
-  /* STATUS */
+  /* =================================================
+     STATUS
+     ================================================= */
 
   document
     .getElementById(
@@ -3827,6 +4165,8 @@ function showSuccess(result){
   }
   else{
 
+    pdf.removeAttribute("href");
+
     pdf.style.display =
       "none";
 
@@ -3859,6 +4199,8 @@ function showSuccess(result){
   }
   else{
 
+    card.removeAttribute("href");
+
     card.style.display =
       "none";
 
@@ -3870,13 +4212,24 @@ function showSuccess(result){
      ================================================= */
 
   const pending =
-    document
-      .getElementById(
-        "successPendingStatus"
-      );
+    document.getElementById(
+      "successPendingStatus"
+    );
 
 
   if(
+    pdfUrl &&
+    cardUrl
+  ){
+
+    pending.textContent =
+      "✅ Membership PDF आणि Library Card तयार झाले आहेत.";
+
+    pending.style.display =
+      "block";
+
+  }
+  else if(
     result.documentGenerationWarning
   ){
 
@@ -3890,13 +4243,21 @@ function showSuccess(result){
   else{
 
     pending.textContent =
-      "आपला अर्ज सध्या Pending आहे.";
+      "आपली नोंदणी यशस्वी झाली आहे. " +
+      "Membership PDF आणि Library Card तयार होत आहेत. " +
+      "कृपया थोडा वेळ प्रतीक्षा करा.";
 
     pending.style.display =
       "block";
 
   }
 
+
+  /*
+    Success screen लगेच दाखवा.
+    PDF/Card background मध्ये तयार होत असतील तर
+    polling सुरू करा.
+  */
 
   window.scrollTo({
 
@@ -3905,6 +4266,21 @@ function showSuccess(result){
     behavior:"smooth"
 
   });
+
+
+  if(
+    memberId &&
+    (
+      !pdfUrl ||
+      !cardUrl
+    )
+  ){
+
+    startDocumentStatusPolling(
+      memberId
+    );
+
+  }
 
 }
 
@@ -4085,6 +4461,20 @@ window.addEventListener(
       e.returnValue = "";
 
     }
+
+  }
+);
+
+
+/* =====================================================
+   STOP POLLING WHEN PAGE IS CLOSED
+   ===================================================== */
+
+window.addEventListener(
+  "pagehide",
+  function(){
+
+    stopDocumentStatusPolling();
 
   }
 );
