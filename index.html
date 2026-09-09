@@ -24,7 +24,6 @@
   Palavi Rural Mobile & Digital Library
 </title>
 
-
 <link
   rel="preconnect"
   href="https://fonts.googleapis.com"
@@ -41,38 +40,24 @@
   rel="stylesheet"
 >
 
-
 <style>
 
-/* =====================================================
-   ROOT TOKENS
-   ===================================================== */
-
 :root{
-
   --ink:#2b1710;
   --ink-soft:#5a453a;
-
   --maroon:#6b1224;
   --maroon-deep:#4a0d1a;
-
   --brass:#a9782f;
   --brass-light:#c99a4c;
-
   --paper:#f7efdc;
   --paper-white:#fffbf2;
-
   --line:#ddc99a;
-
   --sage:#3f6b46;
   --sage-bg:#e9f2e8;
-
   --red:#8c2430;
   --red-bg:#fbeced;
-
   --amber-bg:#fbf1d8;
   --amber-line:#dcb35c;
-
   --blue:#3157a6;
   --blue-bg:#eef2ff;
 
@@ -92,29 +77,19 @@
     sans-serif;
 }
 
-
-/* =====================================================
-   RESET
-   ===================================================== */
-
 *{
   box-sizing:border-box;
   margin:0;
   padding:0;
 }
 
-
 html{
   scroll-behavior:smooth;
 }
 
-
 body{
-
   font-family:var(--sans);
-
   color:var(--ink);
-
   min-height:100vh;
 
   background:
@@ -126,19 +101,13 @@ body{
     var(--paper);
 
   background-attachment:fixed;
-
   line-height:1.5;
 }
 
-
 body::before{
-
   content:"";
-
   position:fixed;
-
   inset:0;
-
   pointer-events:none;
 
   background-image:
@@ -152,13 +121,9 @@ body::before{
   z-index:0;
 }
 
-
-/* =====================================================
-   HEADER
-   ===================================================== */
+/* HEADER */
 
 .header{
-
   position:relative;
 
   background:
@@ -170,27 +135,17 @@ body::before{
     );
 
   color:var(--paper-white);
-
   padding:34px 20px 28px;
-
   text-align:center;
-
   border-bottom:5px solid var(--brass);
-
 }
 
-
 .header::after{
-
   content:"";
-
   position:absolute;
-
   left:0;
   right:0;
-
   bottom:-9px;
-
   height:4px;
 
   background:
@@ -203,93 +158,51 @@ body::before{
   opacity:.55;
 }
 
-
 .logo{
-
   width:74px;
   height:74px;
-
   object-fit:contain;
-
   border-radius:50%;
-
   background:var(--paper-white);
-
   padding:6px;
-
   border:2px solid var(--brass-light);
-
   margin-bottom:12px;
-
 }
-
 
 .trust{
-
   font-family:var(--sans);
-
   font-size:12px;
-
   letter-spacing:1.5px;
-
   color:var(--brass-light);
-
   font-weight:700;
-
 }
-
 
 .library-title{
-
   font-family:var(--serif);
-
-  font-size:
-    clamp(19px,3.6vw,29px);
-
+  font-size:clamp(19px,3.6vw,29px);
   font-weight:700;
-
   margin-top:9px;
-
   letter-spacing:.3px;
-
 }
-
 
 .library-marathi{
-
   font-family:var(--serif);
-
-  font-size:
-    clamp(17px,3.2vw,24px);
-
+  font-size:clamp(17px,3.2vw,24px);
   font-weight:700;
-
   margin-top:4px;
-
   color:var(--paper-white);
-
 }
-
 
 .location{
-
   margin-top:10px;
-
   font-size:12.5px;
-
   color:#e9d3c4;
-
 }
 
-
-/* =====================================================
-   MAIN
-   ===================================================== */
+/* MAIN */
 
 .container{
-
   position:relative;
-
   z-index:1;
 
   width:
@@ -299,67 +212,39 @@ body::before{
     );
 
   margin:36px auto 56px;
-
 }
-
 
 .intro{
-
   text-align:center;
-
   margin-bottom:26px;
-
 }
-
 
 .intro h1{
-
   font-family:var(--serif);
-
   color:var(--maroon);
-
-  font-size:
-    clamp(23px,4.6vw,31px);
-
+  font-size:clamp(23px,4.6vw,31px);
   font-weight:700;
-
   margin-bottom:9px;
-
 }
-
 
 .intro p{
-
   color:var(--ink-soft);
-
   font-size:14.5px;
-
   max-width:600px;
-
   margin:0 auto;
-
   line-height:1.6;
-
 }
-
 
 .intro p + p{
   margin-top:4px;
 }
 
-
-/* =====================================================
-   CARD
-   ===================================================== */
+/* CARD */
 
 .card{
-
   position:relative;
-
   background:var(--paper-white);
-
   border-radius:var(--radius-card);
-
   border:1px solid var(--line);
 
   box-shadow:
@@ -367,24 +252,15 @@ body::before{
     0 2px 0 var(--brass);
 
   overflow:hidden;
-
   padding-left:14px;
-
 }
 
-
 .card::before{
-
   content:"";
-
   position:absolute;
-
   left:0;
-
   top:0;
-
   bottom:0;
-
   width:14px;
 
   background:
@@ -393,26 +269,17 @@ body::before{
       var(--brass-light) 0 3px,
       var(--maroon-deep) 3px 16px
     );
-
 }
 
-
 .card::after{
-
   content:"";
-
   position:absolute;
-
   top:0;
-
   right:0;
-
   width:0;
-
   height:0;
 
   border-style:solid;
-
   border-width:0 26px 26px 0;
 
   border-color:
@@ -426,176 +293,96 @@ body::before{
       -2px 2px 2px
       rgba(74,13,26,.12)
     );
-
 }
 
-
-/* =====================================================
-   PROGRESS
-   ===================================================== */
+/* PROGRESS */
 
 .progress{
-
   display:grid;
-
   grid-template-columns:1fr 1fr;
-
   background:var(--paper);
-
   border-bottom:1px solid var(--line);
-
 }
-
 
 .step{
-
   padding:17px 12px;
-
   text-align:center;
-
   font-weight:700;
-
   font-size:14.5px;
-
   color:#9b8874;
-
   position:relative;
-
   transition:.25s ease;
-
 }
-
 
 .step.active{
-
   color:var(--maroon);
-
   background:var(--paper-white);
-
 }
-
 
 .step.active::after{
-
   content:"";
-
   position:absolute;
-
   bottom:0;
-
   left:16%;
-
   right:16%;
-
   height:3px;
-
   background:var(--brass);
-
-  border-radius:
-    4px 4px 0 0;
-
+  border-radius:4px 4px 0 0;
 }
-
 
 .step-number{
-
   display:inline-flex;
-
   align-items:center;
-
   justify-content:center;
-
   width:25px;
-
   height:25px;
-
   border-radius:50%;
-
   background:#d9c39a;
-
   color:var(--paper-white);
-
   font-family:var(--serif);
-
   font-size:13px;
-
   margin-right:7px;
-
 }
-
 
 .step.active .step-number{
-
   background:var(--maroon);
-
 }
 
-
-/* =====================================================
-   FORM CONTENT
-   ===================================================== */
+/* FORM */
 
 .form-content{
-
-  padding:
-    clamp(22px,5vw,42px);
-
+  padding:clamp(22px,5vw,42px);
 }
-
 
 .section-title{
-
   font-family:var(--serif);
-
   color:var(--maroon);
-
   font-size:21px;
-
   font-weight:700;
-
   margin-bottom:4px;
-
 }
-
 
 .section-subtitle{
-
   color:var(--ink-soft);
-
   font-size:13.5px;
-
   margin-bottom:24px;
-
   padding-bottom:14px;
-
   border-bottom:1px dashed var(--line);
-
 }
 
-
-/* =====================================================
-   GRID
-   ===================================================== */
+/* GRID */
 
 .grid{
-
   display:grid;
-
-  grid-template-columns:
-    repeat(2,1fr);
-
+  grid-template-columns:repeat(2,1fr);
   gap:22px 24px;
-
 }
-
 
 .full{
   grid-column:1 / -1;
 }
 
-
 @media(max-width:650px){
-
   .grid{
     grid-template-columns:1fr;
   }
@@ -603,81 +390,50 @@ body::before{
   .full{
     grid-column:auto;
   }
-
 }
 
-
-/* =====================================================
-   LABEL
-   ===================================================== */
+/* LABEL */
 
 label{
-
   display:block;
-
   font-weight:600;
-
   font-size:13.5px;
-
   color:var(--ink);
-
   margin-bottom:6px;
-
 }
-
 
 .required{
   color:var(--red);
 }
 
-
-/* =====================================================
-   INPUTS
-   ===================================================== */
+/* INPUTS */
 
 input,
 select,
 textarea{
-
   width:100%;
-
   border:none;
-
-  border-bottom:
-    1.5px solid var(--line);
-
+  border-bottom:1.5px solid var(--line);
   border-radius:0;
-
   padding:9px 2px;
-
   font-family:inherit;
-
   font-size:15px;
-
   background:transparent;
-
   color:var(--ink);
-
   outline:none;
 
   transition:
     border-color .2s,
     box-shadow .2s;
-
 }
-
 
 input::placeholder,
 textarea::placeholder{
   color:#9b897a;
 }
 
-
 select{
-
-  padding:
-    9px 22px 9px 2px;
-
+  padding:9px 22px 9px 2px;
   appearance:none;
 
   background-image:
@@ -701,329 +457,185 @@ select{
     6px 6px;
 
   background-repeat:no-repeat;
-
 }
-
 
 input:focus,
 select:focus,
 textarea:focus{
-
   border-color:var(--maroon);
-
-  box-shadow:
-    0 1px 0 var(--maroon);
-
+  box-shadow:0 1px 0 var(--maroon);
 }
-
 
 textarea{
-
   min-height:78px;
-
   resize:vertical;
-
-  border:
-    1px solid var(--line);
-
+  border:1px solid var(--line);
   border-radius:8px;
-
   padding:11px 12px;
-
   background:var(--paper);
-
 }
 
-
 textarea:focus{
-
   border-color:var(--maroon);
 
   box-shadow:
     0 0 0 3px
     rgba(107,18,36,.08);
-
 }
 
-
-/* =====================================================
-   PASSWORD
-   ===================================================== */
+/* PASSWORD */
 
 .password-wrap{
   position:relative;
 }
 
-
 .password-wrap input{
   padding-right:42px;
 }
 
-
 .password-toggle{
-
   position:absolute;
-
   right:0;
-
   top:50%;
-
-  transform:
-    translateY(-50%);
-
+  transform:translateY(-50%);
   border:none;
-
   background:transparent;
-
   cursor:pointer;
-
   font-size:18px;
-
   color:var(--ink-soft);
-
 }
-
 
 .password-toggle:hover{
   color:var(--maroon);
 }
 
-
 .helper{
-
   color:#8a7563;
-
   font-size:11.5px;
-
   margin-top:6px;
-
 }
 
-
-/* =====================================================
-   MEMBER NOTICE
-   ===================================================== */
+/* MEMBER NOTICE */
 
 .member-notice{
-
   background:var(--amber-bg);
-
-  border:
-    1px solid var(--amber-line);
-
-  border-left:
-    4px solid var(--brass);
-
+  border:1px solid var(--amber-line);
+  border-left:4px solid var(--brass);
   padding:16px 18px;
-
   border-radius:10px;
-
   margin-bottom:26px;
-
   font-size:13.5px;
-
   line-height:1.7;
-
 }
-
 
 .member-notice strong{
   color:var(--maroon);
 }
 
-
 .example{
-
   display:inline-block;
-
   background:var(--maroon);
-
   color:var(--paper-white);
-
   padding:3px 10px;
-
   border-radius:5px;
-
   font-family:monospace;
-
   margin-top:6px;
-
   letter-spacing:.5px;
-
 }
 
-
-/* =====================================================
-   SECURITY
-   ===================================================== */
+/* SECURITY */
 
 .security{
-
   background:var(--sage-bg);
-
-  border:
-    1px solid #b9d7bf;
-
+  border:1px solid #b9d7bf;
   color:var(--sage);
-
   padding:13px 15px;
-
   border-radius:9px;
-
   margin-top:22px;
-
   font-size:12.5px;
-
   line-height:1.7;
-
 }
 
-
-/* =====================================================
-   UPLOAD
-   ===================================================== */
+/* UPLOAD */
 
 .upload-box{
-
-  border:
-    2px dashed var(--brass-light);
-
+  border:2px dashed var(--brass-light);
   border-radius:10px;
-
   padding:16px;
-
   background:var(--paper);
 
   transition:
     border-color .2s,
     background .2s;
-
 }
-
 
 .upload-box:hover{
-
   border-color:var(--maroon);
-
   background:#fbf4e5;
-
 }
-
 
 .upload-box input{
-
   background:transparent;
-
   border:none;
-
   padding:6px 0;
-
   cursor:pointer;
-
 }
-
 
 .upload-box input[type="file"]{
-
   font-size:13px;
-
 }
-
 
 .preview{
-
   margin-top:12px;
-
   display:none;
-
   text-align:center;
-
 }
 
-
 .preview img{
-
   max-width:170px;
-
   max-height:170px;
-
   border-radius:6px;
-
-  border:
-    1px solid var(--line);
+  border:1px solid var(--line);
 
   box-shadow:
     0 4px 14px
     rgba(74,13,26,.15);
-
 }
-
 
 .file-info{
-
   font-size:11.5px;
-
   color:#736051;
-
   margin-top:6px;
-
   word-break:break-word;
-
 }
-
-
-/* =====================================================
-   UPLOAD NOTE
-   ===================================================== */
 
 .upload-note{
-
   margin-top:8px;
-
   font-size:11px;
-
   color:#8a7563;
-
   line-height:1.5;
-
 }
 
-
-/* =====================================================
-   BUTTONS
-   ===================================================== */
+/* BUTTONS */
 
 .buttons{
-
   display:flex;
-
   justify-content:space-between;
-
   gap:12px;
-
   margin-top:30px;
-
 }
-
 
 button,
 a{
   font-family:inherit;
 }
 
-
 .btn{
-
   border:none;
-
   border-radius:var(--radius-pill);
-
   padding:13px 26px;
-
   cursor:pointer;
-
   font-weight:700;
-
   font-size:14.5px;
 
   transition:
@@ -1034,26 +646,16 @@ a{
   text-decoration:none;
 
   display:inline-flex;
-
   align-items:center;
-
   justify-content:center;
-
 }
-
 
 .btn:hover{
-
-  transform:
-    translateY(-2px);
-
+  transform:translateY(-2px);
   filter:brightness(1.04);
-
 }
 
-
 .btn-primary{
-
   background:
     linear-gradient(
       135deg,
@@ -1066,24 +668,15 @@ a{
   box-shadow:
     0 8px 20px
     rgba(107,18,36,.28);
-
 }
-
 
 .btn-secondary{
-
   background:var(--paper);
-
   color:var(--ink);
-
-  border:
-    1px solid var(--line);
-
+  border:1px solid var(--line);
 }
 
-
 .btn-success{
-
   background:
     linear-gradient(
       135deg,
@@ -1096,464 +689,287 @@ a{
   box-shadow:
     0 8px 20px
     rgba(63,107,70,.25);
-
 }
-
 
 .btn:disabled{
-
   opacity:.5;
-
   cursor:not-allowed;
-
   transform:none;
-
   filter:none;
-
 }
 
-
-/* =====================================================
-   SUCCESS
-   ===================================================== */
+/* SUCCESS */
 
 .success{
-
   display:none;
-
   text-align:center;
-
   padding:40px 26px;
-
 }
 
-
 .success-icon{
-
   width:70px;
-
   height:70px;
-
   border-radius:50%;
-
   background:var(--sage-bg);
-
   color:var(--sage);
 
   display:flex;
-
   align-items:center;
-
   justify-content:center;
 
   font-size:36px;
-
-  margin:
-    0 auto 18px;
-
-  border:
-    2px solid var(--sage);
-
+  margin:0 auto 18px;
+  border:2px solid var(--sage);
 }
-
 
 .success h2{
-
   font-family:var(--serif);
-
   color:var(--sage);
-
   margin-bottom:8px;
-
   font-size:24px;
-
 }
-
 
 .success-sub{
-
   color:var(--ink-soft);
-
   margin-bottom:26px;
-
   font-size:14.5px;
-
 }
 
-
 .success-details{
-
   position:relative;
-
   background:var(--paper-white);
-
-  border:
-    1px solid var(--line);
-
-  border-top:
-    5px solid var(--brass);
-
+  border:1px solid var(--line);
+  border-top:5px solid var(--brass);
   border-radius:12px;
-
   padding:20px 22px;
-
   text-align:left;
-
   max-width:560px;
-
   margin:auto;
 
   box-shadow:
     0 14px 34px
     rgba(74,13,26,.12);
-
 }
-
 
 .detail{
-
   display:flex;
-
   justify-content:space-between;
-
   gap:20px;
-
   padding:11px 0;
-
-  border-bottom:
-    1px dashed var(--line);
-
+  border-bottom:1px dashed var(--line);
 }
-
 
 .detail:last-child{
   border-bottom:none;
 }
 
-
 .detail-label{
-
   font-weight:600;
-
   color:var(--ink-soft);
-
   font-size:13.5px;
-
 }
-
 
 .detail-value{
-
   font-weight:700;
-
   color:var(--maroon);
-
   text-align:right;
-
   word-break:break-word;
-
 }
 
+/* SUCCESS ACTIONS */
 
 .success-actions{
-
   display:flex;
-
   flex-wrap:wrap;
-
   justify-content:center;
-
   gap:12px;
-
   margin-top:26px;
-
 }
 
+/*
+  Document buttons:
+  Registration झाल्यानंतर buttons दिसतील.
+  Backend URL येईपर्यंत preparing state.
+*/
+
+.success-download-btn{
+  min-width:230px;
+  position:relative;
+}
+
+.success-download-btn.preparing{
+  opacity:.62;
+  cursor:wait;
+  pointer-events:none;
+  background:var(--paper);
+  color:var(--ink-soft);
+  border:1px solid var(--line);
+  box-shadow:none;
+}
+
+.success-download-btn.ready{
+  opacity:1;
+  cursor:pointer;
+  pointer-events:auto;
+}
+
+/* PENDING */
 
 .pending{
-
   background:var(--amber-bg);
-
   color:#7a5313;
-
-  border:
-    1px solid var(--amber-line);
-
+  border:1px solid var(--amber-line);
   border-radius:9px;
-
   padding:12px 15px;
-
   margin-top:20px;
-
   font-size:12.5px;
-
 }
 
-
-/* =====================================================
-   ERROR
-   ===================================================== */
+/* ERROR */
 
 .error{
-
   display:none;
-
   background:var(--red-bg);
-
   color:var(--red);
-
-  border:
-    1px solid #e0a5aa;
-
+  border:1px solid #e0a5aa;
   border-radius:9px;
-
   padding:13px 15px;
-
   margin-top:16px;
-
   font-size:13.5px;
-
   line-height:1.6;
-
 }
 
-
-/* =====================================================
-   FOOTER
-   ===================================================== */
+/* FOOTER */
 
 .footer{
-
   position:relative;
-
   z-index:1;
-
   text-align:center;
-
   padding:22px;
-
   color:#8a7565;
-
   font-size:11.5px;
-
 }
 
-
-/* =====================================================
-   LOADING
-   ===================================================== */
+/* LOADING */
 
 .loading{
-
   display:none;
-
   position:fixed;
-
   inset:0;
-
-  background:
-    rgba(30,10,10,.68);
-
+  background:rgba(30,10,10,.68);
   z-index:9999;
-
   align-items:center;
-
   justify-content:center;
-
   padding:20px;
-
 }
 
-
 .loading-box{
-
   background:var(--paper-white);
-
   padding:32px;
-
   border-radius:14px;
-
   text-align:center;
-
   min-width:280px;
-
   max-width:420px;
-
-  border-top:
-    4px solid var(--brass);
+  border-top:4px solid var(--brass);
 
   box-shadow:
     0 20px 60px
     rgba(0,0,0,.25);
-
 }
 
-
 .spinner{
-
   width:42px;
-
   height:42px;
-
-  border:
-    4px solid var(--line);
-
-  border-top-color:
-    var(--maroon);
-
+  border:4px solid var(--line);
+  border-top-color:var(--maroon);
   border-radius:50%;
 
   animation:
     spin 1s linear infinite;
 
-  margin:
-    0 auto 15px;
-
+  margin:0 auto 15px;
 }
 
-
 @keyframes spin{
-
   to{
     transform:rotate(360deg);
   }
-
 }
-
 
 .loading-stage{
-
   margin-top:10px;
-
   font-size:12px;
-
   color:#766;
-
   line-height:1.6;
-
 }
-
-
-/* =====================================================
-   HIDDEN
-   ===================================================== */
 
 .hidden{
   display:none !important;
 }
 
-
-/* =====================================================
-   MOBILE
-   ===================================================== */
-
 @media(max-width:650px){
 
   .container{
-
-    width:
-      calc(100% - 18px);
-
+    width:calc(100% - 18px);
     margin-top:25px;
-
   }
-
 
   .card{
     padding-left:10px;
   }
 
-
   .card::before{
     width:10px;
   }
 
-
   .form-content{
-    padding:
-      22px 17px 28px;
+    padding:22px 17px 28px;
   }
-
 
   .buttons{
-
     flex-direction:column-reverse;
-
   }
-
 
   .buttons .btn{
-
     width:100%;
-
   }
-
 
   .success{
-
-    padding:
-      32px 17px;
-
+    padding:32px 17px;
   }
-
 
   .detail{
-
     flex-direction:column;
-
     gap:4px;
-
   }
-
 
   .detail-value{
-
     text-align:left;
-
   }
-
 
   .success-actions{
-
     flex-direction:column;
-
   }
 
-
   .success-actions .btn{
-
     width:100%;
-
   }
 
 }
 
-
-/* =====================================================
-   ACCESSIBILITY
-   ===================================================== */
-
 :focus-visible{
-
   outline:
     3px solid
     rgba(169,120,47,.35);
 
   outline-offset:3px;
-
 }
 
 </style>
 
 </head>
 
-
 <body>
-
-
-<!-- =====================================================
-     HEADER
-     ===================================================== -->
 
 <header class="header">
 
@@ -1581,13 +997,7 @@ a{
 
 </header>
 
-
-<!-- =====================================================
-     MAIN
-     ===================================================== -->
-
 <main class="container">
-
 
   <div class="intro">
 
@@ -1607,13 +1017,7 @@ a{
 
   </div>
 
-
   <div class="card">
-
-
-    <!-- =================================================
-         PROGRESS
-         ================================================= -->
 
     <div class="progress">
 
@@ -1621,45 +1025,24 @@ a{
         class="step active"
         id="stepIndicator1"
       >
-
-        <span class="step-number">
-          1
-        </span>
-
+        <span class="step-number">1</span>
         Account &amp; Personal
-
       </div>
-
 
       <div
         class="step"
         id="stepIndicator2"
       >
-
-        <span class="step-number">
-          2
-        </span>
-
+        <span class="step-number">2</span>
         Documents
-
       </div>
 
     </div>
-
-
-    <!-- =================================================
-         FORM
-         ================================================= -->
 
     <div
       class="form-content"
       id="formArea"
     >
-
-
-      <!-- ===============================================
-           STEP 1
-           =============================================== -->
 
       <section id="step1">
 
@@ -1670,9 +1053,6 @@ a{
         <p class="section-subtitle">
           आपली वैयक्तिक आणि सभासद माहिती भरा.
         </p>
-
-
-        <!-- MEMBER ID NOTICE -->
 
         <div class="member-notice">
 
@@ -1707,11 +1087,7 @@ a{
 
         </div>
 
-
         <div class="grid">
-
-
-          <!-- PASSWORD -->
 
           <div>
 
@@ -1748,9 +1124,6 @@ a{
 
           </div>
 
-
-          <!-- FULL NAME -->
-
           <div>
 
             <label>
@@ -1768,9 +1141,6 @@ a{
 
           </div>
 
-
-          <!-- DOB -->
-
           <div>
 
             <label>
@@ -1785,9 +1155,6 @@ a{
             >
 
           </div>
-
-
-          <!-- GENDER -->
 
           <div>
 
@@ -1818,9 +1185,6 @@ a{
 
           </div>
 
-
-          <!-- PROFESSION -->
-
           <div>
 
             <label>
@@ -1836,9 +1200,6 @@ a{
             >
 
           </div>
-
-
-          <!-- MOBILE -->
 
           <div>
 
@@ -1858,9 +1219,6 @@ a{
 
           </div>
 
-
-          <!-- EMAIL -->
-
           <div>
 
             <label>
@@ -1877,9 +1235,6 @@ a{
             >
 
           </div>
-
-
-          <!-- AADHAAR NUMBER -->
 
           <div>
 
@@ -1899,9 +1254,6 @@ a{
 
           </div>
 
-
-          <!-- CORRESPONDENCE ADDRESS -->
-
           <div class="full">
 
             <label>
@@ -1917,9 +1269,6 @@ a{
 
           </div>
 
-
-          <!-- PERMANENT ADDRESS -->
-
           <div class="full">
 
             <label>
@@ -1934,9 +1283,6 @@ a{
             ></textarea>
 
           </div>
-
-
-          <!-- MEMBERSHIP -->
 
           <div>
 
@@ -1975,9 +1321,6 @@ a{
 
           </div>
 
-
-          <!-- FEE -->
-
           <div>
 
             <label>
@@ -1995,9 +1338,6 @@ a{
 
         </div>
 
-
-        <!-- SECURITY -->
-
         <div class="security">
 
           🔒
@@ -2007,17 +1347,11 @@ a{
 
         </div>
 
-
-        <!-- ERROR -->
-
         <div
           class="error"
           id="step1Error"
           role="alert"
         ></div>
-
-
-        <!-- BUTTON -->
 
         <div class="buttons">
 
@@ -2035,11 +1369,6 @@ a{
 
       </section>
 
-
-      <!-- ===============================================
-           STEP 2
-           =============================================== -->
-
       <section
         id="step2"
         class="hidden"
@@ -2053,11 +1382,7 @@ a{
           आवश्यक कागदपत्रे upload करा.
         </p>
 
-
         <div class="grid">
-
-
-          <!-- PHOTO -->
 
           <div>
 
@@ -2072,11 +1397,7 @@ a{
                 type="file"
                 id="photo"
                 accept="image/jpeg,image/png,image/webp"
-                onchange="handleFile(
-                  this,
-                  'photoPreview',
-                  'photoInfo'
-                )"
+                onchange="handleFile(this,'photoPreview','photoInfo')"
               >
 
               <div
@@ -2097,9 +1418,6 @@ a{
 
           </div>
 
-
-          <!-- SIGNATURE -->
-
           <div>
 
             <div class="upload-box">
@@ -2113,11 +1431,7 @@ a{
                 type="file"
                 id="signature"
                 accept="image/jpeg,image/png,image/webp"
-                onchange="handleFile(
-                  this,
-                  'signaturePreview',
-                  'signatureInfo'
-                )"
+                onchange="handleFile(this,'signaturePreview','signatureInfo')"
               >
 
               <div
@@ -2138,9 +1452,6 @@ a{
 
           </div>
 
-
-          <!-- AADHAAR FRONT -->
-
           <div>
 
             <div class="upload-box">
@@ -2154,11 +1465,7 @@ a{
                 type="file"
                 id="aadhaarFront"
                 accept="image/jpeg,image/png,image/webp,application/pdf"
-                onchange="handleFile(
-                  this,
-                  'aadhaarFrontPreview',
-                  'aadhaarFrontInfo'
-                )"
+                onchange="handleFile(this,'aadhaarFrontPreview','aadhaarFrontInfo')"
               >
 
               <div
@@ -2179,9 +1486,6 @@ a{
 
           </div>
 
-
-          <!-- AADHAAR BACK -->
-
           <div>
 
             <div class="upload-box">
@@ -2195,11 +1499,7 @@ a{
                 type="file"
                 id="aadhaarBack"
                 accept="image/jpeg,image/png,image/webp,application/pdf"
-                onchange="handleFile(
-                  this,
-                  'aadhaarBackPreview',
-                  'aadhaarBackInfo'
-                )"
+                onchange="handleFile(this,'aadhaarBackPreview','aadhaarBackInfo')"
               >
 
               <div
@@ -2220,9 +1520,6 @@ a{
 
           </div>
 
-
-          <!-- ID PROOF -->
-
           <div class="full">
 
             <div class="upload-box">
@@ -2238,11 +1535,7 @@ a{
                 type="file"
                 id="idProof"
                 accept="image/jpeg,image/png,image/webp,application/pdf"
-                onchange="handleFile(
-                  this,
-                  'idProofPreview',
-                  'idProofInfo'
-                )"
+                onchange="handleFile(this,'idProofPreview','idProofInfo')"
               >
 
               <div
@@ -2266,9 +1559,6 @@ a{
 
         </div>
 
-
-        <!-- DOCUMENT NOTE -->
-
         <div class="security">
 
           📁
@@ -2278,17 +1568,11 @@ a{
 
         </div>
 
-
-        <!-- ERROR -->
-
         <div
           class="error"
           id="step2Error"
           role="alert"
         ></div>
-
-
-        <!-- BUTTONS -->
 
         <div class="buttons">
 
@@ -2315,10 +1599,7 @@ a{
 
     </div>
 
-
-    <!-- =================================================
-         SUCCESS AREA
-         ================================================= -->
+    <!-- SUCCESS AREA -->
 
     <section
       class="success"
@@ -2329,21 +1610,15 @@ a{
         ✓
       </div>
 
-
       <h2>
         Registration Successful!
       </h2>
-
 
       <p class="success-sub">
         आपली सभासद नोंदणी यशस्वीरित्या पूर्ण झाली आहे.
       </p>
 
-
       <div class="success-details">
-
-
-        <!-- MEMBER ID -->
 
         <div class="detail">
 
@@ -2358,9 +1633,6 @@ a{
 
         </div>
 
-
-        <!-- USERNAME -->
-
         <div class="detail">
 
           <span class="detail-label">
@@ -2373,9 +1645,6 @@ a{
           ></span>
 
         </div>
-
-
-        <!-- PASSWORD -->
 
         <div class="detail">
 
@@ -2390,9 +1659,6 @@ a{
 
         </div>
 
-
-        <!-- REGISTRATION DATE -->
-
         <div class="detail">
 
           <span class="detail-label">
@@ -2405,9 +1671,6 @@ a{
           ></span>
 
         </div>
-
-
-        <!-- STATUS -->
 
         <div class="detail">
 
@@ -2424,9 +1687,6 @@ a{
 
       </div>
 
-
-      <!-- STATUS MESSAGE -->
-
       <div
         class="pending"
         id="successPendingStatus"
@@ -2436,30 +1696,30 @@ a{
         कृपया थोडा वेळ प्रतीक्षा करा.
       </div>
 
-
-      <!-- ACTION BUTTONS -->
+      <!-- DOWNLOAD OPTIONS -->
 
       <div class="success-actions">
 
         <a
           id="successPdf"
-          class="btn btn-success"
+          class="btn success-download-btn preparing"
           target="_blank"
           rel="noopener noreferrer"
-          style="display:none;"
+          href="#"
+          aria-disabled="true"
         >
-          📄 Membership PDF
+          📄 Membership PDF तयार होत आहे...
         </a>
-
 
         <a
           id="successCard"
-          class="btn btn-primary"
+          class="btn success-download-btn preparing"
           target="_blank"
           rel="noopener noreferrer"
-          style="display:none;"
+          href="#"
+          aria-disabled="true"
         >
-          🪪 Library Card
+          🪪 Library Card तयार होत आहे...
         </a>
 
       </div>
@@ -2467,9 +1727,6 @@ a{
     </section>
 
   </div>
-
-
-  <!-- FOOTER -->
 
   <div class="footer">
 
@@ -2480,10 +1737,7 @@ a{
 
 </main>
 
-
-<!-- =====================================================
-     LOADING
-     ===================================================== -->
+<!-- LOADING -->
 
 <div
   class="loading"
@@ -2510,26 +1764,18 @@ a{
 
 </div>
 
-
 <script>
 
 "use strict";
-
 
 /* =====================================================
    GOOGLE APPS SCRIPT BACKEND
    ===================================================== */
 
 const SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbzFKUObvTEjulQK_MuZecjgWyyWtzZ2z8PV_uN6_blDYyDNjaMlVf9Btss7CyFmHrJ2/exec";
-
-
-/* =====================================================
-   SETTINGS
-   ===================================================== */
+  "https://script.google.com/macros/s/AKfycbzFKUObvTEjulqK_MuZecjgWyyWtzZ2z8PV_uN6_blDYyDNjaMlVf9Btss7CyFmHrJ2/exec";
 
 const MIN_PASSWORD_LENGTH = 6;
-
 
 /* =====================================================
    APPLICATION STATE
@@ -2537,12 +1783,11 @@ const MIN_PASSWORD_LENGTH = 6;
 
 const state = {
 
-  currentStep: 1,
+  currentStep:1,
 
-  submitting: false,
+  submitting:false,
 
-  formData: {
-
+  formData:{
     password:"",
     fullName:"",
     dob:"",
@@ -2555,33 +1800,27 @@ const state = {
     aadhaar:"",
     membershipType:"",
     fee:""
-
   },
 
-  files: {
-
+  files:{
     photo:null,
     signature:null,
     aadhaarFront:null,
     aadhaarBack:null,
     idProof:null
-
   }
 
 };
 
-
 /* =====================================================
-   DOCUMENT STATUS POLLING STATE
+   DOCUMENT STATUS POLLING
    ===================================================== */
 
 let documentPollingTimer = null;
-
 let documentPollingAttempts = 0;
 
-
 /* =====================================================
-   PASSWORD TOGGLE
+   PASSWORD
    ===================================================== */
 
 function togglePassword(){
@@ -2593,48 +1832,28 @@ function togglePassword(){
     input.type === "password"
       ? "text"
       : "password";
-
 }
 
-
 /* =====================================================
-   STEP 1 VALIDATION
+   VALIDATE STEP 1
    ===================================================== */
 
 function validateStep1(){
 
   const password =
-    document
-      .getElementById("password")
-      .value
-      .trim();
-
+    document.getElementById("password").value.trim();
 
   const fullName =
-    document
-      .getElementById("fullName")
-      .value
-      .trim();
-
+    document.getElementById("fullName").value.trim();
 
   const dob =
-    document
-      .getElementById("dob")
-      .value;
-
+    document.getElementById("dob").value;
 
   const gender =
-    document
-      .getElementById("gender")
-      .value;
-
+    document.getElementById("gender").value;
 
   const profession =
-    document
-      .getElementById("profession")
-      .value
-      .trim();
-
+    document.getElementById("profession").value.trim();
 
   const mobile =
     document
@@ -2642,13 +1861,8 @@ function validateStep1(){
       .value
       .replace(/\D/g,"");
 
-
   const email =
-    document
-      .getElementById("email")
-      .value
-      .trim();
-
+    document.getElementById("email").value.trim();
 
   const correspondenceAddress =
     document
@@ -2656,13 +1870,11 @@ function validateStep1(){
       .value
       .trim();
 
-
   const permanentAddress =
     document
       .getElementById("permanentAddress")
       .value
       .trim();
-
 
   const aadhaar =
     document
@@ -2670,135 +1882,62 @@ function validateStep1(){
       .value
       .replace(/\D/g,"");
 
-
   const membershipType =
-    document
-      .getElementById("membershipType")
-      .value;
+    document.getElementById("membershipType").value;
 
-
-  if(
-    password.length <
-    MIN_PASSWORD_LENGTH
-  ){
-
-    return
-      "Password किमान 6 characters असावा.";
-
+  if(password.length < MIN_PASSWORD_LENGTH){
+    return "Password किमान 6 characters असावा.";
   }
-
 
   if(fullName.length < 2){
-
-    return
-      "संपूर्ण नाव योग्य प्रकारे भरा.";
-
+    return "संपूर्ण नाव योग्य प्रकारे भरा.";
   }
-
 
   if(!dob){
-
-    return
-      "जन्मतारीख निवडा.";
-
+    return "जन्मतारीख निवडा.";
   }
-
 
   const today =
-    new Date()
-      .toISOString()
-      .split("T")[0];
-
+    new Date().toISOString().split("T")[0];
 
   if(dob > today){
-
-    return
-      "जन्मतारीख भविष्यातील असू शकत नाही.";
-
+    return "जन्मतारीख भविष्यातील असू शकत नाही.";
   }
-
 
   if(!gender){
-
-    return
-      "लिंग निवडा.";
-
+    return "लिंग निवडा.";
   }
-
 
   if(!profession){
-
-    return
-      "व्यवसाय भरा.";
-
+    return "व्यवसाय भरा.";
   }
 
-
-  if(
-    !/^[6-9][0-9]{9}$/
-      .test(mobile)
-  ){
-
-    return
-      "योग्य 10 अंकी मोबाईल क्रमांक भरा.";
-
+  if(!/^[6-9][0-9]{9}$/.test(mobile)){
+    return "योग्य 10 अंकी मोबाईल क्रमांक भरा.";
   }
 
-
-  if(
-    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/
-      .test(email)
-  ){
-
-    return
-      "योग्य ई-मेल आयडी भरा.";
-
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+    return "योग्य ई-मेल आयडी भरा.";
   }
 
-
-  if(
-    correspondenceAddress.length < 5
-  ){
-
-    return
-      "पत्रव्यवहाराचा पूर्ण पत्ता भरा.";
-
+  if(correspondenceAddress.length < 5){
+    return "पत्रव्यवहाराचा पूर्ण पत्ता भरा.";
   }
 
-
-  if(
-    permanentAddress.length < 5
-  ){
-
-    return
-      "कायमचा पूर्ण पत्ता भरा.";
-
+  if(permanentAddress.length < 5){
+    return "कायमचा पूर्ण पत्ता भरा.";
   }
 
-
-  if(
-    !/^[0-9]{12}$/
-      .test(aadhaar)
-  ){
-
-    return
-      "आधार क्रमांक 12 अंकी असावा.";
-
+  if(!/^[0-9]{12}$/.test(aadhaar)){
+    return "आधार क्रमांक 12 अंकी असावा.";
   }
-
 
   if(!membershipType){
-
-    return
-      "सदस्यत्व प्रकार निवडा.";
-
+    return "सदस्यत्व प्रकार निवडा.";
   }
 
-
   return "";
-
 }
-
 
 /* =====================================================
    SAVE FORM DATA
@@ -2809,32 +1948,19 @@ function saveFormData(){
   state.formData = {
 
     password:
-      document
-        .getElementById("password")
-        .value
-        .trim(),
+      document.getElementById("password").value.trim(),
 
     fullName:
-      document
-        .getElementById("fullName")
-        .value
-        .trim(),
+      document.getElementById("fullName").value.trim(),
 
     dob:
-      document
-        .getElementById("dob")
-        .value,
+      document.getElementById("dob").value,
 
     gender:
-      document
-        .getElementById("gender")
-        .value,
+      document.getElementById("gender").value,
 
     profession:
-      document
-        .getElementById("profession")
-        .value
-        .trim(),
+      document.getElementById("profession").value.trim(),
 
     mobile:
       document
@@ -2843,10 +1969,7 @@ function saveFormData(){
         .replace(/\D/g,""),
 
     email:
-      document
-        .getElementById("email")
-        .value
-        .trim(),
+      document.getElementById("email").value.trim(),
 
     correspondenceAddress:
       document
@@ -2867,257 +1990,151 @@ function saveFormData(){
         .replace(/\D/g,""),
 
     membershipType:
-      document
-        .getElementById("membershipType")
-        .value,
+      document.getElementById("membershipType").value,
 
     fee:
-      document
-        .getElementById("fee")
-        .value
-        .trim()
+      document.getElementById("fee").value.trim()
 
   };
-
 }
 
-
 /* =====================================================
-   GO TO STEP 2
+   STEP 2
    ===================================================== */
 
 function goToStep2(){
 
   clearError("step1Error");
 
-  const error =
-    validateStep1();
-
+  const error = validateStep1();
 
   if(error){
-
-    showError(
-      "step1Error",
-      error
-    );
-
+    showError("step1Error",error);
     return;
-
   }
-
 
   saveFormData();
 
+  document.getElementById("step1")
+    .classList.add("hidden");
 
-  document
-    .getElementById("step1")
-    .classList
-    .add("hidden");
+  document.getElementById("step2")
+    .classList.remove("hidden");
 
+  document.getElementById("stepIndicator1")
+    .classList.remove("active");
 
-  document
-    .getElementById("step2")
-    .classList
-    .remove("hidden");
-
-
-  document
-    .getElementById("stepIndicator1")
-    .classList
-    .remove("active");
-
-
-  document
-    .getElementById("stepIndicator2")
-    .classList
-    .add("active");
-
+  document.getElementById("stepIndicator2")
+    .classList.add("active");
 
   state.currentStep = 2;
 
-
   window.scrollTo({
-
     top:0,
-
     behavior:"smooth"
-
   });
-
 }
 
-
 /* =====================================================
-   GO TO STEP 1
+   STEP 1
    ===================================================== */
 
 function goToStep1(){
 
   clearError("step2Error");
 
+  document.getElementById("step2")
+    .classList.add("hidden");
 
-  document
-    .getElementById("step2")
-    .classList
-    .add("hidden");
+  document.getElementById("step1")
+    .classList.remove("hidden");
 
+  document.getElementById("stepIndicator2")
+    .classList.remove("active");
 
-  document
-    .getElementById("step1")
-    .classList
-    .remove("hidden");
-
-
-  document
-    .getElementById("stepIndicator2")
-    .classList
-    .remove("active");
-
-
-  document
-    .getElementById("stepIndicator1")
-    .classList
-    .add("active");
-
+  document.getElementById("stepIndicator1")
+    .classList.add("active");
 
   state.currentStep = 1;
 
-
   window.scrollTo({
-
     top:0,
-
     behavior:"smooth"
-
   });
-
 }
-
 
 /* =====================================================
    FILE VALIDATION
    ===================================================== */
 
-function validateFile(
-  file,
-  required,
-  label
-){
+function validateFile(file,required,label){
 
   if(!file){
 
     if(required){
-
-      return (
-        label +
-        " आवश्यक आहे."
-      );
-
+      return label + " आवश्यक आहे.";
     }
 
     return "";
-
   }
 
-
   return "";
-
 }
-
 
 /* =====================================================
    FILE HANDLER
    ===================================================== */
 
-function handleFile(
-  input,
-  previewId,
-  infoId
-){
+function handleFile(input,previewId,infoId){
 
   const file =
-    input.files &&
-    input.files[0];
-
+    input.files && input.files[0];
 
   const preview =
-    document
-      .getElementById(previewId);
-
+    document.getElementById(previewId);
 
   const info =
-    document
-      .getElementById(infoId);
-
+    document.getElementById(infoId);
 
   preview.innerHTML = "";
-
-  preview.style.display =
-    "none";
-
-  info.textContent =
-    "";
-
+  preview.style.display = "none";
+  info.textContent = "";
 
   if(!file){
 
-    state.files[input.id] =
-      null;
-
+    state.files[input.id] = null;
     return;
-
   }
-
 
   info.textContent =
     file.name +
     " • " +
     formatBytes(file.size);
 
-
   if(
     file.type &&
     file.type.startsWith("image/")
   ){
 
-    const reader =
-      new FileReader();
+    const reader = new FileReader();
 
+    reader.onload = function(e){
 
-    reader.onload =
-      function(e){
+      const img =
+        document.createElement("img");
 
-        const img =
-          document.createElement("img");
+      img.src = e.target.result;
+      img.alt = file.name;
 
-
-        img.src =
-          e.target.result;
-
-
-        img.alt =
-          file.name;
-
-
-        preview.appendChild(img);
-
-
-        preview.style.display =
-          "block";
-
-      };
-
+      preview.appendChild(img);
+      preview.style.display = "block";
+    };
 
     reader.readAsDataURL(file);
-
   }
 
-
-  state.files[input.id] =
-    file;
-
+  state.files[input.id] = file;
 }
-
 
 /* =====================================================
    FORMAT BYTES
@@ -3126,50 +2143,30 @@ function handleFile(
 function formatBytes(bytes){
 
   if(bytes < 1024){
-
-    return (
-      bytes +
-      " B"
-    );
-
+    return bytes + " B";
   }
-
 
   if(bytes < 1024 * 1024){
 
     return (
-      (bytes / 1024)
-        .toFixed(1) +
+      (bytes / 1024).toFixed(1) +
       " KB"
     );
-
   }
 
-
-  if(
-    bytes <
-    1024 * 1024 * 1024
-  ){
+  if(bytes < 1024 * 1024 * 1024){
 
     return (
-      (bytes /
-        (1024 * 1024))
-        .toFixed(2) +
+      (bytes / (1024 * 1024)).toFixed(2) +
       " MB"
     );
-
   }
 
-
   return (
-    (bytes /
-      (1024 * 1024 * 1024))
-      .toFixed(2) +
+    (bytes / (1024 * 1024 * 1024)).toFixed(2) +
     " GB"
   );
-
 }
-
 
 /* =====================================================
    FILE TO BASE64
@@ -3177,77 +2174,49 @@ function formatBytes(bytes){
 
 function fileToBase64(file){
 
-  return new Promise(
-    function(resolve,reject){
+  return new Promise(function(resolve,reject){
 
-      if(!file){
+    if(!file){
 
-        reject(
-          new Error(
-            "Required file missing."
-          )
-        );
+      reject(
+        new Error("Required file missing.")
+      );
 
-        return;
-
-      }
-
-
-      const reader =
-        new FileReader();
-
-
-      reader.onload =
-        function(){
-
-          const result =
-            reader.result;
-
-
-          const base64 =
-            String(result)
-              .split(",")[1];
-
-
-          resolve({
-
-            name:
-              file.name,
-
-            mimeType:
-              file.type,
-
-            size:
-              file.size,
-
-            base64:
-              base64
-
-          });
-
-        };
-
-
-      reader.onerror =
-        function(){
-
-          reject(
-            new Error(
-              "File read failed: " +
-              file.name
-            )
-          );
-
-        };
-
-
-      reader.readAsDataURL(file);
-
+      return;
     }
-  );
 
+    const reader = new FileReader();
+
+    reader.onload = function(){
+
+      const result = reader.result;
+
+      const base64 =
+        String(result).split(",")[1];
+
+      resolve({
+
+        name:file.name,
+        mimeType:file.type,
+        size:file.size,
+        base64:base64
+
+      });
+    };
+
+    reader.onerror = function(){
+
+      reject(
+        new Error(
+          "File read failed: " +
+          file.name
+        )
+      );
+    };
+
+    reader.readAsDataURL(file);
+  });
 }
-
 
 /* =====================================================
    PREPARE FILES
@@ -3262,38 +2231,30 @@ async function prepareFiles(){
         state.files.photo
       ),
 
-
     signature:
       await fileToBase64(
         state.files.signature
       ),
-
 
     aadhaarFront:
       await fileToBase64(
         state.files.aadhaarFront
       ),
 
-
     aadhaarBack:
       await fileToBase64(
         state.files.aadhaarBack
       ),
 
-
     idProof:
       state.files.idProof
-
         ? await fileToBase64(
             state.files.idProof
           )
-
         : null
 
   };
-
 }
-
 
 /* =====================================================
    SUBMIT REGISTRATION
@@ -3302,96 +2263,45 @@ async function prepareFiles(){
 async function submitRegistration(){
 
   if(state.submitting){
-
     return;
-
   }
-
 
   clearError("step2Error");
 
-
   saveFormData();
 
-
   const photo =
-    document
-      .getElementById("photo")
-      .files[0];
-
+    document.getElementById("photo").files[0];
 
   const signature =
-    document
-      .getElementById("signature")
-      .files[0];
-
+    document.getElementById("signature").files[0];
 
   const aadhaarFront =
-    document
-      .getElementById("aadhaarFront")
-      .files[0];
-
+    document.getElementById("aadhaarFront").files[0];
 
   const aadhaarBack =
-    document
-      .getElementById("aadhaarBack")
-      .files[0];
-
+    document.getElementById("aadhaarBack").files[0];
 
   const idProof =
-    document
-      .getElementById("idProof")
-      .files[0];
-
+    document.getElementById("idProof").files[0];
 
   let error;
 
-
-  /* PHOTO */
-
   error =
-    validateFile(
-      photo,
-      true,
-      "Photo"
-    );
-
+    validateFile(photo,true,"Photo");
 
   if(error){
-
-    showError(
-      "step2Error",
-      error
-    );
-
+    showError("step2Error",error);
     return;
-
   }
-
-
-  /* SIGNATURE */
 
   error =
-    validateFile(
-      signature,
-      true,
-      "Signature"
-    );
-
+    validateFile(signature,true,"Signature");
 
   if(error){
-
-    showError(
-      "step2Error",
-      error
-    );
-
+    showError("step2Error",error);
     return;
-
   }
-
-
-  /* AADHAAR FRONT */
 
   error =
     validateFile(
@@ -3400,20 +2310,10 @@ async function submitRegistration(){
       "Aadhaar Front"
     );
 
-
   if(error){
-
-    showError(
-      "step2Error",
-      error
-    );
-
+    showError("step2Error",error);
     return;
-
   }
-
-
-  /* AADHAAR BACK */
 
   error =
     validateFile(
@@ -3422,54 +2322,19 @@ async function submitRegistration(){
       "Aadhaar Back"
     );
 
-
   if(error){
-
-    showError(
-      "step2Error",
-      error
-    );
-
+    showError("step2Error",error);
     return;
-
   }
-
-
-  /* ID PROOF OPTIONAL */
-
-  error =
-    validateFile(
-      idProof,
-      false,
-      "ID Proof"
-    );
-
-
-  if(error){
-
-    showError(
-      "step2Error",
-      error
-    );
-
-    return;
-
-  }
-
 
   try{
 
     state.submitting = true;
 
-
     const submitBtn =
-      document
-        .getElementById("submitBtn");
+      document.getElementById("submitBtn");
 
-
-    submitBtn.disabled =
-      true;
-
+    submitBtn.disabled = true;
 
     setLoading(
       true,
@@ -3477,14 +2342,8 @@ async function submitRegistration(){
       "आपली माहिती तपासत आहोत..."
     );
 
-
-    /* =================================================
-       PREPARE FILES
-       ================================================= */
-
     const files =
       await prepareFiles();
-
 
     setLoading(
       true,
@@ -3492,107 +2351,70 @@ async function submitRegistration(){
       "कृपया थोडा वेळ प्रतीक्षा करा..."
     );
 
-
-    /* =================================================
-       FINAL PAYLOAD
-       ================================================= */
-
     const payload = {
 
-      action:
-        "register",
-
+      action:"register",
 
       password:
         state.formData.password,
 
-
       fullName:
         state.formData.fullName,
-
 
       dob:
         state.formData.dob,
 
-
       gender:
         state.formData.gender,
-
 
       profession:
         state.formData.profession,
 
-
       business:
         state.formData.profession,
-
 
       mobile:
         state.formData.mobile,
 
-
       email:
         state.formData.email,
 
-
       correspondenceAddress:
-        state.formData
-          .correspondenceAddress,
-
+        state.formData.correspondenceAddress,
 
       permanentAddress:
-        state.formData
-          .permanentAddress,
-
+        state.formData.permanentAddress,
 
       address:
-        state.formData
-          .correspondenceAddress,
-
+        state.formData.correspondenceAddress,
 
       aadhaar:
         state.formData.aadhaar,
 
-
       membershipType:
-        state.formData
-          .membershipType,
-
+        state.formData.membershipType,
 
       membership:
-        state.formData
-          .membershipType,
-
+        state.formData.membershipType,
 
       fee:
         state.formData.fee,
 
-
       photo:
         files.photo,
-
 
       signature:
         files.signature,
 
-
       aadhaarFront:
         files.aadhaarFront,
-
 
       aadhaarBack:
         files.aadhaarBack,
 
-
       idProof:
         files.idProof
-
     };
-
-
-    /* =================================================
-       SEND TO APPS SCRIPT
-       ================================================= */
 
     const response =
       await fetch(
@@ -3602,10 +2424,8 @@ async function submitRegistration(){
           method:"POST",
 
           headers:{
-
             "Content-Type":
               "text/plain;charset=utf-8"
-
           },
 
           body:
@@ -3614,20 +2434,16 @@ async function submitRegistration(){
         }
       );
 
-
     if(!response.ok){
 
       throw new Error(
         "Server connection failed. HTTP " +
         response.status
       );
-
     }
-
 
     const result =
       await response.json();
-
 
     if(!result.success){
 
@@ -3635,19 +2451,22 @@ async function submitRegistration(){
         result.message ||
         "Registration failed."
       );
-
     }
 
+    /*
+      IMPORTANT:
+      येथे PDF/Card ची वाट पाहत नाही.
+      Registration success झाल्यावर
+      success screen लगेच दाखवतो.
+    */
 
-    /* =================================================
-       REGISTRATION SUCCESS
-       IMPORTANT:
-       PDF/CARD background process आहे.
-       येथे त्यांची वाट पाहायची नाही.
-       ================================================= */
+    setLoading(
+      true,
+      "Registration successful!",
+      "आपली नोंदणी पूर्ण झाली आहे. Membership PDF आणि Library Card तयार होत आहेत..."
+    );
 
     showSuccess(result);
-
 
   }
   catch(error){
@@ -3657,42 +2476,24 @@ async function submitRegistration(){
       error
     );
 
-
     showError(
       "step2Error",
-      friendlyError(
-        error
-      )
+      friendlyError(error)
     );
 
   }
   finally{
 
-    state.submitting =
-      false;
-
+    state.submitting = false;
 
     const submitBtn =
-      document
-        .getElementById("submitBtn");
+      document.getElementById("submitBtn");
 
-
-    submitBtn.disabled =
-      false;
-
-
-    /*
-      Registration response मिळाल्यावर
-      loading बंद.
-      PDF/Card background मध्ये तयार होतील.
-    */
+    submitBtn.disabled = false;
 
     setLoading(false);
-
   }
-
 }
-
 
 /* =====================================================
    FRIENDLY ERROR
@@ -3701,11 +2502,9 @@ async function submitRegistration(){
 function friendlyError(error){
 
   const message =
-    error &&
-    error.message
+    error && error.message
       ? error.message
       : "Registration failed.";
-
 
   if(
     message
@@ -3718,9 +2517,7 @@ function friendlyError(error){
       "हा सदस्य आधीच नोंदणीकृत आहे.\n\n" +
       message
     );
-
   }
-
 
   if(
     message
@@ -3732,14 +2529,59 @@ function friendlyError(error){
       "Server शी connection होऊ शकले नाही. " +
       "Internet connection तपासा आणि पुन्हा प्रयत्न करा."
     );
-
   }
 
-
   return message;
-
 }
 
+/* =====================================================
+   SET DOCUMENT BUTTON PREPARING
+   ===================================================== */
+
+function setDocumentButtonPreparing(
+  button,
+  text
+){
+
+  if(!button){
+    return;
+  }
+
+  button.href = "#";
+  button.textContent = text;
+  button.classList.remove("ready");
+  button.classList.add("preparing");
+  button.setAttribute(
+    "aria-disabled",
+    "true"
+  );
+}
+
+/* =====================================================
+   SET DOCUMENT BUTTON READY
+   ===================================================== */
+
+function setDocumentButtonReady(
+  button,
+  url,
+  text
+){
+
+  if(!button || !url){
+    return;
+  }
+
+  button.href = url;
+  button.textContent = text;
+
+  button.classList.remove("preparing");
+  button.classList.add("ready");
+
+  button.setAttribute(
+    "aria-disabled",
+    "false"
+  );
+}
 
 /* =====================================================
    DOCUMENT STATUS POLLING
@@ -3748,15 +2590,8 @@ function friendlyError(error){
 function startDocumentStatusPolling(memberId){
 
   if(!memberId){
-
     return;
-
   }
-
-
-  /*
-    आधीचा polling timer असल्यास बंद करा.
-  */
 
   if(documentPollingTimer){
 
@@ -3764,270 +2599,234 @@ function startDocumentStatusPolling(memberId){
       documentPollingTimer
     );
 
-    documentPollingTimer =
-      null;
-
+    documentPollingTimer = null;
   }
-
 
   documentPollingAttempts = 0;
 
-
   /*
-    प्रत्येक 5 सेकंदांनी backend कडून
-    PDF आणि Library Card status तपासला जाईल.
+    लगेच एकदा status check करा.
+    त्यानंतर प्रत्येक 5 seconds.
   */
+
+  checkDocumentStatus(memberId);
 
   documentPollingTimer =
     setInterval(
-      async function(){
-
-        documentPollingAttempts++;
-
-
-        /*
-          36 attempts × 5 seconds
-          = 180 seconds
-          = 3 minutes
-        */
-
-        if(
-          documentPollingAttempts >
-          36
-        ){
-
-          clearInterval(
-            documentPollingTimer
-          );
-
-          documentPollingTimer =
-            null;
-
-
-          const pending =
-            document.getElementById(
-              "successPendingStatus"
-            );
-
-
-          if(pending){
-
-            pending.textContent =
-              "Registration यशस्वी झाली आहे. " +
-              "Documents तयार होण्यास अपेक्षेपेक्षा जास्त वेळ लागत आहे. " +
-              "कृपया थोड्या वेळाने पुन्हा Login/Status तपासा.";
-
-          }
-
-
-          return;
-
-        }
-
-
-        try{
-
-          const response =
-            await fetch(
-              SCRIPT_URL +
-              "?action=getMemberStatus&memberId=" +
-              encodeURIComponent(
-                memberId
-              ) +
-              "&t=" +
-              Date.now(),
-              {
-
-                method:"GET",
-
-                cache:"no-store"
-
-              }
-            );
-
-
-          if(!response.ok){
-
-            return;
-
-          }
-
-
-          const result =
-            await response.json();
-
-
-          if(
-            !result ||
-            !result.success
-          ){
-
-            return;
-
-          }
-
-
-          const pdfUrl =
-            result.membershipPdf ||
-            "";
-
-
-          const cardUrl =
-            result.libraryCard ||
-            "";
-
-
-          const pdfBtn =
-            document.getElementById(
-              "successPdf"
-            );
-
-
-          const cardBtn =
-            document.getElementById(
-              "successCard"
-            );
-
-
-          const pending =
-            document.getElementById(
-              "successPendingStatus"
-            );
-
-
-          const statusEl =
-            document.getElementById(
-              "successStatus"
-            );
-
-
-          /*
-            PDF तयार झाला
-          */
-
-          if(
-            pdfUrl &&
-            pdfBtn
-          ){
-
-            pdfBtn.href =
-              pdfUrl;
-
-            pdfBtn.style.display =
-              "inline-flex";
-
-          }
-
-
-          /*
-            Library Card तयार झाला
-          */
-
-          if(
-            cardUrl &&
-            cardBtn
-          ){
-
-            cardBtn.href =
-              cardUrl;
-
-            cardBtn.style.display =
-              "inline-flex";
-
-          }
-
-
-          /*
-            Application status update
-          */
-
-          if(statusEl){
-
-            statusEl.textContent =
-              result.applicationStatus ||
-              "Pending";
-
-          }
-
-
-          /*
-            दोन्ही documents तयार
-          */
-
-          if(
-            pdfUrl &&
-            cardUrl
-          ){
-
-            if(pending){
-
-              pending.textContent =
-                "✅ Membership PDF आणि Library Card तयार झाले आहेत.";
-
-              pending.style.display =
-                "block";
-
-            }
-
-
-            /*
-              दोन्ही तयार झाल्यावर polling पूर्ण बंद.
-            */
-
-            clearInterval(
-              documentPollingTimer
-            );
-
-            documentPollingTimer =
-              null;
-
-
-            return;
-
-          }
-
-
-          /*
-            अजून documents तयार होत असतील
-          */
-
-          if(pending){
-
-            pending.textContent =
-              "आपली नोंदणी यशस्वी झाली आहे. " +
-              "Membership PDF आणि Library Card तयार होत आहेत. " +
-              "कृपया थोडा वेळ प्रतीक्षा करा.";
-
-            pending.style.display =
-              "block";
-
-          }
-
-        }
-        catch(error){
-
-          /*
-            Temporary status-check error असल्यास
-            user ला error दाखवायचा नाही.
-            पुढच्या 5 सेकंदांनी पुन्हा check होईल.
-          */
-
-          console.log(
-            "Document status check:",
-            error
-          );
-
-        }
+      function(){
+
+        checkDocumentStatus(
+          memberId
+        );
 
       },
       5000
     );
-
 }
 
+/* =====================================================
+   CHECK DOCUMENT STATUS
+   ===================================================== */
+
+async function checkDocumentStatus(memberId){
+
+  documentPollingAttempts++;
+
+  /*
+    36 attempts × 5 sec
+    = 3 minutes
+  */
+
+  if(documentPollingAttempts > 36){
+
+    stopDocumentStatusPolling();
+
+    const pending =
+      document.getElementById(
+        "successPendingStatus"
+      );
+
+    if(pending){
+
+      pending.textContent =
+        "Registration यशस्वी झाली आहे. " +
+        "Documents तयार होण्यास अपेक्षेपेक्षा जास्त वेळ लागत आहे. " +
+        "कृपया थोड्या वेळाने पुन्हा Login/Status तपासा.";
+
+    }
+
+    return;
+  }
+
+  try{
+
+    const response =
+      await fetch(
+        SCRIPT_URL +
+        "?action=getMemberStatus" +
+        "&memberId=" +
+        encodeURIComponent(memberId) +
+        "&t=" +
+        Date.now(),
+        {
+
+          method:"GET",
+
+          cache:"no-store"
+
+        }
+      );
+
+    if(!response.ok){
+      return;
+    }
+
+    const result =
+      await response.json();
+
+    if(
+      !result ||
+      !result.success
+    ){
+      return;
+    }
+
+    const pdfUrl =
+      result.membershipPdf || "";
+
+    const cardUrl =
+      result.libraryCard || "";
+
+    const pdfBtn =
+      document.getElementById(
+        "successPdf"
+      );
+
+    const cardBtn =
+      document.getElementById(
+        "successCard"
+      );
+
+    const pending =
+      document.getElementById(
+        "successPendingStatus"
+      );
+
+    const statusEl =
+      document.getElementById(
+        "successStatus"
+      );
+
+    /*
+      APPLICATION STATUS
+    */
+
+    if(statusEl){
+
+      statusEl.textContent =
+        result.applicationStatus ||
+        "Pending";
+    }
+
+    /*
+      PDF READY
+    */
+
+    if(pdfUrl){
+
+      setDocumentButtonReady(
+        pdfBtn,
+        pdfUrl,
+        "📄 Download Membership PDF"
+      );
+    }
+
+    /*
+      CARD READY
+    */
+
+    if(cardUrl){
+
+      setDocumentButtonReady(
+        cardBtn,
+        cardUrl,
+        "🪪 Download Library Card"
+      );
+    }
+
+    /*
+      BOTH READY
+    */
+
+    if(
+      pdfUrl &&
+      cardUrl
+    ){
+
+      if(pending){
+
+        pending.textContent =
+          "✅ Membership PDF आणि Library Card तयार झाले आहेत.";
+
+        pending.style.display =
+          "block";
+      }
+
+      stopDocumentStatusPolling();
+
+      return;
+    }
+
+    /*
+      ONE OR BOTH STILL PENDING
+    */
+
+    if(pending){
+
+      if(pdfUrl && !cardUrl){
+
+        pending.textContent =
+          "📄 Membership PDF तयार झाले आहे. " +
+          "🪪 Library Card तयार होत आहे...";
+      }
+
+      else if(!pdfUrl && cardUrl){
+
+        pending.textContent =
+          "🪪 Library Card तयार झाले आहे. " +
+          "📄 Membership PDF तयार होत आहे...";
+      }
+
+      else{
+
+        pending.textContent =
+          "आपली नोंदणी यशस्वी झाली आहे. " +
+          "Membership PDF आणि Library Card तयार होत आहेत. " +
+          "कृपया थोडा वेळ प्रतीक्षा करा.";
+      }
+
+      pending.style.display =
+        "block";
+    }
+
+  }
+  catch(error){
+
+    /*
+      Temporary error असल्यास
+      user ला error दाखवत नाही.
+      पुढच्या attempt मध्ये पुन्हा check होईल.
+    */
+
+    console.log(
+      "Document status check:",
+      error
+    );
+  }
+}
 
 /* =====================================================
-   STOP DOCUMENT STATUS POLLING
+   STOP POLLING
    ===================================================== */
 
 function stopDocumentStatusPolling(){
@@ -4038,15 +2837,11 @@ function stopDocumentStatusPolling(){
       documentPollingTimer
     );
 
-    documentPollingTimer =
-      null;
-
+    documentPollingTimer = null;
   }
 
   documentPollingAttempts = 0;
-
 }
-
 
 /* =====================================================
    SUCCESS
@@ -4054,57 +2849,45 @@ function stopDocumentStatusPolling(){
 
 function showSuccess(result){
 
-  /*
-    जुन्या polling timer ला बंद करून
-    नवीन registration साठी fresh polling सुरू करू.
-  */
-
   stopDocumentStatusPolling();
-
 
   document
     .getElementById("formArea")
     .classList
     .add("hidden");
 
-
   document
     .querySelector(".progress")
     .classList
     .add("hidden");
-
 
   document
     .getElementById("successArea")
     .style
     .display = "block";
 
-
-  /* =================================================
-     MEMBER ID = USERNAME
-     ================================================= */
+  /*
+    MEMBER ID = USERNAME
+  */
 
   const memberId =
     result.memberId ||
     result.username ||
     "";
 
-
   document
     .getElementById("successMemberId")
     .textContent =
       memberId;
-
 
   document
     .getElementById("successUsername")
     .textContent =
       memberId;
 
-
-  /* =================================================
-     PASSWORD
-     ================================================= */
+  /*
+    PASSWORD
+  */
 
   document
     .getElementById("successPassword")
@@ -4112,10 +2895,9 @@ function showSuccess(result){
       result.password ||
       state.formData.password;
 
-
-  /* =================================================
-     REGISTRATION DATE
-     ================================================= */
+  /*
+    REGISTRATION DATE
+  */
 
   document
     .getElementById(
@@ -4125,10 +2907,9 @@ function showSuccess(result){
       result.registrationDate ||
       "";
 
-
-  /* =================================================
-     STATUS
-     ================================================= */
+  /*
+    STATUS
+  */
 
   document
     .getElementById(
@@ -4138,84 +2919,78 @@ function showSuccess(result){
       result.applicationStatus ||
       "Pending";
 
-
-  /* =================================================
-     MEMBERSHIP PDF
-     ================================================= */
+  /*
+    PDF BUTTON
+  */
 
   const pdf =
-    document
-      .getElementById("successPdf");
-
+    document.getElementById(
+      "successPdf"
+    );
 
   const pdfUrl =
     result.membershipPdf ||
     result.pdfUrl ||
     "";
 
-
   if(pdfUrl){
 
-    pdf.href =
-      pdfUrl;
-
-    pdf.style.display =
-      "inline-flex";
+    setDocumentButtonReady(
+      pdf,
+      pdfUrl,
+      "📄 Download Membership PDF"
+    );
 
   }
   else{
 
-    pdf.removeAttribute("href");
-
-    pdf.style.display =
-      "none";
+    setDocumentButtonPreparing(
+      pdf,
+      "📄 Membership PDF तयार होत आहे..."
+    );
 
   }
 
-
-  /* =================================================
-     LIBRARY CARD
-     ================================================= */
+  /*
+    CARD BUTTON
+  */
 
   const card =
-    document
-      .getElementById("successCard");
-
+    document.getElementById(
+      "successCard"
+    );
 
   const cardUrl =
     result.libraryCard ||
     result.libraryCardUrl ||
     "";
 
-
   if(cardUrl){
 
-    card.href =
-      cardUrl;
-
-    card.style.display =
-      "inline-flex";
+    setDocumentButtonReady(
+      card,
+      cardUrl,
+      "🪪 Download Library Card"
+    );
 
   }
   else{
 
-    card.removeAttribute("href");
-
-    card.style.display =
-      "none";
+    setDocumentButtonPreparing(
+      card,
+      "🪪 Library Card तयार होत आहे..."
+    );
 
   }
 
-
-  /* =================================================
-     STATUS MESSAGE
-     ================================================= */
+  /*
+    PENDING MESSAGE
+  */
 
   const pending =
     document.getElementById(
       "successPendingStatus"
     );
-
 
   if(
     pdfUrl &&
@@ -4225,9 +3000,6 @@ function showSuccess(result){
     pending.textContent =
       "✅ Membership PDF आणि Library Card तयार झाले आहेत.";
 
-    pending.style.display =
-      "block";
-
   }
   else if(
     result.documentGenerationWarning
@@ -4235,9 +3007,6 @@ function showSuccess(result){
 
     pending.textContent =
       result.documentGenerationWarning;
-
-    pending.style.display =
-      "block";
 
   }
   else{
@@ -4247,26 +3016,24 @@ function showSuccess(result){
       "Membership PDF आणि Library Card तयार होत आहेत. " +
       "कृपया थोडा वेळ प्रतीक्षा करा.";
 
-    pending.style.display =
-      "block";
-
   }
 
+  pending.style.display =
+    "block";
 
   /*
-    Success screen लगेच दाखवा.
-    PDF/Card background मध्ये तयार होत असतील तर
-    polling सुरू करा.
+    SUCCESS SCREEN वर जा
   */
 
   window.scrollTo({
-
     top:0,
-
     behavior:"smooth"
-
   });
 
+  /*
+    PDF/Card अजून तयार नसतील तर
+    background polling सुरू.
+  */
 
   if(
     memberId &&
@@ -4281,64 +3048,41 @@ function showSuccess(result){
     );
 
   }
-
 }
-
 
 /* =====================================================
    ERROR DISPLAY
    ===================================================== */
 
-function showError(
-  id,
-  message
-){
+function showError(id,message){
 
   const el =
-    document
-      .getElementById(id);
-
+    document.getElementById(id);
 
   el.textContent =
     "⚠️ " + message;
 
-
   el.style.display =
     "block";
 
-
   el.scrollIntoView({
-
     behavior:"smooth",
-
     block:"center"
-
   });
-
 }
-
 
 function clearError(id){
 
   const el =
-    document
-      .getElementById(id);
-
+    document.getElementById(id);
 
   if(!el){
     return;
   }
 
-
-  el.textContent =
-    "";
-
-
-  el.style.display =
-    "none";
-
+  el.textContent = "";
+  el.style.display = "none";
 }
-
 
 /* =====================================================
    LOADING
@@ -4351,46 +3095,28 @@ function setLoading(
 ){
 
   const loading =
-    document
-      .getElementById("loading");
-
+    document.getElementById("loading");
 
   const loadingText =
-    document
-      .getElementById("loadingText");
-
+    document.getElementById("loadingText");
 
   const loadingStage =
-    document
-      .getElementById("loadingStage");
-
+    document.getElementById("loadingStage");
 
   if(text){
-
-    loadingText.textContent =
-      text;
-
+    loadingText.textContent = text;
   }
-
 
   if(stage){
-
-    loadingStage.textContent =
-      stage;
-
+    loadingStage.textContent = stage;
   }
 
-
   loading.style.display =
-    show
-      ? "flex"
-      : "none";
-
+    show ? "flex" : "none";
 }
 
-
 /* =====================================================
-   MOBILE VALIDATION
+   MOBILE
    ===================================================== */
 
 document
@@ -4407,9 +3133,8 @@ document
     }
   );
 
-
 /* =====================================================
-   AADHAAR VALIDATION
+   AADHAAR
    ===================================================== */
 
 document
@@ -4426,9 +3151,8 @@ document
     }
   );
 
-
 /* =====================================================
-   EMAIL LOWERCASE
+   EMAIL
    ===================================================== */
 
 document
@@ -4445,7 +3169,6 @@ document
     }
   );
 
-
 /* =====================================================
    PREVENT DOUBLE SUBMISSION
    ===================================================== */
@@ -4457,7 +3180,6 @@ window.addEventListener(
     if(state.submitting){
 
       e.preventDefault();
-
       e.returnValue = "";
 
     }
@@ -4465,9 +3187,8 @@ window.addEventListener(
   }
 );
 
-
 /* =====================================================
-   STOP POLLING WHEN PAGE IS CLOSED
+   PAGE HIDE
    ===================================================== */
 
 window.addEventListener(
@@ -4479,7 +3200,6 @@ window.addEventListener(
   }
 );
 
-
 /* =====================================================
    DATE LIMIT
    ===================================================== */
@@ -4487,9 +3207,7 @@ window.addEventListener(
 (function(){
 
   const dob =
-    document
-      .getElementById("dob");
-
+    document.getElementById("dob");
 
   if(dob){
 
@@ -4502,7 +3220,6 @@ window.addEventListener(
 
 })();
 
-
 /* =====================================================
    INITIAL STATE
    ===================================================== */
@@ -4510,28 +3227,17 @@ window.addEventListener(
 (function(){
 
   const step1 =
-    document
-      .getElementById("step1");
-
+    document.getElementById("step1");
 
   const step2 =
-    document
-      .getElementById("step2");
-
+    document.getElementById("step2");
 
   if(step1){
-
-    step1.classList
-      .remove("hidden");
-
+    step1.classList.remove("hidden");
   }
 
-
   if(step2){
-
-    step2.classList
-      .add("hidden");
-
+    step2.classList.add("hidden");
   }
 
 })();
